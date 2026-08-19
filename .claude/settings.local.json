@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xxd /home/ubuntu/5103_assignment1/sources/investment.csv)",
+      "Bash(command -v pdftotext pdfinfo)",
+      "Bash(pdfinfo /home/ubuntu/5103_assignment1/sources/Assignment_1.pdf)",
+      "Bash(pdftotext /home/ubuntu/5103_assignment1/sources/Assignment_1.pdf /tmp/claude-1000/-home-ubuntu-5103-assignment1/744ce386-afd1-40ce-a57a-789b023d6c19/scratchpad/a1.txt)",
+      "Bash(pdftotext -htmlmeta /home/ubuntu/5103_assignment1/sources/Assignment_1.pdf -)"
+    ]
+  }
+}
