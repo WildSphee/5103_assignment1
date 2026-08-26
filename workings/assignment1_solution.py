@@ -11,7 +11,6 @@ from __future__ import annotations
 import csv
 import shutil
 import tempfile
-import urllib.request
 from pathlib import Path
 
 import matplotlib
@@ -34,8 +33,8 @@ from docx.shared import Inches, Pt, RGBColor
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_FILE = ROOT / "sources" / "investment.csv"
+NUS_LOGO_FILE = ROOT / "sources" / "nus_logo.png"
 OUTPUT_FILE = ROOT / "DBA5103_Assignment_1_Solutions.docx"
-NUS_LOGO_URL = "https://osa.nus.edu.sg/wp-content/themes/nus-theme/assets/images/nus-logo.png"
 
 NAVY = "18354A"
 BLUE = "2F6483"
@@ -434,21 +433,19 @@ def plot_portfolio_solution(path: Path, records, solution) -> None:
     plt.close(fig)
 
 
-def download_nus_logo(image_dir: Path) -> Path:
-    """Download the complete NUS logo from an official NUS web property."""
-    logo_path = image_dir / "nus_logo.png"
-    request = urllib.request.Request(NUS_LOGO_URL, headers={"User-Agent": "Mozilla/5.0"})
-    with urllib.request.urlopen(request, timeout=30) as response:
-        logo_path.write_bytes(response.read())
-    with Image.open(logo_path) as logo:
+def get_nus_logo() -> Path:
+    """Validate and return the locally stored complete NUS logo."""
+    if not NUS_LOGO_FILE.exists():
+        raise FileNotFoundError(f"NUS logo is missing: {NUS_LOGO_FILE}")
+    with Image.open(NUS_LOGO_FILE) as logo:
         if logo.width < 300 or logo.height < 100:
-            raise ValueError("Downloaded NUS logo is unexpectedly small")
+            raise ValueError("NUS logo is unexpectedly small")
         logo.verify()
-    return logo_path
+    return NUS_LOGO_FILE
 
 
-def add_title_page(doc: Document, image_dir: Path) -> None:
-    logo_path = download_nus_logo(image_dir)
+def add_title_page(doc: Document) -> None:
+    logo_path = get_nus_logo()
 
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -876,7 +873,7 @@ print(sold, cash_raised, future_value)'''
 def build_document(records, solution, image_dir: Path) -> None:
     doc = Document()
     configure_document(doc)
-    add_title_page(doc, image_dir)
+    add_title_page(doc)
 
     intro = doc.add_paragraph()
     intro.alignment = WD_ALIGN_PARAGRAPH.LEFT
