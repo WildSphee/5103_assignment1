@@ -32,8 +32,8 @@ from docx.shared import Inches, Pt, RGBColor
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA_FILE = ROOT / "sources" / "investment.csv"
-NUS_LOGO_FILE = ROOT / "sources" / "nus_logo.png"
+DATA_FILE = ROOT / "sources" / "assignment 1" / "investment.csv"
+NUS_LOGO_FILE = ROOT / "sources" / "assignment 1" / "nus_logo.png"
 OUTPUT_FILE = ROOT / "DBA5103_Assignment_1_Solutions.docx"
 
 NAVY = "18354A"
@@ -405,6 +405,7 @@ def solve_investment(records, target=9000.0):
         "future_by_stock": future_by_stock,
         "future_total": future_total,
         "cash_total": float(np.sum(cash)),
+        "max_cash": float(np.sum(net * s)),
         "solver_message": result.message,
     }
 
@@ -523,6 +524,10 @@ def add_question_1(doc: Document, image_dir: Path) -> None:
         doc,
         "The first set of constraints ensures that enough of each raw material is procured, and the second constraint enforces the budget.",
     )
+    add_text(
+        doc,
+        "Structurally this is the general resource-allocation problem of Lecture 2, in which a linear profit is maximized subject to linear capacity rows and nonnegative decisions, with one budget row added. The procurement variables play the same role as the reserved-capacity variables in the alternative Wyndor Glass formulations: they make the material balance explicit without adding any decision content of their own, which is exactly why part (b) can remove them.",
+    )
 
     doc.add_heading("1(a)(ii) Matrix form", level=2)
     p = image_dir / "q1_matrix.png"
@@ -547,8 +552,27 @@ def add_question_1(doc: Document, image_dir: Path) -> None:
     )
     add_formula(doc, p)
 
+    doc.add_heading("1(a)(iii) Reduction to standard form", level=2)
+    add_text(
+        doc,
+        "Applying the Lecture 2 reduction, the maximization is written as a minimization and each inequality absorbs a nonnegative slack variable. No variable needs to be split, because every decision is already sign restricted.",
+    )
+    p = image_dir / "q1_standard.png"
+    render_formula(
+        p,
+        [
+            r"$-\min_{x,y,u,w}\quad -(p^{\mathsf{T}}x-c^{\mathsf{T}}y)$",
+            r"$\mathrm{s.t.}\quad Ax-y+u=0,\qquad c^{\mathsf{T}}y+w=B,$",
+            r"$x\geq0,\quad y\geq0,\quad u\geq0,\quad w\geq0.$",
+        ],
+    )
+    add_formula(doc, p, caption="Standard form: m + 1 equalities in n + 2m + 1 nonnegative variables")
+
     doc.add_heading("1(b) Model without procurement variables", level=2)
-    add_text(doc, "Substituting material usage for procurement removes the procurement variables and gives:")
+    add_text(
+        doc,
+        "Because every unit cost is nonnegative, procuring more material than the production plan consumes can never improve the objective. Some optimal solution therefore satisfies the material balance at equality, and substituting it eliminates the procurement variables:",
+    )
     p = image_dir / "q1_reduced.png"
     render_formula(
         p,
@@ -559,10 +583,32 @@ def add_question_1(doc: Document, image_dir: Path) -> None:
     )
     add_formula(doc, p)
     add_answer_box(doc, "Interpretation", "The unit profit vector is the selling-price vector less the raw-material cost attributable to one unit of each product.")
+    add_text(
+        doc,
+        "The reduced model repays a second look through the geometry of Lecture 3. In standard form it carries a single equality constraint, so m = 1 and every basic feasible solution has exactly one basic variable. Whenever the problem has a finite optimum there is an optimal extreme point, and such a point spends the entire budget on at most one product, the one with the largest ratio of selling price to unit material cost:",
+    )
+    p = image_dir / "q1_extreme.png"
+    render_formula(
+        p,
+        [
+            r"$c^{\mathsf{T}}Ax+w=B\quad\Longrightarrow\quad m=1,\ \mathrm{one\ basic\ variable}.$",
+            r"$j^{*}\in\operatorname{argmax}\{p_j/k_j:\ k_j>0\},\qquad k=A^{\mathsf{T}}c,\qquad x_{j^{*}}=B/k_{j^{*}}.$",
+        ],
+        fontsize=15.3,
+    )
+    add_formula(doc, p)
+    add_text(
+        doc,
+        "Two of the four outcomes catalogued in Lecture 3 are visible here. If no product has positive reduced profit, the zero plan is optimal. If some product has a positive selling price yet consumes no priced material, so that the corresponding entry of k vanishes, its production level is unconstrained and the objective is unbounded.",
+    )
 
 
 def add_question_2(doc: Document, image_dir: Path) -> None:
     doc.add_heading("2. Matrix Completion", level=1)
+    add_text(
+        doc,
+        "Lecture 2 defines a collection of vectors to be linearly independent when none of them is a linear combination of the others, and the rank of a matrix as the largest number of independent columns, equivalently of independent rows. This question is the discrete counterpart of the compressed sensing example from the same lecture: the observations form an underdetermined system that admits many completions, and only structural knowledge, sparsity there and low rank here, singles one out.",
+    )
     doc.add_heading("2(a) Rank of the given matrix", level=2)
     p = image_dir / "q2_rank_relation.png"
     render_formula(
@@ -606,14 +652,36 @@ def add_question_2(doc: Document, image_dir: Path) -> None:
     render_matrix(p, [[1, 0, 1, 0, 1], [0, 0, 0, 0, 0], [1, 0, 1, 0, 1]])
     add_formula(doc, p, caption="Completed rank-one ratings matrix")
     add_answer_box(doc, "Check", "Rows 1 and 3 are identical and nonzero, while row 2 is zero. The completed matrix consequently has rank one and matches every observed entry.")
+    add_text(
+        doc,
+        "A count explains why recovery is possible at all. The rank-one factorisation carries three user factors and five movie factors, but rescaling one vector and inversely rescaling the other leaves the product unchanged, so only seven of these numbers are free. Seven entries are observed, which is precisely the number needed:",
+    )
+    p = image_dir / "q2_dof.png"
+    render_formula(
+        p,
+        [
+            r"$\dim(x)+\dim(y)-1=3+5-1=7\ \mathrm{free\ parameters},$",
+            r"$7\ \mathrm{of\ the}\ 3\times5=15\ \mathrm{entries\ are\ observed}.$",
+        ],
+        fontsize=14.6,
+    )
+    add_formula(doc, p)
+    add_text(
+        doc,
+        "The count is necessary rather than sufficient, since the positions of the observed entries also matter, but it shows how a structural assumption converts an impossible interpolation problem into a determined one.",
+    )
 
 
 def add_question_3(doc: Document, image_dir: Path) -> None:
     doc.add_heading("3. Polyhedra", level=1)
+    add_text(
+        doc,
+        "Three facts from Lecture 3 settle every part of this question. A polyhedron is the intersection of finitely many halfspaces and hyperplanes; every polyhedron is a convex set; and an extreme point of a polyhedron in n dimensions is a feasible point at which n linearly independent constraints are binding, that is, satisfied at equality with zero slack.",
+    )
     doc.add_heading("3(a) Parameterized linear feasible set", level=2)
     add_text(
         doc,
-        "Yes. For every fixed nonnegative value of the parameter, all coefficients are constants, so the set is the intersection of three linear halfspaces. It is therefore a polyhedron. When the parameter is zero, the first inequality is redundant and the feasible set is the unbounded first quadrant, which remains a polyhedron.",
+        "Yes. The parameter enters only through the coefficients, not through the decision variables, so for every fixed nonnegative value of the parameter all three constraints are linear in x and y. The set is an intersection of three halfspaces and is therefore a polyhedron.",
     )
     p = image_dir / "q3a_intercepts.png"
     render_formula(
@@ -627,6 +695,25 @@ def add_question_3(doc: Document, image_dir: Path) -> None:
     plot_path = image_dir / "q3a_triangle.png"
     plot_triangle(plot_path)
     add_figure(doc, plot_path, "Figure 1. Feasible set for a = 1", width=4.15)
+    add_text(
+        doc,
+        "The sketch for a = 1 is a triangle with the three extreme points listed below. Each has exactly two binding constraints, which is the number that a two-dimensional polyhedron requires, and the third constraint is slack there.",
+    )
+    make_table(
+        doc,
+        ["Extreme point", "Binding constraints", "Slack constraint"],
+        [
+            ["(0, 0)", "x >= 0 and y >= 0", "x + y <= 1, slack 1"],
+            ["(1, 0)", "x + y <= 1 and y >= 0", "x >= 0, slack 1"],
+            ["(0, 1)", "x + y <= 1 and x >= 0", "y >= 0, slack 1"],
+        ],
+        widths=[1.25, 2.15, 1.75],
+        font_size=8.3,
+    )
+    add_text(
+        doc,
+        "When the parameter is zero the first inequality reads 0 <= 1 and is redundant. The feasible set becomes the whole first quadrant: still a polyhedron, but now unbounded and with the single extreme point at the origin.",
+    )
 
     doc.add_heading("3(b) Quarter unit disk", level=2)
     add_text(
@@ -636,6 +723,10 @@ def add_question_3(doc: Document, image_dir: Path) -> None:
     plot_path = image_dir / "q3b_quarter_disk.png"
     plot_quarter_disk(plot_path)
     add_figure(doc, plot_path, "Figure 2. Feasible quarter unit disk", width=4.15)
+    add_text(
+        doc,
+        "The extreme-point characterisation makes the argument precise. Every point of the open arc is an extreme point of this set, so the set has infinitely many of them, whereas a polyhedron described by finitely many linear constraints can only have finitely many, one for each admissible choice of binding constraints. The set is nevertheless convex, so convexity is necessary but not sufficient for a set to be a polyhedron. Optimizing a linear objective over it is still a convex programming problem in the sense of Lecture 3, and a local optimum would still be global, but it is not a linear program.",
+    )
 
     doc.add_heading("3(c) Quadratic inequality with a bounded solution set", level=2)
     p = image_dir / "q3c.png"
@@ -645,6 +736,10 @@ def add_question_3(doc: Document, image_dir: Path) -> None:
     )
     add_formula(doc, p)
     add_answer_box(doc, "Answer", "Yes. The interval is the intersection of the two halfspaces defined by its lower and upper bounds, so it is a polyhedron in one dimension.")
+    add_text(
+        doc,
+        "Although the defining inequality is quadratic, its solution set is describable by two linear inequalities, which is all the definition requires. The two endpoints are the extreme points, each with one binding constraint, as a one-dimensional polyhedron demands.",
+    )
 
     doc.add_heading("3(d) Quadratic inequality with a disconnected solution set", level=2)
     p = image_dir / "q3d.png"
@@ -654,6 +749,10 @@ def add_question_3(doc: Document, image_dir: Path) -> None:
     )
     add_formula(doc, p)
     add_answer_box(doc, "Answer", "No. The union of the two rays is not convex. Every polyhedron, as an intersection of halfspaces, must be convex.")
+    add_text(
+        doc,
+        "An explicit witness confirms the failure of convexity. The points 3 and 5 are both feasible, but their midpoint 4 gives the value 16 minus 32 plus 15, which equals minus one and violates the constraint. A convex set must contain the whole segment between any two of its points, so this set cannot be a polyhedron.",
+    )
 
 
 def add_question_4(doc: Document, image_dir: Path) -> None:
@@ -704,13 +803,31 @@ def add_question_4(doc: Document, image_dir: Path) -> None:
     render_formula(p, r"$M,A,E,P_1,P_2,P_3,P_4\geq0.$")
     add_formula(doc, p)
     add_answer_box(doc, "LP status", "The objective, coverage constraints, staffing-mix constraints, and nonnegativity restrictions are all linear. Integer restrictions have been omitted as instructed.")
+    add_text(
+        doc,
+        "In the vocabulary of Lecture 2 this is the covering counterpart of the Wyndor allocation model: a linear cost is minimized subject to rows that must be met from below rather than capacities that must not be exceeded.",
+    )
+    p = image_dir / "q4_covering.png"
+    render_formula(
+        p,
+        [
+            r"$\mathrm{allocation:}\quad \max\ c^{\mathsf{T}}x\ \ \mathrm{s.t.}\ \ Ax\leq b,\ x\geq0.$",
+            r"$\mathrm{covering:}\quad \min\ c^{\mathsf{T}}x\ \ \mathrm{s.t.}\ \ Ax\geq b,\ x\geq0.$",
+        ],
+        fontsize=15.3,
+    )
+    add_formula(doc, p)
+    add_text(
+        doc,
+        "Reduction to standard form subtracts one nonnegative surplus variable from each of the eight inequality rows, the four coverage requirements and the four staffing-mix requirements, after moving the part-time terms of the latter to the left. The result has fifteen nonnegative variables and eight equality constraints, so a basic feasible solution has eight basic variables and the remaining seven set to zero. By the extreme-point result of Lecture 3 the search for an optimal schedule can be confined to such points.",
+    )
 
 
 def add_question_5(doc: Document, image_dir: Path) -> None:
     doc.add_heading("5. Absolute-Value Reformulation", level=1)
     add_text(
         doc,
-        "Introduce nonnegative auxiliary variables t, u, and v to represent the three absolute-value expressions. Keep the original decision variables unrestricted in sign. An equivalent linear program is:",
+        "Both the objective and the constraint contain absolute values, and Lecture 2 removes them by lifting: each absolute value is replaced by a new variable bounded below by the expression and by its negative, so that the enlarged model is linear and its projection onto the original variables reproduces the original problem. Introducing t, u, and v for the three absolute values and leaving the original decision variables free in sign gives:",
     )
     p = image_dir / "q5_lp.png"
     render_formula(
@@ -727,8 +844,22 @@ def add_question_5(doc: Document, image_dir: Path) -> None:
     add_formula(doc, p)
     add_text(
         doc,
-        "At an optimum, minimization makes t equal to the objective absolute value. The inequalities for u and v ensure that their sum is at least the left side of the original constraint; requiring that sum to be at most five is therefore exact.",
+        "The two lifting patterns are exactly the ones derived in the lecture, and each is exact for its own reason. In the objective the coefficient of t is 3, which is nonnegative, so minimization drives t down until it meets the larger of the two lower bounds and t equals the absolute value at any optimum. In the constraint, u and v appear nowhere else and only through their sum, so any feasible point of the original problem lifts by setting u and v to the two absolute values, while any feasible point of the lifted model projects back because the sum of the absolute values is at most u plus v, which is at most five. The declared nonnegativity of t, u, and v is implied by their pairs of inequalities and is stated only for clarity.",
     )
+    add_text(
+        doc,
+        "The model above is a linear program but not yet in standard form. Following Lecture 2, each free variable is split into a difference of two nonnegative variables and each inequality absorbs a slack or surplus variable:",
+    )
+    p = image_dir / "q5_standard.png"
+    render_formula(
+        p,
+        [
+            r"$x_1=x_1^{+}-x_1^{-},\qquad x_2=x_2^{+}-x_2^{-},\qquad x_1^{\pm},x_2^{\pm}\geq0,$",
+            r"$t-x_2^{+}+x_2^{-}-s_1=-10,\qquad t+x_2^{+}-x_2^{-}-s_2=10,\ \ldots,\ u+v+s_7=5.$",
+        ],
+        fontsize=14.6,
+    )
+    add_formula(doc, p, caption="Standard form: 7 equality constraints in 14 nonnegative variables")
 
 
 def add_question_6(doc: Document, image_dir: Path, records, solution) -> None:
@@ -761,6 +892,10 @@ def add_question_6(doc: Document, image_dir: Path, records, solution) -> None:
         doc,
         "The constant initial portfolio value may be removed from the objective, yielding the equivalent minimization of expected future value sold. The model treats shares as divisible, which is consistent with a linear programming formulation.",
     )
+    add_text(
+        doc,
+        f"Two of the four possible outcomes for a linear program can be ruled out before solving. Liquidating the entire portfolio would raise ${solution['max_cash']:,.2f} in net cash, comfortably above the target, so the feasible set is nonempty. Every variable is confined to a bounded interval, so the feasible set is a bounded polyhedron and the objective cannot diverge. The program therefore has a finite optimum, and by the extreme-point result of Lecture 3 one of its optimal solutions is an extreme point.",
+    )
 
     doc.add_heading("6(b) Numerical solution for K = $9,000", level=2)
     rows = []
@@ -785,7 +920,7 @@ def add_question_6(doc: Document, image_dir: Path, records, solution) -> None:
     )
     add_text(
         doc,
-        "The last column is the expected future value forgone per dollar of net cash raised. Its ascending order is S1, S2, S3, S4, then S5. Thus, the first three holdings are sold in full, after which only the amount of S4 needed to reach the target is sold.",
+        "The last column is the expected future value forgone per dollar of net cash raised. Its ascending order is S1, S2, S3, S4, then S5. Thus, the first three holdings are sold in full, after which only the amount of S4 needed to reach the target is sold. This ratio ordering is the improvement rule that Lecture 3 formalises through reduced costs: raising one more dollar from the cheapest available holding lowers the expected future value by the least, and the exchange stops being profitable once the cash target is met.",
     )
     p = image_dir / "q6_solution_vector.png"
     render_formula(
@@ -798,6 +933,26 @@ def add_question_6(doc: Document, image_dir: Path, records, solution) -> None:
         fontsize=15.3,
     )
     add_formula(doc, p)
+
+    doc.add_heading("Verification that the solution is an extreme point", level=3)
+    add_text(
+        doc,
+        "The computed solution can be checked against the characterisation of extreme points from Lecture 3 without appealing to the solver. Five constraints are binding at the optimum, and they are linearly independent because the net-cash vector has a nonzero fourth entry, which no combination of the four coordinate constraints can reproduce.",
+    )
+    p = image_dir / "q6_binding.png"
+    render_formula(
+        p,
+        [
+            r"$z_1^{*}=s_1,\qquad z_2^{*}=s_2,\qquad z_3^{*}=s_3,\qquad z_5^{*}=0,\qquad d^{\mathsf{T}}z^{*}=K.$",
+            r"$5\ \mathrm{linearly\ independent\ binding\ constraints\ in}\ \Re^{5}.$",
+        ],
+        fontsize=15.0,
+    )
+    add_formula(doc, p)
+    add_text(
+        doc,
+        "Equivalently, exactly one holding, S4, lies strictly between its bounds. That is the most a program with a single non-bound constraint permits at an extreme point, and it is why the answer is a clean sequence of complete sales followed by one partial sale. The cash constraint has zero slack, so the investor raises no more cash than required, which is what the ratio argument predicts.",
+    )
 
     result_rows = []
     for row, sold, rem, cash, future in zip(
@@ -837,7 +992,7 @@ def add_question_6(doc: Document, image_dir: Path, records, solution) -> None:
 import numpy as np
 from scipy.optimize import linprog
 
-with open("sources/investment.csv", newline="", encoding="utf-8-sig") as f:
+with open("sources/assignment 1/investment.csv", newline="", encoding="utf-8-sig") as f:
     rows = list(csv.DictReader(f))
 
 p = np.array([float(row["Buying Price"]) for row in rows])
@@ -886,6 +1041,10 @@ def build_document(records, solution, image_dir: Path) -> None:
     add_text(
         doc,
         "All decision variables are continuous unless stated otherwise. Vectors are column vectors, the superscript T denotes transpose, and inequalities between vectors are componentwise. Monetary figures are in dollars.",
+    )
+    add_text(
+        doc,
+        "Each model is first written in the general form of Lecture 2, in whichever direction of optimization reads most naturally, and is then reduced to the standard form of minimization subject to equality constraints in nonnegative variables wherever that reduction adds something. Where a question concerns the shape of a feasible set or the structure of an answer, the geometric language of Lecture 3 is used: polyhedra, binding constraints and slack, extreme points and basic feasible solutions.",
     )
 
     add_question_1(doc, image_dir)
