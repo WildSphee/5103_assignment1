@@ -34,7 +34,7 @@ from docx.shared import Inches, Pt, RGBColor
 ROOT = Path(__file__).resolve().parents[1]
 DATA_FILE = ROOT / "sources" / "assignment 1" / "investment.csv"
 NUS_LOGO_FILE = ROOT / "sources" / "assignment 1" / "nus_logo.png"
-OUTPUT_FILE = ROOT / "DBA5103_Assignment_1_Solutions.docx"
+OUTPUT_FILE = ROOT / "DBA5103 Assignment 1 CHAN HIU LOK .docx"
 
 NAVY = "18354A"
 BLUE = "2F6483"
