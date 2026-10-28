@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fashion Markdown — Pricing Simulator</title>
+<style>
+  :root{
+    --bg:#17181c;
+    --panel:#1f2126;
+    --panel-2:#24262c;
+    --line:#33363d;
+    --ink:#ece7dc;
+    --ink-dim:#93908a;
+    --gold:#e2a13a;
+    --gold-dim:#8a672a;
+    --markdown:#c1443c;
+    --mono: ui-monospace, "SF Mono", "Cascadia Code", "Consolas", monospace;
+    --sans: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); line-height:1.45;
+    min-height:100vh; padding:32px 16px 80px;
+  }
+  .wrap{max-width:640px; margin:0 auto;}
+  h1{
+    font-family:var(--mono); font-size:22px; font-weight:600;
+    letter-spacing:0.02em; margin:0 0 2px;
+  }
+  .sub{color:var(--ink-dim); font-size:14px; margin:0 0 28px;}
+  .intro{
+    background:var(--panel); border:1px solid var(--line); border-radius:6px;
+    padding:16px 18px; font-size:14px; color:var(--ink-dim); margin-bottom:24px;
+  }
+  .intro b{color:var(--ink); font-weight:600;}
+
+  /* ticket / register display */
+  .ticket{
+    background:var(--panel); border:1px solid var(--line); border-radius:8px;
+    padding:20px 24px; margin-bottom:20px;
+  }
+  .ticket-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:10px 0; border-top:1px dashed var(--line);
+  }
+  .ticket-row:first-child{border-top:none;}
+  .ticket-label{font-size:13px; color:var(--ink-dim);}
+  .ticket-value{font-family:var(--mono); font-size:22px; font-weight:600;}
+  .ticket-value.gold{color:var(--gold);}
+  .ticket-value.markdown{color:var(--markdown);}
+
+  .section-title{font-size:14px; color:var(--ink-dim); margin:24px 0 10px;}
+
+  /* price tag buttons */
+  .tags{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:18px;}
+  .tag-btn{
+    position:relative;
+    font-family:var(--mono); font-size:15px; color:var(--ink);
+    background:var(--panel-2); border:1px solid var(--line);
+    padding:14px 20px 14px 28px;
+    clip-path: polygon(14px 0, 100% 0, 100% 100%, 14px 100%, 0 50%);
+    cursor:pointer; text-align:left; min-width:118px;
+    transition: border-color .15s, background .15s;
+  }
+  .tag-btn::before{
+    content:''; position:absolute; left:9px; top:50%; transform:translateY(-50%);
+    width:6px; height:6px; border-radius:50%; background:var(--bg);
+  }
+  .tag-btn .pct{display:block; font-size:11px; color:var(--ink-dim); margin-top:2px;}
+  .tag-btn:hover:not(:disabled){border-color:var(--gold); background:#2a2c33;}
+  .tag-btn:disabled{opacity:0.28; cursor:not-allowed;}
+  .tag-btn.chosen{border-color:var(--gold); background:#2e2717;}
+
+  .primary-btn{
+    font-family:var(--sans); font-size:15px; font-weight:600; color:var(--bg);
+    background:var(--gold); border:none; border-radius:6px;
+    padding:13px 22px; cursor:pointer;
+  }
+  .primary-btn:hover{background:#eeb455;}
+  .primary-btn:disabled{opacity:0.4; cursor:not-allowed;}
+  .ghost-btn{
+    font-family:var(--sans); font-size:14px; color:var(--ink-dim);
+    background:transparent; border:1px solid var(--line); border-radius:6px;
+    padding:10px 16px; cursor:pointer; margin-left:10px;
+  }
+  .ghost-btn:hover{color:var(--ink); border-color:var(--ink-dim);}
+
+  /* receipt log */
+  .receipt{
+    font-family:var(--mono); font-size:13px; background:var(--panel);
+    border:1px solid var(--line); border-radius:8px; overflow:hidden;
+  }
+  .receipt table{width:100%; border-collapse:collapse;}
+  .receipt th{
+    text-align:right; font-weight:600; color:var(--ink-dim); font-size:11px;
+    padding:10px 14px 8px; border-bottom:1px solid var(--line);
+  }
+  .receipt th:first-child, .receipt td:first-child{text-align:left;}
+  .receipt td{padding:8px 14px; text-align:right; border-top:1px dashed var(--line);}
+  .receipt tr:first-child td{border-top:none;}
+  .receipt-edge{
+    height:10px;
+    background:
+      linear-gradient(-45deg, var(--bg) 5px, transparent 0) 0 100%/10px 10px repeat-x,
+      linear-gradient(45deg, var(--bg) 5px, transparent 0) 0 100%/10px 10px repeat-x;
+  }
+
+  .summary{
+    background:var(--panel); border:1px solid var(--gold-dim); border-radius:8px;
+    padding:20px 24px; margin-top:20px;
+  }
+  .summary h2{font-family:var(--mono); font-size:17px; margin:0 0 14px;}
+  .summary .row{display:flex; justify-content:space-between; padding:6px 0; font-size:14px;}
+  .summary .row b{font-family:var(--mono);}
+
+  /* hidden counterfactual */
+  #cf-dot{
+    position:fixed; right:14px; bottom:12px; width:10px; height:10px;
+    border-radius:50%; background:var(--ink-dim); opacity:0.12; border:none;
+    cursor:pointer; padding:0;
+  }
+  #cf-dot:hover{opacity:0.35;}
+  #cf-panel{
+    display:none; margin-top:26px; border-top:1px solid var(--line); padding-top:20px;
+  }
+  #cf-panel.open{display:block;}
+  #cf-panel h2{font-family:var(--mono); font-size:15px; color:var(--ink-dim); margin:0 0 12px;}
+  .cf-table{width:100%; border-collapse:collapse; font-size:14px;}
+  .cf-table td{padding:8px 6px; border-top:1px dashed var(--line);}
+  .cf-table tr:first-child td{border-top:none;}
+  .cf-table td:last-child{text-align:right; font-family:var(--mono);}
+  .cf-table tr.me td{color:var(--gold); font-weight:600;}
+  .cf-note{font-size:12px; color:var(--ink-dim); margin-top:10px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Fashion Markdown</h1>
+  <p class="sub">Season pricing simulator</p>
+
+  <div class="intro">
+    You start the season with <b>2,000 units</b> of a single item and <b>15 weeks</b> to sell it.
+    Week 1 is always priced at <b>$60</b>. From then on you may mark the price down —
+    never back up — to $54, $48, or $36. Anything left at the end of week 15 is sold to a
+    discounter for <b>$25/unit</b>. Set the price each week and see what happens.
+  </div>
+
+  <div id="pre-game">
+    <div class="section-title">Starting inventory</div>
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+      <input id="inv-input" type="number" value="2000" min="200" max="6000" step="50"
+        style="font-family:var(--mono); font-size:16px; background:var(--panel-2); color:var(--ink);
+        border:1px solid var(--line); border-radius:6px; padding:10px 12px; width:120px;">
+      <span style="font-size:13px; color:var(--ink-dim);">units (default 2,000)</span>
+    </div>
+    <button class="primary-btn" onclick="newGame()">Start the season</button>
+  </div>
+
+  <div id="game" style="display:none;">
+    <div class="ticket">
+      <div class="ticket-row">
+        <span class="ticket-label">Week</span>
+        <span class="ticket-value" id="v-week">—</span>
+      </div>
+      <div class="ticket-row">
+        <span class="ticket-label">Current price</span>
+        <span class="ticket-value gold" id="v-price">—</span>
+      </div>
+      <div class="ticket-row">
+        <span class="ticket-label">Units left</span>
+        <span class="ticket-value" id="v-inv">—</span>
+      </div>
+      <div class="ticket-row">
+        <span class="ticket-label">Revenue so far</span>
+        <span class="ticket-value" id="v-rev">—</span>
+      </div>
+    </div>
+
+    <div id="pricing-block">
+      <div class="section-title">Set this week's price</div>
+      <div class="tags" id="tag-buttons"></div>
+      <button class="primary-btn" id="sell-btn" onclick="sellCurrentWeek()">Sell this week &rarr;</button>
+    </div>
+
+    <div class="section-title">Sales log</div>
+    <div class="receipt">
+      <table>
+        <thead><tr><th>Week</th><th>Price</th><th>Units sold</th><th>Left</th></tr></thead>
+        <tbody id="log-body"></tbody>
+      </table>
+    </div>
+    <div class="receipt-edge"></div>
+
+    <div id="summary" class="summary" style="display:none;"></div>
+
+    <div style="margin-top:20px;">
+      <button class="ghost-btn" onclick="newGame()">Start a new season</button>
+    </div>
+  </div>
+
+  <div id="cf-panel"></div>
+</div>
+
+<button id="cf-dot" onclick="onDotClick()" aria-hidden="true" tabindex="-1"></button>
+
+<script>
+/* =========================================================================
+   HIDDEN DEMAND MODEL — not shown to students in the UI.
+   Four latent consumer segments, each active only once price falls to/below
+   its reservation price. Segment means are calibrated so that, at week 1
+   (no shock, no decay), the aggregate exactly reproduces the case's table:
+     $60 -> 125, $54 -> 162.5, $48 -> 217.5, $36 -> 348.8
+   A common weekly Gamma-distributed multiplicative shock (mean 1) induces
+   overdispersion + cross-segment correlation (a Poisson mixed over a Gamma
+   rate is Negative-Binomial-like: more realistic "lumpy" fashion demand
+   than a bare Poisson). A slow multiplicative decay captures the item
+   losing novelty over the season, independent of price.
+   Only aggregate, inventory-censored sales are ever exposed to the page.
+   If distributing this file to students, consider minifying it so the
+   segment structure isn't trivially visible via "view source".
+   ========================================================================= */
+const SEGMENTS = [
+  {name:'L', lambda:{60:125, 54:140, 48:150, 36:170}},
+  {name:'M', lambda:{54:22.5, 48:40, 36:60}},
+  {name:'V', lambda:{48:27.5, 36:45}},
+  {name:'B', lambda:{36:73.8}}
+];
+const PRICES = [60, 54, 48, 36];
+const PCT_OFF = {60:'full price', 54:'10% off', 48:'20% off', 36:'40% off'};
+const WEEKS = 15;
+const START_INV = 2000;
+const SALVAGE = 25;
+const SHOCK_SHAPE = 20; // Gamma shape param; mean 1, CV ~0.22
+function decay(t){ return 1 - 0.008*(t-1); } // ~11% falloff by week 15
+
+function randomNormal(){
+  const u1=Math.random(), u2=Math.random();
+  return Math.sqrt(-2*Math.log(u1))*Math.cos(2*Math.PI*u2);
+}
+function sampleGamma(shape, scale){
+  if (shape < 1){
+    const u = Math.random();
+    return sampleGamma(shape+1, scale) * Math.pow(u, 1/shape);
+  }
+  const d = shape - 1/3;
+  const c = 1/Math.sqrt(9*d);
+  while(true){
+    let x, v;
+    do{ x = randomNormal(); v = 1 + c*x; } while(v<=0);
+    v = v*v*v;
+    const u = Math.random();
+    if (u < 1 - 0.0331*x*x*x*x) return d*v*scale;
+    if (Math.log(u) < 0.5*x*x + d*(1-v+Math.log(v))) return d*v*scale;
+  }
+}
+function poissonQuantile(u, lambda){
+  if (lambda<=0) return 0;
+  let p = Math.exp(-lambda), cdf = p, k = 0;
+  while (u > cdf && k < 100000){ k++; p = p*lambda/k; cdf += p; }
+  return k;
+}
+function samplePoissonFresh(lambda){ return poissonQuantile(Math.random(), lambda); }
+
+// The FIXED random path for the current game: one common shock Z_t and one
+// uniform draw per segment per week, generated once. Replaying any price
+// schedule against this same path (via poissonQuantile) is how the hidden
+// "Counterfactual" tab gets an apples-to-apples comparison later.
+let path = null;
+function generatePath(){
+  const Z = [], U = {};
+  SEGMENTS.forEach(s => U[s.name] = []);
+  for (let t=1; t<=WEEKS; t++){
+    Z.push(sampleGamma(SHOCK_SHAPE, 1/SHOCK_SHAPE));
+    SEGMENTS.forEach(s => U[s.name].push(Math.random()));
+  }
+  return {Z, U};
+}
+function totalDemandOnPath(price, t, p){
+  let total = 0;
+  for (const seg of SEGMENTS){
+    const lam0 = seg.lambda[price];
+    if (lam0 === undefined) continue;
+    const lam = lam0 * p.Z[t-1] * decay(t);
+    total += poissonQuantile(p.U[seg.name][t-1], lam);
+  }
+  return total;
+}
+
+/* ============================ Game state ============================ */
+let state = null;
+
+function newGame(){
+  path = generatePath();
+  state = {
+    week: 1,
+    inventory: START_INV,
+    revenue: 0,
+    priceIdx: null,   // idx of last price charged; null = week 1 (forced $60)
+    log: [],
+    over: false
+  };
+  document.getElementById('pre-game').style.display = 'none';
+  document.getElementById('game').style.display = 'block';
+  document.getElementById('summary').style.display = 'none';
+  document.getElementById('cf-panel').classList.remove('open');
+  document.getElementById('cf-panel').innerHTML = '';
+  render();
+}
+
+function fmt$(x){ return '$' + Math.round(x).toLocaleString(); }
+function fmtN(x){ return Math.round(x).toLocaleString(); }
+
+function render(){
+  document.getElementById('v-week').textContent = state.week + ' / ' + WEEKS;
+  const curPrice = state.priceIdx===null ? 60 : PRICES[state.priceIdx];
+  document.getElementById('v-price').textContent = fmt$(curPrice);
+  document.getElementById('v-inv').textContent = fmtN(state.inventory) + ' units';
+  document.getElementById('v-rev').textContent = fmt$(state.revenue);
+
+  // log rows
+  const body = document.getElementById('log-body');
+  body.innerHTML = '';
+  for (const row of state.log){
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${row.week}</td><td>${fmt$(row.price)}</td><td>${fmtN(row.sold)}</td><td>${fmtN(row.invAfter)}</td>`;
+    body.appendChild(tr);
+  }
+
+  if (state.over){
+    document.getElementById('pricing-block').style.display = 'none';
+    renderSummary();
+    return;
+  }
+
+  // price tag buttons
+  const minIdx = state.priceIdx===null ? 0 : state.priceIdx;
+  const tagsDiv = document.getElementById('tag-buttons');
+  tagsDiv.innerHTML = '';
+  PRICES.forEach((price, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'tag-btn';
+    btn.innerHTML = fmt$(price) + '<span class="pct">' + PCT_OFF[price] + '</span>';
+    const disabled = state.week===1 ? (price!==60) : (idx < minIdx);
+    btn.disabled = disabled;
+    if (!disabled && state.selectedIdx === idx) btn.classList.add('chosen');
+    btn.onclick = () => { state.selectedIdx = idx; render(); };
+    tagsDiv.appendChild(btn);
+  });
+  if (state.selectedIdx === undefined || state.selectedIdx === null){
+    state.selectedIdx = state.week===1 ? 0 : minIdx;
+  }
+}
+
+function sellCurrentWeek(){
+  const idx = state.selectedIdx ?? (state.week===1 ? 0 : state.priceIdx);
+  const price = PRICES[idx];
+  const t = state.week;
+  const demand = totalDemandOnPath(price, t, path);
+  const sold = Math.min(demand, state.inventory);
+  state.inventory -= sold;
+  state.revenue += sold*price;
+  state.log.push({week:t, price, sold, invAfter: state.inventory});
+  state.priceIdx = idx;
+  state.selectedIdx = null;
+  state.week += 1;
+  if (state.inventory <= 0 || state.week > WEEKS){
+    state.over = true;
+    state.salvage = state.inventory * SALVAGE;
+    state.finalRevenue = state.revenue + state.salvage;
+  }
+  render();
+}
+
+function renderSummary(){
+  const div = document.getElementById('summary');
+  div.style.display = 'block';
+  const soldUnits = START_INV - state.inventory;
+  const sellThrough = (100*soldUnits/START_INV).toFixed(1);
+  const avgPrice = soldUnits>0 ? (state.revenue/soldUnits) : 0;
+  div.innerHTML = `
+    <h2>${state.inventory<=0 ? 'Sold out' : 'Season closed'} — final results</h2>
+    <div class="row"><span>Units sold</span><b>${fmtN(soldUnits)} (${sellThrough}% sell-through)</b></div>
+    <div class="row"><span>Revenue from sales</span><b>${fmt$(state.revenue)}</b></div>
+    <div class="row"><span>Leftover units salvaged</span><b>${fmtN(state.inventory)} &times; $25 = ${fmt$(state.salvage)}</b></div>
+    <div class="row"><span>Average realized price</span><b>${fmt$(avgPrice)}</b></div>
+    <div class="row"><span>Total revenue</span><b>${fmt$(state.finalRevenue)}</b></div>
+  `;
+}
+
+/* ==================== Hidden "Counterfactual" panel ==================== */
+const GRID_STEP = 25;
+
+function buildDemandSampleTable(nSamples){
+  const table = {};
+  for (let t=1; t<=WEEKS; t++){
+    table[t] = {};
+    for (const price of PRICES){
+      const arr = new Array(nSamples);
+      for (let s=0; s<nSamples; s++){
+        const z = sampleGamma(SHOCK_SHAPE, 1/SHOCK_SHAPE);
+        let d = 0;
+        for (const seg of SEGMENTS){
+          const lam0 = seg.lambda[price];
+          if (lam0 !== undefined) d += samplePoissonFresh(lam0*z*decay(t));
+        }
+        arr[s] = d;
+      }
+      table[t][price] = arr;
+    }
+  }
+  return table;
+}
+
+function solveDP(){
+  const table = buildDemandSampleTable(250);
+  const nGrid = Math.floor(START_INV/GRID_STEP) + 1;
+  const invGrid = []; for (let i=0;i<nGrid;i++) invGrid.push(i*GRID_STEP);
+  const nP = PRICES.length;
+  const V = new Array(WEEKS+2), policy = new Array(WEEKS+1);
+  V[WEEKS+1] = invGrid.map(q => new Array(nP).fill(q*SALVAGE));
+  for (let t=WEEKS; t>=1; t--){
+    V[t] = []; policy[t] = [];
+    for (let qi=0; qi<nGrid; qi++){
+      V[t][qi] = new Array(nP).fill(0);
+      policy[t][qi] = new Array(nP).fill(0);
+      for (let ci=0; ci<nP; ci++){
+        let best = -Infinity, bestA = ci;
+        for (let ai=ci; ai<nP; ai++){
+          const price = PRICES[ai];
+          const samples = table[t][price];
+          let sum = 0;
+          for (let s=0; s<samples.length; s++){
+            const inv = invGrid[qi];
+            const sold = Math.min(samples[s], inv);
+            const rem = inv - sold;
+            let rIdx = Math.round(rem/GRID_STEP);
+            if (rIdx >= nGrid) rIdx = nGrid-1;
+            sum += price*sold + V[t+1][rIdx][ai];
+          }
+          const avg = sum/samples.length;
+          if (avg > best){ best = avg; bestA = ai; }
+        }
+        V[t][qi][ci] = best;
+        policy[t][qi][ci] = bestA;
+      }
+    }
+  }
+  return {policy, invGrid, nGrid};
+}
+
+function replayConstant(price, p){
+  let inv = START_INV, rev = 0;
+  for (let t=1; t<=WEEKS; t++){
+    const d = totalDemandOnPath(price, t, p);
+    const sold = Math.min(d, inv);
+    inv -= sold; rev += sold*price;
+    if (inv <= 0) break;
+  }
+  rev += inv*SALVAGE;
+  return rev;
+}
+
+function replayDP(dp, p){
+  let inv = START_INV, rev = 0, ci = 0;
+  const schedule = [];
+  for (let t=1; t<=WEEKS; t++){
+    let ai;
+    if (t === 1){ ai = 0; } // week 1 is $60 by the game's own rule
+    else {
+      let qi = Math.round(inv/GRID_STEP);
+      if (qi >= dp.nGrid) qi = dp.nGrid-1;
+      ai = dp.policy[t][qi][ci];
+    }
+    const price = PRICES[ai];
+    schedule.push(price);
+    const d = totalDemandOnPath(price, t, p);
+    const sold = Math.min(d, inv);
+    inv -= sold; rev += sold*price;
+    ci = ai;
+    if (inv <= 0) break;
+  }
+  rev += inv*SALVAGE;
+  return {revenue: rev, schedule};
+}
+
+function describeSchedule(schedule){
+  const parts = [];
+  let start = 0;
+  for (let i=1; i<=schedule.length; i++){
+    if (i === schedule.length || schedule[i] !== schedule[start]){
+      const label = (start+1===i) ? `week ${start+1}` : `weeks ${start+1}\u2013${i}`;
+      parts.push(`$${schedule[start]} for ${label}`);
+      start = i;
+    }
+  }
+  return parts.join(', ');
+}
+
+function onDotClick(){
+  if (!state || !state.over) return; // stays inert until a season is finished
+  const panel = document.getElementById('cf-panel');
+  panel.classList.add('open');
+  panel.innerHTML = '<h2>Counterfactual</h2><p style="font-size:13px;color:var(--ink-dim);">Computing benchmark strategies on this same season\u2019s demand\u2026</p>';
+  setTimeout(() => {
+    const rows = [{label: 'Your pricing', revenue: state.finalRevenue, me:true}];
+    for (const pr of PRICES){
+      rows.push({label: `Constant ${fmt$(pr)} all season`, revenue: replayConstant(pr, path)});
+    }
+    const dp = solveDP();
+    const dpResult = replayDP(dp, path);
+    rows.push({label: 'Best-found dynamic-program policy', revenue: dpResult.revenue, note: describeSchedule(dpResult.schedule)});
+
+    let html = '<h2>Counterfactual</h2><table class="cf-table">';
+    for (const r of rows){
+      html += `<tr class="${r.me?'me':''}"><td>${r.label}${r.note?`<br><span style="color:var(--ink-dim);font-size:12px;">${r.note}</span>`:''}</td><td>${fmt$(r.revenue)}</td></tr>`;
+    }
+    html += '</table>';
+    html += '<p class="cf-note">All rows are replayed against the exact same underlying demand realization as your season, so differences reflect the pricing decisions only. Constant-price rows ignore the week-1-at-$60 rule and just charge that price throughout, as a plain reference point. The dynamic-program row obeys the same rule you played under and is solved via a Monte-Carlo-based backward induction \u2014 a strong benchmark, not a proven exact optimum.</p>';
+    panel.innerHTML = html;
+  }, 30);
+}
+</script>
+</body>
+</html>
