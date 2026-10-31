@@ -1,0 +1,160 @@
+SOURCE: https://www.motorist.sg/article/6317/2026-singapore-ev-charging-rates-how-much-does-it-cost
+Retrieved: 2026-10-31
+
+Car Advice 
+ 2026 EV charging price index Singapore: How much does it really cost to power your EV?
+
+ Published by 
+
+ Marc Low 
+ on 14 Sep 2026 
+
+ Singapore’s automotive landscape is currently undergoing its most significant transformation since the introduction of the COE system. With the Singapore Green Plan 2030 in full swing and the aim of having all vehicles running on cleaner energy by 2040, the island has seen a massive surge in electric vehicle (EV) adoption. 
+ However, for many new EV converts, the simple habit of visiting a petrol station has been replaced by a much more complex reality: a comparison of EV charging prices.
+
+ Unlike petrol, which has a relatively transparent daily rate displayed online or on LED boards, EV charging costs in Singapore vary wildly. Prices depend on the provider, the speed of the charger (AC versus DC), the location (HDB versus mall versus petrol station), and even the time of day.
+ In this definitive guide, we analyse the current prices, compare the major charging networks such as SP Mobility, Shell Recharge, and Charge+, and show you how Motorist Singapore can help you navigate this high-tech landscape effortlessly.
+
+ Understanding the EV charging prices 
+ The cost of charging an EV in Singapore is primarily measured in cents per kilowatt-hour (kWh). The BYD ATTO 3, for example, has a 60.5kWh battery. A 10% to 100% charge represents about 54.5kWh of battery capacity before accounting for charging losses.
+ For this guide, we breakdown Singapore's EV charging landscape based on their providers. 
+
+ SP Mobility :  Operates one of Singapore's largest public EV charging networks, covering residential, commercial and other public locations.
+
+ CDG Energy, formerly CDG ENGIE,   they are a massive player in the HDB heartlands. They mainly focus on "slower" AC charging (7.4kW or 11kW).
+
+ Charge+ : Currently (at time of publishing) offers the lowest HDB charging rates among the major operators checked, at around S$0.65/kWh for AC and around S$0.75/kWh for DC at its current public locations.
+
+ Tesla Supercharger network:  Proprietary high-speed chargers, officially supports charging other EVs at selected Supercharger sites.
+
+ Shell Recharge : Operates chargers at Shell stations as well as HDB carparks and other public locations. Its Shell-station chargers include high-powered DC units designed for faster top-ups.
+
+ Malls & hotels:  Often managed by various providers, but with location-specific surcharges. Some malls offer "free charging" as a shopping incentive too.
+
+ Comparing the major players: 2026 charging rate index 
+
+ Provider 
+ AC rate (per kWh) 
+ DC rate (per kWh) 
+ Notes 
+
+ Charge+ 
+ ~$0.65/kWh 
+(cheapest)
+
+ ~$0.75/kWh
+(cheapest) 
+ Lowest among the major HDB networks checked
+
+ Shell Recharge 
+ ~$0.69/kWh
+
+ ~$0.86/kWh
+
+ HDB pricing differs from Shell-station pricing
+
+ CDG Energy 
+ ~$0.70/kWh
+
+ ~$0.76/kWh
+
+ Across HDB heartlands and easy to use
+
+ SP Mobility 
+ ~$0.70/kWh
+
+ ~$0.89/kWh
+
+ Site-specific pricing 
+
+ Tesla Supercharger 
+ Not applicable 
+ Site-specific 
+ Check Tesla app
+
+ Rates checked in September 2026. 
+ Actual prices vary by charging location, charger type and operator. 
+
+ AC versus DC: the technical cost divide 
+ Charging prices depend on the operator, location and charger type. AC chargers are generally slower and are common at residential locations, while DC chargers can deliver much more power for faster top-ups. 
+ AC charging (alternating current) 
+ Most HDB charging is AC and many residential chargers operate at around 7.4kW, making them suited to longer charging sessions such as overnight top-ups.
+
+ Pros : Often among the cheaper public charging options, and well suited to overnight charging.
+
+ Cons: A typical 7.4kW AC charger may take roughly 7 to 10 hours to fully charge an EV, depending on the vehicle and battery.
+
+ DC charging (direct current) 
+ These are the large "fridge-size" units found at petrol stations, malls, and office complexes.
+
+ Pros: A high-powered DC charger can add a substantial amount of range in a short stop, although the actual charging speed depends on the vehicle and battery's maximum charging rate.
+
+ Cons: DC charging is often more expensive at premium high-speed locations, although prices vary significantly by operator and site. May be subject to higher idle fees due to high demand.
+
+ The "hidden" costs of EV ownership in Singapore 
+ The per-kWh price is only one part of the story. To truly grasp the EV charging prices, you must account for these three Singapore-specific factors:
+ A. Parking surcharges 
+ This is the most frustrating aspect for Singaporean EV owners. At malls and commercial buildings, ordinary parking charges may apply in addition to the charging fee.
+ B. Idle fees (the hogging penalty) 
+ Idle fees are increasingly common, but their rates, grace periods and applicable locations vary by operator. Always check the charging app before leaving your car plugged in.
+
+ How it works:  Once your charging session has ended, you have a certain grace period (e.g. 10 to 30 minutes) to move your car out of the space.
+
+ The cost: Idle fees can apply after charging ends, but the grace period, rate and locations covered vary by operator. SP Mobility and Shell Recharge charge S$0.50 per minute at applicable locations, while Tesla's Singapore fee is currently S$0.50 per minute but remains site-specific.
+
+ How to optimise your EV charging budget 
+ If you want to beat the charging prices and keep your EV motoring costs as low as possible, follow these pro tips:
+
+ The "HDB overnight" strategy:  For drivers with access to HDB charging, slower AC chargers can be a cost-effective option for overnight top-ups. HDB AC charging can be among the cheapest options, but drivers should still check whether idle fees apply at their chosen location.
+
+ The Motorist smart map:  Avoid driving around looking for an available charger soon. The Motorist App will integrate real-time status updates for multiple EV charging networks later this year. It will notify you if a charger is occupied before you drive there, saving you time and battery-electric energy.
+
+ Future trends: V2G and wireless charging 
+ Singapore has been testing V ehicle-to-Grid (V2G) technology, which would allow compatible EVs to discharge electricity back to the grid and earn their owners a rebate or its equivalent. A 2023 EMA-SIT test-bed involved 15 commercial vans and 10 V2G-enabled chargers.
+ Knowledge is power 
+ The EV charging price index Singapore is the new "price of petrol." While it offers more complexity, it also offers more freedom. For the first time, you can choose how much you pay for your car's energy based on how you plan your day.
+ By understanding the differences between the wide coverage of Charge+, SP Mobility’s reliability, CDG Energy’s HDB convenience, and Shell’s ultra-fast speed, you can tailor your charging habits to your budget.
+ Singapore’s road to a greener future is paved with data. Stay informed, stay charged, and let Motorist Singapore handle the details.
+ Download the Motorist App Now 
+ Frequently Asked Questions about EV charging in Singapore 
+ Is charging an EV cheaper than fuelling a petrol car in Singapore? 
+ A: It can be, but the difference depends on the EV's energy consumption, the petrol car's fuel economy, petrol prices and whether you use home or public charging.
+ Which provider is currently the cheapest in Singapore? 
+ A: As of September 2026, Charge+ in HDB heartlands typically offers the most competitive AC rates (approx. $0.65/kWh). However, prices are updated quarterly.
+ Do I need to buy my own charger for my HDB flat? 
+ A: No. HDB carparks are being equipped with public EV chargers operated by EV charging operators. Drivers generally use the relevant operator's app to start and pay for charging.
+ Can a non-Tesla EV use a Tesla Supercharger? 
+ A: Selected Tesla Superchargers are open to compatible non-Tesla EVs. Availability and pricing vary by site and are shown in the Tesla app. Check the Motorist App to see which Tesla stations are open to all.
+ How do I avoid idle fees if I'm busy? 
+ A: Most charging apps will send you a notification when your car hits 80%. Monitor your charging session and move the car once charging is complete, particularly at locations where idle fees apply. 
+ Ready to go electric? Visit the Motorist EV Hub! 
+ Navigating the electric transition is easier when you have all the tools in one place. Whether you are looking for a new EV, the latest EV news, or a quote for EV-specific insurance, Motorist EV Hub  is your ultimate destination.
+
+ Super App for
+Vehicle Owners
+
+ Get the Motorist App 
+
+ Download the  Motorist App  now. Designed by drivers for drivers, this all-in-one app lets you receive the latest traffic updates, gives you access to live traffic cameras, and helps you manage LTA and vehicle matters. 
+ Did you know we have a  Motorist Telegram Channel ? Created exclusively for drivers and car owners in Singapore, you can get instant info about our latest promotions, articles, tips & hacks, or simply chat with the Motorist Team and fellow drivers. 
+
+ 0 Comments
+
+ You Might Also Be Interested In
+
+ Car News 
+ 22 Oct 2026 
+
+ October 2026 COE Results 2nd Bidding: Cat A and B premiums both increased, as Cat A closed higher than Cat B for the fourth time this year
+
+ Car News 
+ 29 Oct 2026 
+
+ Premium Automobiles launches Cat A Zeekr 7X and Changan Q05 in Singapore
+
+ Car News 
+ 5 Oct 2026 
+
+ Road closures for the 2026 F1 Singapore Grand Prix, bus and train services to be extended on race weekend
+
+ Close [X]

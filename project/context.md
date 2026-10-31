@@ -62,6 +62,9 @@ See `data/README.md` for the full index. In short:
 | Charger utilisation per site | ❌ | only national / estate figures in parliamentary replies |
 | Electrical capacity per carpark | ❌ | not public; model as an assumption with a sensitivity range |
 | Private chargers (~23k) | ❌ | only the total; the register is public chargers only |
+| Charger capex (slow AC vs DC fast) | ⚠️ research-based | `08_costs/cost_parameters.csv`: base S$6.5k per 7 kW AC point, S$60k per 50 kW DC, S$120k per 100–150 kW DC. Uses ICCT, because SG doesn't publish these |
+| Charging price, electricity cost, grants | ✅ official | `08_costs/`: median S$0.66/kWh at HDB, tariff 28.59¢/kWh, ECCG and EHVCG grant caps |
+| Electrical / grid upgrade cost per site | ❌ assumption | base S$50k per site needing an upgrade (range 0–250k), from international evidence only |
 
 **Early observation from `planning_area_summary.csv`:** large HDB towns have the fewest public points per 1,000 households. Examples: Bedok 4.7, Pasir Ris 4.9, Sengkang 5.9, Hougang 6.1, Punggol 6.7. Compare Jurong East 17.7 and Queenstown 13.4. Sengkang and Punggol also have high car-commuter counts and high reported utilisation, so they are natural "under-served" candidates. Caveat: this uses 2020 census households, so new towns like Tengah are under-counted.
 
@@ -83,6 +86,6 @@ See `data/README.md` for the full index. In short:
 1. Unit of analysis: planning area (55), subzone (332), or individual carparks (~2,000)?
 2. Scope: all public carparks, or only HDB (where ~80% of residents live and home charging isn't possible)?
 3. Time horizon: plan for 2030 (60k target) or the current gap?
-4. Cost assumptions for slow AC vs DC fast chargers. Needs a source.
+4. Agree on cost parameters (`data/08_costs/cost_parameters.csv`): accept the ICCT-based capex, and choose charger lifetime, discount rate and grid-upgrade assumptions.
 5. Should we request a free LTA DataMall API key for live charger availability (a utilisation proxy)?
 6. Download SingStat June 2025 population by planning area/subzone manually to update the 2020 census figures?

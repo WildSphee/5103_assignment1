@@ -1,0 +1,196 @@
+SOURCE: https://www.lta.gov.sg/content/ltagov/en/industry_innovations/technologies/electric_vehicles/charger_grants.html
+Retrieved: 2026-10-31
+
+Print 
+
+ Copy Link 
+
+ Email 
+
+ WhatsApp 
+
+ Telegram 
+
+ Facebook 
+
+ Twitter 
+
+ LinkedIn 
+
+ Charger Grants
+
+ To accelerate Singapore's transition to electric vehicles, LTA introduced the following grants to co-fund the installation of chargers at non-landed private residences (NLPR) and for electric heavy vehicles.
+
+ EV Common Charger Grant (ECCG)
+
+ The Electric Vehicle Common Charger Grant (ECCG) will kickstart the installation of shared charging infrastructure in non-landed private residences (NLPRs).
+
+ The ECCG will co-fund installation costs of 3,500 EV chargers at NLPRs, as an early adoption incentive. As NLPRs form a significant proportion of residences in Singapore, improving charger provision and access is an important step towards improving the coverage of Singapore’s national EV charging network.
+
+ Applications for the ECCG opened on 29 July 2021 and will be assessed on a first-come, first-served basis. The ECCG will be available until 31 December 2026, or until 3,500 chargers have been supported by co-funding, whichever is earlier. Interested parties may apply via the Government’s Business Grants Portal .
+
+ ECCG Eligibility Criteria
+
+ ECCG Eligibility Criteria
+
+ Charger installation date 
+ The charger must not have been installed before 19 July 2021, and before an applicant had received the letter of offer from LTA, indicating the approved grant quantum. 
+
+ This is to ensure that applicants do not pre-emptively install chargers when they may not qualify for the grant.
+
+ Installed in non-landed private residences (NLPRs) 
+
+ NLPRs are defined as private developments that include residential units, with the  exception  of landed properties, shophouses, hotels, hostels, serviced apartments, and workers’ dormitories.
+
+Industrial and commercial developments are not eligible for the grant. 
+
+ Installed in common area of NLPRs 
+ The chargers must be installed in a common area that is accessible to the residents in the NLPR and shared among residents for EV charging.  
+
+ Number of chargers that a NLPR is eligible for 
+ The ECCG may co-fund the installation of smart chargers for up to 1% of residential car park lots, rounded-up to the nearest whole number. 
+
+ Example 1 : If there are 140 car park lots in a NLPR, 1% of 140 =1.4, rounded-up to the nearest whole number to 2. This means that 2 chargers will be eligible for co-funding.
+
+ Example 2 : If there are 70 car park lots in an NLPR, 1% of 70 = 0.7, rounded-up to the nearest whole number to 1. This means that 1 charger will be eligible for co-funding.
+
+The ECCG is designed to catalyse deployment of chargers in as many NLPRs as possible. As such, the ECCG will only fund the installation of chargers for up to 1% of residential parking lots within each NLPR.
+
+ Installation of smart chargers 
+ The ECCG is applicable only for Smart Chargers that have been type approved by LTA. Such smart chargers facilitate energy planning and more efficient electricity consumption and allow the Government to better plan and implement the relevant infrastructure required for EV charging points.
+
+ A smart charger must minimally perform all the following functions:
+
+ Able to receive and react to information received, such as by adjusting the rate of charging;
+
+ Able to monitor and record energy consumption and timestamp of consumption, and be able to transmit it; and
+
+ Makes use of Open Charge Point Protocol (version 1.6 or above) to transmit and receive information.
+
+ Note: Chargers eligible for co-funding under ECCG will be capped at 22kW, in line with the overall approach of slow overnight charging. 
+
+ Please refer to this list which provides  Examples of Chargers and Charger Operators for the ECCG (PDF, 114kB) . 
+
+ Co-funded components
+
+ Owners of the chargers, whether an EV Charging Operator (EVCO) or the owners of the NLPR (e.g. the management corporation of a strata-titled development), can apply for ECCG to cover three upfront cost components of charger installation: 
+
+ Charging system (e.g. charger equipment , router ); 
+
+ Licensed electrical worker fees; and 
+
+ Cabling and installation costs (subject to $1,000 cap). 
+
+ The ECCG will co-fund 50% of each of the above cost components, subject to the relevant cost component cap. The first 2,000 chargers will be eligible for an overall co-funding cap of $4,000 per charger, while the subsequent 1,500 chargers will have a reduced overall co-funding cap of $3,000 per charger. GST paid on the cost components are not eligible for co-funding.
+
+ For more information on the ECCG, please refer to the Guidelines and Frequently Asked Questions (PDF, 163kB) . 
+
+ If you have queries regarding the ECCG, contact us via email at: LTA_Electromobility@lta.gov.sg 
+
+ ECCG Application Procedure 
+
+ ECCG Application Procedure 
+
+ Interested parties may apply via the Government’s Business Grants Portal (BGP). You will need a Corppass account in order to login to the BGP.
+
+ You are to submit the following together with your grant application: 
+
+ Form A (DOC, 26kB) 
+
+ Letter of Confirmation between NLPR and EV Charging Operator (DOC, 18kB) 
+
+ Meeting minutes from NLPR’s AGM or EOGM which shows resolution being passed by NLPR’s residents to install EV charger(s) in the NLPR 
+
+ Checklist A (XLSX, 51kB) 
+
+ You are also required to submit Form B (DOC, 24kB) for Claims Application after accepting the Letter of Offer (LOF). 
+
+ The grant will be disbursed on a reimbursement basis. If a grant application is approved, applicants should pay for the cost of the items under the grant first, before claiming it from LTA. As part of the claims application, applicants must submit invoices and receipts of the cost components paid. They must be dated after the issuance date of the LOF to be eligible for co-funding. 
+
+ If a EVCO is the owner of the charger, receipts and invoices can be dated before the issuance date of the LOF if they are for hardware equipment that were purchased by the EVCO beforehand.   
+
+ You can refer to the  Step-By-Step application Guide (PDF, 1MB)  and Step-by-Step Claim Guide (PDF, 945kB) . 
+
+ Electric Heavy Vehicle Charger Grant (EHVCG)
+
+ The Electric Heavy Vehicle Charger Grant (EHVCG) will be available from 1 Jan 2026 to 31 Dec 2028, to lower the upfront cost of charger installation and support the deployment of chargers for electric heavy vehicles (eHVs) in Singapore.
+
+ The EHVCG will co-fund up to 50% of charger installation cost, capped at $30,000 per charger. Additional cost cap on components (such as electrical equipment, cable and trunking, manpower, building / charger Licensed Electrical Worker) will be applied based on established cost norms to ensure cost reasonableness.
+
+ Application for the EHVCG will open one month earlier from Dec 2025 to facilitate applications and approval will only be given in 2026 after the grant commences. The EHVCG will be available until 31 Dec 2028, or until 500 chargers have been approved for co-funding, whichever is earlier.
+
+ The chargers must be installed after an applicant receives the Letter of Offer from LTA, indicating the approved grant quantum. The receipts for the charger installation cost must be dated after the grant has been approved.
+
+ Interested parties may apply via the Government’s Business Grants Portal .
+
+ EHVCG Eligibility Criteria
+
+ EHVCG Eligibility Criteria
+
+ The applicant must register a new eHV between 1 Jan 2026 and 31 Dec 2028 for each co-funded charger.
+
+ Each registered eHV will only be eligible to apply for EHVCG for one charger. LTA will tag each charger to a specific eHV to prevent duplicate EHVCG claims for the same vehicle.
+
+ Up to three chargers per site for each applicant.
+
+ EHVCG will be granted for up to three chargers per site, regardless of the number of eHVs registered by the applicant. He may apply for the EHVCG for chargers at other sites if he registers more than three eHVs.
+
+ Example 1: Applicant registered six eHVs and intends to install six chargers at a single location. Only three chargers will be eligible for co-funding.
+
+ Example 2: Applicant registered six eHVs and intends to install six chargers at two different locations, with three chargers at each location. All six chargers will be eligible for co-funding at both locations.
+
+ Charger must be installed at the applicant’s place of business.
+
+ This can include applicant's headquarter office, site office, client site or heavy vehicle parks. The charger location does not need to be owned by the applicant. However, if the site is not owned by the applicant, approval from the premise owner (e.g. landlord) must be obtained through a signed Letter of Confirmation between Applicant and Building Owner (DOC, 36kB ) by all parties involved (e.g. landlord and vehicle owner). The Letter of Confirmation has to be signed by a management-level representative.
+
+The applicant does not have to be the registered owner of the charger and the charger can be shared with public users (i.e. need not exclusively serve the applicant’s eHV fleet). Publicly accessible chargers must be operated by a Licensed Electric Vehicle Charging Operator (EVCO).
+
+ Chargers must have a power rating of at least 50kW.
+
+ The EHVCG is only applicable for  Smart Chargers . A smart charger must minimally perform all the following functions:
+
+ Able to receive and react to information received, such as by adjusting the rate of charging;
+
+ Able to monitor and record energy consumption and timestamp of consumption, and be able to transmit it; and
+
+ Makes use of Open Charge Point Protocol (version 1.6 or above) to transmit and receive information.
+
+ Charger must be installed at a lorry or coach lot to serve heavy vehicles.
+
+ The heavy vehicle lot must have a minimum dimension of 7.5m x 3m for angled parking and 9.0m x 3.0m for parallel parking.
+
+ Co-funded Components
+
+ The EHVCG provides 50% co-funding up to a cap of $30,000 per charger. GST paid on the cost components are not eligible for co-funding.
+
+ The applicant can apply for EHVCG to cover three upfront cost components of charger installation:
+
+ Charger System (e.g. charger equipment, router); 
+
+ Licensed Electrical Worker Fees; and 
+
+ Cabling and Installation Costs.
+
+ For more information on the EHVCG, please refer to the  Guidelines and Frequently Asked Questions (PDF, 212kB) .
+
+ If you have queries regarding the EHVCG, you can contact us via email at:  LTA_Electromobility@lta.gov.sg .
+
+ EHVCG Application Procedure
+
+ EHVCG Application Procedure
+
+ Interested parties may apply for EHVCG via the Government’s  Business Grants Portal  (BGP). Applicants will need a Corppass account in order to login to the BGP.
+
+ The following documents will have to be submitted together with the grant application:
+
+ Information on building owner / proprietor
+
+ Letter of Confirmation between Applicant and Building Owner (DOC, 36kB) 
+
+ Checklist A (XLSX, 47kB) 
+
+ Invoice / Quotations with EV charger installation cost
+
+ Receipt/paid invoice for deposit for purchase of eHV OR purchase order for eHV
+
+ The grant will be disbursed on a reimbursement basis. Once the grant application has been approved by LTA, applicants should pay for the cost of the items under the grant first, before claiming it from LTA. As part of the claims application, applicants must submit the receipts of the cost components paid, along with photos of the chargers and their location (i.e. heavy vehicle lot). To be eligible for co-funding, the receipts must be dated after the grant has been approved.

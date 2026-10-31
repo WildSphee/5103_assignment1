@@ -83,6 +83,19 @@ Census 2020 is the latest small-area census. It **under-counts new towns** (Teng
 | `LTA_Electric_Vehicle_Guide_for_Drivers.pdf` | LTA driver guide (charger types, speeds). |
 | `Wikipedia_plugin_EVs_in_Singapore.txt` | Overview / timeline (secondary source — verify before citing). |
 
+## 08_costs — capex, prices, grants (for the objective / budget)
+
+| File | What it is |
+|---|---|
+| `cost_parameters.csv` | **Model-ready table** of low/base/high values with unit, source, and `source_type` for each parameter: capex per point (7 kW AC, 22 kW AC, 50 kW DC, 100–150 kW DC), site grid-upgrade cost, charging prices, electricity cost, margin, utilisation, energy per point per day, grants, FX, lifetime, discount rate. |
+| `sources/official_SG_cost_and_price_sources.md` | Verbatim official figures: MOT median price S$0.66/kWh (HDB) and S$0.74 (private), SP tariff Q4 2026, Tengah fast hub (8 × 100 kW DC + 6 × 7.4 kW AC), EVe hub contracts, grant rules. |
+| `sources/ICCT_2019_EV_charging_infrastructure_costs_US_metros.pdf` | ICCT working paper: per-charger hardware (Table 2) and installation by chargers per site (Tables 3–4). **Main basis for capex.** |
+| `sources/LTA_ECCG_Guidelines_and_FAQs.pdf`, `sources/LTA_charger_grants_page.txt` | LTA grant rules (ECCG condo chargers; EHVCG heavy-vehicle chargers capped at S$30k). |
+| `sources/Motorist_2026_SG_charging_price_index.txt`, `sources/Kakilist_2026_SG_charger_cost_guide.txt` | SG secondary sources: operator AC/DC prices (Sep 2026) and home install costs. |
+| `sources/LTA_2022_EV_ecosystem_feedback_annex.pdf` | LTA 2022 consultation annex (context only; no cost figures). |
+
+**Read `source_type` before using a number.** Singapore has **not published** the capital cost of a public charging point or of carpark electrical upgrades. Capex is therefore based on ICCT (2019 USD × 1.28) and checked against SG secondary figures. Grid upgrade, charger lifetime and discount rate are **team assumptions** and must go into the sensitivity analysis. NREL's 2030 network report couldn't be downloaded (site unreachable from here).
+
 ## 07_derived — built by `../scripts/build_planning_area_summary.py`
 
 | File | What it is |

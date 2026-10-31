@@ -1,0 +1,105 @@
+SOURCE: https://kakilist.com/guides/homeservices/ev-charger-cost-singapore
+Retrieved: 2026-10-31
+
+EV Charger Cost in Singapore (2026)
+
+ By KakiList Editorial Team · Updated April 2026 · Editorial standards 
+ Based on market data from 122+ providers
+
+ In This Guide
+
+ Price Overview 
+
+ Detailed Pricing Table 
+
+ Cost by Property Type 
+
+ Factors That Affect Pricing 
+
+ How to Save Money 
+
+ Top-Rated Providers 
+
+ FAQ 
+
+ How Much Does EV Charger Cost in Singapore?
+
+ EV charger installation in Singapore is regulated — installation must be done by an EMA-licensed electrician. A 7kW single-phase wallbox at a landed home with adequate DB capacity runs S$1,800-3,800 including charger, cable, MCB/RCBO, and commissioning. 11kW three-phase runs S$2,800-5,800; 22kW runs S$4,500-9,000. If your DB is near capacity (common in older landed), add S$2,500-6,500 for DB upgrade. Condo installs need MCST approval and typically cost S$2,500-8,500. HDB residents access charging via LTA's Common Charger Grant network — private HDB installs aren't permitted.
+
+ → See also the complete EV Charger guide or best EV Charger in Singapore .
+
+ 💡 Quick Summary
+
+ Landed 7kW wallbox: S$1,800 – S$3,800
+ Landed 11kW three-phase: S$2,800 – S$5,800
+ Landed 22kW fast AC: S$4,500 – S$9,000
+ Condo lot install (MCST-coordinated): S$2,500 – S$8,500
+ DB upgrade (if needed): +S$2,500 – S$6,500
+ HDB car park charging: Subscription-based (LTA network)
+
+ Want an exact price for your job?
+
+ ⚡ Get Free Quotes — Compare EV Charger Prices 
+
+ EV Charger Price List (2026)
+
+ Contact providers directly for pricing.
+ Prices are estimates. Actual costs depend on scope, materials, and urgency.
+
+ EV Charger Cost by Property Type
+
+ HDB flats: Private home-to-carpark cabling is not permitted. EV charging is accessed via LTA's EV Common Charger Grant installations at the HDB car park, coordinated by the Town Council and approved charger operators. Cost is typically subscription-based (S$0-20/month access + per-kWh charging fees).
+ Condominiums: Landlot-level installations require MCST approval, an electrical load assessment, and sometimes common-area DB upgrades. Individual supply and install runs S$2,500-5,500 for a 7kW charger, S$3,800-8,500 for 11kW, including cable runs of 15-40m from the DB. Some MCSTs only approve specific installers — check before quoting.
+ Landed properties: Most flexible install track. A 7kW wallbox with adequate existing DB runs S$1,800-3,800; 11kW runs S$2,800-5,800; 22kW runs S$4,500-9,000. DB near capacity (common in older landed) adds S$2,500-6,500 for upgrade and load-sharing panel. Outdoor installs need IP65+ ratings and weather shielding.
+
+ Factors That Affect EV Charger Pricing
+
+ EMA licensing requirement: Licensed electrician installation is mandated. Unlicensed installers quote 20-40% lower but the installation is illegal and voids home insurance.
+ Charger capacity (kW): 7kW single-phase for most home charging (S$1,800-3,800 landed). 11kW three-phase (S$2,800-5,800) for larger batteries. 22kW fast AC (S$4,500-9,000) for rapid home charging but requires sufficient supply capacity.
+ DB capacity: Older landed homes often have DBs near capacity. EV charger installation may require DB upgrade (S$2,500-6,500) on top of the charger install — doubling the budget.
+ MCST approval (condos): Condo EV installation requires management approval, sometimes common-area DB upgrades, and always MCST-approved installer lists. Timeline typically 4-8 weeks from application to install.
+ Cable run length: 10-15m cable runs are standard. Longer runs (30-40m from the DB to the carpark in some condos) add cable cost and may require larger gauge for voltage drop management.
+
+ How to Save Money on EV Charger in Singapore
+
+ 7kW sufficient for most home charging: Overnight 7kW charging (9 hours) adds ~60kWh — enough to cover 300+km of daily driving. Don't overspec to 11kW or 22kW unless daily driving exceeds 250km.
+ Verify DB capacity before committing: Load assessment (free consultation from most installers) reveals whether DB upgrade is needed. This substantially changes total install cost.
+ Brand-authorised installers for warranty: Installing Tesla Wall Connector, Wallbox, or similar branded chargers via brand-authorised installers preserves manufacturer warranty. Unauthorised installers void the warranty — worth it for premium chargers.
+ Skip grey-market (Taobao) chargers: Cheap imported chargers lack EMA compliance certification and Singapore safety markings. Fail at 12-24 months without warranty recourse. Branded EMA-compliant chargers cost more upfront but last longer.
+ Consider LTA Common Charger Grant for HDB residents: Free home charging infrastructure via LTA's EV Common Charger Grant programme. Subscription-based access (S$0-20/month + per-kWh) eliminates the S$2,000-5,000 private install cost.
+
+ Top-Rated EV Charger Providers
+
+ Compare prices with these top-rated providers, sorted by Google rating and review count.
+
+ EE Elite Electricians (EV) ✓ Verified EV Charger · Islandwide Elite Electricians (EV) is a verified home services provider in Singapore specialising in EV Charger. Services offered include EV Charger Installation. They provide islandwide coverage across Singapore. ★★★★★ 5 (46 reviews) 💬 WhatsApp View Profile CS ChargeNow Singapore ✓ Verified EV Charger · Islandwide ChargeNow Singapore is a verified home services provider in Singapore specialising in EV Charger. Services offered include EV Charger Installation. They provide islandwide coverage across Singapore. ★★★★★ 5 (29 reviews) View Profile VC VF Contractors ✓ Verified EV Charger · Islandwide VF Contractors is a verified home services provider in Singapore specialising in EV Charger. Services offered include EV Charger Installation. They provide islandwide coverage across Singapore. ★★★★★ 5 (20 reviews) 💬 WhatsApp View Profile ME Mr Electrician (EV) ✓ Verified EV Charger · Islandwide Mr Electrician (EV) is a verified home services provider in Singapore specialising in EV Charger. Services offered include EV Charger Installation. They provide islandwide coverage across Singapore. ★★★★★ 5 (12 reviews) 💬 WhatsApp View Profile CE Competent Electrician SG ✓ Verified EV Charger · Islandwide Competent Electrician SG is a verified home services provider in Singapore specialising in EV Charger. Services offered include EV Charger Installation. They provide islandwide coverage across Singapore. ★★★★★ 5 (11 reviews) View Profile 
+
+ See all 122 EV Charger providers in Singapore → 
+
+ Related Articles
+ Best Of Top 10 EV Charger Types for Singapore Homes in 2026 6 min read Guide EV Charger Installation in Singapore: What's Changed in 2026 5 min read Guide EV Charger Installation Singapore: 15 Key Questions Answered 7 min read Guide Real Stories: Installing EV Chargers at Home in Singapore 7 min read Guide EV Charger Installation Singapore: Budget vs Premium Costs 2026 8 min read 
+
+ Get Your Exact EV Charger Price
+
+ Compare quotes from verified providers. Free, no obligation.
+
+ ⚡ Get Free Quotes Now 
+
+ EV Charger Singapore Guide → 
+ Best EV Charger in Singapore → 
+ Plumber Cost Guide → 
+ Electrician Cost Guide → 
+ Aircon Servicing Cost Guide → 
+
+ Frequently Asked Questions
+
+ How much does EV Charger cost in Singapore in 2026?
+ Costs vary by service type and property. Basic EV Charger services start from around S$50, while more complex jobs can cost S$500+. See the detailed price table above for specific services. We recommend getting 2-3 quotes for accurate pricing.
+ Are EV Charger prices higher for condos and landed properties?
+ Yes. Condo jobs typically cost 10-20% more than HDB due to access restrictions and complexity. Landed property work is usually 20-40% more than HDB due to larger scope and more complex systems.
+ Do EV Charger providers charge for quotations?
+ Most reputable providers offer free quotations, especially for standard jobs. Some may charge a site visit fee (S$30-50) for complex jobs that require on-site assessment, which is usually waived if you proceed with the work.
+ Is there an emergency surcharge for EV Charger services?
+ Yes. Emergency, after-hours, weekend, and public holiday bookings typically incur a 30-50% surcharge. To avoid this, schedule non-urgent work during weekday business hours (9am-6pm).
+ How can I get the cheapest EV Charger price?
+ Compare quotes from multiple providers using KakiList's free quote tool. Book during weekday hours, bundle multiple jobs if possible, and consider annual maintenance packages for recurring services.
