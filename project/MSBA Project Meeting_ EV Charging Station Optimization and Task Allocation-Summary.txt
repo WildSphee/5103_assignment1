@@ -1,0 +1,17 @@
+MSBA Project Meeting: EV Charging Station Optimization and Task Allocation
+
+## 1. Project Topic Selection and Scoping
+The team reviewed several project ideas, including e-commerce, banking branch locations, government funding allocation, and electric vehicle (EV) charging stations. The team finalized the project direction to focus on optimizing the placement of new EV charging points across Singapore (Option A). The primary dataset identified is the LTA Data Mall charging points dataset with approximately 11,000 rows of location data, which can be aggregated and mapped by postal code or region.
+
+### Action Items
+- [ ] Send important links, datasets, and resources from the meeting chat to the WhatsApp group chat -- *Sandra*
+- [ ] Conduct preliminary research and identify relevant EV demand and charging data sources -- *Aish* *Aish* *Speaker 3* *Reagan* by November 9
+
+## 2. Project Execution Plan and Task Allocation
+The project requires mathematical modeling, linear optimization coded in Python using Gurobi, sensitivity analysis, and an 8–10 page double-spaced report, with a strict submission deadline of November 22. To accommodate the Deepavali holiday period, work will be staged. Four team members will first gather, clean, and scope data before the full group reconvenes to handle implementation, optimization modeling, and final report writing.
+
+### Action Items
+- [ ] Create and run a poll in the group chat to finalize meeting times for the November 9 and November 14 weekend sessions
+- [ ] Hold a team sync to review gathered EV data, refine the problem statement, and establish the data framework -- *Sara Sandra* *Erica Reagan* on November 9
+- [ ] Convene a full group meeting with all six members to advance mathematical modeling, Gurobi implementation, and report writing -- on November 14
+

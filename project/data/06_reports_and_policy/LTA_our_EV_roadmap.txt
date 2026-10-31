@@ -1,0 +1,218 @@
+SOURCE: https://www.lta.gov.sg/content/ltagov/en/industry_innovations/technologies/electric_vehicles/our_ev_roadmap.html
+
+Print 
+
+ Copy Link 
+
+ Email 
+
+ WhatsApp 
+
+ Telegram 
+
+ Facebook 
+
+ Twitter 
+
+ LinkedIn 
+
+ Our EV Roadmap
+
+ Singapore aims to reduce  land transport emissions in support of Singapore’s net-zero goal. The electrification of vehicles alongside walking, cycling and taking public transport are key initiatives that will help us achieve this target.
+
+ In Singapore, where most of our power is generated from natural gas, we can be more sustainable by switching from internal combustion engine (ICE) vehicles to electric vehicles (EVs). An EV emits half the amount of CO2 as compared to a similar vehicle powered by ICE. If all our light vehicles run on electricity, we would reduce carbon emissions by 1.5 to 2 million tonnes, or about 4% of total national emissions.
+
+ Under the Singapore Green Plan 2030, we have a comprehensive EV Roadmap to drive EV adoption. . We are focusing on four areas – vehicle taxes and incentives, regulations and standards, EV charger deployment and industry partnerships.
+
+ Vehicle Taxes and Incentives
+
+ Vehicle Taxes and Incentives
+
+ The Government  has introduced the EV Early Adoption Incentive (EEAI) and the Enhanced Vehicular Emissions Scheme (VES) to reduce the upfront costs of owning an electric car by up to $40,000. In addition, since 1 January 2021, LTA has revised the road tax for electric cars downwards in line with improvements in vehicular efficiency.
+
+ Commercial vehicles enjoy the Commercial Vehicle Emissions Scheme (CVES), providing up to $15,000 incentive for the least pollutive light vehicles. As announced at the Committee of Supply 2025, LTA will introduce the Heavy Vehicle Zero Emissions Scheme (HVZES) starting from 1 Jan 2026. Incentives of $40,000 will be available for each new zero-tailpipe emissions heavy goods vehicle or bus registered. 
+
+ Find out more on  incentives for cleaner energy vehicles and charger deployment .
+
+ Regulations and Standards 
+
+ Regulations and Standards 
+
+ -->
+
+ The Electric Vehicles Charging Act (EVCA) was passed by Parliament in November 2022 to regulate the safe charging of EVs, ensure the provision of reliable EV charging services, and expand the network of accessible charging infrastructure in Singapore. This will include:
+
+ Regulating the supply and registration of EV chargers; 
+
+ Licensing of EV Charging Operators ; and 
+
+ Mandating EV charging provisions at developments. 
+
+ Administered by the Land Transport Authority (LTA), the Technical Reference 25 (TR 25) is a set of technical standards and safety precautions that governs EV charging systems in Singapore. The latest version of the TR 25 can be purchased on the Singapore Standards website .
+
+ EV Charger Deployment 
+
+ EV Charger Deployment 
+
+ The accessibility of charging infrastructure is vital for encouraging EV adoption, and we are working with the private sector to deploy EV charging points in publicly accessible and private carparks, in tandem with EV adoption.  
+
+ Publicly Accessible Carparks
+
+ Every HDB town will be EV-Ready by 2025 with close to 2,000 HDB carparks to be fitted with charging points. EV charging points have been installed in more than half of all HDB carparks.  
+
+ While overnight slow charging will continue to be the predominant charging strategy for most vehicles, high-powered fast chargers will be needed to meet the needs of certain segments of high mileage EVs such as taxis or commercial vehicle fleets. The Government has kickstarted the deployment of fast chargers at HDB carparks in commercial complexes, Town Centres / Neighbourhood Centre and JTC’s premises, which are frequented by fleet drivers during their breaks, and are close to amenities such as hawker centres and coffeeshops.
+
+ Private Carparks
+
+ For non-landed private residences such as condominiums and private apartments, installing chargers can be a challenge as the number of residents who own EVs are likely to be small. To incentivise charger installation in these carparks, an  EV Common Charger Grant  has been introduced to kickstart the installation of shared charging infrastructure. 
+
+ Motorists living in private residences can work with the property owner or Management Committee to get the necessary approvals to install EV chargers in the premise. Motorists living in landed properties who wish to procure an EV charger should engage Licensed Electrical Workers (LEW) and equipment specialists to install the EV charger at their property or approach EV Charging Operators for their services.
+
+ To improve the electric Heavy Vehicles (eHV) charging network, LTA has introduced the Electric Heavy Vehicle Charger Grant (EHVCG) . Starting from 1 Jan 2026, the first 500 private heavy vehicle chargers will receive co-funding of up to 50% of the charger installation cost, capped at $30,000 per charger.
+
+ There are also many EV Charging Operators providing charging services islandwide, in places such as petrol stations, shopping malls, office buildings and industrial estates.
+
+ Industry Partnerships
+
+ Industry Partnerships
+
+ As Singapore embarks on a journey to electrify our land transport system, we welcome companies to house their activities in Singapore. This will be a good chance for companies to capitalise on opportunities in the region. In Singapore, companies can perform a range of functions, including product research and development (R&D), manufacturing and headquarter services.
+
+ Today, Singapore is home to an ecosystem of mobility companies from automotive OEMs such as Hyundai, mobility service providers such as Grab and Motional, and electronics and component suppliers such as Infineon, DuraPower, Borgwarner, Continental and Denso. Local companies such as TES and SMA also undertake lithium-ion battery recycling in Singapore, ensuring that valuable materials are recovered.
+
+ Our EV ecosystem is complemented by an established pool of public research institutes, particularly for battery-related R&D. Institutes such as ERI@N, SUTD and A*STAR undertake development of new lithium-ion battery structures and materials as well as next-generation batteries such as solid-state batteries.
+
+ As we transition to EVs, new skillsets will need to be developed in support of EV maintenance and repair. LTA, SkillsFuture Singapore (SSG) and Workforce Singapore (WSG) have worked with industry partners and training providers to establish the National EV Specialist Safety (NESS) certification and the Career Conversion Programme (CCP) for Sustainability Professionals (EV Specialists) for the industry. 
+
+ Training
+
+ Training
+
+ Certification Course for EV Charger Equipment Specialist
+
+ Under the Electric Vehicles Charging Act (EVCA), EV chargers must be certified as fit for charging EVs according to the requirements specified before they can be registered with LTA. During its use, EV chargers must also be periodically inspected and maintained to ensure that they are kept in good condition. Refer to the section Installation and Certification of EV chargers and the section on Inspection and Maintenance of EV chargers for more information.
+
+ The certification and periodic inspection of EV chargers must be carried out by charger equipment specialists, who are qualified personnel with knowledge on the inspection and maintenance of EV chargers.
+
+ The Certification Course for Electric Vehicle Charger Equipment Specialist has been introduced to ensure that equipment specialists are equipped with the necessary knowledge on regulatory requirements and standards for charger certification and inspection, to supplement any in-house training that these personnel may receive. It is an intermediate level course designed for personnel involved in installation, maintenance, or inspection of EV charging stations. Personnel who complete this new certification course, and pass the associated completion test, will be accredited as equipment specialists to certify and inspect EV chargers.
+
+ Basic understanding in electrical engineering and proficiency in English are required.
+
+ Course Highlights  
+
+ Coverage of EV charging standards in Singapore
+
+ Practical demonstrations of test and inspection procedures 
+
+ Understanding of compliance requirements 
+
+ Reference to TR25 and the Electric Vehicles Charging (Electric Vehicle Chargers) Regulations 2023
+
+ Course Providers 
+ Institute of Technical Education (ITE) and Republic Polytechnic (RP) 
+
+For more information, please refer to the Guidelines for the Installation, Certification, and Inspection of EV Chargers (PDF, 227kB) . View the list of certified equipment specialists (PDF, 312kB) . 
+
+ National EV Specialist Safety (NESS) Certification
+
+ The NESS certification was developed in collaboration with SSG and is recognised under the Singapore Workforce Skills Qualifications (WSQ) national credential system. Those certified will be equipped with entry-level skills and knowledge in areas such as high voltage systems safety awareness along with a basic introduction to EVs. 
+
+ Eligible Singaporeans and Permanent Residents may receive course fee subsidies of up to 70% by SSG.
+
+ Please refer to the list of NESS training courses offered in Singapore below (updated as of 28 Sep 2026): 
+
+ S/N 
+ Course Title 
+ Training Provider* 
+
+ 1 
+ National EV Specialist Safety (NESS) 
+ Ngee Ann Polytechnic (NP) 
+
+ 2 
+ National Electric Vehicle (EV) Specialist Safety (NESS) Certification Course 
+
+ National Electric Vehicle (EV) Specialist Safety (NESS) Certification Course (with DGUV Certification) 
+
+ Institute of Technical Education (ITE) College West 
+
+ 3 
+ National EV Specialist Safety (NESS) & Workshop-Readiness Programme 
+ LKK Auto Consultants 
+
+ 4 
+ National EV Specialist Safety (NESS) Certification Course 
+ ComfortDelGro Engineering (CDGE) 
+
+ 5 
+ National EV Specialist Safety (NESS) 
+ NTUC Learning Hub (LHUB) 
+
+ 6 
+ National Electric Vehicle (EV) Specialist Safety (NESS) Certification 
+ Republic Polytechnic (RP) 
+
+ 7 
+ Introduction of e-bus / DHB and WSH for Electric Safety (NESS-BUS-M1) 
+
+ Electrical Fundamentals, High Voltage Safety and Maintenance on e-bus /DHB (NESS-BUS-M2) 
+
+ Singapore Bus Academy (SGBA) 
+
+ 8 
+ National EV Specialist Safety (NESS) Certification 
+ Temasek Polytechnic (TP) 
+
+ *Parties interested in offering NESS training courses may apply to be an Approved Training Organisation (ATO ).  
+
+ Career Conversion Programme (CCP) for Sustainability Professionals (EV Specialists) 
+
+ The CCP for Sustainability Professionals (EV Specialists) was developed in partnership with WSG to upskill workers in EV maintenance roles. Under this CCP, companies may receive up to six months’ salary support for eligible employees when they undergo structured On-the-Job Training and the NESS certification programme. For more information on the CCP for Sustainability Professionals (EV Specialists), please visit Workforce Singapore  for more details.
+
+ Interested parties may reach out via email  to register interest in the CCP for Sustainability Professionals (EV Specialists).
+
+ Resources
+
+ Resources
+
+ Electric Vehicles and Charging Points Dashboard 
+
+ This dashboard provides figures on monthly and annual EV adoption rates by vehicle types, and number of private and publicly accessible charging points. The dashboard is updated monthly on the last day of each month. View the  Electric Vehicles and Charging Points Dashboard . 
+
+ Electric Vehicle Guide 
+
+ Together with the EV community—including drivers, EV charging operators, and carpark owners—LTA has created a comprehensive, user-friendly online guide on EVs. This guide provides new drivers with essential information on EVs and practical tips for a smooth transition to using them. Download the Electric Vehicle Guide for Drivers (PDF, 1.4MB) .
+
+ Guide for Charger Deployment at Non-Landed Private Properties (NLPR) 
+
+ This guide provides Management Corporation Strata Titles (MSCTs) with information on charger deployment at NLPRs. This includes the overall charger deployment process that MSCTs will need to undergo, starting from passing resolution at Annual General Meetings (AGM), charger planning, charger installation, to operation and maintenance of chargers. Download the EV Guide for MSCTs (PDF, 2.5MB) .
+
+ Electric Vehicle Brochure
+
+ This brochure provides information on the best practices and good charging etiquette for shared EV chargers, and the safe usage of EV chargers for private charger owners. Download the EV Brochure (PDF, 693kB) . 
+
+ News Releases
+
+ Factsheet: Sustaining the Momentum of Vehicle Electrification  
+
+ Factsheet: First Chargers Under Large-Scale Tender Ready for Public Use  
+
+ Partnering Industry to Grow the Electric Vehicle Ecosystem and build a Forward looking Land Transport Sector 
+
+ Summary of Responses to Public Consultation on Proposed Legislation to Regulate Electric Vehicle Charging 
+
+ Ramping Up Charging Infrastructure and Strengthening Public Education 
+
+ Reducing Peak Land Transport Emissions by 80% 
+
+ Introduction of Updated National Electric Vehicle Charging Standard  
+
+ Award of Singapore's Pilot Electric Vehicle Charging Infrastructure Tender  
+
+ 20 More Electric Buses Deployed for Passenger Service  
+
+ Encouraging EV Charger Installation in Non-Landed Private Residences  
+
+ Factsheet: LTA Assigned New Statutory Functions Relating to Electric Vehicles  
+
+ Launch of Request for Information for Electric Vehicle Charging Infrastructure Market Design
