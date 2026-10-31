@@ -1,6 +1,6 @@
 # Project context — Optimising EV charging point placement in Singapore
 
-_Last updated: 2026-10-31_
+_Last updated: 2026-10-31_. Full analysis plan, data pipeline and model: see `plan.md`.
 
 ## The assignment
 - **Course:** MSBA group project (DBA5103), 6 members.
