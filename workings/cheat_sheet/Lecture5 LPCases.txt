@@ -1,0 +1,446 @@
+
+--- SLIDE 1 ---
+DBA5103
+Operations Research and Analytics
+Zhenyu Hu
+Semester I, 2026/2027
+
+
+--- SLIDE 2 ---
+Markdown Management
+
+
+--- SLIDE 3 ---
+Selling Seasonal Products
+•
+Challenges in selling fashion products
+- Short selling season
+· About several weeks (and it is getting shorter and shorter)
+· Obsolescence after the season
+- Volatile market conditions
+· Difficult to predict the trend in advance
+· Erratic demand: “hit” items sell out quickly while “dogs” sell slowly
+· Lack of experience or historical data
+- Rigid supply chains
+· Long procurement lead time (several months) due to out-sourcing, 
+etc. 
+· Product line and quantity commitment well in advance of the 
+selling season
+•
+Examples of seasonal products
+- Apparel, IT Products
+
+
+--- SLIDE 4 ---
+Markdown
+• Inventory is determined before the selling season begins
+• Once the season begins, the only thing we can control is 
+price
+• Markdown: dynamically reduce price to boost demand 
+and increase revenue
+“Retailers hate markdowns. Discount an item too late, and stores are stuck with
+truckloads of inventory. Too early, and they loose profits as people snap up items
+thrown on the bargain table prematurely …”
+Wall Street Journal, Aug. 7, 2001
+
+
+--- SLIDE 5 ---
+An Example
+•
+A stock of 2000 units of a single fashion item, no replenishment
+•
+Demand is hard to predict, limited historical data available
+•
+Pricing
+-
+Four allowable prices: $60 (full price), $54 (90%), $48 (80%), $36 (60%)
+-
+Start with $60 in Week 1, then mark down over time (no price increase)
+•
+15-week selling season
+-
+Leftover items are sold to discounters for $25 per unit (salvage value)
+•
+Costs are paid (hence they are sunk)
+•
+GOAL: maximize revenue by determining the timing and magnitude of 
+markdowns
+
+
+--- SLIDE 6 ---
+Key Steps
+• Two key steps
+- Estimation: build the demand model
+· Study the historical data
+· Choose a demand model and estimate parameters
+- Optimize prices
+Data
+Prescription
+Information
+Model
+
+
+--- SLIDE 7 ---
+Optimization Step
+• Suppose we have an estimate of (weekly) demand at the 
+four price points:
+Price
+$60
+$54
+$48
+$36
+Demand
+125
+162.5
+217.5
+348.8
+
+
+--- SLIDE 8 ---
+Linear Programming Formulation
+• Decision variables:
+𝑥1: # of effective weeks the item is sold at price $60
+𝑥2: # of effective weeks the item is sold at price $54
+𝑥3: # of effective weeks the item is sold at price $48
+𝑥4: # of effective weeks the item is sold at price $36
+• Objective function:
+Revenue = Sales Revenue + Salvage Revenue
+125 ∗60 ∗𝑥1 + 162.5 ∗54 ∗𝑥2 + 217.5 ∗48 ∗𝑥3 + 348.8 ∗36 ∗𝑥4
++ 25*(2000 - 125 ∗𝑥1 −162.5 ∗𝑥2 −217.5 ∗𝑥3 −348.8 ∗𝑥4)
+
+
+--- SLIDE 9 ---
+Linear Programming Formulation
+• Constraints:
+- Capacity constraint: sales ≤ inventory
+- Time constraint: total effective weeks at all 
+prices ≤ the selling season
+- Full price in week 1:
+- Non-negativity: 
+125 ∗𝑥1 + 162.5 ∗𝑥2 + 217.5 ∗𝑥3 + 348.8 ∗𝑥4 ≤2000
+𝑥1 + 𝑥2 + 𝑥3 + 𝑥4 ≤15
+𝑥1 ≥1
+𝑥1, 𝑥2, 𝑥3, 𝑥4 ≥0
+
+
+--- SLIDE 10 ---
+Sensitivity Analysis
+• Effects of initial inventory
+• Effects of selling horizon
+• Effects of good market / bad market
+
+
+--- SLIDE 11 ---
+Improving the Markdown Strategy
+• Dynamic adjustment
+• More discount levels
+• Consider future uncertainties 
+Data
+Prescription
+Information
+Model
+Simulator
+
+
+--- SLIDE 12 ---
+Uncertain Linear Program
+
+
+--- SLIDE 13 ---
+Incomplete Knowledge of Data
+• Available resources, prices
+• Coefficient matrix (technology matrix / bill of 
+material)
+
+
+--- SLIDE 14 ---
+What’s Different?
+• In sensitivity analysis:
+• Decision making under uncertainty:
+Data 1
+Data 2
+Data 1
+Data 2
+Data 1
+Data 2
+
+
+--- SLIDE 15 ---
+Production Example Revisited Again
+• What type of industry faces lots of 
+uncertainty in production?
+- Bio-chemical
+- Pharmaceutical 
+- Agricultural
+• Source of uncertainty
+- Supply 
+- Production process
+
+
+--- SLIDE 16 ---
+Example 
+
+
+--- SLIDE 17 ---
+Supply Chain in Breaking Bad
+Dual Sourcing Strategy
+Production 
+Uncertainty
+Price Fixed
+Committed Contract
+https://www.youtube.com/watch?v=-iUVhv_sDhA&list=PLOhe6-yzmaj-g3paSmTbxv_fqTk1z0VU8&index=27
+
+
+--- SLIDE 18 ---
+Production Problem
+• Product characteristic
+• Supply characteristic
+• Resource characteristic
+Price
+Content of M
+Manpower
+Equip
+Cost
+Drug M
+$6200
+50%
+90h
+40h
+$700
+Raw Material
+Cost
+Content of M
+Raw 1
+$100.00
+1%
+Raw 2
+$199.90
+2%
+Budget
+Manpower
+Equip
+Storage Capacity
+$100,000
+2000h
+800h
+1,000kg
+
+
+--- SLIDE 19 ---
+Model
+𝒎𝒂𝒙
+𝟔𝟐𝟎𝟎−𝟕𝟎𝟎𝒙−𝟏𝟎𝟎𝒚𝟏−𝟏𝟗𝟗. 𝟗𝒚𝟐
+𝒔. 𝒕.
+𝟗𝟎𝒙≤𝟐𝟎𝟎𝟎, (manpower)
+4𝟎𝒙≤𝟖𝟎𝟎,    (equip)
+𝒚𝟏+ 𝒚𝟐≤𝟏𝟎𝟎𝟎,  (storage)
+𝟕𝟎𝟎𝒙+ 𝟏𝟎𝟎𝒚𝟏+ 𝟏𝟗𝟗. 𝟗𝒚𝟐≤𝟏𝟎𝟎𝟎𝟎𝟎, (budget)
+𝟎. 𝟎𝟏𝒚𝟏+ 𝟎. 𝟎𝟐𝒚𝟐−𝟎. 𝟓𝒙≥𝟎, (ingredient)
+𝒙, 𝒚𝟏, 𝒚𝟐≥𝟎
+• 𝒙: amount of Drug M produced (report to retailer)
+• 𝒚𝟏: amount of raw material 1 to be procured
+• 𝒚𝟐: amount of raw material 2 to be procured
+
+
+--- SLIDE 20 ---
+Solution: $8819.66 (8.8% return)
+• Primal Solution
+• Dual Solution
+Drug M
+Raw 1
+Raw 2
+17.55
+0
+438.79
+Budget
+Manpower
+Equip
+Storage Capacity
+Ingredient M
+0.088
+0
+0
+0
+-10876.5
+
+
+--- SLIDE 21 ---
+Data Uncertainty
+• Supply characteristic
+- The exact value of the percentage of M is unknown until 
+production is finished.
+• Original Solution:
+• If raw 1 realizes to be 0.995% and raw 2 realizes to be 
+1.96%, then 438.79*1.96%=8.6 < 17.55*50%=8.775!
+Raw Material
+Content of M
+Variability Range
+Raw 1
+1%
+[0.995%, 1.005%]
+Raw 2
+2%
+[1.96%, 2.04%]
+Drug M
+Raw 1
+Raw 2
+17.55
+0
+438.79
+
+
+--- SLIDE 22 ---
+Remedy
+• Ad-hoc remedy: since we only have 438.79*1.96% 
+amount of ingredient M, we adjust production 
+quantities to 17.2 < 17.55.
+• Drawbacks:
+- Commitment to demands 
+- Profit loss: $6889, 22% less than $8820.
+
+
+--- SLIDE 23 ---
+A Robust Optimization Perspective
+• Prepare for the worst.
+- When formulating the problem, use the realization raw 1: 
+0.995% and raw 2: 1.96%. 
+𝒎𝒂𝒙
+𝟔𝟐𝟎𝟎−𝟕𝟎𝟎𝒙−𝟏𝟎𝟎𝒚𝟏−𝟏𝟗𝟗. 𝟗𝒚𝟐
+𝒔. 𝒕.
+𝟗𝟎𝒙≤𝟐𝟎𝟎𝟎, (manpower)
+4𝟎𝒙≤𝟖𝟎𝟎,    (equip)
+𝒚𝟏+ 𝒚𝟐≤𝟏𝟎𝟎𝟎,  (storage)
+𝟕𝟎𝟎𝒙+ 𝟏𝟎𝟎𝒚𝟏+ 𝟏𝟗𝟗. 𝟗𝒚𝟐≤𝟏𝟎𝟎𝟎𝟎𝟎, (budget)
+𝟎. 𝟎𝟎𝟗𝟗𝟓𝒚𝟏+ 𝟎. 𝟎𝟏𝟗𝟔𝒚𝟐−𝟎. 𝟓𝒙≥𝟎, (ingredient)
+𝒙, 𝒚𝟏, 𝒚𝟐≥𝟎
+
+
+--- SLIDE 24 ---
+A Robust Optimization Perspective
+• For any realization of raw 1 and raw 2, solution is 
+always feasible:
+- Suppose content of M in raw 1 turns out to be 1% and 
+content of M in raw 2 turns out to be 2%. Then
+• Prevent loss: 
+- In the worst case: $8294.57, only 5.95% less than $8820 
+Drug M
+Raw 1
+Raw 2
+17.47
+877.732
+0
+877.732*1% = 8.777 > 17.47*50% = 8.735
+
+
+--- SLIDE 25 ---
+Controlling Conservativeness 
+• Prepare for the worst.
+- Is it highly likely that the content in raw 1 and raw 2 are 
+0.995% and 1.96% simultaneously? 
+• Alternatively:
+- Is it highly likely that |𝑧1 +|𝑧2 = 2?
+• Better Model:
+- |𝑧1 +|𝑧2 ≤2 × 𝛼with 0 ≤𝛼≤1
+- 𝛼= 0:
+- 𝛼= 1:
+Raw Material
+Content of M
+Range of 𝑧1, 𝑧𝟐
+Range of Content
+Raw 1
+1 + 𝑧1 ∗0.005 %
+[-1, 1]
+[0.995%, 1.005%]
+Raw 2
+2 + 𝑧2 ∗0.04 %
+[-1, 1]
+[1.96%, 2.04%]
+
+
+--- SLIDE 26 ---
+Controlling Conservativeness 
+• Ingredient constraint:
+- (1 + 𝑧1 ∗0.005)% × 𝑦1+(2 + 𝑧2 ∗0.04)% × 𝑦2−0.5𝑥≥0
+• Worst case input?
+g 𝑦1, 𝑦2 = min (1 + 𝑧1 ∗0.005)% × 𝑦1+(2 + 𝑧2 ∗0.04)% × 𝑦2
+𝑠. 𝑡.
+|𝑧1 +|𝑧2 ≤2 × 𝛼
+|𝑧1| ≤1, |𝑧2| ≤1,
+g 𝑦1, 𝑦2 = 1%𝑦1 + 2%𝑦2 + min (0.005%𝑦1)𝑧1 + (0.04%𝑦2)𝑧2
+𝑠. 𝑡.
+|𝑧1 +|𝑧2 ≤2 × 𝛼
+|𝑧1| ≤1, |𝑧2| ≤1,
+
+
+--- SLIDE 27 ---
+Model with Conservativeness Control
+𝒎𝒂𝒙
+𝟔𝟐𝟎𝟎−𝟕𝟎𝟎𝒙−𝟏𝟎𝟎𝒚𝟏−𝟏𝟗𝟗. 𝟗𝒚𝟐
+𝒔. 𝒕.
+𝟗𝟎𝒙≤𝟐𝟎𝟎𝟎, (manpower)
+4𝟎𝒙≤𝟖𝟎𝟎,    (equip)
+𝒚𝟏+ 𝒚𝟐≤𝟏𝟎𝟎𝟎,  (storage)
+𝟕𝟎𝟎𝒙+ 𝟏𝟎𝟎𝒚𝟏+ 𝟏𝟗𝟗. 𝟗𝒚𝟐≤𝟏𝟎𝟎𝟎𝟎𝟎, (budget)
+𝒈(𝒚𝟏, 𝒚𝟐) −𝟎. 𝟓𝒙≥𝟎, (ingredient)
+𝒙, 𝒚𝟏, 𝒚𝟐≥𝟎
+
+
+--- SLIDE 28 ---
+LP Formulation
+• Worst case input
+g 𝑦1, 𝑦2 = 1%𝑦1 + 2%𝑦2 + min (0.005%𝑦1)𝑧1 + (0.04%𝑦2)𝑧2
+𝑠. 𝑡.
+|𝑧1 +|𝑧2 ≤2 × 𝛼
+|𝑧1| ≤1, |𝑧2| ≤1,
+g 𝑦1, 𝑦2 = 1%𝑦1 + 2%𝑦2 + min (0.005%𝑦1)𝑧1 + (0.04%𝑦2)𝑧2
+𝑠. 𝑡.
+𝑥1+ 𝑥2≤2 × 𝛼
+z1−𝑥1≤0
+−z1−𝑥1≤0
+z2−𝑥2≤0
+−z2−𝑥2≤0
+𝑥1≤1
+𝑥2 ≤1,
+𝑥1≥0, 𝑥2≥0
+𝑝1
+𝑝2
+𝑝3
+𝑝4
+𝑝5
+𝑝6
+𝑝7
+
+
+--- SLIDE 29 ---
+LP Formulation
+• Using duality
+• Ingredient constraint:
+- g 𝑦1, 𝑦2 −0.5𝑥≥0
+- 1%𝑦1 + 2%𝑦2 + 2𝛼𝑝1 + 𝑝6 + 𝑝7 −0.5𝑥≥0 for some feasible  
+dual solution: 𝒑
+g 𝑦1, 𝑦2 = 1%𝑦1 + 2%𝑦2 + max 2𝛼𝑝1 + 𝑝6 + 𝑝7
+𝑠. 𝑡.
+𝑝2−𝑝3 = 0.005%𝑦1
+𝑝4−𝑝5 = 0.04%𝑦2
+𝑝1 −𝑝2 −𝑝3 + 𝑝6 ≤0
+𝑝1 −𝑝4 −𝑝5 + 𝑝7 ≤0
+𝑝𝑖≤0, 𝑖= 1, … , 7
+
+
+--- SLIDE 30 ---
+LP Formulation
+𝒎𝒂𝒙
+𝟔𝟐𝟎𝟎−𝟕𝟎𝟎𝒙−𝟏𝟎𝟎𝒚𝟏−𝟏𝟗𝟗. 𝟗𝒚𝟐
+𝒔. 𝒕.
+𝟗𝟎𝒙≤𝟐𝟎𝟎𝟎, (manpower)
+4𝟎𝒙≤𝟖𝟎𝟎,    (equip)
+𝒚𝟏+ 𝒚𝟐≤𝟏𝟎𝟎𝟎,  (storage)
+𝟕𝟎𝟎𝒙+ 𝟏𝟎𝟎𝒚𝟏+ 𝟏𝟗𝟗. 𝟗𝒚𝟐≤𝟏𝟎𝟎𝟎𝟎𝟎, (budget)
+𝟏%𝒚𝟏+ 𝟐%𝒚𝟐+ 𝟐𝜶𝒑𝟏+ 𝒑𝟔+ 𝒑𝟕−𝟎. 𝟓𝒙≥𝟎, 
+𝒑𝟐−𝒑𝟑= 𝟎. 𝟎𝟎𝟓%𝒚𝟏
+𝒑𝟒−𝒑𝟓= 𝟎. 𝟎𝟒%𝒚𝟐
+𝒑𝟏−𝒑𝟐−𝒑𝟑+ 𝒑𝟔≤𝟎
+𝒑𝟏−𝒑𝟒−𝒑𝟓+ 𝒑𝟕≤𝟎
+𝒙, 𝒚𝟏, 𝒚𝟐≥𝟎, 𝒑𝒊≤𝟎, 𝒊= 𝟏, … , 𝟕
+Ingredient
+Reference: Bertsimas and Sim, “The Price of Robustness”, 2004, Operations Research Vol. 52, No.1

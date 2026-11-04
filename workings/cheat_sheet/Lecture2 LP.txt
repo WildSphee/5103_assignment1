@@ -1,0 +1,655 @@
+
+--- SLIDE 1 ---
+DBA5103
+Operations Research and Analytics
+Zhenyu Hu
+Semester I, 2026/2027
+
+
+--- SLIDE 2 ---
+Linear Programming
+and 
+Its Applications
+
+
+--- SLIDE 3 ---
+Prototype Example
+• Wyndor Glass Co.
+- Produces windows and glass doors
+- Plant 1 makes aluminum frames and hardware
+- Plant 2 makes wood frames
+- Plant 3 produces glass and assembles products
+
+
+--- SLIDE 4 ---
+Prototype Example
+• Company introducing two new products
+- Product 1: 8 ft. glass door with aluminum frame
+- Product 2: 4 x 6 ft. double-hung, wood-framed 
+window
+• Problem: What mix of products would be most 
+profitable?
+
+
+--- SLIDE 5 ---
+Prototype Example
+• Data needed
+- Number of hours of production time available per 
+week in each plant for new products
+- Production time used in each plant for each batch 
+of each new product
+- Profit per batch of each new product
+- Demand
+
+
+--- SLIDE 6 ---
+Prototype Example
+Demand: assume that all products produced can be sold.
+
+
+--- SLIDE 7 ---
+Prototype Example
+• Formulating the model
+x1 = number of batches of product 1 produced per 
+week
+x2 = number of batches of product 2 produced per 
+week
+•
+From bottom row of Table 3.1
+Objective: 3 𝑥𝑥1 + 5𝑥𝑥2
+
+
+--- SLIDE 8 ---
+Prototype Example
+• Constraints (see Table 3.1)
+𝑥𝑥1 ≤4
+2𝑥𝑥2 ≤12
+3𝑥𝑥1 + 2𝑥𝑥2 ≤18
+𝑥𝑥1 ≥0
+𝑥𝑥2 ≥0
+•
+Classic example of resource-allocation problem
+- One of the most common types of linear 
+programming problem
+
+
+--- SLIDE 9 ---
+Prototype Example
+• Alternative formulation 1
+x1 = number of batches of product 1 produced per 
+week
+s1 = production time reserved at plant 1
+x2 = number of batches of product 2 produced per 
+week
+• Alternative formulation 2
+xi = number of batches of product i produced per 
+week, i=1,2
+sj = production time reserved at plant j, j=1,2,3
+
+
+--- SLIDE 10 ---
+Graphical Approach/Contour Approach
+
+
+--- SLIDE 11 ---
+Graphical Approach/Contour Approach
+
+
+--- SLIDE 12 ---
+A General Linear Programming Problem
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒄𝒄𝟏𝟏𝒙𝒙𝟏𝟏+ ⋯+ 𝒄𝒄𝒏𝒏𝒙𝒙𝒏𝒏
+𝒔𝒔. 𝒕𝒕.
+𝒂𝒂𝒊𝒊𝒊𝒊𝒙𝒙𝟏𝟏+ ⋯+ 𝒂𝒂𝒊𝒊𝒊𝒊𝒙𝒙𝒏𝒏≥𝒃𝒃𝒊𝒊, 𝒊𝒊∊𝑴𝑴𝟏𝟏
+𝒂𝒂𝒋𝒋𝟏𝟏𝒙𝒙𝟏𝟏+ ⋯+ 𝒂𝒂𝒋𝒋𝒏𝒏𝒙𝒙𝒏𝒏≤𝒃𝒃𝒋𝒋, 𝒋𝒋∊𝑴𝑴𝟐𝟐
+𝒂𝒂𝒌𝒌𝟏𝟏𝒙𝒙𝟏𝟏+ ⋯+ 𝒂𝒂𝒌𝒌𝒏𝒏𝒙𝒙𝒏𝒏= 𝒃𝒃𝒌𝒌, 𝒌𝒌∊𝑴𝑴𝟑𝟑
+𝒙𝒙𝒍𝒍≥𝟎𝟎, 𝒍𝒍∊𝑵𝑵𝟏𝟏
+𝒙𝒙𝒎𝒎≤𝟎𝟎, 𝒎𝒎∊𝑵𝑵𝟐𝟐
+Linear functions
+Finite
+
+
+--- SLIDE 13 ---
+Standard Form
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒄𝒄𝟏𝟏𝒙𝒙𝟏𝟏+ ⋯+ 𝒄𝒄𝒏𝒏𝒙𝒙𝒏𝒏
+𝒔𝒔. 𝒕𝒕.
+𝒂𝒂𝒊𝒊𝒊𝒊𝒙𝒙𝟏𝟏+ ⋯+ 𝒂𝒂𝒊𝒊𝒊𝒊𝒙𝒙𝒏𝒏= 𝒃𝒃𝒊𝒊, 𝒊𝒊= 𝟏𝟏, … , 𝒎𝒎
+𝒙𝒙𝟏𝟏≥𝟎𝟎, … , 𝒙𝒙𝒏𝒏≥𝟎𝟎
+
+
+--- SLIDE 14 ---
+Polyhedron
+𝑷𝑷=
+(𝒙𝒙𝟏𝟏, … , 𝒙𝒙𝒏𝒏)
+𝒂𝒂𝒊𝒊𝒊𝒊𝒙𝒙𝟏𝟏+ ⋯+ 𝒂𝒂𝒊𝒊𝒊𝒊𝒙𝒙𝒏𝒏≥𝒃𝒃𝒊𝒊, 𝒊𝒊∊𝑴𝑴𝟏𝟏
+𝒂𝒂𝒋𝒋𝒋𝒋𝒙𝒙𝟏𝟏+ ⋯+ 𝒂𝒂𝒋𝒋𝒋𝒋𝒙𝒙𝒏𝒏≤𝒃𝒃𝒋𝒋, 𝒋𝒋∊𝑴𝑴𝟐𝟐
+𝒂𝒂𝒌𝒌𝒌𝒌𝒙𝒙𝟏𝟏+ ⋯+ 𝒂𝒂𝒌𝒌𝒌𝒌𝒙𝒙𝒏𝒏= 𝒃𝒃𝒌𝒌, 𝒌𝒌∊𝑴𝑴𝟑𝟑
+𝒙𝒙𝒍𝒍≥𝟎𝟎, 𝒍𝒍∊𝑵𝑵𝟏𝟏, 𝒙𝒙𝒎𝒎≤𝟎𝟎, 𝒎𝒎∊𝑵𝑵𝟐𝟐
+
+
+--- SLIDE 15 ---
+• Scalar
+- Variable described by a single number
+• Vector
+- Column of numbers
+Linear Algebra & Matrices, MfD 2009
+MATH 1001
+
+
+--- SLIDE 16 ---
+MATH 1001
+• Rectangular display of vectors in rows and 
+columns
+- Defined as rows x columns (R x C)
+• Vector is just a n x 1 matrix
+Linear Algebra & Matrices, MfD 2009
+
+
+--- SLIDE 17 ---
+Transposition
+• Reflect over its main diagonal:
+– Write the rows of A as the columns of A
+
+
+--- SLIDE 18 ---
+Columns of Matrices
+Linear Algebra & Matrices, MfD 2009
+
+
+--- SLIDE 19 ---
+Rows of Matrices
+
+
+--- SLIDE 20 ---
+Matrix Calculations
+
+
+--- SLIDE 21 ---
+Matrix Multiplication
+• Multiplication method:
+Sum over product of respective rows and columns
+=
+A
+B
+
+
+--- SLIDE 22 ---
+Identity Matrix
+For any nxn matrix A, we have  A In = In A = A
+• Is there a matrix which plays a similar role as the 
+number 1 in number multiplication? 
+• Consider the nxn matrix:
+
+
+--- SLIDE 23 ---
+Matrix inverse
+•
+Definition. A matrix A is called nonsingular or invertible if there 
+exists a matrix B such that:
+•
+Notation. A common notation for the 
+inverse of a matrix A is A-1. So:
+•
+The inverse matrix is unique when it exists. 
+1
+1
+X
+2 
+3
+-1
+3
+=
+2 + 1
+3    3
+-1 + 1
+3    3
+=
+1
+0
+-1
+2
+1 
+3
+1 
+3
+-2+ 2
+3    3
+1 + 2
+3    3
+0
+1
+
+
+--- SLIDE 24 ---
+Matrix Multiplication
+
+
+--- SLIDE 25 ---
+Matrix Multiplication
+𝒙𝒙=
+𝑥𝑥1
+𝑥𝑥2
+⋮
+𝑥𝑥𝑛𝑛
+
+
+--- SLIDE 26 ---
+Matrix Multiplication
+𝒙𝒙=
+𝑥𝑥1
+𝑥𝑥2
+⋮
+𝑥𝑥𝑛𝑛
+
+
+--- SLIDE 27 ---
+Linear Independence
+• We say 𝒚𝒚is a linear combination of 𝑨𝑨𝟏𝟏, … , 𝑨𝑨𝒏𝒏if for 
+some scalars 𝑥𝑥1, … , 𝑥𝑥𝑛𝑛
+𝒚𝒚= ෍
+𝒊𝒊=𝟏𝟏
+𝒏𝒏
+𝑥𝑥𝑖𝑖𝑨𝑨𝒊𝒊
+• A collection of m-dimensional vectors 𝑨𝑨𝟏𝟏, … , 𝑨𝑨𝒏𝒏is  
+linearly independent if none of the vector is a linear 
+combination of the rest of vectors.
+𝑨𝑨𝟏𝟏
+𝑨𝑨2
+𝑨𝑨3
+𝑨𝑨𝟏𝟏
+𝑨𝑨2
+𝑨𝑨3
+
+
+--- SLIDE 28 ---
+Determinant 
+•
+The determinant is a function that associates a scalar det(A) to every 
+square matrix A.
+•
+Determinants can only be found for square matrices as it is related to 
+the volume of a parallelepiped (think about diagonal matrix).
+a    b
+c    d
+det(A) = 
+= ad - bc 
+[  ]
+•
+If elements in A are integers, is 
+det(A) an integer?
+•
+What happens when (a, b) and (c, d) 
+are linearly dependent?
+
+
+--- SLIDE 29 ---
+Solving simultaneous equations
+For one linear equation  ax=b where the unknown is x and 
+b are constants, we have three possibilities:
+If 
+0
+≠
+a
+ then 
+b
+a
+a
+b
+x
+1
+−
+≡
+=
+ thus there is single solution  
+If 
+0
+=
+a
+, 
+0
+=
+b
+ then the equation 
+b
+ax =
+ becomes 
+0
+0 =
+  
+and any value of x will do 
+ 
+If 
+0
+=
+a
+, 
+0
+≠
+b
+then 
+b
+ax =
+becomes 
+b
+=
+0
+ which is a  
+contradiction  
+
+
+--- SLIDE 30 ---
+Solving simultaneous equations
+• Eg. Two equations, two unknowns
+• In matrix form
+• What is 𝒙𝒙?
+1
+2
+5
+3
+2
+2
+1
+2
+1
+=
++
+=
++
+x
+x
+x
+x
+
+
+--- SLIDE 31 ---
+Solving simultaneous equations
+• If A is not invertible … 
+
+
+--- SLIDE 32 ---
+Summary
+• If A is an n x n matrix, then the following are 
+equivalent:
+- A is invertible
+- The simultaneous equations Ax=b has a unique 
+solution
+- 𝒂𝒂𝟏𝟏′, … , 𝒂𝒂𝒏𝒏′ are linearly independent
+- 𝑨𝑨𝟏𝟏, … , 𝑨𝑨𝒏𝒏are linearly independent
+- 𝒅𝒅𝒅𝒅𝒅𝒅(𝑨𝑨) ≠𝟎𝟎
+
+
+--- SLIDE 33 ---
+Back to Standard Form
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒄𝒄𝟏𝟏𝒙𝒙𝟏𝟏+ ⋯+ 𝒄𝒄𝒏𝒏𝒙𝒙𝒏𝒏
+𝒔𝒔. 𝒕𝒕.
+𝒂𝒂𝒊𝒊𝒊𝒊𝒙𝒙𝟏𝟏+ ⋯+ 𝒂𝒂𝒊𝒊𝒊𝒊𝒙𝒙𝒏𝒏= 𝒃𝒃𝒊𝒊, 𝒊𝒊= 𝟏𝟏, … , 𝒎𝒎
+𝒙𝒙𝟏𝟏≥𝟎𝟎, … , 𝒙𝒙𝒏𝒏≥𝟎𝟎
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒄𝒄′𝒙𝒙
+𝒔𝒔. 𝒕𝒕.
+𝑨𝑨𝑨𝑨= 𝒃𝒃
+𝒙𝒙≥𝟎𝟎
+
+
+--- SLIDE 34 ---
+Reduction to Standard Form - Inequalities
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒙𝒙𝟏𝟏+ 𝟐𝟐𝒙𝒙𝟐𝟐
+𝒔𝒔. 𝒕𝒕.
+𝒙𝒙𝟏𝟏+ 𝒙𝒙𝟐𝟐≤𝟏𝟏,
+𝒙𝒙𝟏𝟏≥𝟎𝟎, 𝒙𝒙𝟐𝟐≥𝟎𝟎
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒙𝒙𝟏𝟏+ 𝟐𝟐𝒙𝒙𝟐𝟐+ 𝟎𝟎𝒔𝒔𝟏𝟏
+𝒔𝒔. 𝒕𝒕.
+𝒙𝒙𝟏𝟏+ 𝒙𝒙𝟐𝟐+ 𝒔𝒔𝟏𝟏= 𝟏𝟏,
+𝒙𝒙𝟏𝟏≥𝟎𝟎, 𝒙𝒙𝟐𝟐≥𝟎𝟎, 𝒔𝒔𝟏𝟏≥𝟎𝟎
+
+
+--- SLIDE 35 ---
+Reduction to Standard Form - Inequalities
+• 𝒂𝒂𝒊𝒊𝒊𝒊𝒙𝒙𝟏𝟏+ ⋯+ 𝒂𝒂𝒊𝒊𝒊𝒊𝒙𝒙𝒏𝒏≥𝒃𝒃𝒊𝒊
+⟹𝒂𝒂𝒊𝒊𝒊𝒊𝒙𝒙𝟏𝟏+ ⋯+ 𝒂𝒂𝒊𝒊𝒊𝒊𝒙𝒙𝒏𝒏−𝒔𝒔𝒊𝒊= 𝒃𝒃𝒊𝒊, 𝒔𝒔𝒊𝒊≥𝟎𝟎
+• 𝒂𝒂𝒋𝒋𝒋𝒋𝒙𝒙𝟏𝟏+ ⋯+ 𝒂𝒂𝒋𝒋𝒋𝒋𝒙𝒙𝒏𝒏≤𝒃𝒃𝒋𝒋
+⟹𝒂𝒂𝒋𝒋𝟏𝟏𝒙𝒙𝟏𝟏+ ⋯+ 𝒂𝒂𝒋𝒋𝒏𝒏𝒙𝒙𝒏𝒏+ 𝒔𝒔𝒋𝒋= 𝒃𝒃𝒋𝒋, 𝒔𝒔𝒋𝒋≥𝟎𝟎
+
+
+--- SLIDE 36 ---
+Reduction to Standard Form - Variables
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒙𝒙𝟏𝟏+ 𝟐𝟐𝒙𝒙𝟐𝟐
+𝒔𝒔. 𝒕𝒕.
+𝒙𝒙𝟐𝟐≤𝟏𝟏,
+𝒙𝒙𝟐𝟐≥𝟎𝟎
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒙𝒙𝒙𝟏𝟏−𝒙𝒙′′𝟏𝟏+ 𝟐𝟐𝒙𝒙𝟐𝟐+ 𝟎𝟎𝒔𝒔𝟏𝟏
+𝒔𝒔. 𝒕𝒕.
+𝒙𝒙𝟐𝟐+ 𝒔𝒔𝟏𝟏= 𝟏𝟏,
+𝒙𝒙𝒙𝟏𝟏≥𝟎𝟎, 𝒙𝒙′′𝟏𝟏≥𝟎𝟎, 𝒙𝒙𝟐𝟐≥𝟎𝟎, 𝒔𝒔𝟏𝟏≥𝟎𝟎
+
+
+--- SLIDE 37 ---
+Reduction to Standard Form - Variables
+• Free variables: 
+Replace 𝒙𝒙𝒋𝒋by 𝒙𝒙′𝒋𝒋−𝒙𝒙′′𝒋𝒋, and add constraints: 𝒙𝒙′𝒋𝒋≥
+𝟎𝟎, 𝒙𝒙′′𝒋𝒋≥𝟎𝟎
+
+
+--- SLIDE 38 ---
+Reduction to Standard Form - Objective
+• 𝒎𝒎𝒎𝒎𝒎𝒎𝒄𝒄′𝒙𝒙
+⟹−𝒎𝒎𝒎𝒎𝒎𝒎−𝒄𝒄′𝒙𝒙
+
+
+--- SLIDE 39 ---
+Wyndor Glass Co.
+• Original formulation
+𝑚𝑚𝑚𝑚𝑚𝑚
+3 𝑥𝑥1 + 5𝑥𝑥2
+𝑥𝑥1 ≤4
+2𝑥𝑥2 ≤12
+3𝑥𝑥1 + 2𝑥𝑥2 ≤18
+𝑥𝑥1 ≥0, 𝑥𝑥2 ≥0
+•
+Matrix form
+•
+Standard form
+
+
+--- SLIDE 40 ---
+General Resource Allocation Problem
+𝒎𝒎𝒂𝒂𝒂𝒂
+𝒄𝒄′𝒙𝒙
+𝒔𝒔. 𝒕𝒕.
+𝑨𝑨𝑨𝑨≤𝒃𝒃
+𝒙𝒙≥𝟎𝟎
+−𝒎𝒎𝒊𝒊𝒊𝒊
+−𝒄𝒄′𝒙𝒙
+𝒔𝒔. 𝒕𝒕.
+𝑨𝑨𝑰𝑰
+𝒙𝒙
+𝒔𝒔= 𝒃𝒃
+𝒙𝒙, 𝒔𝒔≥𝟎𝟎
+
+
+--- SLIDE 41 ---
+More Applications
+
+
+--- SLIDE 42 ---
+Simple Regression
+(ai, bi)
+b = xa
+|bi – xai|
+
+
+--- SLIDE 43 ---
+• Minimize the sum of square of residual (least square):
+∑𝒊𝒊=𝟏𝟏
+𝒎𝒎(𝒃𝒃𝒊𝒊−𝒂𝒂𝒊𝒊𝒙𝒙)𝟐𝟐
+• LP?
+Data Fitting Problem: L2 Criterion
+
+
+--- SLIDE 44 ---
+• Minimize the sum of residual (least absolute 
+deviations):
+∑𝒊𝒊=𝟏𝟏
+𝒎𝒎|𝒃𝒃𝒊𝒊−𝒂𝒂𝒊𝒊𝒙𝒙|
+• LP?
+Data Fitting Problem: L1 Criterion
+
+
+--- SLIDE 45 ---
+• Consider:
+𝒎𝒎𝒎𝒎𝒎𝒎|𝒙𝒙|
+• LP formulation
+Data Fitting Problem: L1 Criterion
+
+
+--- SLIDE 46 ---
+• Least absolute deviations :
+𝒎𝒎𝒎𝒎𝒎𝒎෍
+𝒊𝒊=𝟏𝟏
+𝒎𝒎
+|𝒃𝒃𝒊𝒊−𝒂𝒂𝒊𝒊𝒙𝒙|
+• LP formulation
+min
+𝒛𝒛𝒊𝒊,𝒙𝒙∑𝒊𝒊=𝟏𝟏
+𝒎𝒎𝒛𝒛𝒊𝒊
+𝒃𝒃𝒊𝒊−𝒂𝒂𝒊𝒊𝒙𝒙≤𝒛𝒛𝒊𝒊, 𝒊𝒊= 𝟏𝟏, … , 𝒎𝒎
+−𝒃𝒃𝒊𝒊+ 𝒂𝒂𝒊𝒊𝒙𝒙≤𝒛𝒛𝒊𝒊, 𝒊𝒊= 𝟏𝟏, … , 𝒎𝒎
+Data Fitting Problem: L1 Criterion
+
+
+--- SLIDE 47 ---
+• Difficulty
+• Sensitivity to outliers
+• Solution uniqueness
+L1 vs. L2
+
+
+--- SLIDE 48 ---
+• Minimize the largest residual:
+max
+𝒊𝒊
+|𝒃𝒃𝒊𝒊−𝒂𝒂𝒊𝒊𝒙𝒙|
+• LP formulation
+min
+𝒛𝒛,𝒙𝒙𝒛𝒛
+𝒃𝒃𝒊𝒊−𝒂𝒂𝒊𝒊𝒙𝒙≤𝒛𝒛, 𝒊𝒊= 𝟏𝟏, … , 𝒎𝒎
+−𝒃𝒃𝒊𝒊+ 𝒂𝒂𝒊𝒊𝒙𝒙≤𝒛𝒛, 𝒊𝒊= 𝟏𝟏, … , 𝒎𝒎
+Data Fitting Problem: Chebyshev Criterion
+
+
+--- SLIDE 49 ---
+• Consider a problem:
+min
+𝒙𝒙𝒊𝒊෍
+𝒊𝒊=𝟏𝟏
+𝒏𝒏
+𝒄𝒄𝒊𝒊|𝒙𝒙𝒊𝒊|
+𝑨𝑨𝑨𝑨≥𝒃𝒃
+• Cost coefficients 𝒄𝒄𝒊𝒊are assumed to be nonnegative
+• LP formulation
+min
+𝒛𝒛𝒊𝒊∑𝒊𝒊=𝟏𝟏
+𝒏𝒏
+𝒄𝒄𝒊𝒊𝒛𝒛𝒊𝒊
+𝑨𝑨𝒙𝒙≥𝒃𝒃
+𝒙𝒙𝒊𝒊≤𝒛𝒛𝒊𝒊, 𝒊𝒊= 𝟏𝟏, … , 𝒏𝒏
+−𝒙𝒙𝒊𝒊≤𝒛𝒛𝒊𝒊, 𝒊𝒊= 𝟏𝟏, … , 𝒏𝒏
+Problems Involving Absolute Values
+
+
+--- SLIDE 50 ---
+• Consider a problem:
+min
+𝒙𝒙𝒊𝒊෍
+𝒊𝒊=𝟏𝟏
+𝒏𝒏
+𝒄𝒄𝒊𝒊𝒙𝒙𝒊𝒊
+෍
+𝒊𝒊=𝟏𝟏
+𝒏𝒏
+|𝒙𝒙𝒊𝒊| ≤𝒃𝒃
+• LP formulation
+Problems Involving Absolute Values
+
+
+--- SLIDE 51 ---
+Projection/Lifting Idea
+
+
+--- SLIDE 52 ---
+CT/MRI Scan
+
+
+--- SLIDE 53 ---
+CT/MRI Scan
+Source: http://engineering.dartmouth.edu/courses/engs167/12%20Image%20reconstruction.pdf
+
+
+--- SLIDE 54 ---
+CT/MRI Scan
+Source: http://engineering.dartmouth.edu/courses/engs167/12%20Image%20reconstruction.pdf
+
+
+--- SLIDE 55 ---
+• Consider a signal (e.g. sound, images):
+𝒙𝒙= 𝒙𝒙𝟏𝟏, … , 𝒙𝒙𝒏𝒏′,
+where n is very large (e.g. around 1,000,000).
+• The signal is not directly observable. Instead, one 
+observes a measurement
+𝒃𝒃= 𝑨𝑨𝑨𝑨∈𝑹𝑹𝒎𝒎,
+where m is small and A is an mxn matrix.
+• The problem is then to find 𝒙𝒙given 𝒃𝒃.
+Compressed Sensing
+
+
+--- SLIDE 56 ---
+• Consider an unknown signal:
+𝒙𝒙= 𝟎𝟎, 𝟏𝟏′.
+• The measurement matrix is:
+𝑨𝑨= 𝟏𝟏𝟐𝟐.
+• The observable output is then
+𝒃𝒃= 𝟐𝟐.
+• If one solves the underdetermined system 𝒃𝒃= 𝑨𝑨𝑨𝑨, 
+then any 𝒙𝒙satisfying the following is a solution
+𝒙𝒙𝟏𝟏+ 𝟐𝟐𝟐𝟐𝟐𝟐= 𝟐𝟐.
+• What if we know the solution is sparse (most 
+components are zero)? 
+Compressed Sensing: A Simple Example
+
+
+--- SLIDE 57 ---
+• Ideally, one want to solve
+min
+𝒙𝒙#{𝟏𝟏≤𝒊𝒊≤𝒏𝒏: 𝒙𝒙𝒊𝒊≠𝟎𝟎}
+𝑨𝑨𝑨𝑨= 𝒃𝒃
+• The L1 Approach?
+min
+𝒙𝒙෍
+𝒊𝒊=𝟏𝟏
+𝒏𝒏
+|𝒙𝒙𝒊𝒊|
+𝑨𝑨𝑨𝑨= 𝒃𝒃
+• The L2 Approach?
+min
+𝒙𝒙෍
+𝒊𝒊=𝟏𝟏
+𝒏𝒏
+𝒙𝒙𝒊𝒊
+𝟐𝟐
+𝑨𝑨𝑨𝑨= 𝒃𝒃
+Compressed Sensing
+
+
+--- SLIDE 58 ---
+Compressed Sensing
+
+
+--- SLIDE 59 ---
+Compressed Sensing
+Source: Terrence Tao, “Compressed sensing Or: the equation Ax=b, revisited”, UCLA, Mahler Lecture Series

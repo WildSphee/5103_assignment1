@@ -1,0 +1,658 @@
+
+--- SLIDE 1 ---
+DBA5103
+Operations Research and Analytics
+Zhenyu Hu
+Semester I, 2026/2027
+
+
+--- SLIDE 2 ---
+Software Implementation
+
+
+--- SLIDE 3 ---
+Wyndor Glass Co.
+𝑚𝑚𝑎𝑎𝑎𝑎3𝑥𝑥1 + 5𝑥𝑥2
+𝑥𝑥1 ≤4,
+2𝑥𝑥2 ≤12,
+3𝑥𝑥1+2𝑥𝑥2 ≤18,
+𝑥𝑥1 ≥0, 𝑥𝑥2 ≥0
+
+
+--- SLIDE 4 ---
+Model in Solver
+
+
+--- SLIDE 5 ---
+Model in Solver
+
+
+--- SLIDE 6 ---
+Model in Gurobi
+
+
+--- SLIDE 7 ---
+Solving the Model and Display Output
+• Solving the model
+• Display solution and optimal value
+
+
+--- SLIDE 8 ---
+Separating Model and Data: Model
+
+
+--- SLIDE 9 ---
+Separating Model and Data: Data
+
+
+--- SLIDE 10 ---
+Geometry of Linear Programming    
+
+
+--- SLIDE 11 ---
+• Objective: maximize x1 + x2
+X1
+X2
+0
+x1 + x2 = 0
+Geometry of LP in 2D 
+
+
+--- SLIDE 12 ---
+• Feasible Region: The set of all the allowed solutions; a 
+polyhedron described by the constraints 
+- Each equality constraint defines a line
+- Each inequality constraint defines a half-space
+• Extreme Points (Corner-Point Feasible Solution): Corner 
+points on the boundary of the feasible region. E.g., (0, 0), (1.5, 
+0), (0, 1.5), and (1, 1)
+• Infeasible problem: A problem with an empty feasible region
+X1
+X2
+0
+Geometry of LP in 2D 
+
+
+--- SLIDE 13 ---
+• Optimal Solution: The best feasible solution
+X1
+X2
+0
+Max x1 + x2
+Optimal Solution:
+(1, 1)
+x1 + x2 = 2 
+Geometry of LP in 2D 
+For any feasible LP with a finite optimal solution, there exists 
+an optimal solution that is an extreme point
+
+
+--- SLIDE 14 ---
+• Optimal solutions may NOT be unique
+X1
+X2
+0
+Max 2x1 + x2
+Geometry of LP in 2D 
+
+
+--- SLIDE 15 ---
+• Optimal solution may NOT be finite
+X1
+X2
+0
+Max x1 + x2
+X1 - 2X2 ≤ 2
+-X1 + 2X2 ≤ 2
+(2, 0)
+(0, 1)
+Geometry of LP in 2D 
+
+
+--- SLIDE 16 ---
+Summary
+• Solutions of LP
+- Unique optimal solution 
+- Multiple optimal solutions 
+- The optimal objective is not bounded
+- Infeasible
+• Sufficient to focus on extreme point
+- How to describe extreme point in high 
+dimension?
+
+
+--- SLIDE 17 ---
+• Binding (or active) constraints: The constraints that 
+are satisfied at equality for a given solution
+- All equality constraints (if satisfied) are binding
+• Non-binding (or inactive) constraints are satisfied at 
+strict inequality for a given solution
+• The inequality level is known as the slack
+- Binding constraints have zero slack by definition
+Active/Binding Constraints
+
+
+--- SLIDE 18 ---
+Constraints
+Binding?
+Slack
+X1 + 2X2 ≤ 3 
+Yes
+0
+2X1 + X2 ≤ 3 
+Yes
+0
+X1 ≥ 0 
+No
+1
+X2 ≥ 0 
+No
+1
+(1, 1)
+Back to Extreme Point
+(0, 3)
+(1.5, 0)
+(0, 0)
+How many binding constraints will an extreme point have?
+What if we add constraints 𝑥𝑥2 ≤1.5 and 2𝑥𝑥1 ≥0? Think about (0,1).
+(0, 1.5)
+What about (0,3)?
+
+
+--- SLIDE 19 ---
+Extreme Point: An Algebraic Perspective
+Consider a feasible region in n-dimensional space:
+𝑎𝑎𝑖𝑖𝑖𝑥𝑥1 + ⋯+ 𝑎𝑎𝑖𝑖𝑖𝑖𝑥𝑥𝑛𝑛≥𝑏𝑏𝑖𝑖, 𝑖𝑖∊𝑀𝑀1
+𝑎𝑎𝑗𝑗1𝑥𝑥1 + ⋯+ 𝑎𝑎𝑗𝑗𝑛𝑛𝑥𝑥𝑛𝑛≤𝑏𝑏𝑗𝑗, 𝑗𝑗∊𝑀𝑀2
+𝑎𝑎𝑘𝑘1𝑥𝑥1 + ⋯+ 𝑎𝑎𝑘𝑘𝑛𝑛𝑥𝑥𝑛𝑛= 𝑏𝑏𝑘𝑘, 𝑘𝑘∊𝑀𝑀3
+• A vector 𝒙𝒙∗= (𝑥𝑥1
+∗, … , 𝑥𝑥𝑛𝑛∗) is called basic solution if
+- All equality constraints are active;
+- Out of all constraints that are active at 𝒙𝒙∗, there 
+are n of them that are linearly independent.
+• 𝒙𝒙∗is called a basic feasible solution (BFS) if it is 
+a basic solution and it is feasible.
+Polyhedron:
+BFS = Extreme Point
+
+
+--- SLIDE 20 ---
+3-D Example
+Consider a feasible region in 3-dimensional space:
+𝑥𝑥1 + 𝑥𝑥2 + 𝑥𝑥3 = 1,
+𝑥𝑥1≥0, 𝑥𝑥2 ≥0, 𝑥𝑥3 ≥0
+• Which points are basic solutions, basic feasible 
+solutions?
+
+
+--- SLIDE 21 ---
+3-D Example
+Consider a feasible region in 3-dimensional space   
+𝑥𝑥1≤1, 𝑥𝑥2 ≤1, 𝑥𝑥3 ≤1,
+𝑥𝑥1≥0, 𝑥𝑥2 ≥0, 𝑥𝑥3 ≥0
+•
+What are the extreme points/BFS?   
+
+
+--- SLIDE 22 ---
+Insights: Portfolio Management Problem
+𝒎𝒎𝒂𝒂𝒂𝒂
+𝒓𝒓𝟏𝟏𝒙𝒙𝟏𝟏+ ⋯+ 𝒓𝒓𝟏𝟏𝟏𝟏𝟏𝟏𝒙𝒙𝟏𝟏𝟏𝟏𝟏𝟏
+𝒔𝒔. 𝒕𝒕.
+𝒙𝒙𝟏𝟏+ ⋯+ 𝒙𝒙𝟏𝟏𝟏𝟏𝟏𝟏≤𝒃𝒃,
+𝒙𝒙𝟏𝟏≥𝟎𝟎, … , 𝒙𝒙𝟏𝟏𝟏𝟏𝟏𝟏≥𝟎𝟎
+• There are 100 stocks: stock 𝒊𝒊has return 𝒓𝒓𝒊𝒊per 
+dollar invested.
+• Budget constraint: 𝒃𝒃dollars available.
+• How many stocks to invest and how to budget?
+
+
+--- SLIDE 23 ---
+Insights: Portfolio Management Problem
+𝒎𝒎𝒂𝒂𝒂𝒂
+𝒓𝒓𝟏𝟏𝒙𝒙𝟏𝟏+ ⋯+ 𝒓𝒓𝟏𝟏𝟏𝟏𝟏𝟏𝒙𝒙𝟏𝟏𝟏𝟏𝟏𝟏
+𝒔𝒔. 𝒕𝒕.
+𝒙𝒙𝟏𝟏+ ⋯+ 𝒙𝒙𝟏𝟏𝟏𝟏𝟏𝟏≤𝒃𝒃,
+𝒙𝒙𝟏𝟏+ ⋯+ 𝒙𝒙𝟏𝟏𝟏𝟏≤𝒃𝒃/𝟐𝟐,
+𝒙𝒙𝟏𝟏≥𝟎𝟎, … , 𝒙𝒙𝟏𝟏𝟏𝟏𝟏𝟏≥𝟎𝟎
+• Suppose the stocks 1-10 are the top 10% riskiest 
+stocks and at most half of the budget can be 
+allocated to these stocks.
+• How many stocks to invest and how to budget?
+
+
+--- SLIDE 24 ---
+Extreme Point in Standard Form
+• For general form, it is not easy to check whether 
+a basic solution is feasible or not; so consider
+𝑨𝑨𝑨𝑨= 𝒃𝒃
+𝒙𝒙≥𝟎𝟎
+• 𝑨𝑨is an 𝒎𝒎× 𝒏𝒏matrix. Assume 𝒎𝒎≤𝒏𝒏and the 𝐦𝐦
+rows of 𝑨𝑨are linearly independent.
+• A vector 𝒙𝒙is a basic solution if 𝑨𝑨𝒙𝒙= 𝒃𝒃and there 
+exist indices 𝐵𝐵1 , … , 𝐵𝐵𝑚𝑚such that
+- The columns 𝑨𝑨𝐵𝐵(1), … , 𝑨𝑨𝐵𝐵(𝑚𝑚) are linearly 
+independent;
+- If 𝑖𝑖≠𝐵𝐵1 , … , 𝐵𝐵𝑚𝑚, then 𝒙𝒙𝒊𝒊= 𝟎𝟎.
+
+
+--- SLIDE 25 ---
+Some Terminology
+• The columns 𝑨𝑨𝐵𝐵(1), … , 𝑨𝑨𝐵𝐵(𝑚𝑚) are called basic 
+columns. 
+• The 𝒎𝒎× 𝒎𝒎matrix 
+𝑩𝑩= [𝑨𝑨𝐵𝐵(1), … , 𝑨𝑨𝐵𝐵𝑚𝑚],
+is called the basis matrix. 
+• The corresponding components of the vector 𝒙𝒙: 
+𝒙𝒙𝐵𝐵= (𝑥𝑥𝐵𝐵(1), … , 𝑥𝑥𝐵𝐵𝑚𝑚) are called basic variables; 
+the remaining components are called nonbasic.
+- 𝒙𝒙𝐵𝐵= 𝑩𝑩−𝟏𝟏𝒃𝒃
+- If 𝒙𝒙𝒊𝒊is a nonbasic variable, then 𝒙𝒙𝒊𝒊= 𝟎𝟎.
+
+
+--- SLIDE 26 ---
+An algorithm to find extreme point
+1. Convert an LP to standard form
+𝑨𝑨𝑨𝑨= 𝒃𝒃
+𝒙𝒙≥𝟎𝟎
+2. Choose m linearly independent columns 
+𝑨𝑨𝐵𝐵(1), … , 𝑨𝑨𝐵𝐵(𝑚𝑚) from the matrix 𝑨𝑨.
+3. Let 𝒙𝒙𝒊𝒊= 𝟎𝟎if 𝑖𝑖≠𝐵𝐵1 , … , 𝐵𝐵𝑚𝑚.
+4. Solve the system of m equations 𝑨𝑨𝑨𝑨= 𝒃𝒃for the 
+unknowns 𝑥𝑥𝐵𝐵(1), … , 𝑥𝑥𝐵𝐵(𝑚𝑚).
+5. If 𝒙𝒙𝒊𝒊are all non-negative (𝒙𝒙≥𝟎𝟎), then we have 
+found an extreme point (BFS); otherwise go 
+back to step 2.
+
+
+--- SLIDE 27 ---
+Example
+Consider following standard form:
+𝑥𝑥1 + 𝑥𝑥2 + 𝑥𝑥3 = 1,
+𝑥𝑥1≥0, 𝑥𝑥2 ≥0, 𝑥𝑥3 ≥0
+• 𝑨𝑨is a 𝟏𝟏× 𝟑𝟑matrix (m=1):
+- Choose column 1;
+- Let 𝒙𝒙𝟐𝟐= 𝟎𝟎, 𝒙𝒙𝟑𝟑= 𝟎𝟎;
+- Solve 𝒙𝒙𝟏𝟏= 𝟏𝟏;
+- Check non-negativity.
+
+
+--- SLIDE 28 ---
+Example
+1 1 2 1 0 0 0
+0 1 6 0 1 0 0
+1 0 0 0 0 1 0
+0 1 0 0 0 0 1
+𝒙𝒙=
+8
+12
+4
+6
+, 𝒙𝒙≥𝟎𝟎.
+• How to find a BFS?
+• Can the constraints be expressed in 
+inequalities?
+
+
+--- SLIDE 29 ---
+Summary
+• Each basic solution has m basic variables
+- Rest of variables are nonbasic variables and are  
+set to zero
+• Values of basic variables given by:
+- Solution to a system of m equations
+• A basic feasible solution (BFS)
+- Basic solution where all m basic variables are 
+nonnegative
+
+
+--- SLIDE 30 ---
+Simplex Method
+
+
+--- SLIDE 31 ---
+Naïve Approach
+• Consider an LP in standard form
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒄𝒄′𝒙𝒙
+𝒔𝒔. 𝒕𝒕.
+𝑨𝑨𝑨𝑨= 𝒃𝒃
+𝒙𝒙≥𝟎𝟎
+1. Find all extreme points.
+2. Compute 𝒄𝒄′𝒙𝒙at these extreme points.
+3. Pick the smallest one.
+• Reduces from infinite to finite; how many 
+possible basic solutions are there?
+- n = 20, m = 10: about 0.2 million;
+- n = 30, m = 15: about 155 million.
+
+
+--- SLIDE 32 ---
+A General Idea 
+1. Find a feasible solution;
+2. Determine whether the current solution is 
+optimal or not: optimality condition.
+-
+If yes, terminate; else proceed to step 3.
+3. Search the neighborhood of the current 
+solution to find another feasible solution with 
+lower cost, and go back to step 2.
+
+
+--- SLIDE 33 ---
+Optimality Condition
+• Why is (0, 0) not optimal?
+• Why is (1, 1) optimal?
+(1, 1)
+(1.5, 0)
+(0, 0)
+(0, 1.5)
+Max x1 + x2
+
+
+--- SLIDE 34 ---
+A General Optimization Problem
+• A general problem
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒇𝒇(𝒙𝒙)
+𝒔𝒔. 𝒕𝒕.
+𝒙𝒙∈𝓕𝓕
+• For LP
+-
+𝒇𝒇𝒙𝒙= 𝒄𝒄′𝒙𝒙
+-
+𝓕𝓕= 𝒙𝒙𝑨𝑨𝑨𝑨= 𝒃𝒃, 𝒙𝒙≥𝟎𝟎}
+
+
+--- SLIDE 35 ---
+Local Optimality vs Global Optimality
+• For a feasible solution 𝒙𝒙∈𝓕𝓕, if no other feasible 
+solution in the neighborhood of 𝒙𝒙leads to lower 
+cost, 𝒙𝒙is called a local optimal solution.
+• For a feasible solution 𝒙𝒙∈𝓕𝓕, if no other feasible 
+solution in 𝓕𝓕leads to lower cost, 𝒙𝒙is called a 
+global optimal solution.
+
+
+--- SLIDE 36 ---
+Convex Set and Convex Function
+• A set 𝓕𝓕is called convex set if for every λ ∈[𝟎𝟎, 𝟏𝟏]
+and 𝒙𝒙, 𝒚𝒚∈𝓕𝓕, we have 
+λ𝒙𝒙+ 𝟏𝟏−λ 𝒚𝒚∈𝓕𝓕
+- Polyhedron 𝒙𝒙𝑨𝑨𝑨𝑨= 𝒃𝒃, 𝒙𝒙≥𝟎𝟎} is a convex set.
+
+
+--- SLIDE 37 ---
+Convex Set and Convex Function
+• A function 𝒇𝒇𝒙𝒙is called convex on a convex 
+set 𝓕𝓕if for every λ ∈[𝟎𝟎, 𝟏𝟏] and 𝒙𝒙, 𝒚𝒚∈𝓕𝓕, we have
+𝒇𝒇λ𝒙𝒙+ 𝟏𝟏−λ 𝒚𝒚≤λ𝒇𝒇𝒙𝒙+ 𝟏𝟏−λ 𝒇𝒇(𝒚𝒚)
+- A linear function 𝒇𝒇𝒙𝒙= 𝒄𝒄′𝒙𝒙is a convex function.
+
+
+--- SLIDE 38 ---
+A General Principle
+• If 𝓕𝓕is a convex set and 𝒇𝒇𝒙𝒙is a convex 
+function, then 
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒇𝒇(𝒙𝒙)
+𝒔𝒔. 𝒕𝒕.
+𝒙𝒙∈𝓕𝓕
+-
+is called a convex programming problem;
+-
+a local optimal solution is a global optimal 
+solution.
+• LP is a special case of convex programming.
+- It is sufficient to check feasible solution nearby.
+- It is sufficient to check BFS nearby.
+
+
+--- SLIDE 39 ---
+BFS nearby: Adjacent BFS
+• Two distinct BFSs in n-dimensional space are 
+said to be adjacent if they share n-1 linearly 
+independent active constraints. 
+-
+For standard form, this implies that all but one of 
+their nonbasic variables are the same.
+
+
+--- SLIDE 40 ---
+Example
+𝑥𝑥1 + 2𝑥𝑥2 + 𝑥𝑥3
+= 3,
+2𝑥𝑥1 + 𝑥𝑥2
++ 𝑥𝑥4 = 3,
+𝑥𝑥1 ≥0, 𝑥𝑥2 ≥0, 𝑥𝑥3 ≥0, 𝑥𝑥4 ≥0
+• Which one is adjacent BFS
+-
+0, 0, 3, 3 , (0, 1.5, 0, 1.5)
+-
+0, 0, 3, 3 , (1, 1, 0, 0)
+-
+1,1, 0, 0 , (0, 1.5, 0, 1.5)
+-
+1,1, 0, 0 , (1.5, 0, 1.5, 0)
+
+
+--- SLIDE 41 ---
+Example
+1 1 2 1 0 0 0
+0 1 6 0 1 0 0
+1 0 0 0 0 1 0
+0 1 0 0 0 0 1
+𝒙𝒙=
+8
+12
+4
+6
+, 𝒙𝒙≥𝟎𝟎.
+• Which one is adjacent BFS
+-
+0, 0, 0, 8, 12, 4, 6 , 4, 0, 0, 4, 12, 0, 6
+-
+0, 0, 0, 8, 12, 4, 6 , 0, 6, 0, 2, 6, 4, 0
+-
+0, 6, 0, 2, 6, 4, 0 , 4, 0, 0, 4, 12, 0, 6
+
+
+--- SLIDE 42 ---
+Example: Iteration 0
+𝑥𝑥1 + 2𝑥𝑥2 + 𝑥𝑥3
+= 3,
+2𝑥𝑥1 + 𝑥𝑥2
++ 𝑥𝑥4 = 3,
+𝑥𝑥1 ≥0, 𝑥𝑥2 ≥0, 𝑥𝑥3 ≥0, 𝑥𝑥4 ≥0
+• Adjacent BFS
+- (0, 0, 3, 3) →(0, ? , ? , ? )
+• How to move?
+- Stay on edge: 𝑑𝑑= (0, 1, 𝑑𝑑3, 𝑑𝑑4)
+- Stay feasible: 1 2 1 0
+2 1 0 1
+(
+0
+0
+3
+3
++ 𝜃𝜃
+0
+1
+𝑑𝑑3
+𝑑𝑑4
+) = 3
+3
+,𝜃𝜃≥0
+- ⇒𝑑𝑑= (0, 1, −2, −1)
+𝑑𝑑
+
+
+--- SLIDE 43 ---
+Example: Iteration 0
+𝑥𝑥1 + 2𝑥𝑥2 + 𝑥𝑥3
+= 3,
+2𝑥𝑥1 + 𝑥𝑥2
++ 𝑥𝑥4 = 3,
+𝑥𝑥1 ≥0, 𝑥𝑥2 ≥0, 𝑥𝑥3 ≥0, 𝑥𝑥4 ≥0
+• Adjacent BFS
+- (0, 0, 3, 3) →(0, ? , ? , ? )
+• How far to move?
+- Stay feasible: 
+0
+0
+3
+3
++ 𝜃𝜃
+0
+1
+−2
+−1
+≥
+0
+0
+0
+0
+- ⇒ 𝜃𝜃≤1.5
+-
+0, 0, 3, 3 + 1.5 0, 1, −2, −1 = 0, 1.5, 0, 1.5
+𝜃𝜃𝑑𝑑
+
+
+--- SLIDE 44 ---
+Example: Iteration 0
+−𝑚𝑚𝑚𝑚𝑚𝑚−𝑥𝑥1 −𝑥𝑥2
+𝑥𝑥1 + 2𝑥𝑥2 + 𝑥𝑥3
+= 3,
+2𝑥𝑥1 + 𝑥𝑥2
++ 𝑥𝑥4 = 3,
+𝑥𝑥1 ≥0, 𝑥𝑥2 ≥0, 𝑥𝑥3 ≥0, 𝑥𝑥4 ≥0
+• Change in cost along direction 𝑑𝑑= (0, 1, −2, −1)
+- (−1, −1, 0, 0)
+0
+0
+3
+3
+- (−1, −1, 0, 0)
+0
+0
+3
+3
++ 𝜃𝜃(−1, −1, 0, 0)
+0
+1
+−2
+−1
+𝑑𝑑
+
+
+--- SLIDE 45 ---
+Reduced Cost
+•
+Now we consider the objective: 𝒄𝒄′𝒙𝒙
+-
+𝒄𝒄′𝒙𝒙;
+-
+𝒄𝒄′(𝒙𝒙+ 𝜃𝜃𝒅𝒅);
+-
+𝒅𝒅is the direction of changing the nonbasic
+variable with index 𝒋𝒋.
+• Reduced cost in direction 𝒋𝒋is defined as
+ഥ𝑐𝑐𝑗𝑗= 𝒄𝒄′ 𝒙𝒙+ 𝜃𝜃𝒅𝒅−𝒄𝒄′𝒙𝒙
+𝜃𝜃
+= 𝒄𝒄′𝒅𝒅
+- If ഥ𝑐𝑐𝑗𝑗< 0
+- else
+
+
+--- SLIDE 46 ---
+Example: Iteration 1
+𝑥𝑥1 + 2𝑥𝑥2 + 𝑥𝑥3
+= 3,
+2𝑥𝑥1 + 𝑥𝑥2
++ 𝑥𝑥4 = 3,
+𝑥𝑥1 ≥0, 𝑥𝑥2 ≥0, 𝑥𝑥3 ≥0, 𝑥𝑥4 ≥0
+• Adjacent BFS
+- (0, 1.5, 0, 1.5) →? , ? , 0, ?
+• Moving direction
+- 𝑑𝑑= (1, 𝑑𝑑2, 0, 𝑑𝑑4)
+-
+1 2 1 0
+2 1 0 1
+1
+𝑑𝑑2
+0
+𝑑𝑑4
+= 0
+0 ⇒
+1
+𝑑𝑑2
+0
+𝑑𝑑4
+=
+1
+−0.5
+0
+−1.5
+-
+0, 1.5, 0, 1.5 + 𝜃𝜃(1, −0.5, 0, −1.5) ≥𝟎𝟎, ⇒ 𝜃𝜃≤1
+-
+0, 1.5, 0, 1.5 + 1 1, −0.5, 0, −1.5 = (1,1,0,0)
+
+
+--- SLIDE 47 ---
+Example: Iteration 1
+−𝑚𝑚𝑚𝑚𝑚𝑚−𝑥𝑥1 −𝑥𝑥2
+𝑥𝑥1 + 2𝑥𝑥2 + 𝑥𝑥3
+= 3,
+2𝑥𝑥1 + 𝑥𝑥2
++ 𝑥𝑥4 = 3,
+𝑥𝑥1 ≥0, 𝑥𝑥2 ≥0, 𝑥𝑥3 ≥0, 𝑥𝑥4 ≥0
+• Reduced cost in direction: 𝑑𝑑= (1, −0.5, 0, −1.5)
+- ഥ𝑐𝑐1 = (−1, −1, 0, 0)
+1
+−0.5
+0
+−1.5
+= −0.5
+𝑑𝑑
+
+
+--- SLIDE 48 ---
+Example: Iteration 2
+−𝑚𝑚𝑚𝑚𝑚𝑚−𝑥𝑥1 −𝑥𝑥2
+𝑥𝑥1 + 2𝑥𝑥2 + 𝑥𝑥3
+= 3,
+2𝑥𝑥1 + 𝑥𝑥2
++ 𝑥𝑥4 = 3,
+𝑥𝑥1 ≥0, 𝑥𝑥2 ≥0, 𝑥𝑥3 ≥0, 𝑥𝑥4 ≥0
+• BFS: 1, 1, 0, 0
+-
+1, 1, 0, 0 + 𝜃𝜃(𝑑𝑑1, 𝑑𝑑2, 1, 0)
+-
+1, 1, 0, 0 + 𝜃𝜃(𝑑𝑑1, 𝑑𝑑2, 0, 1)
+• Reduced cost
+-
+ഥ𝑐𝑐3 = 𝒄𝒄′𝒅𝒅= 1
+3
+-
+ഥ𝑐𝑐4 = 𝒄𝒄′𝒅𝒅= 1
+3
+
+
+--- SLIDE 49 ---
+Optimality Condition and Simplex Method
+1. Find a BFS 𝒙𝒙;
+2. Determine whether the current solution is 
+optimal or not: is the reduced cost ഥ𝑐𝑐𝑗𝑗for all the 
+nonbasic variable 𝑥𝑥𝑗𝑗nonnegative?
+-
+If yes, terminate; else proceed to step 3.
+3. Pick a nonbasic variable 𝑥𝑥𝑗𝑗for which the 
+reduced cost is negative and move along this 
+direction, i.e., 𝒙𝒙+ 𝜃𝜃∗𝒅𝒅
+-
+𝑑𝑑𝑗𝑗= 1;
+-
+𝑑𝑑𝑖𝑖= 0, for 𝑖𝑖≠𝑗𝑗, 𝑖𝑖≠𝐵𝐵1 , … , 𝐵𝐵𝑚𝑚;
+-
+𝜃𝜃∗= 𝑚𝑚𝑚𝑚𝑚𝑚𝜃𝜃𝒙𝒙+ 𝜃𝜃𝒅𝒅≥𝟎𝟎}

@@ -1,0 +1,288 @@
+DBA5103: Operations Research and Analytics
+Semester I, 2026/2027, NUS
+Assignment 3: Due on Nov.1, 2026
+1. (5’) Process Flexibility: Consider the case of the Ford Motor Company discussed in class. Suppose
+the company owns 6 production plants and is selling 6 models. The capacity at each plant is 100
+per week, and the demands for each model are assumed to be independent and following N(100, 302)
+truncated above zero. Recall that a dedicated design results in an average sales of around 525 while a
+full flexible design results in an average sales of around 570. Evaluate the performance of the following
+two chain designs.
+(a) Open Chain Design
+(b) Long Chain Design
+2. (10’) Multi-Location Newsvendor: Consider a fashion retailer in Singapore that manages three
+retail stores at Jurong West, Orchard and Harbour Front respectively. The retailer faces the prob-
+lem of how to manage the inventories of its best-selling product at these three locations for the
+new selling season.
+The product of concern has a retail price of S$100 at all three locations and
+costs S$50 per unit to procure from the manufacturer.
+The demands for the product at location
+i, i ∈{Jurong West, Orchard, Harbour Front} are assumed to be normal truncated above zero, i.e.,
+max{N(µi, σ2
+i ), 0} and the corresponding parameters, estimated from historical data, are summarized
+in the first two rows in the table below. The demands across different locations are assumed to be
+Table 3.1: Estimation of Demand Parameters and Inventory Position
+Jurong West
+Orchard
+Harbour Front
+µi
+300
+500
+500
+σi
+20
+20
+40
+Inventory
+300
+500
+500
+independent. The management team decides to procure in total 1300 products from the manufacturer
+3-1
+
+Assignment 3: Due on Nov.1, 2026
+3-2
+and put 300, 500 and 500 units at Jurong West, Orchard and Harbour Front respectively (see last
+row in Table 3.1). That is, the inventory at a particular location is matched with the mean demand
+(before truncation). No inventory can be replenished from the manufacturer during the selling season
+and unsold products are worthless after the selling season.
+(a) Compute the total expected profit aggregated over the three locations (the model of process
+flexibility example discussed in class can be used to compute this with minor modification).
+(b) What is the total expected profit if there is no demand uncertainty at all (i.e., σi = 0)?
+(c) To deal with the demand uncertainty, the management team is considering employing a logistic
+service company to help transship its products from one store to another. For example, after
+the selling season begins, the demand is realized to be 250, 550 and 450 units at Jurong West,
+Orchard and Harbour Front respectively. In this case, Orchard is running out of inventory but
+both Jurong West and Harbour Front have some leftover. The logistic company can then transship
+the leftover at Jurong West or Harbour Front to satisfy the remaining demand at Orchard. The
+logistic company charges a fixed transaction cost of S$200 (which is incurred even if nothing is
+shipped) and a unit transshipment cost depending on the origin and destination summarized in
+the table below. For example, if 50 units of product were to be shipped from Harbour Front to
+Orchard, then the total cost to the retailer is S$200 + 7 × 50. Alternatively, if 20 and 30 units
+of product were shipped from Harbour Front and Jurong West to Orchard respectively, then the
+total cost to the retailer is S$200+7×20+22×30. Should the retailer adopt the service provided
+Table 3.2: Transshipment Cost (S$/unit)
+Jurong West
+Orchard
+Harbour Front
+Jurong West
+0
+22
+19
+Orchard
+22
+0
+7
+Harbour Front
+19
+7
+0
+by the logistics company? (Note that your solution may be unstable if the sample size is too
+small. You can check the robustness of your answer by looking at different sample sizes and see
+whether the solution stabilizes or not.)
+(d) Suppose the retailer adopts the transshipment service in part (c) (so the fixed transaction cost
+S$200 becomes sunk cost).
+The retailer now would like to determine the optimal amount of
+inventory to procure from the manufacturer and the amount of inventory to place at each location.
+Let (s1, s2, s3) denote the inventory position at the three locations (so the total procurement
+quantity is simply s1 + s2 + s3). Formulate the problem of determining the optimal (s1, s2, s3)
+as a two-stage stochastic optimization problem and provide the corresponding sample average
+approximation formulation with K demand samples. (Solving your formulation using Gurobi is
+encouraged but not required.)
+3. (10’) Consider a transportation problem with two supply nodes and two demand nodes. The supply
+nodes have a and 100 −a supplies respectively with 0 ≤a ≤100. The demand nodes require 70 and
+30 respectively. The figure below illustrates the graph of the transportation problem. Let cij be the
+unit transportation cost from supply i to demand j, 1 ≤i, j ≤2.
+(a) Write down a linear programming formulation of the above problem and present your A matrix.
+(b) Consider a spanning tree of the graph generated by deleting the arc (1, 1) (or forcing x11 = 0). Find
+the flow solution that satisfies all the flow-balancing constraints (i.e., the solution to Ax = b).
+(c) Provide the range of values on the supply a such that the flow solution you found in (b) is a feasible
+solution to the transportation problem.
+
+Assignment 3: Due on Nov.1, 2026
+3-3
+1
+2
+2
+1
+a
+70
+30
+Demand
+Supply
+100- a
+4. (5’) Let x1, x2, . . . , xn be n binary variables and let z be another binary variable.
+Formulate the
+following logical statements as linear constraints.
+(a) z takes the value of 1 if at least one of the xi’s takes the value of 1.
+(b) If all the xi’s take the value of zero, then z takes a value of 0.
+(c) z takes the value of 1 if all the xi’s take the value of 1.
+(d) If any xi takes the value of zero, then z takes a value of 0.
+(e) If x1 + x2 + · · · + xn ≥5, then z takes a value of 1.
+5. (10’) Economic Lot-Sizing Problem: An airplane manufacturer specializes in producing small
+airplanes.
+It has just received an order from a major corporation for 10 customized executive jet
+airplanes. The order calls for three of the airplanes to be delivered in the first season, two more to be
+delivered during the second season, three more during the season 3, and the last two during the season
+4. Setting up the production facilities in any season for production requires a setup cost of $2 million.
+Once the production facilities are set up, the manufacturer can produce any number of airplanes in that
+season. For example, the manufacturer can produce all 10 airplanes in the first season. However, only
+3 airplanes will be delivered to the corporation in the season 1 and the rest 7 airplanes need to be held
+in inventory and maintained until their scheduled delivery times. The cost of holding and maintaining
+is $200, 000 per airplane per season. The demand and cost information is summarized in the following
+table according to seasons. The production cost for each airplane is ignored. To illustrate, one feasible
+Table 3.3: Demand and cost information (in million)
+Season
+1
+2
+3
+4
+Demand (d)
+3
+2
+3
+2
+Setup Cost (K)
+2
+2
+2
+2
+Holding Cost (h)
+0.2
+0.2
+0.2
+0.2
+production schedule is given below. The total cost for this production schedule is computed as follows:
+Table 3.4: One feasible production schedule
+Season
+1
+2
+3
+4
+Production
+3
+6
+0
+1
+• In season 1, three airplanes are produced according to Table 3.4, which incurs $2 million setup
+cost. All airplanes produced are delivered and hence no holding cost incurred for this season.
+
+Assignment 3: Due on Nov.1, 2026
+3-4
+• In season 2, six airplanes are produced according to Table 3.4, which again incurs $2 million setup
+cost. Only two airplanes are delivered and the rest four airplanes sitting in the inventory incurs
+a holding cost of 4 × 0.2 = 0.8 million dollars.
+• In season 3, nothing is produced and hence there is no setup cost. Three airplanes are delivered
+in this season and only one airplane left in inventory resulting in a holding cost of 1 × 0.2 = 0.2
+million dollars.
+• In season 4, one airplane is produced according to Table 3.4, which incurs $2 million setup cost.
+Combined with the airplane left in inventory, the two airplanes are all delivered and hence no
+holding cost incurred for this season.
+The total cost for this production schedule is then 2 + (2 + 0.8) + 0.2 + 2 = 7 million dollars. The
+problem is then to determine how many airplanes to produce (if any) at the beginning of each season
+in order to minimize the total cost.
+(a) Formulate the problem as an integer programming problem. (Hint: Use xt to denote the inventory
+of airplanes at the end of season t, yt to denote the number of airplanes produced in season t and
+zt to denote the binary decision that whether the production facilities are set up or not in season
+t.)
+(b) Solve the optimization problem you developed in (a) using Gurobi.
+6. (10’) TSP with Time Window: Consider the problem faced by an online food delivery company
+(e.g., Deliveroo). The following map illustrates the location for picking up the food (location 1) and
+the locations of each orders (locations 2-6) around the area of Vivo City in Singapore.
+The data
+for coordinates of each location is presented in Table 3.5.
+The last column in Table 3.5 provides
+information on the maximum number of minutes a customer at a particular location is willing to
+wait before filing a complaint. With the data on latitude and longitude, one can use Google map to
+compute the pairwise walking time (in minute) summarized in the following table. Suppose now the
+delivery man is already at location 1 to pick up the food. The delivery man needs to deliver the food
+to customers at all the other locations and then return back to location 1. Assuming the time for
+consumers to pick up their delivery is zero, the objective of the delivery problem is to minimize the
+total traveling time (or waiting time of the consumers).
+
+Assignment 3: Due on Nov.1, 2026
+3-5
+Table 3.5: Data on locations
+Latitude
+Longitude
+Maximum Waiting Time (in minute)
+1
+1.264306
+103.822222
+-
+2
+1.265270
+103.821762
+5
+3
+1.264181
+103.820403
+10
+4
+1.265067
+103.818683
+15
+5
+1.265655
+103.818049
+13
+6
+1.264998
+103.817868
+14
+Table 3.6: Pairwise Walking Time
+1
+2
+3
+4
+5
+6
+1
+-
+3
+3
+10
+9
+10
+2
+3
+-
+3
+7
+6
+7
+3
+3
+3
+-
+7
+6
+7
+4
+10
+7
+7
+-
+1
+2
+5
+9
+6
+6
+1
+-
+1
+6
+10
+7
+7
+2
+1
+-
+(a) Without considering the maximum waiting time of the consumer, what is the minimum traveling
+time and route to traverse the locations of all customers and returning to location 1? (the route
+may not be unique)
+(b) To ensure a good service quality, the delivery company commits to the delivery before consumers’
+maximum waiting time.
+Can you still find a feasible route in this case?
+If yes, what is the
+minimum traveling time and route?

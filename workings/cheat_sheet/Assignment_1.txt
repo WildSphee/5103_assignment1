@@ -1,0 +1,292 @@
+DBA5103: Operations Research and Analytics
+Semester I, 2026/2027, NUS
+Assignment 1: Due on Sep.6, 2026
+1. (10’) Consider the production problem of n products labeled by j = 1, 2, ..., n. The unit selling price
+for the j-th product is denoted by pj. All products can be produced from m raw materials. The
+production of product j requires aij units of raw material i, i = 1, ..., m. The i-th raw material can
+be procured at a unit price ci. The company has a total budget of B that can be used to procure the
+raw materials. Naturally, we assume that all the parameters here are nonnegative. The problem is to
+find the production plan that maximizes the total profit (revenue from selling the products minus the
+procurement cost).
+(a) (7’) Let xj be the production quantities of product j, j = 1, ..., n and yi be the procurement
+quantities of raw material i, i = 1, ..., m.
+(i) Formulate a linear programming model for the problem.
+(ii) Let
+A =
+
+
+
+
+
+a11
+a12
+. . .
+a1n
+a21
+a22
+. . .
+a2n
+...
+...
+...
+...
+am1
+am2
+. . .
+amn
+
+
+
+
+
+denote the bill-of-material matrix and
+p =
+
+
+
+
+
+p1
+p2
+...
+pn
+
+
+
+
+, x =
+
+
+
+
+
+x1
+x2
+...
+xn
+
+
+
+
+, c =
+
+
+
+
+
+c1
+c2
+...
+cm
+
+
+
+
+, y =
+
+
+
+
+
+y1
+y2
+...
+ym
+
+
+
+
+.
+Express your model in matrix form.
+(b) (3’) Formulate a model for the problem without introducing the procurement decisions yi.
+2. Matrix Completion Problem: (10’) Consider the following movie-ratings matrix collected from 3
+users for 5 movies. In this matrix, 1 means the user likes the movie while 0 means the user dislikes the
+movie. The missing entries indicate that the user did not watch the particular movie. The problem is
+to fill in the missing entries so as to predict whether the user will like an unwatched movie. Clearly,
+A Beautiful Mind
+Aquaman
+Titanic
+Black Panther
+Schindler’s List
+User 1
+1
+0
+1
+User 2
+0
+User 3
+1
+0
+1
+without any restriction on the matrix, this is an impossible task as one can arbitrarily fill in either 0 or
+1 in the missing entries. In practice, however, as in the compressed sensing example discussed in class,
+the matrix is known to be structured in the sense that it is low-rank. We will explore this concept in
+this exercise and see how it is helpful in matrix completion problem.
+Formally, the rank of a matrix A is the maximal number of linearly independent columns of A, which
+is also identical to the maximal number of linearly independent rows of A.
+1-1
+
+Assignment 1: Due on Sep.6, 2026
+1-2
+(a) (2’) Compute the rank of following matrix:
+A =
+
+
+1
+0
+1
+1
+0
+1
+0
+1
+1
+1
+1
+2
+
+.
+(b) (4’) Consider two nonzero vectors
+x =
+
+
+
+
+
+x1
+x2
+...
+xm
+
+
+
+
+∈ℜm, and y =
+
+
+
+
+
+y1
+y2
+...
+yn
+
+
+
+
+∈ℜn.
+What is the rank of the matrix A = xy′? Explain your reasoning. In fact, the converse of your
+conclusion here also holds: any matrix A that has the rank of your answer in (b) can be expressed
+as A = xy′ for some nonzero vectors x and y (you can think about why; this is not required to
+be part your answer for part (b)).
+(c) (4’) Consider the matrix
+A =
+
+
+1
+0
+1
+?
+?
+?
+?
+0
+?
+?
+1
+?
+?
+0
+1
+
+
+in the moving rating example above. Suppose we know the matrix A has the rank of your answer
+in part (b), or equivalently A = xy′ for some nonzero (but unknown) vectors x and y. Complete
+the matrix A and explain your reasoning.
+From the exercise in part (c), we should see that once we know the rank information of a matrix, then
+sometimes we can exactly recover the matrix given only a sample of its entries (in our example, we only
+observe less than 50% of the entries). The structural knowledge that A = xy′ for some x and y also
+has practical interpretations. For example, we can interpret yj, j = 1, ..., n as some hidden attribute
+of the movie j (say, whether movie j has won some award or not), and interpret xi, i = 1, ..., m as
+customer i’s taste for the hidden attribute. Such structure then presumes that customer i’s rating for
+movie j follows the formula xiyj. Our example here is only a very simplified version of the matrix
+completion problem. Interested students are referred to Cand`es and Recht (2009) for more general
+discussion of the problem.
+3. (5’) Recall the definition that a polyhedron is a set that can be described by a finite number of linear
+equalities and inequalities, i.e., it is the intersection of hyperplanes and halfspaces. Consider each of
+the following feasible sets and answer the corresponding questions.
+(a) (2’) Let a be a nonnegative parameter. The set of all (x, y) ∈ℜ2 satisfying the constraints:
+a2x + √ay ≤1,
+x ≥0,
+y ≥0.
+Is it a polyhedron? Draw a sketch of the feasible set for a = 1.
+(b) (1’) The set of all (x, y) ∈ℜ2 satisfying the constraints:
+x2 + y2 ≤1,
+x ≥0,
+y ≥0.
+Draw a sketch of the feasible set. Is it a polyhedron?
+
+Assignment 1: Due on Sep.6, 2026
+1-3
+(c) (1’) {x ∈ℜ|x2 −8x + 15 ≤0}. Is it a polyhedron?
+(d) (1’) How about {x ∈ℜ|x2 −8x + 15 ≥0}?
+4. Manpower Scheduling: (10’) Ricbert is the chief bank teller of the Gringotts Wizarding Bank. He
+is responsible to schedule the staffing of the clerks for the bank. The bank opens from 8 A.M. until
+midnight. Ricbert has monitored the customers visiting the bank at various times of the day, and
+determined that the following number of clerks are required:
+Time of Day
+Minimum Number of Clerks
+Required to Be on Duty
+8 A.M.-noon
+4
+Noon-4 P.M.
+8
+4 P.M.-8 P.M.
+10
+8 P.M.-midnight
+6
+Table 1.1: Minimum Number of Clerks Required for Each Time Period
+Two types of clerks can be hired: full-time and part-time. The full-time clerks work for 8 consecutive
+hours in any of the following shifts: morning (8 A.M.-4 P.M.), afternoon (noon-8 P.M.), and evening
+(4 P.M.-midnight). Full-time clerks are paid $40 per hour.
+Part-time clerks can be hired to work any of the four shifts listed in the above table (i.e., 8 A.M.-noon,
+noon-4 P.M., 4 P.M.-8 P.M. and 8 P.M.-midnight). Part-time clerks are paid $30 per hour.
+An additional requirement is that during every time period, the number of full-time clerks on duty
+cannot be strictly less than the number of part-time clerks on duty.
+Ricbert would like to determine how many full-time and how many part-time clerks should work each
+shift to meet all the above requirements at the minimum possible cost.
+Formulate the problem as a linear programming problem (ignoring the constraints that the number of
+clerks are required to be integers).
+5. (5’) Consider the problem
+min
+2x1 + 3|x2 −10|
+s.t.
+|x1 + 2| + |x2| ≤5,
+and reformulate it as a linear programming problem.
+6. Investment under Taxation: (10’) An investor has a portfolio of n different stocks. He has bought
+si shares of stock i at price pi, i = 1, ..., n. The current price of one share of stock i is qi. The investor
+expects that the price of one share of stock i in one year will be ri. If he sells shares, the investor
+pays transaction costs at the rate of 1% of the amount transacted. In addition, for each stock, the
+investor pays taxes at the rate of 30% on capital gains (there is no tax if there is no capital gain).
+For example, suppose that the investor sells 1, 000 shares of a stock at $50 per share. He has bought
+these shares at $30 per share. Upon selling, he receives 1, 000 × 50 = $50, 000. However, he owes
+0.30 × (50, 000 −30, 000) = $6, 000 on capital gain taxes and 0.01 × 50, 000 = $500 on transaction
+costs. So, by selling 1, 000 shares of this stock he nets 50, 000 −6, 000 −500 = $43, 500. On the
+
+Assignment 1: Due on Sep.6, 2026
+1-4
+other hand, if the current price of the stock is $20 per share instead of $50.
+Then, there is no
+capital gain on this stock and hence no tax to be paid. In this case, by selling 1,000 shares, he nets
+20, 000 −0.01 × 20, 000 = $19, 800.
+(a) (6’) Formulate the problem of selecting how many shares the investor needs to sell in order to raise
+an amount of money at least K, net of capital gain taxes and transaction costs, while maximizing
+the expected value of his (remaining) portfolio next year.
+(b) (4’) Using the data for the portfolio in investment.csv, solve the problem for K = $9, 000 and
+attach your code.
+References
+Cand`es, E. J. and B. Recht (2009).
+Exact matrix completion via convex optimization.
+Foundations of
+Computational mathematics 9(6), 717–772.

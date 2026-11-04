@@ -1,0 +1,347 @@
+
+--- SLIDE 1 ---
+DBA5103
+Operations Research and Analytics
+Zhenyu Hu
+Semester I, 2026/2027
+
+
+--- SLIDE 2 ---
+Course Information
+•
+Lecture hours: 
+- Wednesday 15:00–18:00, BIZ2-0509; 
+- Friday 12:00-15:00, BIZ2-0509;
+- Friday 18:30-21:30, BIZ2-0509.
+•
+Instructor: Hu Zhenyu
+- Email: bizhuz@nus.edu.sg
+- Personal website: https://sites.google.com/view/zhenyuhu/home
+•
+Office hour: BIZ1 8-62, by appointment
+•
+TA: Zhao Yipeng, e1521284@u.nus.edu
+Zhang Guoyun, e0773599@u.nus.edu
+•
+Website: Canvas
+- Lecture materials
+- Assignments and final project
+
+
+--- SLIDE 3 ---
+A bit more about myself
+• B.S. in Mathematics
+• Ph.D. in Industrial Engineering 
+• NUS Business School since 2015.
+• On research: 
+- Dynamic Programming
+- Game Theory and Mechanism Design
+• On education: 
+- https://www.youtube.com/watch?v=Q1lL-hXO27Q
+
+
+--- SLIDE 4 ---
+Textbook and Reference
+• Text:
+- Introduction to Operations Research, Hillier and 
+Lieberman (2015)
+- Applied Mathematical Programming, Bradley, Hax
+and Magnanti (1977)
+- Introduction to Linear Optimization, Bertsimas 
+and Tsitsiklis (1997)
+- Mostly, lecture notes
+• Software: 
+- Python (Anaconda) and Gurobi
+- Excel Solver
+
+
+--- SLIDE 5 ---
+Optimization Software
+
+
+--- SLIDE 6 ---
+Optimization Software
+https://ampl.com/pricing/
+
+
+--- SLIDE 7 ---
+What You Should Expect
+• Mathematical Thinking
+- Understand the basic logic behind algorithms
+- Understand the general principles in optimization
+- Judgement on the difficulty of a problem; be able 
+to assess the quality of a solution
+• Analytics Skills
+- Building up models
+- Picking the right tools
+- Implementing in Software
+
+
+--- SLIDE 8 ---
+What I Expect
+• Prerequisite
+- Linear algebra
+- Basic probability theory
+• Assessment
+- Team Term Paper                                 
+30%
+- Individual Assignments                               30%
+- In-Class Quiz         
+30%
+- Class Participation                                       10%
+
+
+--- SLIDE 9 ---
+Homework 0
+• Download and install python (Anaconda 
+distribution) and gurobi (academic license)
+- Contact TA for help
+• Form a team
+- 5-6 students per team
+- Deadline: recess week
+
+
+--- SLIDE 10 ---
+Course Content
+• Theory and application of linear programming
+• Network flow models
+• Integer programming 
+• Dynamic programming*
+
+
+--- SLIDE 11 ---
+Operations Research in Practice
+
+
+--- SLIDE 12 ---
+In a Nutshell
+• Decision
+• Maximize/Minimize …
+• Subject to …
+
+
+--- SLIDE 13 ---
+Areas of Operations Research
+• Manufacturing 
+• Transportation 
+• Airline, Hotel and Retail
+Synonyms and overlaps: Management Science, 
+Decision Science, Industrial Engineering, 
+Operations Management, Economics, Computer 
+Science
+
+
+--- SLIDE 14 ---
+Areas of Operations Research
+
+
+--- SLIDE 15 ---
+Areas of Operations Research
+
+
+--- SLIDE 16 ---
+Rise of Analytics
+Source: Robert Rose, “Defining analytics: a conceptual framework”, 2016, OR/MS Today, Vol. 43, No.3
+
+
+--- SLIDE 17 ---
+Ford
+
+
+--- SLIDE 18 ---
+Flexible Manufacturing
+
+
+--- SLIDE 19 ---
+Traditional Dedicated System
+100
+20
+100
+100
+140
+140
+
+
+--- SLIDE 20 ---
+Full Flexible System
+100
+20
+100
+100
+140
+140
+
+
+--- SLIDE 21 ---
+If we know demand…
+100
+20
+100
+100
+140
+140
+
+
+--- SLIDE 22 ---
+How to Compute the Maximum Sales?
+100
+80
+100
+100
+140
+140
+120
+100
+20
+100
+100
+100
+
+
+--- SLIDE 23 ---
+Operations Research Tools
+• Given a design, how do we evaluate its 
+performance?
+- Linear programming
+- Maximum flow
+- Simulation
+
+
+--- SLIDE 24 ---
+Uber
+
+
+--- SLIDE 25 ---
+Uber/Grab
+• What does Uber/Grab offer?
+• Matching Algorithms
+- Dispatch system
+- Surge pricing
+- Uber POOL/Grab Share
+
+
+--- SLIDE 26 ---
+Dispatch System
+Source: http://www.wired.com/2011/04/app-stars-uber/
+
+
+--- SLIDE 27 ---
+Greedy Approach
+Source: https://newsroom.uber.com/semi-automated-science-using-an-ai-simulation-framework/
+
+
+--- SLIDE 28 ---
+Is Greedy Good?
+2 min
+3 min
+10 min
+20 min
+
+
+--- SLIDE 29 ---
+Operations Research Tools
+• Linear programming.
+• Shortest Path.
+• Assignment Problem.
+
+
+--- SLIDE 30 ---
+Surge Pricing
+
+
+--- SLIDE 31 ---
+Why?
+• Profit Maximization?
+- Compare to airline industry
+
+
+--- SLIDE 32 ---
+ECON 1001
+Source: https://newsroom.uber.com/guest-post-a-deeper-look-at-ubers-dynamic-pricing-model/
+
+
+--- SLIDE 33 ---
+A Model for Supply and Demand
+• n locations.
+• Demand at location i: 𝒂𝒂𝒊𝒊−𝒃𝒃𝒊𝒊𝒑𝒑𝒊𝒊
+• Supply at location i:
+𝒄𝒄𝒊𝒊+ 𝒅𝒅𝒊𝒊𝒑𝒑𝒊𝒊−෍
+𝒋𝒋≠𝒊𝒊
+𝜽𝜽𝒊𝒊𝒊𝒊𝒑𝒑𝒋𝒋
+
+
+--- SLIDE 34 ---
+Optimization Problem
+• Non-profit
+- Linear programming (in fact, linear algebra)
+• Profit
+- Nonlinear programming
+
+
+--- SLIDE 35 ---
+UberPOOL
+
+
+--- SLIDE 36 ---
+Traveling Salesman Problem
+Pick up passenger 1
+Pick up passenger 2
+Pick up passenger 3
+Drop off passenger 1
+Drop off passenger 2
+Drop off passenger 3
+Start point
+End point
+
+
+--- SLIDE 37 ---
+Solving TSP
+• Linear programming.
+• Integer programming.
+• Heuristic design.
+
+
+--- SLIDE 38 ---
+Rue La La
+Source: https://www.ruelala.com/boutique/
+
+
+--- SLIDE 39 ---
+Rue La La
+Source: https://www.ruelala.com/boutique/
+•
+Legacy pricing process
+- Percentage markup on cost
+- Competitor’s price
+- Subjective judgement
+
+
+--- SLIDE 40 ---
+Rue La La
+Source: Ferreria, Lee, Simchi-Levi (2016), “Analytics for an Online Retailer: Demand Forecasting and 
+Price Optimization”, 2016, MSOM, Vol. 18, No.1
+
+
+--- SLIDE 41 ---
+Price Optimization
+• Methodology
+- Integer programming/ linear programming
+• Experiment
+Source: Ferreria, Lee, Simchi-Levi (2016), “Analytics for an Online Retailer: Demand Forecasting and 
+Price Optimization”, 2016, MSOM, Vol. 18, No.1
+
+
+--- SLIDE 42 ---
+Other Ways of Improving Profit?
+• Markdown Management/Dynamic Pricing
+- Inventory is determined before the selling 
+season begins
+- Dynamically reduce price over the selling 
+season to boost demand and increase revenue
+• When to decrease and by how much? Tradeoff?
+
+
+--- SLIDE 43 ---
+Dynamic Pricing
+• Linear programming.
+• Dynamic programming.

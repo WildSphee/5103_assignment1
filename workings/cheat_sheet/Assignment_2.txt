@@ -1,0 +1,362 @@
+DBA5103: Operations Research and Analytics
+Semester I, 2026/2027, NUS
+Assignment 2: Due on Sep.27, 2026
+1. (10’) Find all extreme points in the following polyhedra:
+(a) (2’) P = {(x1, x2, x3, x4) | x1 + x2 + 1
+2x3 ≤1, x1, x2, x3, x4 ≥0}.
+(b) (4’) P = {(x1, x2, x3) | x1 −x2 ≤1, x2 −x3 ≤1, x3 ≤1, x1, x2, x3 ≥0}.
+(c) (4’)
+P =
+
+
+
+
+
+
+
+(x1, x2, x3, x4)
+
+
+
+1
+0
+1
+1
+0
+1
+0
+1
+0
+0
+0
+1
+
+
+
+
+
+
+x1
+x2
+x3
+x4
+
+
+
+=
+
+
+2
+2
+1
+
+, x1, x2, x3, x4 ≥0.
+
+
+
+
+
+
+
+2. (10’) Portfolio Management Problem: Consider the portfolio management problem discussed in
+class. There are 100 stocks. The expected return of stock i is ri per dollar invested (which could be
+negative) and the total budget is b dollars, where b > 0. Ignoring the risk of the return, the problem
+of maximizing the total expected return is
+max
+100
+X
+i=1
+rixi
+s.t.
+100
+X
+i=1
+xi ≤b
+xi ≥0, i = 1, ..., 100,
+where xi denotes the amount of money invested in stock i.
+(a) Write down the dual problem to the above linear programming problem.
+(b) What is the optimal solution to the primal and the dual respectively?
+(c) Verify the solution you provided in (b) is indeed optimal using the weak duality.
+3. (5’) Consider the following optimization problem:
+max
+10x1 + 12x2 + 12x3
+s.t.
+x1 + 2x2 + 2x3 ≤20
+2x1 + x2 + 2x3 ≤20
+2x1 + 2x2 + x3 ≤20
+x1, x2, x3 ≥0.
+(a) Write down the dual problem.
+(b) Suppose the optimal solution to the primal problem is x1 = x2 = x3 = 4. Solve the optimal
+solution to the dual problem using complementary slackness condition.
+2-1
+
+Assignment 2: Due on Sep.27, 2026
+2-2
+Table 2.1: Profit and resources consumed for each product
+E
+C
+P1
+P2
+B
+Capacity
+Clay (lbs)
+10
+15
+10
+10
+20
+130
+Enamel (lbs)
+1
+2
+2
+1
+1
+13
+Dry room (hours)
+3
+1
+6
+6
+3
+45
+Klin (hours)
+2
+4
+2
+5
+3
+23
+Profit
+51
+102
+66
+66
+89
+4. (10’) A potter manufacturer can make four different types of dining room service sets: JJP English,
+Currier, Primrose, and Bluetail. Furthermore, Primrose can be made by two different methods. Each
+set uses clay, enamel, dry room time, and kiln time, and results in a profit shown in Table 2.1.
+The manufacturer is currently committed to making the same amount of Primrose using method 1 and
+method 2. The formulation of the profit maximization problem is given below. The decision variables
+E, C, P1, P2, B are the number of sets of type English, Currier, Primrose Method 1, Primrose Method
+2, and Bluetail, respectively. We assume, for the purposes of this problem, that the number of sets of
+each type can be fractional.
+max
+51E + 102C + 66P1 + 66P2 + 89B
+s.t.
+10E + 15C + 10P1 + 10P2 + 20B ≤130
+E + 2C + 2P1 + P2 + B ≤13
+3E + C + 6P1 + 6P2 + 3B ≤45
+2E + 4C + 2P1 + 5P2 + 3B ≤23
+P1 −P2 = 0
+E, C, P1, P2, B ≥0.
+The optimal solution to the primal is given in Table 2.2 and the optimal solution to the dual together
+with sensitivity information is given in Table 2.3. Use the information to answer the questions that
+follow.
+Table 2.2: The optimal solution to the primal
+Optimal Value
+Objective Coefficient
+E
+0
+51
+C
+2
+102
+P1
+0
+66
+P2
+0
+66
+B
+5
+89
+Table 2.3: The optimal solution to the dual and the sensitivity. The last two columns describe the allowed
+changes in the components of b for which the optimal dual solution remains the same
+Dual Variable
+Const. RHS
+Allowable Increase
+Allowable Decrease
+Clay
+1.429
+130
+23.33
+43.75
+Enamel
+0
+13
+∞
+4
+Dry room
+0
+45
+∞
+28
+Klin
+20.143
+23
+5.60
+3.50
+Primrose Methods
+11.429
+0
+3.50
+0
+
+Assignment 2: Due on Sep.27, 2026
+2-3
+(a) What is the optimal quantity of each service set, and what is the total profit?
+(b) Give an economic interpretation of the optimal dual variables appearing in the sensitivity report,
+for each of the five constraints.
+(c) Should the manufacturer buy an additional 20 lbs. of Clay at $1.1 per pound?
+(d) In the current model, the number of Primrose produced using method 1 was required to be the
+same as the number of Primrose produced by method 2. Consider a revision of the model in which
+this constraint is replaced by the constraint P1 −P2 ≥0. In the reformulated problem would the
+amount of Primrose made by method 1 be positive?
+5. (5’) Diet Problem: The “diet problem” concerns with finding a mix of foods that satisfies require-
+ments on the amount of nutrition. We consider here the problem of choosing fruits to meet certain
+nutritional requirements.
+The nutrition information of five selected fruits is provided in Table 2.4
+along with a minimum required and maximum allowed intake of each type of nutrition in the last two
+columns. Your goal is to find the cheapest combination of fruits that will meet nutritional requirements.
+Table 2.4: Nutrition and price information per 100 grams
+Apple
+Banana
+Blueberries
+Durian
+Tangerine
+Min Reqd
+Max Allowed
+Calories
+52
+89
+57
+147
+53
+500
+3000
+Carbohydrate (g)
+14
+23
+14
+27
+13
+50
+400
+Fiber (g)
+2.4
+2.6
+2.4
+3.8
+1.8
+20
+30
+Vitamin A (IU)
+54
+64
+54
+44
+681
+2000
+3500
+Vitamin C (mg)
+4.6
+8.7
+9.7
+19.7
+26.7
+75
+150
+Price (S$/100g)
+0.5
+0.3
+2.5
+10
+0.5
+(a) Formulate a mathematical model for this problem. Solve the problem using Gurobi and attach
+your code. Present and interpret the results.
+(b) Without solving the problem using the software, can you determine how your optimal solution
+and optimal spending in (a) will change if you are also concerned with the total fat intake. The
+fat contained in each of the fruit and your nutrition requirement on fat is provided in the table
+below. Verify your solution by solving the problem numerically.
+Apple
+Banana
+Blueberries
+Durian
+Tangerine
+Min Reqd
+Max Allowed
+Fat (g)
+0.2
+0.3
+0.3
+5
+0.3
+0
+10
+6. (10’) Markdown Management: Consider the benchmark model and solution for the markdown
+management problem discussed in class. The initial inventory is 2000 units. The retailer needs to sell
+his inventory over a time horizon of 15 weeks by employing in order the four price levels: $60, $54,
+$48, $36 over time. The estimated average demands under these price levels are summarized in the
+following table. Any left over items at the end of the selling season can be sold to outlet for $25 per
+Table 2.5: Benchmark model
+Price
+$60
+$54
+$48
+$36
+Demand
+125
+162.5
+217.5
+348.8
+
+Assignment 2: Due on Sep.27, 2026
+2-4
+unit (salvage value). The retailer is required to start with the full price for at least one week and then
+he is allowed to decrease his prices over time. We have shown in class the optimal policy is to use for
+the first 11.67 weeks of full price $60 and then 3.33 weeks of $54 (ignoring integrality constraints). The
+revenue collected under this policy is $116750. Consider the following three scenarios separately and
+answer the corresponding questions. Attach the codes you used to derive the solutions.
+(a) Suppose in order to maintain the brand reputation, the retailer is only allowed to discount from
+week 4. Will the retailer change his markdown strategy in this case?
+(b) Due to bad weather, only 25 units were sold in the first week. How should the retailer adjust his
+markdown policy? What is the improvement in revenue compared to the case when he sticks with
+the original markdown policy (specified above)?
+(c) In the traditional brick-and-mortar business, menu cost and consumer price impression are the
+two major reasons behind the very few number of price levels. With the rise of e-commerce and
+other technologies, it is possible for the retailer to employ more price levels and change the price
+more frequently. What happens if the retailer employs the following price grids (with a grid of
+$2) instead of a few discount levels? For simplicity, the demand estimates at the additional price
+levels are taken as a linear interpolation of the original demands. What is the improvement in
+revenue compared to the benchmark? What is the new markdown policy? How do you compare
+with the original policy?
+Table 2.6: Price grids model
+Price
+$60
+$58
+$56
+$54
+$52
+$50
+$48
+$46
+$44
+$42
+$40
+$38
+$36
+Demand
+125
+137.5
+150
+162.5
+180.8
+199.1
+217.5
+239.4
+261.3
+283.2
+305.1
+327
+348.8

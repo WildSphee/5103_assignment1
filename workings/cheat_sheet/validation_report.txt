@@ -1,0 +1,20 @@
+PASS Wyndor c=[3, 5], RHS=[4, 12, 18]: x=[Fraction(2, 1), Fraction(6, 1)], z=36
+PASS Wyndor c=[3, 5], RHS=[4, 12, 21]: x=[Fraction(3, 1), Fraction(6, 1)], z=39
+PASS Wyndor c=[3, 5], RHS=[4, 12, 27]: x=[Fraction(4, 1), Fraction(6, 1)], z=42
+PASS Wyndor c=[4, 5], RHS=[4, 12, 18]: x=[Fraction(2, 1), Fraction(6, 1)], z=38
+PASS Wyndor c=[10, 5], RHS=[4, 12, 18]: x=[Fraction(4, 1), Fraction(3, 1)], z=55
+PASS markdown: weeks=[Fraction(35, 3), Fraction(10, 3), Fraction(0, 1), Fraction(0, 1)], revenue=116750
+PASS drug yields=[0.01, 0.02]: x=[17.551558, 0.0, 438.788943], profit=8819.66
+PASS drug yields=[0.00995, 0.0196]: x=[17.466866, 877.731941, 0.0], profit=8294.57
+PASS binary enumeration: budget=200, optimum=1950
+PASS binary enumeration: budget=100, optimum=1000
+PASS binary enumeration: budget=10, optimum=35
+PASS newsvendor: one-day cost −0.1; two-day adaptive cost −0.4
+PASS secretary n=4: success 11/24
+PASS if-then logic: 25 rules agree with their constraints on all 64 0/1 combos
+PASS 4 constraints flagged as traps really are wrong
+PASS PDF page 1: A4, 2144 extracted words, text within print margins
+PASS PDF page 2: A4, 2120 extracted words, text within print margins
+PASS PDF page 3: A4, 1265 extracted words, text within print margins
+PASS PDF page 4: A4, 1211 extracted words, text within print margins
+PASS every column/section ends on its page (end markers found); exactly four pages

@@ -1,0 +1,525 @@
+
+--- SLIDE 1 ---
+DBA5103
+Operations Research and Analytics
+Zhenyu Hu
+Semester I, 2026/2027
+
+
+--- SLIDE 2 ---
+Duality Theory
+
+
+--- SLIDE 3 ---
+• Consider a nonlinear optimization problem:
+𝒛𝒛= min
+𝒙𝒙,𝒚𝒚𝒙𝒙𝟐𝟐+ 𝒚𝒚𝟐𝟐
+𝒔𝒔. 𝒕𝒕. 𝒙𝒙+ 𝒚𝒚= 𝟏𝟏
+• Method of Lagrangian relaxation
+𝒈𝒈𝒑𝒑= min
+𝒙𝒙,𝒚𝒚𝒙𝒙𝟐𝟐+ 𝒚𝒚𝟐𝟐+ 𝒑𝒑(𝟏𝟏−𝒙𝒙−𝒚𝒚)
+- 𝒑𝒑is called the Lagrangian multiplier.
+- The function 𝑳𝑳𝒙𝒙, 𝒚𝒚, 𝒑𝒑= 𝒙𝒙𝟐𝟐+ 𝒚𝒚𝟐𝟐+ 𝒑𝒑(𝟏𝟏−𝒙𝒙−𝒚𝒚) is called 
+the Lagrangian.
+- For any 𝒑𝒑, the relaxed problem provides a lower bound 
+to the optimal value of the original problem.
+- If 𝒑𝒑> 𝟎𝟎, it penalizes the case when 𝒙𝒙+ 𝒚𝒚< 𝟏𝟏; if 𝒑𝒑< 𝟎𝟎, it 
+penalizes the case when 𝒙𝒙+ 𝒚𝒚> 𝟏𝟏.
+Motivating Example
+
+
+--- SLIDE 4 ---
+• Relaxed problem
+min
+𝒙𝒙,𝒚𝒚𝒙𝒙𝟐𝟐+ 𝒚𝒚𝟐𝟐+ 𝒑𝒑(𝟏𝟏−𝒙𝒙−𝒚𝒚)
+-
+𝝏𝝏𝝏𝝏
+𝝏𝝏𝝏𝝏= 𝟐𝟐𝟐𝟐−𝒑𝒑= 𝟎𝟎,
+𝝏𝝏𝝏𝝏
+𝝏𝝏𝒚𝒚= 𝟐𝟐𝒚𝒚−𝒑𝒑= 𝟎𝟎.
+- 𝒙𝒙= 𝒚𝒚=
+𝒑𝒑
+𝟐𝟐and the optimal value is 𝒈𝒈𝒑𝒑= 𝒑𝒑−
+𝒑𝒑𝟐𝟐
+𝟐𝟐.
+- For any 𝒑𝒑, 𝒈𝒈𝒑𝒑≤𝒛𝒛.
+• We want to make 𝒈𝒈𝒑𝒑as close to 𝒛𝒛as possible:
+max
+𝒑𝒑
+𝒈𝒈(𝒑𝒑)
+- Optimal solution is 𝒑𝒑= 𝟏𝟏, and consequently 𝒙𝒙= 𝒚𝒚=
+𝟏𝟏
+𝟐𝟐
+Motivating Example
+
+
+--- SLIDE 5 ---
+• Primal problem
+𝒛𝒛= min
+𝒙𝒙,𝒚𝒚𝒙𝒙𝟐𝟐+ 𝒚𝒚𝟐𝟐
+𝒔𝒔. 𝒕𝒕. 𝒙𝒙+ 𝒚𝒚= 𝟏𝟏
+• We call the problem of finding the tightest lower 
+bound as the dual problem:
+𝒘𝒘= max
+𝒑𝒑𝒈𝒈(𝒑𝒑)
+- 𝒘𝒘≤𝒛𝒛
+- 𝒘𝒘= 𝒛𝒛?
+Summary
+𝑧𝑧
+𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝
+𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑑𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝𝑝
+
+
+--- SLIDE 6 ---
+• Primal problem
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒄𝒄′𝒙𝒙
+𝒔𝒔. 𝒕𝒕.
+𝑨𝑨𝑨𝑨= 𝒃𝒃
+𝒙𝒙≥𝟎𝟎
+•
+Relaxed problem:
+𝒈𝒈𝒑𝒑= min
+𝒙𝒙≥𝟎𝟎𝒄𝒄′𝒙𝒙+ 𝒑𝒑′(𝒃𝒃−𝑨𝑨𝑨𝑨)
+= 𝒑𝒑′𝒃𝒃+ min
+𝒙𝒙≥𝟎𝟎(𝒄𝒄′−𝒑𝒑′𝑨𝑨)𝒙𝒙
+- If 𝒄𝒄′ −𝒑𝒑′𝑨𝑨≥𝟎𝟎𝟎, min
+𝒙𝒙≥𝟎𝟎(𝒄𝒄′−𝒑𝒑′𝑨𝑨)𝒙𝒙= 𝟎𝟎;
+- Else, min
+𝒙𝒙≥𝟎𝟎(𝒄𝒄′−𝒑𝒑′𝑨𝑨)𝒙𝒙= −∞.
+Duality in LP: Standard Form
+
+
+--- SLIDE 7 ---
+• Dual problem
+max
+𝒑𝒑𝒈𝒈(𝒑𝒑)
+- We want to enforce 𝒄𝒄′ −𝒑𝒑′𝑨𝑨≥𝟎𝟎𝟎, since otherwise 𝒈𝒈𝒑𝒑=
+−∞.
+- Under 𝒄𝒄′ −𝒑𝒑′𝑨𝑨≥𝟎𝟎𝟎, 𝒈𝒈𝒑𝒑= 𝒑𝒑′𝒃𝒃.
+- The problem can be rewritten as
+𝒎𝒎𝒂𝒂𝒂𝒂
+𝒑𝒑′𝒃𝒃
+𝒔𝒔. 𝒕𝒕.
+𝒑𝒑𝒑𝑨𝑨≤𝒄𝒄′,
+with decision variables 𝒑𝒑′ = (𝑝𝑝1, … , 𝑝𝑝𝑚𝑚).
+- No constraint on 𝑝𝑝𝑗𝑗since we want to penalize both the 
+case 𝒂𝒂𝒋𝒋
+′𝒙𝒙> 𝑏𝑏𝑗𝑗and the case 𝒂𝒂𝒋𝒋
+′𝒙𝒙< 𝑏𝑏𝑗𝑗
+Duality in LP: Standard Form
+
+
+--- SLIDE 8 ---
+• Primal problem
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒄𝒄′𝒙𝒙
+𝒔𝒔. 𝒕𝒕.
+𝑨𝑨𝑨𝑨≥𝒃𝒃
+𝒙𝒙≥𝟎𝟎
+•
+Standard form:
+𝒎𝒎𝒎𝒎𝒎𝒎[𝒄𝒄′ 0′] 𝒙𝒙
+𝒔𝒔
+𝒔𝒔. 𝒕𝒕.
+𝑨𝑨−𝑰𝑰
+𝒙𝒙
+𝒔𝒔= 𝒃𝒃
+𝒙𝒙≥𝟎𝟎
+•
+Dual problem
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒑𝒑′𝒃𝒃
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒑𝒑′𝒃𝒃
+𝒔𝒔. 𝒕𝒕.
+𝒑𝒑′ 𝑨𝑨−𝑰𝑰≤[𝒄𝒄′ 0′],
+𝒔𝒔. 𝒕𝒕.
+𝒑𝒑′𝑨𝑨≤𝒄𝒄′, 𝒑𝒑≥𝟎𝟎
+Variants
+• Primal problem
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒄𝒄′𝒙𝒙
+𝒔𝒔. 𝒕𝒕.
+𝑨𝑨𝑨𝑨≥𝒃𝒃
+𝒙𝒙≥𝟎𝟎
+•
+Standard form:
+𝒎𝒎𝒎𝒎𝒎𝒎[𝒄𝒄′ 0′] 𝒙𝒙
+𝒔𝒔
+𝒔𝒔. 𝒕𝒕.
+𝑨𝑨−𝑰𝑰
+𝒙𝒙
+𝒔𝒔= 𝒃𝒃
+𝒙𝒙≥𝟎𝟎
+•
+Dual problem
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒑𝒑′𝒃𝒃
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒑𝒑′𝒃𝒃
+𝒔𝒔. 𝒕𝒕.
+𝒑𝒑′ 𝑨𝑨−𝑰𝑰≤[𝒄𝒄′ 0′],
+𝒔𝒔. 𝒕𝒕.
+𝒑𝒑′𝑨𝑨≤𝒄𝒄′, 𝒑𝒑≥𝟎𝟎
+
+
+--- SLIDE 9 ---
+• Primal problem
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒄𝒄′𝒙𝒙
+𝒔𝒔. 𝒕𝒕.
+𝑨𝑨𝑨𝑨≥𝒃𝒃
+𝒙𝒙≥𝟎𝟎
+•
+Relaxed problem:
+𝒈𝒈𝒑𝒑= min
+𝒙𝒙≥𝟎𝟎𝒄𝒄′𝒙𝒙+ 𝒑𝒑′(𝒃𝒃−𝑨𝑨𝑨𝑨)
+- Since 𝒃𝒃𝒋𝒋−𝒂𝒂𝒋𝒋′𝒙𝒙≤0, we only need to penalize the case 
+when 𝒃𝒃𝒋𝒋−𝒂𝒂𝒋𝒋
+′𝒙𝒙> 0. This can be achieved by restricting 
+𝑝𝑝𝑗𝑗≥0.
+Variants: Intuition on 𝒑𝒑≥𝟎𝟎
+
+
+--- SLIDE 10 ---
+General Relationship
+
+
+--- SLIDE 11 ---
+Duality Theory
+• Dual of the dual is primal:
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒄𝒄′𝒙𝒙
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒑𝒑′𝒃𝒃
+𝒔𝒔. 𝒕𝒕.
+𝑨𝑨𝑨𝑨≥𝒃𝒃, 𝒙𝒙≥𝟎𝟎
+𝒔𝒔. 𝒕𝒕.
+𝒑𝒑′𝑨𝑨≤𝒄𝒄′, 𝒑𝒑≥𝟎𝟎
+• Weak duality:
+𝒑𝒑′𝒃𝒃≤𝒄𝒄′𝒙𝒙
+-
+If the optimal value in the primal is −∞, then the dual 
+problem must be infeasible.
+-
+If the optimal value in the dual is +∞, then the primal 
+problem must be infeasible.
+-
+If 𝒙𝒙and 𝒑𝒑are feasible solutions to primal and dual and 
+𝒑𝒑′𝒃𝒃= 𝒄𝒄′𝒙𝒙, then they must be optimal.
+
+
+--- SLIDE 12 ---
+Duality Theory
+• Strong duality: If an LP has an optimal solution, 
+then its dual also has a solution and the 
+respective optimal value are equal.
+
+
+--- SLIDE 13 ---
+Economic Interpretation of Duality
+
+
+--- SLIDE 14 ---
+Production Example Revisited
+• LP formulation
+
+
+--- SLIDE 15 ---
+Production with Resource Market
+• Suppose there is a market where plant hours can 
+be sold and bought.
+• Production hour at plant i is priced at 𝑝𝑝𝑖𝑖≥0.
+• Consider plant 3, for example
+- If 3𝑥𝑥1+2𝑥𝑥2 < 18, the firm can sell 
+18 −(3𝑥𝑥1 +2𝑥𝑥2) hours at price 𝑝𝑝3 to the market.
+- If 3𝑥𝑥1+2𝑥𝑥2 > 18 The firm has to buy 3𝑥𝑥1+2𝑥𝑥2 −18
+at price 𝑝𝑝3 from the market.
+
+
+--- SLIDE 16 ---
+Production with Resource Market
+𝒎𝒎𝒎𝒎𝒎𝒎
+3 𝑥𝑥1 + 5𝑥𝑥2 + 𝑝𝑝1 4 −𝑥𝑥1 + 𝑝𝑝2 12 −2𝑥𝑥2 +𝑝𝑝3 [18 −(3𝑥𝑥1 +2𝑥𝑥2)]
+𝒔𝒔. 𝒕𝒕.
+𝑥𝑥1, 𝑥𝑥2 ≥0
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒄𝒄′𝒙𝒙+ ∑𝒊𝒊=𝟏𝟏
+𝒎𝒎𝑝𝑝𝑖𝑖(𝑏𝑏𝑖𝑖−∑𝑗𝑗=1
+𝑛𝑛
+𝑎𝑎𝑖𝑖𝑖𝑖𝑥𝑥𝑗𝑗)
+𝒔𝒔. 𝒕𝒕.
+𝑥𝑥𝑗𝑗≥0, 𝑗𝑗= 1, … , 𝑛𝑛
+
+
+--- SLIDE 17 ---
+Production with Resource Market
+𝒎𝒎𝒎𝒎𝒎𝒎
+3 𝑥𝑥1 + 5𝑥𝑥2 + 𝑝𝑝1 4 −𝑥𝑥1 + 𝑝𝑝2 12 −2𝑥𝑥2 + 𝑝𝑝3[18 −(3𝑥𝑥1 +2𝑥𝑥2)]
+• Rewrite as
+𝒎𝒎𝒎𝒎𝒎𝒎
+4𝑝𝑝1 + 12𝑝𝑝2 + 18𝑝𝑝3 + (3 −𝑝𝑝1 −3𝑝𝑝3)𝑥𝑥1 + (5 −2𝑝𝑝2 −2𝑝𝑝3)𝑥𝑥2
+• 𝑝𝑝1 + 3𝑝𝑝3 can be interpreted as the market cost of 
+producing product 1.
+- Think about the case all the resources are bought 
+from the market.
+At what price should the market price the 
+plant hours?
+
+
+--- SLIDE 18 ---
+Market Perspective
+4𝑝𝑝1 + 12𝑝𝑝2 + 18𝑝𝑝3 + (3 −𝑝𝑝1 −3𝑝𝑝3)𝑥𝑥1 + (5 −2𝑝𝑝2 −2𝑝𝑝3)𝑥𝑥2
+• 4𝑝𝑝1 + 12𝑝𝑝2 + 18𝑝𝑝3: purchasing cost
+• (3 −𝑝𝑝1 −3𝑝𝑝3)𝑥𝑥1 + (5 −2𝑝𝑝2 −2𝑝𝑝3)𝑥𝑥2: 
+opportunity cost
+• 𝒎𝒎𝒎𝒎𝒎𝒎𝑝𝑝1,𝑝𝑝2,𝑝𝑝3 ≥0 [𝒎𝒎𝒎𝒎𝒎𝒎
+4𝑝𝑝1 + 12𝑝𝑝2 + 18𝑝𝑝3 + (3 −𝑝𝑝1 −
+3𝑝𝑝3)𝑥𝑥1 + (5 −2𝑝𝑝2 −2𝑝𝑝3)𝑥𝑥2]
+
+
+--- SLIDE 19 ---
+Market Perspective
+• What happens if the market prices are such that
+3 −𝑝𝑝1 −3𝑝𝑝3 > 0
+In this case, there is an arbitrage opportunity, 
+the firm would set 𝒙𝒙𝟏𝟏→∞.
+• What happens if the market prices are such that
+3 −𝑝𝑝1 −3𝑝𝑝3 ≤0
+In this case, there is no arbitrage opportunity in 
+selling product 1: profit earned from arbitrage 
+3 −𝑝𝑝1 −3𝑝𝑝3 𝑥𝑥1 = 0.
+
+
+--- SLIDE 20 ---
+Market Perspective
+• 𝒎𝒎𝒎𝒎𝒎𝒎[𝒎𝒎𝒎𝒎𝒎𝒎
+4𝑝𝑝1 + 12𝑝𝑝2 + 18𝑝𝑝3 +
+(3 −𝑝𝑝1 −3𝑝𝑝3)𝑥𝑥1 + (5 −2𝑝𝑝2 −2𝑝𝑝3)𝑥𝑥2]
+𝒎𝒎𝒎𝒎𝒎𝒎4𝑝𝑝1 + 12𝑝𝑝2 + 18𝑝𝑝3
+𝑝𝑝1 + 3𝑝𝑝3 ≥3,
+2𝑝𝑝2 + 2𝑝𝑝3 ≥5,
+𝑝𝑝1, 𝑝𝑝2 , 𝑝𝑝3 ≥0
+
+
+--- SLIDE 21 ---
+Solution
+• We know primal solution is (2, 6) with optimal 
+profit 36K. 
+• Is (0, 1.5, 1) an optimal solution to the dual? 
+𝒎𝒎𝒎𝒎𝒎𝒎4𝑝𝑝1 + 12𝑝𝑝2 + 18𝑝𝑝3
+𝑝𝑝1 + 3𝑝𝑝3 ≥3,
+2𝑝𝑝2 + 2𝑝𝑝3 ≥5,
+𝑝𝑝1, 𝑝𝑝2 , 𝑝𝑝3 ≥0
+
+
+--- SLIDE 22 ---
+Firm and the Market
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒄𝒄′𝒙𝒙
+𝒔𝒔. 𝒕𝒕.
+𝑨𝑨𝑨𝑨≤𝒃𝒃
+𝒙𝒙≥𝟎𝟎
+𝒎𝒎𝒎𝒎𝒎𝒎
+𝒑𝒑′𝒃𝒃
+𝒔𝒔. 𝒕𝒕.
+𝒑𝒑𝒑𝒑𝒑≥𝒄𝒄𝒄
+𝒑𝒑𝒑≥𝟎𝟎′
+
+
+--- SLIDE 23 ---
+Summary
+• The primal problem: a firm seeks to 
+maximize its profit by producing products 
+from available resources.
+• The dual problem: a market seeks to 
+eliminate the arbitrage opportunities by 
+choosing the right prices for resources.
+• Dual variables are also called shadow prices.
+
+
+--- SLIDE 24 ---
+Sensitivity Analysis
+
+
+--- SLIDE 25 ---
+Motivation
+• In practice, it is rarely sufficient to solve a 
+single LP to arrive at good decisions.
+- The problem data may depend on some 
+higher level decisions (strategic-level rather 
+than operational-level)
+- Part of the problem data maybe controllable 
+at an additional cost
+- Incomplete knowledge of problem data 
+(randomness)
+
+
+--- SLIDE 26 ---
+Sensitivity Analysis
+• Possible changes in data require sensitivity 
+analysis.
+• Sensitivity analysis: “What if” analysis
+• We put more focus on the optimal value 
+
+
+--- SLIDE 27 ---
+Production Example Revisited
+• LP formulation
+𝑣𝑣∗= 𝑚𝑚𝑎𝑎𝑎𝑎3𝑥𝑥1 + 5𝑥𝑥2
+𝑥𝑥1 ≤4,
+2𝑥𝑥2 ≤12,
+3𝑥𝑥1+2𝑥𝑥2 ≤18,
+𝑥𝑥1 ≥0, 𝑥𝑥2 ≥0
+
+
+--- SLIDE 28 ---
+Adding a Constraint
+• What happens to 𝒗𝒗∗if we add a constraint?
+• When will 𝒗𝒗∗not be affected by the additional 
+constraint?
+𝑣𝑣∗= 𝑚𝑚𝑎𝑎𝑎𝑎3𝑥𝑥1 + 5𝑥𝑥2
+𝑥𝑥1 ≤4,
+2𝑥𝑥2 ≤12,
+3𝑥𝑥1+2𝑥𝑥2 ≤18,
+𝑥𝑥1+𝑥𝑥2 ≤10,
+𝑥𝑥1 ≥0, 𝑥𝑥2 ≥0
+A new plant dedicated for 
+packaging
+
+
+--- SLIDE 29 ---
+Adding a New Variable
+• What happens to 𝒗𝒗∗if we add a variable?
+𝑣𝑣∗= 𝑚𝑚𝑎𝑎𝑎𝑎3𝑥𝑥1 + 5𝑥𝑥2 + 6𝑥𝑥3
+𝑥𝑥1 + 2𝑥𝑥3 ≤4,
+2𝑥𝑥2+4𝑥𝑥3≤12,
+3𝑥𝑥1+2𝑥𝑥2 + 6𝑥𝑥3 ≤18,
+𝑥𝑥1 ≥0, 𝑥𝑥2 ≥0, 𝑥𝑥3 ≥0
+Consider 𝑥𝑥1, 𝑥𝑥2, 𝑥𝑥3 = 2,6,0 . Is it a BFS? 
+
+
+--- SLIDE 30 ---
+Adding a New Variable
+• When will 𝒗𝒗∗remain unchanged?
+- Compute the reduced cost for nonbasic variable 
+𝑥𝑥3 at 𝑥𝑥1, 𝑥𝑥2, 𝑥𝑥3 𝑥𝑥4, 𝑥𝑥5, 𝑥𝑥6 = (2,6,0,2,0,0)
+𝑣𝑣∗= −𝑚𝑚𝑖𝑖𝑖𝑖−3𝑥𝑥1 −5𝑥𝑥2 −6𝑥𝑥3
+𝑥𝑥1 +
+2𝑥𝑥3+ 𝑥𝑥4
+= 4,
+2𝑥𝑥2 + 4𝑥𝑥3+
+𝑥𝑥5
+= 12,
+3𝑥𝑥1+2𝑥𝑥2 + 6𝑥𝑥3+
+𝑥𝑥6= 18,
+𝑥𝑥1, 𝑥𝑥2, 𝑥𝑥3, 𝑥𝑥4, 𝑥𝑥5 , 𝑥𝑥6 ≥0
+
+
+--- SLIDE 31 ---
+Controllable Data Inputs
+• Available resources
+• Prices
+
+
+--- SLIDE 32 ---
+Change in resource
+• What happens to 𝒗𝒗∗if plant 1 has one more 
+capacity?
+𝑣𝑣∗= 𝑚𝑚𝑎𝑎𝑎𝑎3𝑥𝑥1 + 5𝑥𝑥2
+𝑥𝑥1 ≤4 + 1,
+2𝑥𝑥2 ≤12,
+3𝑥𝑥1+2𝑥𝑥2 ≤18,
+𝑥𝑥1 ≥0, 𝑥𝑥2 ≥0
+
+
+--- SLIDE 33 ---
+Change in resource
+• What happens to 𝒗𝒗∗if plant 3 has one more 
+capacity?
+• How about 3 more capacity?
+𝑣𝑣∗= 𝑚𝑚𝑎𝑎𝑎𝑎3𝑥𝑥1 + 5𝑥𝑥2
+𝑥𝑥1 ≤4,
+2𝑥𝑥2 ≤12,
+3𝑥𝑥1+2𝑥𝑥2 ≤18 + 1,
+𝑥𝑥1 ≥0, 𝑥𝑥2 ≥0
+
+
+--- SLIDE 34 ---
+Change in resource
+• What happens to 𝒗𝒗∗if plant 3 has 9 more 
+capacity?
+𝑣𝑣∗= 𝑚𝑚𝑎𝑎𝑎𝑎3𝑥𝑥1 + 5𝑥𝑥2
+𝑥𝑥1 ≤4,
+2𝑥𝑥2 ≤12,
+3𝑥𝑥1+2𝑥𝑥2 ≤18 + 9,
+𝑥𝑥1 ≥0, 𝑥𝑥2 ≥0
+
+
+--- SLIDE 35 ---
+Relation with Shadow Price
+• Shadow price for the plant constraints
+𝑝𝑝1 = 0
+𝑣𝑣∗= 𝑚𝑚𝑎𝑎𝑎𝑎3𝑥𝑥1 + 5𝑥𝑥2
+𝑥𝑥1 ≤4,
+2𝑥𝑥2 ≤12,
+3𝑥𝑥1+2𝑥𝑥2 ≤18,
+𝑥𝑥1 ≥0, 𝑥𝑥2 ≥0
+𝑝𝑝2 = 1.5
+𝑝𝑝3 = 1
+Complementary slackness condition: 
+(𝑏𝑏𝑖𝑖−𝒂𝒂𝒊𝒊′𝒙𝒙)𝑝𝑝𝑖𝑖= 0
+(𝑐𝑐𝑗𝑗−𝒑𝒑′𝑨𝑨𝒋𝒋)𝑥𝑥𝑗𝑗= 0
+
+
+--- SLIDE 36 ---
+Change in Price
+• What happens to 𝒗𝒗∗if the profit per batch for 
+product 1 increases by 1K?
+𝑣𝑣∗= 𝑚𝑚𝑎𝑎𝑎𝑎(3 + 1)𝑥𝑥1 + 5𝑥𝑥2
+𝑥𝑥1 ≤4,
+2𝑥𝑥2 ≤12,
+3𝑥𝑥1+2𝑥𝑥2 ≤18,
+𝑥𝑥1 ≥0, 𝑥𝑥2 ≥0
+At least increase by 2K.
+
+
+--- SLIDE 37 ---
+Change in Price
+3𝑥𝑥1 + 5𝑥𝑥2 = 10
+4𝑥𝑥1 + 5𝑥𝑥2 = 10
+Reduced cost changes but still all positive: 
+optimal solution remains unchanged and
+profit increase is exactly 2K.
+
+
+--- SLIDE 38 ---
+Change in Price
+• What happens to 𝒗𝒗∗if the profit per batch for 
+product 1 increases by 7K?
+𝑣𝑣∗= 𝑚𝑚𝑎𝑎𝑎𝑎(3 + 7)𝑥𝑥1 + 5𝑥𝑥2
+𝑥𝑥1 ≤4,
+2𝑥𝑥2 ≤12,
+3𝑥𝑥1+2𝑥𝑥2 ≤18,
+𝑥𝑥1 ≥0, 𝑥𝑥2 ≥0
+At least increase by 14K.
+
+
+--- SLIDE 39 ---
+Change in Price
+3𝑥𝑥1 + 5𝑥𝑥2 = 10
+10𝑥𝑥1 + 5𝑥𝑥2 = 10
+Reduced cost for the slack variable of the 
+constraint: 2𝑥𝑥2 ≤12 becomes negative: 
+solution moves away from (2,6,2,0,0) to (4,3,0,6,0).
+Profit increase: 19K. 
+
+
+--- SLIDE 40 ---
+Sensitivity Report (Excel)
+
+
+--- SLIDE 41 ---
+Sensitivity Report (Gurobi)
+Reference: http://www.gurobi.com/documentation/8.1/refman/linear_constraint_attribut.html

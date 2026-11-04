@@ -1,0 +1,1255 @@
+
+--- SLIDE 1 ---
+DBA5103
+Operations Research and Analytics
+Zhenyu Hu
+Semester I, 2026/2027
+
+
+--- SLIDE 2 ---
+Integer Programming
+• Integer Program Modeling
+• Further Applications
+• Linear Programming Relaxation
+• Branch and Bound Method
+
+
+--- SLIDE 3 ---
+Integer Program Modeling
+
+
+--- SLIDE 4 ---
+Mix IP
+𝒎𝒊𝒏
+𝒄′𝒙+ 𝒉′𝒚
+𝒔. 𝒕.
+𝑨𝒙+ 𝑩𝒚= 𝒃
+𝒙≥𝟎, integer
+𝒚≥𝟎. 
+
+
+--- SLIDE 5 ---
+Pure IP
+IP
+BIP
+𝒎𝒊𝒏
+𝒄′𝒙
+𝒔. 𝒕.
+𝑨𝒙= 𝒃
+𝒙≥𝟎, integer
+𝒎𝒊𝒏
+𝒄′𝒙
+𝒔. 𝒕.
+𝑨𝒙= 𝒃
+𝒙∈𝟎, 𝟏𝒏.
+
+
+--- SLIDE 6 ---
+Modeling with Binary Variables
+1
+if event occurs
+0
+otherwise
+x
+
+= 
+
+
+
+--- SLIDE 7 ---
+Choice Among Several Possibilities
+• Due to resource constraint, at most one of 
+project 1,2, and 3 can be implemented. How 
+to model this constraint?
+• If exactly two out of the five projects 2,3,4,5, 
+and 6 must be implemented. How to model 
+this constraint?
+
+
+--- SLIDE 8 ---
+Simple Implications
+• If project 1 is chosen, then project 4 is also chosen. 
+• If project 2 is chosen, then we cannot choose project 
+5.
+• If we don’t choose project 1, then project 6 must be 
+chosen.
+• Project 4 and 5 belong to the same company. Either 
+both of them are chosen or neither of them is 
+chosen.
+
+
+--- SLIDE 9 ---
+Implication with three variables
+• If we do project 2, then we must do project 
+3 and 4.
+• If we do project 3, then we must do project 
+1 or 5. 
+• If we do both 3 and 4, then we must do 6.
+
+
+--- SLIDE 10 ---
+• How to convert the following constraint 
+into linear constraints?
+- If project 2 is not chosen, then project 1 can 
+not be chosen: 𝒙𝟏≤𝒙𝟐
+- If project 3 is not chosen, then project 1 can 
+not be chosen: 𝒙𝟏≤𝒙𝟑
+- If we do 2 and 3, then we must do 1: 
+𝒙𝟏≥𝒙𝟐+ 𝒙𝟑−𝟏
+Product of Binary Variables
+𝒙𝟏= 𝒙𝟐× 𝒙𝟑, 𝒙𝟏, 𝒙𝟐, 𝒙𝟑binary.
+
+
+--- SLIDE 11 ---
+• How to convert the following constraint 
+into linear constraints?
+- If 𝒙𝟐= 𝟏, then 𝒙𝟏= 𝒙𝟑: −(𝟏−𝒙𝟐) ≤𝒙𝟏−𝒙𝟑≤(𝟏−𝒙𝟐)
+- If 𝒙𝟐= 𝟎, then 𝒙𝟏= 𝟎: −𝒙𝟐≤𝒙𝟏≤𝒙𝟐. 
+- Big 𝑴:
+−𝑴𝒙𝟐≤𝒙𝟏≤𝑴𝒙𝟐, 
+−𝑴(𝟏−𝒙𝟐) ≤𝒙𝟏−𝒙𝟑≤𝑴(𝟏−𝒙𝟐)
+Product of Binary and Nonnegative Variables
+𝒙𝟏= 𝒙𝟐× 𝒙𝟑, 𝒙𝟐binary.
+
+
+--- SLIDE 12 ---
+Assignment Problem
+
+
+--- SLIDE 13 ---
+Shortest Path Problem
+
+
+--- SLIDE 14 ---
+Knapsack Problem
+• There are 𝑛projects.
+• Project 𝑖costs 𝑐𝑖to implement.
+• Project 𝑖returns 𝑝𝑖.
+• Total budget is 𝑏.
+Which projects to invest to maximize return?
+
+
+--- SLIDE 15 ---
+Knapsack Problem
+• 𝑥𝑖= 1 if project 𝑖is invested, 𝑥𝑖= 0 otherwise.
+Maximize: σ𝑖=1
+𝑛
+𝑝𝑖𝑥𝑖
+s.t.
+σ𝑖=1
+𝑛
+𝑐𝑖𝑥𝑖≤𝑏
+𝑥𝑖binary
+
+
+--- SLIDE 16 ---
+Facility Location Problem
+• {1,2, … , 𝑛} be potential locations to place a facility, e.g., a 
+plant. Once plant is built, there is no capacity in its 
+production quantities.
+• {1,2, … , 𝑚} be the locations of the demands, e.g., 
+distribution centers. Location 𝑗requires 𝑑𝑗units of 
+product.
+• 𝑐𝑖𝑗is the cost (e.g., transportation distance) of satisfying 
+one unit demand at location 𝑗using supply at location 𝑖.
+• 𝐾𝑖is the fixed cost of building a plant at location 𝑖.
+Which locations to open plants such that the total cost 
+of building plants and transportation cost from 
+satisfying demands is minimized?
+
+
+--- SLIDE 17 ---
+Facility Location Problem
+• 𝑥𝑖= 1 if a plant is built at location 𝑖, 𝑥𝑖= 0
+otherwise.
+• 𝑦𝑖𝑗: the amount of products shipped from plant 
+𝑖to demand 𝑗.
+- 𝑀is a large number (one can take 𝑀= σ𝑗=1
+𝑚
+𝑑𝑗)  
+Minimize:
+σ𝑖=1
+𝑛
+𝐾𝑖𝑥𝑖+ σ𝑖=1
+𝑛
+σ𝑗=1
+𝑚
+𝑐𝑖𝑗𝑦𝑖𝑗
+s.t.
+σ𝑖=1
+𝑛
+𝑦𝑖𝑗= 𝑑𝑗, 𝑗= 1, … , 𝑚
+σ𝑗=1
+𝑚
+𝑦𝑖𝑗≤𝑀𝑥𝑖, 𝑖= 1, … , 𝑛
+𝑦𝑖𝑗≥0, 𝑥𝑖binary
+
+
+--- SLIDE 18 ---
+Process Flexibility
+𝐶𝑖= 100
+20
+100
+100
+𝐷𝑗= 140
+140
+• 𝐾𝑖𝑗is the fixed cost of building flexibility 𝑗at plant 𝑖.
+• 𝑝𝑗is the profit from selling product 𝑗.
+𝐾11
+𝐾12
+𝐾13
+
+
+--- SLIDE 19 ---
+Two-Stage Stochastic Optimization
+• 𝑦𝑖𝑗= 1 if flexibility to produce 𝑗is built at location 𝑖, 𝑦𝑖𝑗= 0
+otherwise.
+• Given first-stage decision 𝒚and a realization of random 
+demand 𝑫, the optimal sales is
+max
+𝑦𝑖𝑗∈{0,1} −෍
+𝑖=1
+𝑛
+෍
+𝑗=1
+𝑚
+𝐾𝑖𝑗𝑦𝑖𝑗+ 𝐸[𝑓(𝒚, 𝑫)]
+𝑓𝒚, 𝑫= max
+𝑥𝑖𝑗
+σ𝑖=1
+𝑛
+σ𝑗=1
+𝑚
+𝑝𝑗𝑥𝑖𝑗
+s.t.
+σ𝑗=1
+𝑚
+𝑥𝑖𝑗≤𝐶𝑖, 𝑖= 1, … , 𝑛
+σ𝑖=1
+𝑛
+𝑥𝑖𝑗≤𝐷𝑗, 𝑗= 1, … , 𝑚
+0 ≤𝑥𝑖𝑗≤𝑀𝑦𝑖𝑗
+
+
+--- SLIDE 20 ---
+Sample Average Approximation
+• Consider K samples of demand and let 𝐷𝑗𝑘be the demand 
+of product 𝑗in sample 𝑘.
+• Let 𝑥𝑖𝑗𝑘be the amount of product 𝑗produced at plant 𝑖in 
+sample 𝑘.
+max
+𝑦𝑖𝑗∈{0,1} −෍
+𝑖=1
+𝑛
+෍
+𝑗=1
+𝑚
+𝐾𝑖𝑗𝑦𝑖𝑗+ 𝐸[𝑓(𝒚, 𝑫)]
+max
+𝑦𝑖𝑗, 𝑥𝑖𝑗𝑘−σ𝑖=1
+𝑛
+σ𝑗=1
+𝑚
+𝐾𝑖𝑗𝑦𝑖𝑗+
+1
+𝐾σ𝑖=1
+𝑛
+σ𝑗=1
+𝑚
+σ𝑘=1
+𝐾
+𝑝𝑗𝑥𝑖𝑗𝑘
+s.t.
+σ𝑗=1
+𝑚
+𝑥𝑖𝑗𝑘≤𝐶𝑖, 𝑖= 1, … , 𝑛; 𝑘= 1, … , 𝐾
+σ𝑖=1
+𝑛
+𝑥𝑖𝑗𝑘≤𝐷𝑗𝑘, 𝑗= 1, … , 𝑚; 𝑘= 1, … , 𝐾
+0 ≤𝑥𝑖𝑗𝑘≤𝑀𝑦𝑖𝑗
+
+
+--- SLIDE 21 ---
+Further Applications
+
+
+--- SLIDE 22 ---
+Travelling Salesman Problem
+•
+Given a list of cities and their pairwise distances, the task is to find a 
+shortest possible tour that visits each city exactly once.
+http://www.math.uwaterloo.ca/tsp/index.html
+
+
+--- SLIDE 23 ---
+Complete Graph
+• Every pair of node is connected by an arc.
+1
+2
+3
+4
+5
+
+
+--- SLIDE 24 ---
+Mathematical Definition (Symmetric TSP)
+• Given a complete undirected graph and a cost 
+on each arc, find a path starting and finishing 
+at a specified node after having visited each 
+other node exactly once (called Hamiltonian 
+cycle) that minimizes the total cost.
+• If in application, no arc exists between two 
+nodes, we can assign an arbitrarily large cost 
+on the arc connecting these two nodes.
+
+
+--- SLIDE 25 ---
+Naïve Method
+• Brute force enumeration.
+How many feasible solutions are there?
+How does 𝑛! compare with 2𝑛? 
+
+
+--- SLIDE 26 ---
+Model
+• Suppose a graph with n nodes. The cost from 
+node 𝑖to 𝑗is 𝑐𝑖𝑗. For convenience, let 𝑐𝑖𝑖= ∞.
+- 𝑥𝑖,𝑗= 1 if we travel from 𝑖to 𝑗
+-
+= 0 otherwise.
+
+
+--- SLIDE 27 ---
+Model
+1
+1
+1
+1
+min
+. .
+1,
+1,2,...,
+   
+1,
+1,2,...,
+        
+{0,1}
+n
+n
+ij
+ij
+i
+j
+n
+ij
+i
+n
+ij
+j
+ij
+c x
+s t
+x
+j
+n
+x
+i
+n
+x
+=
+=
+=
+=
+=
+=
+=
+=
+
+
+
+
+Assignment 
+problem gives a 
+lower bound to the 
+TSP.
+(why?)
+
+
+--- SLIDE 28 ---
+Assignment Problem
+2
+3
+4
+1
+2
+3
+4
+1
+5
+5
+1
+2
+3
+4
+5
+
+
+--- SLIDE 29 ---
+Assignment Problem
+2
+3
+4
+1
+2
+3
+4
+1
+5
+5
+1
+2
+3
+4
+5
+
+
+--- SLIDE 30 ---
+Model (Dantzig, Fulkerson & Johnson)
+1
+1
+1
+1
+min
+. .
+1,
+1,2,...,
+   
+1,
+1,2,...,
+        
+{0,1}
+n
+n
+ij
+ij
+i
+j
+n
+ij
+i
+n
+ij
+j
+ij
+c x
+s t
+x
+j
+n
+x
+i
+n
+x
+=
+=
+=
+=
+=
+=
+=
+=
+
+
+
+
+Sub tour breaking constraints:
+σ𝑖,𝑗∈𝑆𝑥𝑖𝑗≤|𝑆| −1, for every subset S
+
+
+--- SLIDE 31 ---
+Counting Cities Traveled
+1
+2
+3
+4
+5
+𝑢1
+𝑢2
+𝑢3
+𝑢2 ≥(𝑢1+1)𝑥12, 𝑢2 ≥(𝑢3+1)𝑥32 …
+𝑢4 ≥(𝑢2+1)𝑥24 …
+𝑢5 ≥(𝑢4+1)𝑥45 …
+𝑢3 ≥(𝑢5+1)𝑥53 …
+𝑢4
+𝑢5
+
+
+--- SLIDE 32 ---
+Counting Cities Traveled
+1
+2
+3
+4
+5
+𝑢1
+𝑢2
+𝑢3
+𝑢4 ≥(𝑢5+1)𝑥54
+𝑢5 ≥(𝑢4+1)𝑥45
+𝑢4
+𝑢5
+
+
+--- SLIDE 33 ---
+Model
+1
+1
+1
+1
+min
+. .
+1,
+1,2,...,
+   
+1,
+1,2,...,
+        
+{0,1}
+n
+n
+ij
+ij
+i
+j
+n
+ij
+i
+n
+ij
+j
+ij
+c x
+s t
+x
+j
+n
+x
+i
+n
+x
+=
+=
+=
+=
+=
+=
+=
+=
+
+
+
+
+Introduce additional variables:
+𝑢𝑖≥0, 𝑖= 1, 2, … , 𝑛
+and counting constraint:
+𝑢𝑗≥(𝑢𝑖+1)𝑥𝑖𝑗, 𝑖≠𝑗, 2 ≤𝑗≤𝑛, 1 ≤𝑖≤𝑛
+OR the equivalent counting constraint:
+(𝑢𝑖+1 −𝑢𝑗)𝑥𝑖𝑗≤0, 𝑖≠𝑗, 2 ≤𝑗≤𝑛, 1 ≤𝑖≤𝑛
+
+
+--- SLIDE 34 ---
+Transformation
+• The constraint below is not linear
+• For a very large constant 𝑀(𝑀= 𝑛−1 is sufficient)
+(𝑢𝑖+1 −𝑢𝑗)𝑥𝑖𝑗≤0, 𝑖≠𝑗, 2 ≤𝑗≤𝑛, 1 ≤𝑖≤𝑛
+𝑢𝑖+ 1 −𝑢𝑗≤𝑀(1 −𝑥𝑖𝑗), 𝑖≠𝑗, 2 ≤𝑗≤𝑛, 1 ≤𝑖≤𝑛
+
+
+--- SLIDE 35 ---
+Model (Miller, Tucker and Zemlin)
+1
+1
+1
+1
+min
+. .
+1,
+1,2,...,
+   
+1,
+1,2,...,
+        
+{0,1}
+n
+n
+ij
+ij
+i
+j
+n
+ij
+i
+n
+ij
+j
+ij
+c x
+s t
+x
+j
+n
+x
+i
+n
+x
+=
+=
+=
+=
+=
+=
+=
+=
+
+
+
+
+Introduce additional variables:
+𝑢𝑖≥0, 𝑖= 1, 2, … , 𝑛
+and constraints:
+𝑢𝑖+ 1 −𝑢𝑗≤𝑀(1 −𝑥𝑖𝑗), 𝑖≠𝑗, 2 ≤𝑗≤𝑛, 1 ≤𝑖≤𝑛
+
+
+--- SLIDE 36 ---
+Counting Accumulated Cost/Distance/Time
+1
+2
+3
+4
+5
+𝑢1
+𝑢2
+𝑢3
+𝑢2 ≥(𝑢1+𝑐12)𝑥12 𝑢2 ≥(𝑢3+𝑐32)𝑥32
+𝑢4 ≥(𝑢2+𝑐24)𝑥24
+𝑢5 ≥(𝑢4+𝑐45)𝑥45
+𝑢3 ≥(𝑢5+𝑐53)𝑥53
+𝑢4
+𝑢5
+
+
+--- SLIDE 37 ---
+Model
+1
+1
+1
+1
+min
+. .
+1,
+1,2,...,
+   
+1,
+1,2,...,
+        
+{0,1}
+n
+n
+ij
+ij
+i
+j
+n
+ij
+i
+n
+ij
+j
+ij
+c x
+s t
+x
+j
+n
+x
+i
+n
+x
+=
+=
+=
+=
+=
+=
+=
+=
+
+
+
+
+Introduce additional variables:
+𝑢𝑖≥0, 𝑖= 1, 2, … , 𝑛
+and constraints:
+𝑢𝑖+ 𝑐𝑖𝑗−𝑢𝑗≤𝑀(1 −𝑥𝑖𝑗), 𝑖≠𝑗, 2 ≤𝑗≤𝑛, 1 ≤𝑖≤𝑛
+
+
+--- SLIDE 38 ---
+UberPOOL
+Source: http://blog.under.com/uberPOOL-2015 
+
+
+--- SLIDE 39 ---
+An Example
+Pick up passenger 1
+Pick up passenger 2
+Pick up passenger 3
+Drop off passenger 1
+Drop off passenger 2
+Drop off passenger 3
+Start point
+4
+2
+6
+1
+1
+1
+1
+3
+2
+7
+
+
+--- SLIDE 40 ---
+The Problem
+• The objective is to find a route that achieves: 
+- Send every customer to his/her destination
+- Minimizes the total time/distance traveled
+• Assumptions:
+- We know every positions in advance
+- The vehicle has unlimited capacity
+• How should we model the problem?
+
+
+--- SLIDE 41 ---
+Model
+• Graph is not complete.
+- Set 𝑐𝑖𝑗= ∞if (𝑖, 𝑗) is not in the graph.
+• It is not required to return to the starting node.
+- We can assign 0 cost to all arcs flowing into the 
+starting node.
+
+
+--- SLIDE 42 ---
+Modification
+1
+2
+5
+3
+4
+6
+Start point
+4
+2
+6
+1
+1
+1
+1
+3
+2
+7
+1000
+0
+0
+
+
+--- SLIDE 43 ---
+TSP: Data
+
+
+--- SLIDE 44 ---
+TSP: Model
+
+
+--- SLIDE 45 ---
+Solution: Optimal Value 9
+1. Pick up passenger 1
+2.  Pick up passenger 2
+5. Pick up passenger 3
+3. Drop off passenger 1
+4. Drop off passenger 2
+6. Drop off passenger 3
+Start point
+0
+2
+1
+1
+3
+2
+Is this solution feasible?
+
+
+--- SLIDE 46 ---
+Precedence Constraints
+• In order to get a feasible solution, we need to 
+impose precedence constraints:
+- Node 1 (pick customer 1) need to be traveled 
+before node 3 (drop customer 1) .
+- Node 2 (pick customer 2) need to be traveled 
+before node 4 (drop customer 2) .
+- Node 5 (pick customer 3) need to be traveled 
+before node 6 (drop customer 3) .
+
+
+--- SLIDE 47 ---
+Precedence Constraints
+• Recall the meaning of 𝒖𝒊at each node i: 𝒖𝒊is 
+the number of nodes visited so far.
+• If we define a precedent pairs 𝑷containing (1, 
+3), (2, 4) and (5, 6), then the precedence 
+constraints can be expressed as
+𝒖𝒊≤𝒖𝒋, 𝒇𝒐𝒓(𝒊, 𝒋) ∈𝑷
+
+
+--- SLIDE 48 ---
+Precedence Constraints
+
+
+--- SLIDE 49 ---
+Solution: Optimal Value 11 
+1. Pick up 
+passenger 1
+2. Pick up 
+passenger 2
+5. Pick up 
+passenger 3
+3. Drop off 
+passenger 1
+4. Drop off 
+passenger 2
+6. Drop off passenger 
+3
+Start point
+4
+1
+3
+2
+0
+1
+
+
+--- SLIDE 50 ---
+OR Solution: Optimal Value 11 
+1. Pick up 
+passenger 1
+2. Pick up 
+passenger 2
+5. Pick up 
+passenger 3
+3. Drop off 
+passenger 1
+4. Drop off 
+passenger 2
+6. Drop off passenger 
+3
+Start point
+4
+1
+1
+3
+2
+0
+
+
+--- SLIDE 51 ---
+Sudoku
+
+
+--- SLIDE 52 ---
+Sudoku
+
+
+--- SLIDE 53 ---
+Sudoku: IP Formulation
+• Decision variable is 𝒙𝒊𝒋𝒌∈𝟎, 𝟏, 𝒌= 𝟏, … , 𝟗
+• Input data: 𝒚𝒊𝒋= 𝒌, 𝒌= 𝟏, … , 𝟗
+- 𝒚𝒊𝒋= 𝟎, if it is not filled.
+
+
+--- SLIDE 54 ---
+Sudoku: IP Formulation
+max 0
+𝑥𝑖,𝑗,𝑦𝑖,𝑗= 1, 𝑓𝑜𝑟𝑦𝑖,𝑗≠0
+σ𝑖=1
+9
+𝑥𝑖,𝑗,𝑘= 1, ∀𝑗, 𝑘
+σ𝑗=1
+9
+𝑥𝑖,𝑗,𝑘= 1, ∀𝑖, 𝑘
+σ𝑘=1
+9
+𝑥𝑖,𝑗,𝑘= 1, ∀𝑖, 𝑗
+σ𝑖=3𝑝−2
+3𝑝
+σ𝑗=3𝑞−2
+3𝑞
+𝑥𝑖,𝑗,𝑘= 1, ∀𝑘; 𝑝, 𝑞∈{1,2,3}
+𝑥𝑖,𝑗,𝑘∈{0, 1}
+
+
+--- SLIDE 55 ---
+Rue La La
+Source: https://www.ruelala.com/boutique/
+$39.99 
+$44.99
+$49.99
+$54.99
+$59.99
+$39.99 
+$44.99
+$49.99
+$54.99
+$59.99
+$39.99 
+$44.99
+$49.99
+$54.99
+$59.99
+Price Grids
+1
+2
+3
+
+
+--- SLIDE 56 ---
+What do we need?
+What are the demands for products 1, 2 and 3 under prices ($49.99, $49.99, $59.99)? 
+Will demand for product 1, 2 and 3 change under prices ($49.99, $39.99, $59.99)? 
+$39.99
+How many possible price points are there?53 (𝑀𝑁)
+
+
+--- SLIDE 57 ---
+Simplification Assumption
+• Let 𝑝𝑚denote the m-th price point, e.g. 𝑝1 = 39.99
+• Demand for a product 𝑛depends on its own price 𝑝𝑚and 
+the sum of prices (or average price) of all products 𝑘. 
+- Demand for product 1 is the same under
+· ($49.99, $39.99, $59.99) or ($49.99, $49.99, $49.99)
+- 𝐷(𝑛, 𝑚, 𝑘) is the demand for product 𝑛at price point 𝑚
+and when total price is 𝑘.
+- The possible values for 𝑘are 3x39.99, 3x39.99 + 5, 
+3x39.99 + 10, …, 3x59.99 in total 3x4 + 1 points.
+· Need to estimate demands at  𝑁× 𝑀× [𝑁× 𝑀−1 + 1]
+points instead of 𝑀𝑁points (consider M=2, N=50).
+
+
+--- SLIDE 58 ---
+Optimization Model
+• Here, 𝐷(𝑛, 𝑚, 𝑘) is not a parameter, since 𝑘
+depends on the prices of each of the product.
+• If 𝑘is fixed, say, 𝑘= 3 × 49.99 , can we model the 
+problem?
+- 𝑥𝑛,𝑚= 1 if product 𝑛is priced at price point 𝑝𝑚, 
+𝑥𝑛,𝑚= 0 otherwise.
+- Objective: 𝑧𝑘= max σ𝑛=1
+𝑁
+σ𝑚=1
+𝑀
+𝑝𝑚𝐷(𝑛, 𝑚, 𝑘) 𝑥𝑛,𝑚
+- Choose only one price: σ𝑚=1
+𝑀
+𝑥𝑛,𝑚= 1
+- Total price is 𝑘: σ𝑛=1
+𝑁
+σ𝑚=1
+𝑀
+𝑝𝑚𝑥𝑛,𝑚= 𝑘
+
+
+--- SLIDE 59 ---
+Optimization Model
+• But 𝑘is not fixed…
+- Try every possible 𝑘!
+- For 𝑘= 3x39.99, 3x39.99 + 5, …, 3x59.99
+- Solve the IP to obtain 𝑧𝑘
+- Find the maximum 𝑧𝑘.
+
+
+--- SLIDE 60 ---
+Job Shop Scheduling
+•
+A clinic is determining the service schedules for the following 
+patients in the next day.
+•
+Waiting is possibly inevitable: e.g., 
+- Patient A: imaging from 8-10, OT from 10-13, recovery from 
+13-15
+- Patient C: wait 2 hours for imaging and wait another 2 hours 
+for OT.
+•
+Objective: Minimize total waiting time = total completion time
+Patient
+Step 1
+Step 2
+Step 3
+A
+Imaging Center, 2h
+Operating Theatre, 3h
+Recovery Room, 2h
+B
+Operating Theatre, 2h
+Recovery Room, 3h
+Imaging Center, 1h
+C
+Imaging Center, 1h
+Operating Theatre, 2h
+Recovery Room, 3h
+
+
+--- SLIDE 61 ---
+General Description
+• 𝑁= {1,2, … , 𝑛} be the set of jobs, e.g., a list of patients. 
+𝑀= {1,2, … , 𝑚} be the set of machines, e.g., facilities.
+• For each job 𝑖∈𝑁
+- 𝑀𝑖⊆𝑀: set of machines required by job 𝑖.
+- 𝑝𝑖𝑘: processing time of job 𝑖on machine 𝑘.
+- 𝑃𝑖: precedence pairs, 𝑘, 𝑙∈𝑃𝑖means job 𝑖must finish on 
+machine 𝑘before starting on machine 𝑙.
+• In our example:
+- 𝑀𝐴= {𝐼𝐶, 𝑂𝑇, 𝑅𝑅} and 𝑃𝐴= { 𝐼𝐶, 𝑂𝑇, (𝑂𝑇, 𝑅𝑅)}
+- 𝑝𝐴,𝐼𝐶= 2, 𝑝𝐴,𝑂𝑇= 3, 𝑝𝐴,𝑅𝑅= 2
+
+
+--- SLIDE 62 ---
+Model
+• 𝑠𝑖,𝑘be the starting time of job 𝑖on machine 𝑘∈𝑀𝑖, and 
+𝑠𝑖,𝐹𝑖𝑛𝑖𝑠ℎbe the completion time job 𝑖. 
+• Objective: 𝑚𝑖𝑛σ𝑖=1
+𝑛
+𝑠𝑖,𝐹𝑖𝑛𝑖𝑠ℎ
+• Within-job precedence constraint: for job 𝑖
+- 𝑠𝑖,𝑙≥𝑠𝑖,𝑘+ 𝑝𝑖,𝑘, ∀𝑘, 𝑙∈𝑃𝑖
+- 𝑠𝑖,𝐹𝑖𝑛𝑖𝑠ℎ≥𝑠𝑖,𝑘+ 𝑝𝑖,𝑘, ∀𝑘∈𝑀𝑖
+• Within-machine precedence constraint: for machine 𝑘
+and jobs 𝑖, 𝑗such that 𝑘∈𝑀𝑖∩𝑀𝑗
+- 𝑠𝑗,𝑘≥𝑠𝑖,𝑘+ 𝑝𝑖,𝑘OR 𝑠𝑖,𝑘≥𝑠𝑗,𝑘+ 𝑝𝑗,𝑘.
+
+
+--- SLIDE 63 ---
+Linear Programming Relaxation
+
+
+--- SLIDE 64 ---
+Method of LP Relaxation
+LP Relaxation
+Round the solution to the nearest integers 
+Minimize:
+𝒄′𝒙
+s.t.
+𝑨𝒙= 𝒃
+𝒙≥𝟎, binary
+Minimize:
+𝒄′𝒙
+s.t.
+𝑨𝒙= 𝒃
+𝒙≥𝟎, integer
+Minimize:
+𝒄′𝒙
+s.t.
+𝑨𝒙= 𝒃
+𝒙≥𝟎
+Minimize:
+𝒄′𝒙
+s.t.
+𝑨𝒙= 𝒃
+𝟎≤𝒙≤𝟏
+
+
+--- SLIDE 65 ---
+Investment Example
+• Consider two investments opportunities:
+- Invest $100K, return 1 million 40 years later.
+· Annual rate of return: 5.9%
+- Invest $80K, return 0.95 million 40 years later.
+· Annual rate of return: 6.4%
+• Budget constraint: $100K.
+• Objective: Maximize the return after 40 years.
+
+
+--- SLIDE 66 ---
+Model
+• IP formulation:
+• LP relaxation
+Maximize: 1000𝑥1 + 950𝑥2
+s.t. 100𝑥1 + 80𝑥2 ≤100
+𝑥1, 𝑥2 binary
+Maximize:1000𝑥1 + 950𝑥2
+s.t.
+100𝑥1 + 80𝑥2 ≤100
+0 ≤𝑥1, 𝑥2 ≤1
+(𝑥1, 𝑥2) = (0.2, 1)
+(𝑥1, 𝑥2) = (0, 1)
+
+
+--- SLIDE 67 ---
+Method of LP Relaxation
+LP Relaxation
+Minimize:
+𝒄′𝒙
+s.t.
+𝑨𝒙= 𝒃
+𝒙≥𝟎, binary
+Minimize:
+𝒄′𝒙
+s.t.
+𝑨𝒙= 𝒃
+𝒙≥𝟎, integer
+Minimize:
+𝒄′𝒙
+s.t.
+𝑨𝒙= 𝒃
+𝒙≥𝟎
+Minimize:
+𝒄′𝒙
+s.t.
+𝑨𝒙= 𝒃
+𝟎≤𝒙≤𝟏
+When are they the same?
+
+
+--- SLIDE 68 ---
+Cramer’s Rule
+Cramer’s Rule: consider a system of n linear equations and 
+n unknowns
+The solution for LP: 𝑩𝒙𝑩= 𝒃
+𝑩𝒙= 𝒃
+𝒙𝒊= 𝒅𝒆𝒕(𝑴𝒊)
+𝒅𝒆𝒕(𝑩)
+𝑴𝒊= [𝑩𝟏, … , 𝑩𝒊−𝟏, 𝒃, 𝑩𝒊+𝟏, … , 𝑩𝒏]
+
+
+--- SLIDE 69 ---
+Totally Unimodular Matrix
+Unimodular Matrix: A square integer matrix having 
+determinant +1 or -1.
+If the optimal basis is unimodular, then we are done.
+Totally Unimodular Matrix: A matrix for which every square 
+non-singular submatrix is unimodular.
+If 𝑨is totally unimodular, then we are done.
+
+
+--- SLIDE 70 ---
+Necessary Condition and Example
+Every entry of 𝑨is 0, +1, or -1
+
+
+--- SLIDE 71 ---
+Branch and Bound Method
+
+
+--- SLIDE 72 ---
+Knapsack Problem
+• How many feasible solutions do we have?
+- Consider 𝑛= 50
+• NP-hard
+Maximize: σ𝑖=1
+𝑛
+𝑝𝑖𝑥𝑖
+s.t.
+σ𝑖=1
+𝑛
+𝑐𝑖𝑥𝑖≤𝑏
+𝑥𝑖binary
+
+
+--- SLIDE 73 ---
+Investment Example
+• Consider three investments opportunities:
+- Invest $100K, return 1 million 40 years later.
+· Annual rate of return: 5.9%
+- Invest $80K, return 0.95 million 40 years later.
+· Annual rate of return: 6.4%
+- Invest $50K, return 0.35 million 40 years later.
+· Annual rate of return: 5.0%
+• Budget constraint: $200K.
+• Objective: Maximize 𝒛: the return after 40 years.
+
+
+--- SLIDE 74 ---
+How to Branch
+• LP relaxation
+• Branch: consider two sub-problems:
+- 𝑥3 = 0
+- 𝑥3 = 1
+Maximize:1000𝑥1 + 950𝑥2 + 350𝑥3
+s.t.
+100𝑥1 + 80𝑥2+50𝑥3≤200
+0 ≤𝑥1, 𝑥2, 𝑥3 ≤1
+(𝑥1, 𝑥2, 𝑥3) = 1, 1, 0.4 ; Objective: 2090
+
+
+--- SLIDE 75 ---
+How to Bound
+• First branch: 𝑥3 = 0
+• What information do we get from this?
+- 𝒛≥1950
+- 𝒛≤2090 (from the full problem)
+Maximize:1000𝑥1 + 950𝑥2 + 350𝑥3
+s.t.
+100𝑥1 + 80𝑥2+50𝑥3≤200
+0 ≤𝑥1, 𝑥2 ≤1, 𝑥3 = 0
+(𝑥1, 𝑥2, 𝑥3) = 1, 1, 0 ; Objective: 1950
+
+
+--- SLIDE 76 ---
+How to Bound
+• Second branch: 𝑥3 = 1
+• What information do we get from this?
+- 1950 ≤𝒛≤2000
+- Need to further branch: maybe a better solution 
+than (1, 1, 0) lies in this branch.
+Maximize:1000𝑥1 + 950𝑥2 + 350𝑥3
+s.t.
+100𝑥1 + 80𝑥2+50𝑥3≤200
+0 ≤𝑥1, 𝑥2 ≤1, 𝑥3 = 1
+(𝑥1, 𝑥2, 𝑥3) = 0.7, 1, 1 ; Objective: 2000
+
+
+--- SLIDE 77 ---
+Branches in Branch 𝑥3 = 1
+• First branch: 𝑥1 = 0
+• What information do we get from this?
+- Since 1950 ≤𝒛≤2000, this branch cannot contain 
+optimal solution, no need to explore further.
+Maximize:1000𝑥1 + 950𝑥2 + 350𝑥3
+s.t.
+100𝑥1 + 80𝑥2+50𝑥3≤200
+0 ≤𝑥2 ≤1, 𝑥1 = 0, 𝑥3 = 1
+(𝑥1, 𝑥2, 𝑥3) = 0, 1, 1 ; Objective: 1300
+
+
+--- SLIDE 78 ---
+Branches in Branch 𝑥3 = 1
+• Second branch: 𝑥1 = 1
+• What information do we get from this?
+- Since 1950 ≤𝒛≤2000, this branch cannot contain 
+optimal solution, no need to explore further.
+Maximize:1000𝑥1 + 950𝑥2 + 350𝑥3
+s.t.
+100𝑥1 + 80𝑥2+50𝑥3≤200
+0 ≤𝑥2 ≤1, 𝑥1 = 1, 𝑥3 = 1
+(𝑥1, 𝑥2, 𝑥3) = 1, 0.625, 1 ; Objective: 1943.75
+
+
+--- SLIDE 79 ---
+Tree View
+(𝑥1, 𝑥2, 𝑥3) = 1, 1, 0.4 ; Objective: 2090
+(𝑥1, 𝑥2, 𝑥3) = 1, 1, 0 ; Objective: 1950
+(𝑥1, 𝑥2, 𝑥3) = 0.7, 1, 1 ; Objective: 2000
+𝑥1 = 1
+𝑥3 = 0
+(𝑥1, 𝑥2, 𝑥3) = 0, 1, 1 ; Objective: 1300
+(𝑥1, 𝑥2, 𝑥3) = 1, 0.625, 1 ; Objective: 1943.75
+𝑥3 = 1
+𝑥1 = 0

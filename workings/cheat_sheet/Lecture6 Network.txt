@@ -1,0 +1,722 @@
+
+--- SLIDE 1 ---
+DBA5103
+Operations Research and Analytics
+Zhenyu Hu
+Semester I, 2026/2027
+
+
+--- SLIDE 2 ---
+Network Flow Models
+• Basic Graph Theory 
+• General Network-Flow Problem
+• Special Network Models
+• Solution Methods
+• Application of Network Models
+
+
+--- SLIDE 3 ---
+Basic Graph Theory
+
+
+--- SLIDE 4 ---
+Undirected Network
+• A network is denoted as G = (N, A), where N 
+is the set of nodes and A is the set of 
+undirected arcs.
+1
+2
+3
+4
+5
+6
+
+
+--- SLIDE 5 ---
+Directed Network
+• A network whose arcs are all ordered pairs 
+of distinct nodes.
+1
+2
+3
+4
+5
+6
+
+
+--- SLIDE 6 ---
+Path
+• A path is a sequence of arcs which connect a 
+sequence of distinct nodes. Directed path 
+requires the arcs to be in the same direction 
+1
+2
+3
+4
+5
+6
+
+
+--- SLIDE 7 ---
+Cycle
+• A cycle is a path (𝒊𝟏, 𝒊𝟐), (𝒊𝟐, 𝒊𝟑), … , (𝒊𝒏−𝟏, 𝒊𝒏)
+together with the arc (𝒊𝒏, 𝒊𝟏).
+1
+2
+3
+4
+
+
+--- SLIDE 8 ---
+Acyclic network
+• A (directed) graph is acyclic if it contains 
+no (directed) cycle.
+1
+2
+3
+4
+5
+6
+
+
+--- SLIDE 9 ---
+Connectivity
+• Two nodes i and j are connected if the graph 
+contains at least one path from node i to node j.
+• A graph is connected if every pair of its nodes is 
+connected. Otherwise, the graph is disconnected.
+1
+2
+3
+4
+5
+6
+Connected components
+
+
+--- SLIDE 10 ---
+Tree
+• A tree is a connected graph that contains 
+no cycles.
+1
+2
+3
+4
+5
+6
+parent
+child
+
+
+--- SLIDE 11 ---
+Spanning Tree
+• A spanning tree T of a connected graph G 
+satisfies: T is a tree and T contains every node 
+in G
+1
+2
+3
+4
+5
+6
+
+
+--- SLIDE 12 ---
+Properties of Spanning Tree
+• There are exactly N – 1 arcs; it is acyclic; it 
+connects all N nodes.
+• Conversely, if a set of N – 1 arcs is 
+connected to all N nodes, then it is a 
+spanning tree.
+
+
+--- SLIDE 13 ---
+Other Special Graphs: Bipartite Graph
+• The node is separated into two sets: arcs 
+only connect nodes in different sets.
+1
+2
+3
+4
+5
+Every tree is a bipartite graph, but 
+not vice versa.
+
+
+--- SLIDE 14 ---
+Other Special Graphs: Complete Graph
+• Every pair of node is connected by an arc.
+1
+2
+3
+4
+5
+How many arcs are in a complete 
+graph with n nodes?
+
+
+--- SLIDE 15 ---
+Other Special Graphs: Complete Bipartite Graph
+• Every node in one set is connected with 
+every other node in the other set.
+1
+2
+3
+4
+5
+
+
+--- SLIDE 16 ---
+General Network-Flow Problem
+
+
+--- SLIDE 17 ---
+Minimum Cost Network Flow Problem
+• Let 𝑮= (𝑵, 𝑨) be a directed network. For each arc 𝒊, 𝒋∈𝑨, 
+𝒄𝒊𝒋indicates the cost of sending a unit flow from 𝒊to 𝒋, and 
+𝒖𝒊𝒋is the capacity of flow on the arc.
+• For each 𝒊∈𝑵, we associate a parameter 𝒃𝒊with σ𝒊𝑏𝑖= 0:
+- If 𝒃𝒊> 𝟎, the node is called a supply node;
+- If 𝒃𝒊< 𝟎, the node is called a demand node;
+- If 𝒃𝒊= 𝟎, the node is called a transshipment node;
+1
+2
+4
+5
+3
+(4, $2)
+(∞, $2)
+(5, $3)
+(4, $1)
+(∞, $2)
+(20)
+(-5)
+(-15)
+
+
+--- SLIDE 18 ---
+Minimum Cost Network Flow Problem
+min
+σ(𝑖,𝑗)∈𝐴𝑐𝑖,𝑗𝑥𝑖,𝑗
+s. t.
+σ𝑗: (𝑖,𝑗)∈𝐴𝑥𝑖,𝑗−σ𝑗: (𝑗,𝑖)∈𝐴𝑥𝑗,𝑖= 𝑏𝑖, ∀𝑖∈𝑁
+0 ≤𝑥𝑖,𝑗≤𝑢𝑖,𝑗
+
+
+--- SLIDE 19 ---
+Network Flow Problem: LP Tableau 
+
+
+--- SLIDE 20 ---
+Network Flow Problem: Special Structure
+• The coefficients of 𝒙𝒊𝒋in the constraint matrix is 
+either 0, +1 or -1.
+• Each column in the constraint matrix has exactly 
+2 non-zero entries.
+• The two non-zero entries are respectively +1 and 
+-1 for all columns.
+
+
+--- SLIDE 21 ---
+Special Network Models
+
+
+--- SLIDE 22 ---
+Transportation Problem 
+- m plants, n 
+distribution centers.
+- ai supply from plant 
+i, i=1,2,…,m
+- bj demand of 
+distribution center j, 
+j=1,2,…,n
+- cij cost of 
+transportation from i
+to j
+Transportation Problem is a special 
+case of min-cost flow problem. 
+(why?)
+Assume balanced: σ𝒊𝑎𝑖= σ𝒋𝑏𝑗
+
+
+--- SLIDE 23 ---
+Transportation Problem: Network Formulation
+
+
+--- SLIDE 24 ---
+Assignment Problem
+• Determine the minimal cost of assigning 
+elements of a set A to elements of another 
+set B.
+•
+Applications
+- People to projects
+- Jobs to machines
+- Boarding gate to aircrafts
+- Graduates to internships
+- …
+
+
+--- SLIDE 25 ---
+Assignment Problem: Network Formulation
+What if the graph is not a complete graph?
+
+
+--- SLIDE 26 ---
+Shortest Path Problem
+• Identify the shortest path from a source node 
+to a sink node through the given network.
+- Finding a path of minimum length
+- Finding a path taking minimum time
+- Finding a path of maximum reliability.
+
+
+--- SLIDE 27 ---
+Shortest Path Problem: Network Formulation
+
+
+--- SLIDE 28 ---
+Maximum Flow Problem
+•
+Determine the maximum flow that can be sent from a given 
+source node to a sink node in a capacitated network.
+•
+Determine maximum flow of
+-
+petroleum products in a pipeline network,
+-
+cars in a road network,
+-
+message in a telecommunication network,
+-
+electricity in an electrical network.
+
+
+--- SLIDE 29 ---
+Maximum Flow: Network Formulation
+
+
+--- SLIDE 30 ---
+Solution Methods
+
+
+--- SLIDE 31 ---
+Transportation Problem: Example
+
+
+--- SLIDE 32 ---
+Transportation Problem: Example
+
+
+--- SLIDE 33 ---
+Solving Transportation Problem (TP): Procedure 
+• Obtaining an initial solution;
+• Checking optimality condition;
+• Developing a procedure to improve the current 
+solution if the optimality condition is not met
+
+
+--- SLIDE 34 ---
+Solving TP: Finding Initial Solution 
+
+
+--- SLIDE 35 ---
+Finding Initial Solution : Myopic
+
+
+--- SLIDE 36 ---
+Finding Initial Solution : Greedy Algorithm
+
+
+--- SLIDE 37 ---
+Properties of the Initial Solution 
+• In both methods, the solutions have exactly (m + 
+n - 1) arcs;
+• Every node in the network is connected through 
+the solution;
+• There is no cycle in the solution.
+With the above properties, what do we 
+know about the solution?
+
+
+--- SLIDE 38 ---
+Finding Initial Solution : Spanning Tree
+
+
+--- SLIDE 39 ---
+Spanning Tree vs. BS
+• Is a solution generated by spanning tree a basic 
+solution? 
+- Is the solution unique?
+• Is a basic solution a spanning tree?
+- How many basic variables do we have?
+- It cannot have a cycle (otherwise one can have 
+more than one solution to the equation).
+In transportation problem, a vector (not necessarily feasible) is 
+a basic solution if and only if it is generated by a spanning tree. 
+
+
+--- SLIDE 40 ---
+Solving TP: Python Implementation
+
+
+--- SLIDE 41 ---
+Solving TP: Python Implementation
+
+
+--- SLIDE 42 ---
+Solving TP: Python Implementation
+
+
+--- SLIDE 43 ---
+Application of Network Models
+
+
+--- SLIDE 44 ---
+Container Repositioning
+• A shipping company operates between three ports:
+Singapore, Ho Chi Minh, and Bangkok. The table below 
+shows the number of containers at each port on Oct.1.
+• The table below shows the shipping demand for the next 2 
+days on the following routes.
+- Shipping between each 2 ports takes 1 day and costs 𝒄𝒊𝒋.
+- All demands must be satisfied.
+Singapore
+Ho Chi Minh
+Bangkok
+5
+3
+2
+Route
+Oct.1
+Oct.2
+S→H
+3
+1
+H→B
+2
+5
+B→S
+1
+2
+
+
+--- SLIDE 45 ---
+Time-Expanded Network
+S
+H
+(3, $𝒄𝑺𝑯)
+(2)
+B
+(3)
+(5)
+S
+H
+B
+Oct.1
+Oct.2
+t
+Oct.3
+(2, $𝒄𝑯𝑩)
+(1, $𝒄𝑩𝑺)
+(1, $𝒄𝑺𝑯)
+S
+H
+B
+(5, $𝒄𝑯𝑩)
+(2, $𝒄𝑩𝑺)
+(-10)
+
+
+--- SLIDE 46 ---
+Project Management
+
+
+--- SLIDE 47 ---
+Project Management
+Activity
+Description
+Immediate 
+Predecessors
+Estimated 
+Duration
+1
+Wait until last 3 weeks
+---
+4 weeks
+2
+Looking for topic and data
+1
+1 week
+3
+Looking for reference
+2
+1 week
+4
+Cleaning data
+2
+1 week
+5
+Building model
+3
+1 week
+6
+Coding
+4, 5
+2 weeks
+7
+Writing motivation/model
+5
+2 weeks
+8
+Analyzing results
+6
+1 week
+9
+Finalizing report
+7, 8
+1 week
+Deadline: 7 weeks
+
+
+--- SLIDE 48 ---
+Activity-on-node (AON) Project Network
+1
+2
+4
+3
+5
+6
+7
+8
+9
+4
+1
+2
+1
+1
+1
+1
+2
+1
+Finish
+
+
+--- SLIDE 49 ---
+Crashing Projects
+Activity
+Description
+Maximum 
+Reduction Time
+Crash Cost 
+per Week
+1
+Wait until last 3 weeks
+4 weeks
+1
+2
+Looking for topic and data
+0 week
+0
+3
+Looking for reference
+0 week
+0
+4
+Cleaning data
+½ week
+2
+5
+Building model
+½ week
+2
+6
+Coding
+1 week
+2
+7
+Writing motivation/model
+½ week
+2
+8
+Analyzing results
+0 week
+0
+9
+Finalizing report
+½ week
+2
+Objective: Minimizing  the crash cost while meeting the deadline.
+
+
+--- SLIDE 50 ---
+Linear Programming Formulation
+•
+Decision variables:
+- 𝑥𝑖: reduction in activity 𝒊through crashing.
+-
+𝑦𝑖: staring time of activity 𝒊.
+-
+𝑦𝐹𝑖𝑛𝑖𝑠ℎ: project duration or starting time of the finish node
+•
+Objective:
+-
+Minimize: σ𝒊𝑐𝑖𝑥𝑖
+•
+Constraints:
+-
+Maximum reduction time constraint: 𝑥𝑖≤𝑏𝑖
+-
+Precedence constraints, e.g.  
+𝑦6 ≥𝑦4 + 1 −𝑥4;  𝑦6 ≥𝑦5 + 1 −𝑥5;  𝑦𝐹𝑖𝑛𝑖𝑠ℎ≥𝑦9 + 1 −𝑥9
+-
+Deadline constraint:  𝑦𝐹𝑖𝑛𝑖𝑠ℎ≤7
+-
+Non-negativity constraint: 𝑥𝑖, 𝑦𝑖≥0
+
+
+--- SLIDE 51 ---
+Application: Manufacturing of Complex Machine
+
+
+--- SLIDE 52 ---
+Application: Manufacturing of Complex Machine
+Source: Chen Changhua, Goh Zhi Wen, Chuah Sim Teng, Ng Changwei and Yang Kan, “Optimizing Expediting Cost for 
+Complex Product Delivery”, Term Paper, 2017
+
+
+--- SLIDE 53 ---
+Application: Manufacturing of Complex Machine
+•
+The real business problem:
+-
+6 levels.
+-
+1307 nodes.
+•
+Decisions:
+-
+Expediting decisions 
+-
+Outsourcing decisions 
+•
+Objective: 
+-
+Minimize expediting cost + outsourcing cost
+-
+Meeting the final product delivery time
+•
+Other considerations:
+-
+Random lead time
+-
+Multiple suppliers to outsource from
+
+
+--- SLIDE 54 ---
+Process Flexibility: Dedicated System
+100
+20
+100
+100
+140
+140
+
+
+--- SLIDE 55 ---
+Full Flexible System
+100
+20
+100
+100
+140
+140
+
+
+--- SLIDE 56 ---
+How to Compute the Maximum Sales?
+100
+80
+100
+100
+140
+140
+120
+100
+20
+100
+100
+100
+
+
+--- SLIDE 57 ---
+Linear Programming Formulation
+• Decision variables:
+- 𝑥𝑖𝑗: amount of product 𝒋produced at plant 𝒊.
+• Objective:
+- Maximize: σ(𝑖,𝑗)∈𝐴𝑥𝑖𝑗
+• Constraints:
+- Capacity constraint at plant 𝒊: σ𝑗,(𝑖,𝑗)∈𝐴𝑥𝑖𝑗≤100
+- Demand constraint for product 𝒋: σ𝑖,(𝑖,𝑗)∈𝐴𝑥𝑖𝑗≤𝑑𝑗
+- Non-negativity constraint: 𝑥𝑖𝑗≥0
+
+
+--- SLIDE 58 ---
+If demand is random…
+• Suppose demands of products are independent 
+and demand for product 𝒋: 𝐷𝑗= 𝑚𝑎𝑥{𝑋𝑗, 0}
+- 𝑋𝑗follows 𝑁(𝜇𝑗, 𝜎𝑗
+2)
+• Given a design (N, A), how do we evaluate its 
+performance?
+- Draw M samples of 𝐷𝑗
+- Solve the network flow problem M times
+- Take the average of the objective values
+
+
+--- SLIDE 59 ---
+How to improve upon the dedicated system?
+100
+80
+100
+100
+140
+140
+120
+100
+20
+100
+100
+100
+
+
+--- SLIDE 60 ---
+Open Chain
+100
+80
+100
+100
+140
+140
+120
+100
+20
+100
+100
+100
+
+
+--- SLIDE 61 ---
+Long Chain
+100
+80
+100
+100
+140
+140
+120
+100
+20
+100
+100
+100

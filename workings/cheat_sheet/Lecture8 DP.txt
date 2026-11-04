@@ -1,0 +1,1468 @@
+
+--- SLIDE 1 ---
+DBA5103
+Operations Research and Analytics
+Zhenyu Hu
+Semester I, 2026/2027
+
+
+--- SLIDE 2 ---
+Dynamic Programming
+• Overview of DP
+• Deterministic DP
+• Stochastic DP
+
+
+--- SLIDE 3 ---
+Overview of DP
+
+
+--- SLIDE 4 ---
+AlphaGo
+Source: https://qz.com/993147/the-awful-frustration-of-a-teenage-go-champion-playing-googles-alphago/
+
+
+--- SLIDE 5 ---
+AlphaGo
+
+
+--- SLIDE 6 ---
+OpenAI
+Source: https://blog.openai.com/dota-2/
+
+
+--- SLIDE 7 ---
+OpenAI
+Source: https://openai.com/blog/the-international-2018-results/
+
+
+--- SLIDE 8 ---
+Deterministic vs. Stochastic DP
+• Deterministic
+- Used as a computational tool as well as modeling 
+tool to various problems
+- All solutions can be determined beforehand
+• Stochastic DP
+- Commonly used to model sequential decision 
+problems
+- Solutions are determined sequentially as the 
+randomness realize
+
+
+--- SLIDE 9 ---
+Deterministic DP
+
+
+--- SLIDE 10 ---
+A Computational Point of View
+• Fibonacci Numbers
+• In general
+- 𝑭𝒏= 𝑭𝒏−𝟏+ 𝑭𝒏−𝟐
+- 𝑭𝟎= 𝟎, 𝑭𝟏= 𝟏.
+𝟎, 𝟏, 𝟏, 𝟐, 𝟑, 𝟓, 𝟖, 𝟏𝟑, 𝟐𝟏, 𝟑𝟒, 𝟓𝟓, …
+
+
+--- SLIDE 11 ---
+A Computational Point of View
+• Algorithm 1
+• Algorithm 2
+
+
+--- SLIDE 12 ---
+First Algorithm: Tree View 𝑛= 5
+5
+4
+3
+2
+7 times of summation operations
+0
+1
+2
+0
+1
+1
+3
+2
+0
+1
+1
+
+
+--- SLIDE 13 ---
+Second Algorithm: Tree View 𝑛= 5
+5
+4
+3
+2
+4 times of summation operations
+0
+1
+2
+0
+1
+1
+3
+2
+0
+1
+1
+
+
+--- SLIDE 14 ---
+Key Idea: Value Function
+• 𝑭𝒌, 𝟎≤𝒌≤𝒏is called the values or value 
+functions, 𝒌is called the stage.
+- Our goal is to solve the value for final stage 𝑭𝒏.
+- 𝑭𝒌, 𝟎≤𝒌≤𝒏represents a (optimal) value for a sub-
+problem at stage 𝒌.
+- The crux of DP: all information we need is contained in 
+𝑭𝒌; after one solved sub-problem at stage 𝒌, one saves 
+value in 𝑭𝒌and never revisits how it is solved.
+• The relation used for computation: 
+𝑭𝒌= 𝑭𝒌−𝟏+ 𝑭𝒌−𝟐, 𝟐≤𝒌≤𝒏
+is called the Bellman Equation with 𝑭𝟎= 𝟎, 𝑭𝟏= 𝟏
+called the boundary conditions.
+
+
+--- SLIDE 15 ---
+Shortest Path Problem
+A
+B
+C
+D
+E
+F
+G
+H
+I
+J
+
+
+--- SLIDE 16 ---
+Cost on the Edges
+B
+C
+D
+E
+F
+G
+H
+I
+J
+A
+22
+19
+15
+B
+16
+15
+C
+22
+16
+22
+D
+19
+22
+E
+16
+18
+F
+18
+11
+G
+15
+13
+H
+23
+I
+29
+
+
+--- SLIDE 17 ---
+Decomposition
+A
+B
+C
+D
+E
+F
+G
+H
+I
+J
+Stage 0
+Stage 1
+Stage 2
+Stage 3
+Stage 4
+
+
+--- SLIDE 18 ---
+Decomposition
+H
+I
+J
+Stage 0
+Stage 1
+23
+29
+What is the shortest path from H to J?
+What is the shortest path from I to J?
+How do we save them down?
+
+
+--- SLIDE 19 ---
+State
+• State: An information set upon which the 
+decisions are based.
+• Finding a good state representation is the art 
+of dynamic programming
+
+
+--- SLIDE 20 ---
+State
+A
+B
+C
+D
+E
+F
+G
+H
+I
+J
+Stage 0
+Stage 1
+Stage 2
+Stage 3
+Stage 4
+States
+
+
+--- SLIDE 21 ---
+Value Function
+• The value function now depends on both stage 
+and state: 
+𝑽𝒌, 𝒊
+Sometimes also written as 𝑽𝒌𝒊
+Stage k
+State i
+
+
+--- SLIDE 22 ---
+Stage 1
+H
+I
+J
+Stage 0
+Stage 1
+23
+29
+What is the shortest path from H to J?
+What is the shortest path from I to J?
+How do we save them down?
+𝑽𝟎, 𝑱= 𝟎
+𝑽𝟏, 𝑯= 𝟐𝟑
+𝑽𝟏, 𝑰= 𝟐𝟗
+
+
+--- SLIDE 23 ---
+Stage 2
+E
+F
+G
+H
+I
+J
+Stage 0
+Stage 1
+Stage 2
+𝑽𝟎, 𝑱= 𝟎
+23
+29
+𝑽𝟏, 𝑯= 𝟐𝟑
+𝑽𝟏, 𝑰= 𝟐𝟗
+16
+18
+18
+11
+15
+13
+𝑽𝟐, 𝑬= 𝟑𝟗
+𝑽𝟐, 𝑭= 𝟒𝟎
+𝑽𝟐, 𝑮= 𝟑𝟖
+
+
+--- SLIDE 24 ---
+Stage 3
+B
+C
+D
+E
+F
+G
+H
+I
+J
+Stage 0
+Stage 1
+Stage 2
+Stage 3
+𝑽𝟏, 𝑯= 𝟐𝟑
+𝑽𝟏, 𝑰= 𝟐𝟗
+16
+18
+18
+11
+15
+13
+𝑽𝟐, 𝑬= 𝟑𝟗
+𝑽𝟐, 𝑭= 𝟒𝟎
+𝑽𝟐, 𝑮= 𝟑𝟖
+16
+15
+22
+16
+22
+19
+22
+𝑽𝟑, 𝑩= 𝟓𝟓
+𝑽𝟑, 𝑪= 𝟓𝟔
+𝑽𝟑, 𝑫= 𝟓𝟗
+𝑽𝟎, 𝑱= 𝟎
+
+
+--- SLIDE 25 ---
+Final Stage
+A
+B
+C
+D
+E
+F
+G
+H
+I
+J
+Stage 0
+Stage 1
+Stage 2
+Stage 3
+Stage 4
+𝑽𝟑, 𝑩= 𝟓𝟓
+𝑽𝟑, 𝑪= 𝟓𝟔
+𝑽𝟑, 𝑫= 𝟓𝟗
+22
+19
+15
+𝑽𝟒, 𝑨= 𝟕𝟒
+
+
+--- SLIDE 26 ---
+Solution
+A
+B
+C
+D
+E
+F
+G
+H
+I
+J
+Stage 0
+Stage 1
+Stage 2
+Stage 3
+Stage 4
+𝑽𝟑, 𝑫= 𝟓𝟗
+22
+19
+15
+𝑽𝟒, 𝑨= 𝟕𝟒
+𝑽𝟐, 𝑮= 𝟑𝟖
+𝑽𝟐, 𝑭= 𝟒𝟎
+19
+22
+𝑽𝟏, 𝑯= 𝟐𝟑
+𝑽𝟏, 𝑰= 𝟐𝟗
+18
+11
+𝑽𝟎, 𝑱= 𝟎
+29
+
+
+--- SLIDE 27 ---
+Shortest Path Problem: Summary
+• 𝑽𝒌, 𝒊can be interpreted as the shortest 
+distance to J when there are k stages remaining 
+and we are at node i. We want to know 𝑽𝟒, 𝑨.
+• Bellman Equation gives a recursive relationship 
+between value functions and we can use 
+backward induction to solve the equations:
+𝑽𝒌, 𝒊=
+min
+𝑗,(𝑖,𝑗)∈𝐀𝒄𝒊, 𝒋+ 𝑽𝒌−𝟏, 𝒋
+, 𝑽𝟎, 𝑱= 𝟎
+
+
+--- SLIDE 28 ---
+A General Deterministic DP
+• Stages (period): T,…,1 (or T,…, 0)
+• State: 𝒔𝒕, action (control): 𝒙𝒕
+• Cost per period: 𝒄(𝒔𝒕, 𝒙𝒕)
+• State transition: 𝒔𝒕−𝟏= 𝒇(𝒔𝒕, 𝒙𝒕)
+• Original problem:
+• Bellman Equation:
+min
+𝑥𝑡{ 𝒄𝒔𝑻, 𝒙𝑻+ 𝒄𝒔𝑻−𝟏, 𝒙𝑻−𝟏+ ⋯+ 𝒄𝒔𝟏, 𝒙𝟏}
+𝑽𝒕, 𝒔𝒕= min{
+𝑥𝑡
+𝒄𝒔𝒕, 𝒙𝒕+ 𝑽𝒕−𝟏, 𝒇𝒔𝒕, 𝒙𝒕
+}
+
+
+--- SLIDE 29 ---
+Shortest Path Problem
+• State: 𝒔𝟎= 𝑱, 𝒔𝟏= 𝑯, 𝑰, 𝒔𝟐= 𝑬, 𝑭, 𝑮,…
+• Action (control): 𝒙𝟏= 𝑱, 𝒙𝟐= 𝑯, 𝑰
+• Cost per period: 𝒄(𝒔𝒕, 𝒙𝒕) = 𝒄𝒊, 𝒋for 𝒔𝒕= 𝒊, 𝒙𝒕= 𝒋
+• State transition: 𝒔𝒕−𝟏= 𝒙𝒕
+
+
+--- SLIDE 30 ---
+Summary: Components of DP
+• A problem is decomposed into n stages. 
+• At stage k, we will have different possible 
+states.
+• At each state, we focus only on the decision 
+problem for the current stage and current 
+state assuming all the sub-problems before 
+stage k has been solved.
+• We call a mapping from each state to a 
+decision the policy.
+
+
+--- SLIDE 31 ---
+Knapsack Problem
+• Consider the investment problem with the 
+following four financial products and a total 
+budget of 10K. 
+Product number (i)
+1
+2
+3
+4
+Investment (K): 𝑤𝑖
+2
+3
+4
+6
+Return (K): 𝑣𝑖
+8
+12
+15
+19
+
+
+--- SLIDE 32 ---
+Think in a Sequential Way
+• Think about the case when the salesperson 
+for product 1 to product 4 comes 
+sequentially. At each stage, we have to 
+make the decision whether to buy the 
+product or not.
+• State:
+The remaining budget.
+
+
+--- SLIDE 33 ---
+Decomposition
+Budget 
+Available
+Stage 4
+Stage 3
+Stage 2
+Stage 1
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+
+--- SLIDE 34 ---
+Single Stage Problem: Only Product 4
+Budget 
+Available
+Stage 4
+Stage 3
+Stage 2
+Stage 1
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+𝑣4 = 19, 𝑤4 = 6
+
+
+--- SLIDE 35 ---
+Stage 1
+Budget 
+Available
+Stage 4
+Stage 3
+Stage 2
+Stage 1
+0
+0
+1
+0
+2
+0
+3
+0
+4
+0
+5
+0
+6
+19
+7
+19
+8
+19
+9
+19
+10
+19
+𝑣4 = 19, 𝑤4 = 6
+
+
+--- SLIDE 36 ---
+Stage 2
+Budget 
+Available
+Stage 4
+Stage 3
+Stage 2
+Stage 1
+0
+0
+1
+0
+2
+0
+3
+0
+4
+0
+5
+0
+6
+19
+7
+19
+8
+19
+9
+19
+10
+19
+𝑣3 = 15, 𝑤3 = 4
+
+
+--- SLIDE 37 ---
+Stage 2
+Budget  
+Available
+Stage 4
+Stage 3
+Stage 2
+Stage 1
+0
+0
+0
+1
+0
+0
+2
+0
+0
+3
+0
+0
+4
+15
+0
+5
+15
+0
+6
+19
+19
+7
+19
+19
+8
+19
+19
+9
+19
+19
+10
+34
+19
+𝑣3 = 15, 𝑤3 = 4
+
+
+--- SLIDE 38 ---
+Stage 3
+Budget 
+Available
+Stage 4
+Stage 3
+Stage 2
+Stage 1
+0
+0
+0
+1
+0
+0
+2
+0
+0
+3
+0
+0
+4
+15
+0
+5
+15
+0
+6
+19
+19
+7
+19
+19
+8
+19
+19
+9
+19
+19
+10
+34
+19
+𝑣2 = 12, 𝑤2 = 3
+
+
+--- SLIDE 39 ---
+Stage 3
+Budget  
+Available
+Stage 4
+Stage 3
+Stage 2
+Stage 1
+0
+0
+0
+0
+1
+0
+0
+0
+2
+0
+0
+0
+3
+12
+0
+0
+4
+15
+15
+0
+5
+15
+15
+0
+6
+19
+19
+19
+7
+27
+19
+19
+8
+27
+19
+19
+9
+31
+19
+19
+10
+34
+34
+19
+𝑣2 = 12, 𝑤2 = 3
+
+
+--- SLIDE 40 ---
+Final Stage
+Budget  
+Available
+Stage 4
+Stage 3
+Stage 2
+Stage 1
+0
+0
+0
+0
+1
+0
+0
+0
+2
+0
+0
+0
+3
+12
+0
+0
+4
+15
+15
+0
+5
+15
+15
+0
+6
+19
+19
+19
+7
+27
+19
+19
+8
+27
+19
+19
+9
+31
+19
+19
+10
+34
+34
+19
+𝑣1 = 8, 𝑤1 = 2
+
+
+--- SLIDE 41 ---
+Final Stage
+Budget 
+Available
+Stage 4
+Stage 3
+Stage 2
+Stage 1
+0
+0
+0
+0
+0
+1
+0
+0
+0
+0
+2
+8
+0
+0
+0
+3
+12
+12
+0
+0
+4
+15
+15
+15
+0
+5
+20
+15
+15
+0
+6
+23
+19
+19
+19
+7
+27
+27
+19
+19
+8
+27
+27
+19
+19
+9
+35
+31
+19
+19
+10
+35
+34
+34
+19
+𝑣1 = 8, 𝑤1 = 2
+
+
+--- SLIDE 42 ---
+Complete Solution
+Budget 
+Available
+Stage 4
+Stage 3
+Stage 2
+Stage 1
+0
+0
+0
+0
+0
+1
+0
+0
+0
+0
+2
+8
+0
+0
+0
+3
+12
+12
+0
+0
+4
+15
+15
+15
+0
+5
+20
+15
+15
+0
+6
+23
+19
+19
+19
+7
+27
+27
+19
+19
+8
+27
+27
+19
+19
+9
+35
+31
+19
+19
+10
+35
+34
+34
+19
+𝑣1 = 8, 𝑤1 = 2 𝑣2 = 12, 𝑤2 = 3 𝑣3 = 15, 𝑤3 = 4 𝑣4 = 19, 𝑤4 = 6
+
+
+--- SLIDE 43 ---
+Knapsack Problem: Bellman Equation
+• The value of each cell: 𝑽𝒌, 𝒊is the maximum 
+return one can get when there are k stages (k 
+products) remaining and there is i budget left. 
+Our goal is 𝑽𝟒, 𝟏𝟎.
+• Bellman Equation:
+𝑽𝒌, 𝒊= ቊ𝒎𝒂𝒙𝑽𝒌−𝟏, 𝒊, 𝒗𝒌+ 𝑽𝒌−𝟏, 𝒊−𝒘𝒌
+, 𝒊𝒇𝒘𝒌≤𝒊
+𝑽𝒌−𝟏, 𝒊, 𝒊𝒇𝒘𝒌≥𝒊
+𝑽𝟎, 𝒊= 𝟎, 𝒊= 𝟏, … , 𝟏𝟎
+
+
+--- SLIDE 44 ---
+A Very Complicated Dynamic Problem: Go
+• Zero-sum, perfect-information, deterministic game
+• State?
+
+
+--- SLIDE 45 ---
+State Transition
+
+
+--- SLIDE 46 ---
+Rough Estimate of Complexity
+• Average number of possible moves at each 
+state: 250
+• Average number of moves for a game: 150
+• Complexity: 250150 (recall 250 and 50!; Chess: 
+3580)
+
+
+--- SLIDE 47 ---
+Stochastic DP
+
+
+--- SLIDE 48 ---
+Newsvendor Problem
+• Consider the newsvendor problem with the 
+cost 40 cents and selling price $1. 
+• Demand is Bernoulli: 1 with probability ½ 
+and 0 with probability ½.
+• What is the optimal ordering quantity?
+- Do not order: cost is 0
+- Order 1: cost is 0.4 + −1 ×
+1
+2 + 0 ×
+1
+2 = −0.1 (or 
+profit is 0.1).
+
+
+--- SLIDE 49 ---
+Multi-Period Newsvendor Problem
+• Suppose the newsvendor can sell for two 
+days. On each day the newsvendor has an 
+opportunity to replenish his inventory, and the 
+unsold copies from the first day can be used 
+to satisfy demand in the second day. 
+• Demands 𝐷1, 𝐷2 are i.i.d. Bernoulli.
+• What is the optimal ordering quantities in the 
+first and second day respectively?
+
+
+--- SLIDE 50 ---
+Stochastic Optimization
+• Decision variables: 𝑥1, 𝑥2 ≥0
+• Objective:
+- First period sales: 𝑆1 = min{𝑥1, 𝐷1}
+- Second period sales: 𝑆2 = min{𝑥1 −𝑆1 + 𝑥2, 𝐷2}
+- Minimize: 𝑧= 𝑐(𝑥1 + 𝑥2) −𝑝𝐸[𝑆1 + 𝑆2].
+
+
+--- SLIDE 51 ---
+Stochastic Optimization
+• Demands:
+• Decisions:
+- (𝑥1, 𝑥2) = (0,0): 𝑧= 0
+- (𝑥1, 𝑥2) = (0,1): 𝑧= 0.4 + −1 ×
+2
+4 + 0 ×
+2
+4 = −0.1
+- (𝑥1, 𝑥2) = (1,0): 𝑧= 0.4 + −1 ×
+3
+4 + 0 ×
+1
+4 = −0.35
+- (𝑥1, 𝑥2) = (1,1): 𝑧= 0.8 + −2 ×
+1
+4 + −1 ×
+1
+2 + 0 ×
+1
+4 = −0.2
+- (𝑥1, 𝑥2) = (2,0): 𝑧= 0.8 + −2 ×
+1
+4 + −1 ×
+1
+2 + 0 ×
+1
+4 = −0.2
+Demand (Day 1)
+Demand (Day 2)
+Probability
+0
+0
+¼ 
+0
+1
+¼ 
+1
+0
+¼ 
+1
+1
+¼ 
+
+
+--- SLIDE 52 ---
+Open-loop Solution
+The optimal solution is to order 1 unit in the first 
+day and order nothing in the second day.
+The expected profit is 35 cents.
+Information flow is not utilized in making 
+decisions.
+
+
+--- SLIDE 53 ---
+Stochastic Shortest Path Formulation
+0
+0
+2
+Stage 0
+Stage 1
+Stage 2
+Stage 3
+0
+1
+2
+1
+0
+1
+2
+0
+2
+1
+0
+0
+0.4
+0.8
+0
+0
+0
+0
+0
+0
+0.4
+-1, p=1/2 
+-1, p=1/2 
+0, p=1/2 
+0, p=1/2 
+-1, p=1/2 
+-1, p=1/2 
+0, p=1/2 
+0, p=1/2 
+0
+0
+
+
+--- SLIDE 54 ---
+Stage 2 (Day 2)
+0
+2
+Stage 1
+Stage 2
+1
+0
+1
+2
+0
+2
+1
+0
+0
+0.4
+-1, p=1/2 
+-1, p=1/2 
+0, p=1/2 
+0, p=1/2 
+0
+0
+𝑽𝟏, 𝟎= 𝟎
+𝑽𝟏, 𝟏= 𝟎
+𝑽𝟏, 𝟐= 𝟎
+𝑽𝟐, 𝟎= 𝒎𝒊𝒏𝟎+ 𝟎, 𝟎. 𝟒+ −𝟏×
+𝟏
+𝟐+ 𝟎×
+𝟏
+𝟐+ 𝟎×
+𝟏
+𝟐+ 𝟎×
+𝟏
+𝟐= −𝟎. 𝟏
+𝑽𝟐, 𝟏= 𝟎+ −𝟏×
+𝟏
+𝟐+ 𝟎×
+𝟏
+𝟐+ 𝟎×
+𝟏
+𝟐+ 𝟎×
+𝟏
+𝟐= −𝟎. 𝟓
+𝑽𝟐, 𝟐= 𝟎+ −𝟏×
+𝟏
+𝟐+ 𝟎×
+𝟏
+𝟐+ 𝟎×
+𝟏
+𝟐+ 𝟎×
+𝟏
+𝟐= −𝟎. 𝟓
+
+
+--- SLIDE 55 ---
+Last Stage (Day 1)
+0
+0
+2
+Stage 2
+Stage 3
+0
+1
+2
+1
+0
+0.4
+0.8
+0
+-1, p=1/2 
+-1, p=1/2 
+0, p=1/2 
+0, p=1/2 
+𝑽𝟐, 𝟎= −𝟎. 𝟏
+𝑽𝟐, 𝟏= −𝟎. 𝟓
+𝑽𝟐, 𝟐= −𝟎. 𝟓
+The first path (do not order): 
+0 −0.1 = −0.1
+The second path (order 1): 
+0.4 + −1 × 1
+2 + 0 × 1
+2 + −0.1 × 1
+2 + −0.5 × 1
+2
+= −0.4
+The third path (order 2): 
+0.8 + −1 × 1
+2 + 0 × 1
+2 + −0.5 × 1
+2 + −0.5 × 1
+2
+= −0.2
+𝑽𝟑, 𝟎= −𝟎. 𝟒
+
+
+--- SLIDE 56 ---
+Optimal Policy
+0
+0
+2
+Stage 0
+Stage 1
+Stage 2
+Stage 3
+0
+1
+2
+1
+0
+1
+2
+0
+2
+1
+0
+0
+0.4
+0.8
+0
+0
+0
+0
+0
+0
+0.4
+-1, p=1/2 
+-1, p=1/2 
+0, p=1/2 
+0, p=1/2 
+-1, p=1/2 
+-1, p=1/2 
+0, p=1/2 
+0, p=1/2 
+0
+0
+
+
+--- SLIDE 57 ---
+Deterministic DP vs Stochastic DP
+• Deterministic DP:
+- Choosing 𝒙𝒌is equivalent as choosing the next 
+state: 𝒔𝒌−𝟏
+• Stochastic DP:
+State
+𝒔𝒌
+State
+𝒔𝒌−𝟏
+Action: 𝒙𝒌
+State
+𝒔𝒌
+State
+𝟏
+Action: 𝒙𝒌
+State
+𝟐
+State
+𝒏
+
+
+--- SLIDE 58 ---
+Open-loop vs State Dependent Solution
+• Open-loop solution:
+- The actions 𝒙𝒌are determined no matter what the state 
+𝒔𝒌is.
+- (𝑥1, 𝑥2) = 1,0 is determined no matter whether the first 
+day demand is 1 or 0.  
+• State dependent solution:
+- The actions 𝒙𝒌depend on what the state 𝒔𝒌is.
+- 𝑥2 1 = 0, 𝑥2 0 = 1.
+
+
+--- SLIDE 59 ---
+Secretary Problem
+• There is a single secretary position to fill
+• There are n applicants for the position
+• The applicants, if seen altogether, can be ranked 
+from best to worst.
+• Applicants are interviewed sequentially in 
+random order with each order being equally 
+likely.
+• After an interview, an offer or rejection must be 
+made, based on the applicants interviewed so 
+far.
+• Objective is to choose the best candidate:
+- Maximize the probability that the chosen candidate is the 
+best
+
+
+--- SLIDE 60 ---
+Naïve Method: Open-loop Solution
+Before the interviews begin, choose the k-th
+applicant, k = 1,…,n such that the probability of 
+selecting the best candidate is maximized.
+What is the best k and what is the optimal 
+probability ?
+Information flow is not utilized in making 
+decisions.
+
+
+--- SLIDE 61 ---
+Stochastic DP
+• State: 
+- It is sufficient to know whether or not the current 
+applicant is the best among all those interviewed 
+before. Suppose 0 means it is not the best, 1
+means it is the best.
+
+
+--- SLIDE 62 ---
+Stage 0 (the n-th candidate)
+Stage 0
+𝑽𝟎, 𝟎= 𝟎
+𝑽𝟎, 𝟏= 𝟏
+0
+1
+
+
+--- SLIDE 63 ---
+Stage 1 (the n-1-th candidate)
+Stage 0
+𝑽𝟎, 𝟎= 𝟎
+𝑽𝟎, 𝟏= 𝟏
+0
+1
+Stage 1
+𝑽𝟏, 𝟎= 𝒎𝒂𝒙{𝟎,
+𝟏
+𝒏𝑽𝟎, 𝟏+
+𝒏−𝟏
+𝒏𝑽𝟎, 𝟎} =
+𝟏
+𝒏
+𝑽𝟏, 𝟏= 𝒎𝒂𝒙{
+𝒏−𝟏
+𝒏,
+𝟏
+𝒏𝑽𝟎, 𝟏+
+𝒏−𝟏
+𝒏𝑽𝟎, 𝟎} =
+𝒏−𝟏
+𝒏
+0
+1
+Offer
+Reject
+Offer
+Reject
+p=? 
+value? 
+
+
+--- SLIDE 64 ---
+Stage n-k (the k-th candidate)
+• Let 𝑽𝒏−𝒌, 𝒊be the best value we can expect 
+when applicant 𝒌is at state 𝒊, 𝒊= 𝟎, 𝟏. We want 
+to know 𝑽𝒏−𝟏, 𝟏
+• Bellman Equation:
+𝑽𝒏−𝒌, 𝟎= 𝒎𝒂𝒙{ 𝟎,
+𝟏
+𝒌+𝟏𝑽𝒏−𝒌−𝟏, 𝟏+
+𝒌
+𝒌+𝟏𝑽𝒏−𝒌−𝟏, 𝟎}
+𝑽𝒏−𝒌, 𝟏= 𝒎𝒂𝒙{
+𝒌
+𝒏,
+𝟏
+𝒌+𝟏𝑽𝒏−𝒌−𝟏, 𝟏+
+𝒌
+𝒌+𝟏𝑽𝒏−𝒌−𝟏, 𝟎}
+= 𝒎𝒂𝒙{
+𝒌
+𝒏, 𝑽𝒏−𝒌, 𝟎}
+𝑽𝟎, 𝟎= 𝟎, 𝑽𝟎, 𝟏= 𝟏
+
+
+--- SLIDE 65 ---
+Secretary Problem: n = 4
+• k = 4
+• k = 3
+• k = 2
+• k = 1
+• 1: Reject; 2-4: Accept if the best seen so far.
+𝑽𝟏, 𝟎=
+𝟏
+𝟒𝟏+
+𝟑
+𝟒𝟎=
+𝟏
+𝟒, 𝑽𝟏, 𝟏= 𝒎𝒂𝒙
+𝟑
+𝟒,
+𝟏
+𝟒=
+𝟑
+𝟒
+𝑽𝟎, 𝟎= 𝟎, 𝑽𝟎, 𝟏= 𝟏
+𝑽𝟐, 𝟎=
+𝟏
+𝟑
+𝟑
+𝟒+
+𝟐
+𝟑
+𝟏
+𝟒=
+𝟓
+𝟏𝟐, 𝑽𝟐, 𝟏= 𝒎𝒂𝒙
+𝟐
+𝟒,
+𝟓
+𝟏𝟐=
+𝟏
+𝟐
+𝑽𝟑, 𝟎=
+𝟏
+𝟐
+𝟏
+𝟐+
+𝟏
+𝟐
+𝟓
+𝟏𝟐=
+𝟏𝟏
+𝟐𝟒, 𝑽𝟑, 𝟏= 𝒎𝒂𝒙
+𝟏
+𝟒,
+𝟏𝟏
+𝟐𝟒=
+𝟏𝟏
+𝟐𝟒
+
+
+--- SLIDE 66 ---
+Secretary Problem: In General
+• There is a threshold 𝒌∗such that if 𝒌> 𝒌∗
+That is,  we accept the candidate as long as the 
+candidate is the best seen so far (state 𝟏).
+• If 𝒌< 𝒌∗, 
+𝒌
+𝒏< 𝑽(𝒏−𝒌, 𝟎) and we reject the 
+candidate.
+𝒌
+𝒏≥𝑽(𝒏−𝒌, 𝟎)
+𝒌∗≈𝟏
+𝒆𝒏≈𝟎. 𝟑𝟕𝒏
+
+
+--- SLIDE 67 ---
+Review
+
+
+--- SLIDE 68 ---
+What You Should Expect
+• Mathematical Thinking
+- Understand the basic logic behind algorithms
+· Simplex (BFS, local search, spanning tree)
+· Branch and Bound (relaxation, bounding)
+· Dynamic Programming (state, value function)
+- Understand the general principles in optimization
+· Convex vs. non-convex (global vs. local)
+· Deterministic vs. stochastic (hedging risk, value of information)
+· Lagrangian relaxation, duality, lower bound/upper bound
+- Judgement on the difficulty of a problem; be able to 
+assess the quality of a solution
+· Problem size/type; exponential vs. polynomial
+· Relaxation and bounding
+
+
+--- SLIDE 69 ---
+What You Should Expect
+• Analytics Skills
+- Building up models
+· LP: production-type problem, simple pricing and sourcing 
+problem
+· Network flow: project management, process flexibility, 
+transportation and matching
+· IP: multi-product pricing, routing and scheduling, Sudoku
+· DP: shortest path problem, inventory problem, optimal 
+stopping
+- Picking the right tools
+- Implementing in Software
