@@ -1,0 +1,9 @@
+item,quoted_low,quoted_high,unit,exclusions,applicability,source_url,retrieved_date
+ac_7kw_hardware,1500,2800,SGD/unit,excludes GST and installation,2-year warranty,https://www.electric.com.sg/ev-charger/,2026-11-09
+ac_22kw_hardware,1800,3500,SGD/unit,excludes GST and installation,2-year warranty,https://www.electric.com.sg/ev-charger/,2026-11-09
+dc_40kw_single_connector,13800,13800,SGD/charger,excludes GST and installation,single connector; 5-year warranty,https://www.electric.com.sg/ev-charger/,2026-11-09
+dc_60kw_dual_connector,23800,23800,SGD/charger,excludes GST and installation,dual connector; shared cabinet power must not be doubled,https://www.electric.com.sg/ev-charger/,2026-11-09
+dc_120kw_dual_connector,29800,29800,SGD/charger,excludes GST and installation,dual connector; not per connector price,https://www.electric.com.sg/ev-charger/,2026-11-09
+ac_nonrestricted_maintenance,380,380,SGD/charger/year,excludes GST,MCST/LEW comparator; scope differs from HDB,https://www.electric.com.sg/ev-charger/,2026-11-09
+dc_nonrestricted_private_maintenance,1180,1180,SGD/charger/year,excludes GST,private-use comparator; not HDB contract,https://www.electric.com.sg/ev-charger/,2026-11-09
+standard_installation,856,856,SGD/installation,GST status not established,Up to 5 m cable from supplied 40A point; not full HDB installation,https://goelectric.com.sg/Product/Accessories/Standard-Installation-of-EV-Charger,2026-11-09

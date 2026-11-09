@@ -1,4 +1,7 @@
-"""Aggregate LTA public EV charging points to URA planning areas and join Census 2020 demand proxies.
+"""Aggregate ALL public EV charging points (not HDB-only) to planning areas.
+
+This legacy exploratory summary is not the HDB siting-model input. total_kw is
+the sum of point ratings, not verified simultaneous shared-cabinet capacity.
 
 Usage: python scripts/build_planning_area_summary.py   (run from project/)
 Requires: pandas, shapely
@@ -47,12 +50,21 @@ sz_geoms, sz_attrs = load_polygons(DATA / "05_geospatial_boundaries/URA_MP2019_s
 cp = pd.concat([cp, tag(pts, pa_geoms, pa_attrs), tag(pts, sz_geoms, sz_attrs)], axis=1)
 cp["is_fast"] = cp.charging_speed_kw >= FAST_KW
 cp["location_key"] = cp.latitude.round(5).astype(str) + "," + cp.longitude.round(5).astype(str)
-cp.to_csv(OUT / "charging_points_with_planning_area.csv", index=False)
+# The outlet count is a registration-level total repeated on every point row.
+# Count it once; summing the raw column previously inflated 11,489 to 17,011.
+assert not cp.evCpId.duplicated().any(), "Duplicate charging-point IDs"
+assert cp.groupby("EV Charger Registration Code").PLN_AREA_N.nunique().le(1).all()
+cp["outlets_once_per_registration"] = cp["No. of Charging Outlets"].where(
+    ~cp["EV Charger Registration Code"].duplicated(), 0
+)
+cp.drop(columns="outlets_once_per_registration").to_csv(
+    OUT / "charging_points_with_planning_area.csv", index=False
+)
 
 pa = cp.groupby(["PLN_AREA_N", "REGION_N"]).agg(
     charging_points=("evCpId", "count"),
     chargers=("EV Charger Registration Code", "nunique"),
-    outlets=("No. of Charging Outlets", "sum"),
+    outlets=("outlets_once_per_registration", "sum"),
     fast_points=("is_fast", "sum"),
     locations=("location_key", "nunique"),
     total_kw=("charging_speed_kw", "sum"),

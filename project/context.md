@@ -1,91 +1,50 @@
-# Project context — Optimising EV charging point placement in Singapore
+# Project context — HDB EV charging placement and cost-effectiveness
 
-_Last updated: 2026-10-31_. Full analysis plan, data pipeline and model: see `plan.md`.
+_Last updated: 9 November 2026, after rereading the corrected full meeting transcript._
 
-## The assignment
-- **Course:** MSBA group project (DBA5103), 6 members.
-- **Deliverables:** mathematical model → linear/integer optimisation in **Python + Gurobi** → **sensitivity analysis** → **8–10 page double-spaced report**.
-- **Hard deadline:** Sun **22 Nov 2026**.
-- **Topic chosen:** Option A — where to place new EV charging points across Singapore. Rejected ideas: e-commerce, bank branch locations, government funding allocation.
+## Agreed direction
 
-## Team and timeline
-Names come from the auto-transcribed meeting summary, which garbled some speaker tags, so confirm in the group chat.
+1. **Where and how many charging points to add in HDB carparks throughout Singapore.** Private estates and other-agency placement are outside scope.
+2. **Cost-effectiveness of each investment level:** extra charging demand served and access achieved per infrastructure dollar.
 
-| When | What | Who |
-|---|---|---|
-| ASAP | Share links/datasets from meeting chat to WhatsApp group | Sandra |
-| ASAP | Poll for 9 Nov and 14 Nov meeting times | unassigned |
-| by **9 Nov** (Mon) | Preliminary research: find EV demand + charging data sources | Aish, Reagan, +1 ("Speaker 3") |
-| **9 Nov** | Data sync: review gathered data, refine problem statement, set data framework | data team (Sandra, Reagan, …) |
-| **14 Nov** (Sat) | Full group (all 6): modelling, Gurobi implementation, report writing | everyone |
-| **22 Nov** (Sun) | Submit | — |
+These are two questions answered by one facility-location model. Base additions use one slow charger type; fast chargers are an enhancement/sensitivity. Carbon, carbon tax and petrol-savings analysis are removed. Do not revive the old social benefit-cost ratio or unsupported unmet-demand penalty.
 
-Work is staged around Deepavali: 4 people do data first, then the full group builds the model and report.
+The full transcript confirms these decisions at 00:09:56–00:15:57 and 00:16:20–00:18:02. At 00:25:04–00:26:41 the team prefers investigating two optimisation steps to avoid guessing an unmet-demand price. Proposed approach: maximise demand served within each illustrative budget, then minimise cost while preserving service. This is **deterministic sequential/lexicographic optimisation**, not automatically stochastic two-stage recourse.
 
-## Background facts (for the report intro)
-**EV adoption is accelerating**
-- Electric cars: ~10.0k (Sep 2023), 21.8k (Sep 2024), 41.7k (Sep 2025), **74.9k (Sep 2026)**. That is ≈ 11.5% of ~651k cars. Source: LTA M09.
-- All EVs (incl. taxis, buses, goods vehicles, motorcycles): ~85k (Sep 2026). LTA quoted 82,100 for Aug 2026.
-- EV share of new car registrations: 6.9% (2022), 18.1% (2023), 33.6% (2024), 45.0% (2025), **63.1% (Jan–Sep 2026)**. Source: LTA M03.
-- Policy: Singapore Green Plan 2030. All new car registrations must be cleaner-energy models from 2030. ICE vehicles are to be phased out by 2040. EV Early Adoption Incentive (ARF rebate, now capped at $7,500) **ends 1 Jan 2027**.
+## Deliverable and dates
 
-**Charging supply**
-- National total: 13,800 points (Aug 2024), 30,500 (Mar 2026), **34,700 (Sep 2026)**.
-- **Target: 60,000 by 2030**, split 40,000 in public carparks and 20,000 in private premises.
-- LTA public register (our main dataset): **11,489 public charging points**, 9,279 chargers, 17,011 outlets, ~2,880 locations (Sep 2026).
-  - ~85% are slow AC chargers (3.7–22 kW). ~14% are DC fast chargers (CCS2, 30–480 kW).
-  - Top operators: SP Mobility, Charge+, ComfortDelGro ENGIE, Shell, Strides YTL.
-- HDB carparks: the 2022 LTA tender (TD116) covers ~2,000 carparks with 3–12 points each, two operators per region. As of Mar 2026, **139 HDB carparks (7%) still have no charger** because of power constraints or community requests to delay.
-- Plan: **at least one fast-charging hub (6–8 × 50 kW) in every HDB town by end-2027**.
-- Most HDB chargers sit on the 3rd deck of multi-storey carparks.
+- DBA5103 group report, with defined mathematical model, methodology, citations, results/sensitivity and code appendix; Python/Gurobi remains the intended implementation.
+- Course guideline suggests **8–14 narrative pages**, with no strict page limit; 12-point Times, double-spaced, 1-inch margins. Previous “8–10-page requirement” was inaccurate.
+- **Next meeting: Sunday 15 November 2026, 11:00 a.m. Singapore time. Report skeleton ready then.** The transcript's final agreement at 00:34:06–00:34:31 and 00:35:51 supersedes the previous 14 November slot and handwritten “15th 10am”.
+- Submission deadline retained from earlier project context: **22 November 2026**; not independently established by the guideline PDF.
+- Final deliverable is a report, not a presentation.
 
-**Demand / utilisation (only aggregate figures are public)**
-- HDB charger utilisation was <10% (2024), ~10% (Sep 2025) and **~20% (May 2026)**, highest at night. JTC carparks are ~9%, highest by day.
-- Peak 3-hour utilisation (Feb 2026): **36% across HDB carparks, 61% in Tengah**. Tengah, Punggol and Sengkang are highest. Bidadari slow chargers run at ~40%.
-- ~8,800 EVs held HDB season parking (Sep 2024).
-- LTA siting criteria: utilisation, **electrical capacity**, availability of parking lots, nearby charging options. These map directly to model constraints.
+## Current work and entry points
 
-Full sources: `data/06_reports_and_policy/` (parliamentary replies, LTA releases, news).
+- [Detailed internal plan](plan.md): selected datasets, cleaning/join rules, demand calibration, formulation, cost accounting, comparisons, sensitivity, phasing, checks and proposed workflow. Current planning defaults (7.4 kW, 2027 base/2030 outlook, budgets/radius) remain proposals rather than meeting decisions.
+- [Report skeleton](report_skeleton.md): seven main sections, approximately 11 narrative pages; result slots deliberately unfilled.
+- [Data index](data/README.md): original files plus new official population/housing series, GHS 2025 and Population Trends 2026 PDFs, Singapore vendor cost evidence, MOT evidence and methodological sources.
+- [Gap review](data/09_research_audit/gap_review.md), [meeting reconciliation](data/09_research_audit/meeting_decisions.md), [source manifest](data/09_research_audit/source_manifest_2026-11-09.csv), and [file inventory](data/09_research_audit/file_inventory.csv).
+- Research scripts: `scripts/fetch_research_sources.py`, `scripts/audit_research_data.py`; dependencies in `requirements-research.txt`. Review tables are in `data/07_derived/` and `data/09_research_audit/`.
+- **Research, profiling and planning have been done; optimisation and final report results have not.** HDB supply matches remain review candidates, not confirmed assignments.
 
-## Data we have
-See `data/README.md` for the full index. In short:
+## Important evidence and corrections
 
-| Need | Have? | File(s) |
-|---|---|---|
-| Existing charger locations, power, operator | ✅ | `01_ev_charging_supply/LTA_EV_charging_points_Sep2026.csv` |
-| Total EVs, trend, adoption rate | ✅ national only | `02_…/LTA_M09_…`, `LTA_M03_…` |
-| EVs by location (town / postal code) | ❌ not published | must estimate with proxies |
-| Candidate sites + capacity | ✅ | `03_…/HDB_carpark_information.csv` + `HDB_carpark_lots_snapshot_2026-10-31.csv` |
-| Demand proxies by planning area | ✅ (2020) | `04_…/Census2020_*` (households by dwelling type, car-only commuters, income, workplace) |
-| Boundaries for aggregation / maps | ✅ | `05_geospatial_boundaries/` |
-| Chargers per planning area vs demand proxies | ✅ derived | `07_derived/planning_area_summary.csv` |
-| Charger utilisation per site | ❌ | only national / estate figures in parliamentary replies |
-| Electrical capacity per carpark | ❌ | not public; model as an assumption with a sensitivity range |
-| Private chargers (~23k) | ❌ | only the total; the register is public chargers only |
-| Charger capex (slow AC vs DC fast) | ⚠️ research-based | `08_costs/cost_parameters.csv`: base S$6.5k per 7 kW AC point, S$60k per 50 kW DC, S$120k per 100–150 kW DC. Uses ICCT, because SG doesn't publish these |
-| Charging price, electricity cost, grants | ✅ official | `08_costs/`: median S$0.66/kWh at HDB, tariff 28.59¢/kWh, ECCG and EHVCG grant caps |
-| Electrical / grid upgrade cost per site | ❌ assumption | base S$50k per site needing an upgrade (range 0–250k), from international evidence only |
+- HDB master: **2,273 sites**. Car-lot data match **1,997**, with **276 missing** and **2 zero** capacities. Matched car lots total **706,663**; do not treat parking lots as unique cars or EVs.
+- Public charger file: **11,489 unique point IDs**, **9,279 registration codes**. The previous 17,011 outlet total double-counted a registration-level field repeated on each point row; corrected total is **11,489**. Legacy summary script and outputs are corrected, but still cover **all public chargers**, not HDB-only supply. Two points fall outside the MP2019 area join (11,487 mapped + 2 exceptions). Summed point kW is not verified simultaneous cabinet capacity.
+- Nearest-site matching is insufficient: **543 exact-coordinate charger locations have multiple HDB sites within 100 m**. Use address evidence and manual review. Do not label “no matched charger” as “no charger” or as zero grid headroom.
+- Demand should normalise spatial lot weights to a separately estimated HDB EV total. Historical 8,800 HDB season-parking EVs (Sep 2024) is a weak calibration anchor, not a current or site-level count.
+- New official small-area tables close much of the demographic gap. **2025 uses MP2019; 2026 uses MP2025.** Keep vintages explicit. Population, housing stock, households and cars have different denominators; rounded demographic cells are approximate.
+- Site utilisation, spare electrical power and actual installed HDB cost remain unobserved. Vendor hardware/maintenance prices support cost scenarios but do not establish an HDB installed quote. Peak three-hour utilisation is not a full-day energy-capacity factor.
+- The 40,000-public-point target is not an HDB-only constraint; old tender quantities are not engineering maxima. Condo/heavy-vehicle grants do not belong in the base model.
+- GHS full report obtained; detailed transport workbook was not retrieved (blocked/app-shell response). Original Church–ReVelle publisher full text was blocked; metadata located, alternative official methodology and related author manuscript downloaded.
 
-**Early observation from `planning_area_summary.csv`:** large HDB towns have the fewest public points per 1,000 households. Examples: Bedok 4.7, Pasir Ris 4.9, Sengkang 5.9, Hougang 6.1, Punggol 6.7. Compare Jurong East 17.7 and Queenstown 13.4. Sengkang and Punggol also have high car-commuter counts and high reported utilisation, so they are natural "under-served" candidates. Caveat: this uses 2020 census households, so new towns like Tengah are under-counted.
+## Team review responsibilities
 
-## Possible model framing (to refine on 9 Nov)
-- **Decision:** how many slow and fast charging points to add at each candidate site (HDB carparks, maybe URA/JTC/NParks carparks). Integer variables, plus a binary for whether a site is opened.
-- **Demand nodes:** planning areas or subzones. Estimate EV demand as base car-ownership proxy (car-only commuters or households × car rate), × EV share (national 11.5% now, projected to 2030), × kWh per EV (from annual mileage × ~0.15–0.2 kWh/km), × share relying on public charging (high for HDB, low for landed).
-- **Objective options:** (a) minimise cost to meet demand, or (b) maximise covered demand within a budget (maximal covering), or (c) p-median minimising EV-owner travel distance.
-- **Constraints:**
-  - Demand coverage within X km.
-  - Points per carpark ≤ a share of car lots, and 3–12 per the tender.
-  - Electrical capacity in kW per site.
-  - Budget.
-  - Reach the 40k public-carpark target by 2030.
-  - At least 1 fast hub per HDB town.
-  - Existing chargers count toward supply.
-- **Sensitivity analysis:** EV adoption growth, budget, charger cost (slow vs fast), coverage radius, electrical capacity, utilisation target (20% → 36% → 61%), and the share of demand served by private chargers.
+Provisional spellings from the notes: Regan/Reagan builds and coordinates; Sara/Sarah and Sandra review data; Erica and Udhaya review the model; Aish reviews sensitivity. “Aish, Aish” is duplicated in the notes and does not establish a second reviewer. Report integration owner remains unassigned. Do not infer names from speaker numbers.
 
-## Open questions for the team
-1. Unit of analysis: planning area (55), subzone (332), or individual carparks (~2,000)?
-2. Scope: all public carparks, or only HDB (where ~80% of residents live and home charging isn't possible)?
-3. Time horizon: plan for 2030 (60k target) or the current gap?
-4. Agree on cost parameters (`data/08_costs/cost_parameters.csv`): accept the ICCT-based capex, and choose charger lifetime, discount rate and grid-upgrade assumptions.
-5. Should we request a free LTA DataMall API key for live charger availability (a utilisation proxy)?
-6. Download SingStat June 2025 population by planning area/subzone manually to update the 2020 census figures?
+## Archive and version-control state
+
+Both meeting files are preserved unchanged under [archive/meetings/2026-11-09/](archive/meetings/2026-11-09/), with SHA-256 hashes. The updated transcript is the full 32,742-byte version, not the duplicate summary originally seen. Previous plan/context/cost table/data index are in `archive/planning/2026-10-31/` and are historical only.
+
+**Version control:** The user subsequently authorised committing and pushing this research update on 9 November 2026; this supersedes the earlier hold.

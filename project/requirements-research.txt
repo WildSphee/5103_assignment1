@@ -1,0 +1,9 @@
+# Research download and data-audit scripts (model implementation is separate).
+pandas>=2.2,<4
+numpy>=1.26,<3
+shapely>=2.0,<3
+pyproj>=3.6,<4
+requests>=2.31,<3
+beautifulsoup4>=4.12,<5
+openpyxl>=3.1,<4
+xlrd>=2.0,<3

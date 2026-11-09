@@ -1,0 +1,192 @@
+Source: https://afdc.energy.gov/fuels/electricity-infrastructure-development
+Retrieved: 2026-11-09T06:10:42.158857+00:00
+
+Alternative Fuels Data Center: Procurement and Installation for Electric Vehicle Charging Infrastructure
+Procurement and Installation for Electric Vehicle Charging Infrastructure
+Infrastructure Tax Credit
+Use the
+30C Tax Credit Eligibility Locator tool
+from Argonne National Laboratory to help learn if your home, business, or facility is in an eligible location for tax credits that could help you save up to 30% of the cost of purchasing and installing EV charging infrastructure.
+Infrastructure Development Checklist
+Planning
+Determine project scope, budget, funding mechanism, and timeline by considering:
+Ideal project site, based on
+existing infrastructure
+and
+infrastructure needs
+The number, type(s), and costs of
+charging equipment
+needed, typically:
+Workplaces
+and
+multifamily housing
+should consider Level 1 and Level 2 charging
+Public
+charging hosts should consider Level 2 and DC fast charging
+Identify project partners, including local electric utilities, a
+certified electrical contractor
+, and
+Clean Cities and Communities coalitions
+Decide whether the stations will need to be networked, including if utilization data will be collected and if payment capabilities are necessary, and evaluate equipment ownership options
+Engage with charging infrastructure providers so they can provide input on the plan and timeline
+Engage with the utility to identify installation needs and costs, including upgrades to electrical service and equipment, and identify a certified electrical contractor
+Explore federal, state, and local incentives and determine budget
+Assess applicable codes and regulations and permitting requirements
+Determine if a formal solicitation is needed
+Installation
+Select a charging site location, considering:
+Number and type of charging units required both near and long term
+Proximity to incoming electricity and potential metering enhancements
+Proximity to a wireless internet connection, if needed
+Weather impacts
+Future expansion
+Select charging infrastructure manufacturer(s) and vendor(s) and network provider; confirm project logistics and equipment delivery
+Coordinate with the utility to confirm charging requirements (both near and long term) and pricing (including impacts on utility rates and any electrical upgrades needed at the charging site)
+Establish a charging plan, including networking requirements, electricity rate implications, and charging equipment ownership responsibilities
+Obtain required permits
+Determine inspection requirements and impacts on the project timeline
+Determine additional site needs, including signage and security
+Assess charging infrastructure maintenance and operation needs and costs
+Select construction and electrical contractors
+Establish a final site budget, including available incentives, project costs, and ongoing expenses/fees
+Operation
+Begin engineering and construction, including permitting and inspections
+Ensure the station is included in the
+AFDC Alternative Fueling Station Locator
+Conduct staff training as applicable
+A variety of options for electric vehicle (EV) charging infrastructure exist, thereby creating a multifaceted infrastructure procurement process. The site host’s specific characteristics and goals, such as utilization and demographics, can also influence the process. Installing charging infrastructure can involve complex payment structures, data collection, ownership models, parking, and signage requirements, in addition to typical infrastructure considerations like cost, regulations, safety, efficiency, siting, and type of equipment. Some organizations may also need to issue a formal solicitation, such as a request for proposal (RFP). See the Infrastructure Development Checklist for important factors to consider when selecting and procuring charging infrastructure. Additionally, for guidance navigating rural infrastructure development, review the U.S. Department of Transportation's
+Rural EV Toolkit
+. For additional public charging guidance, see the
+Public EV Charging Station Site Selection Checklist
+from the Joint Office of Energy and Transportation.
+For an example of how another organization has completed the charging infrastructure procurement process, approached decision making, and implemented charging infrastructure, view the
+Electric Vehicles Take Charge in Chicago
+case study.
+Identify the Need
+The first step when planning to procure and install charging infrastructure is to consider your community members. It is important to understand their expected charging needs based on travel patterns, EV ownership, amount of time it may take to charge the vehicle battery, and the number and type of EVs expected to be served at each location. This type of information can help better determine the number and type of charging infrastructure required for the project. The California Energy Commission’s
+Electric Vehicle Charger Selection Guide
+offers an overview of the considerations for making a charger purchase.
+The
+EVI-X Toolbox
+offers resources to estimate the charging infrastructure necessary to support typical daily travel in a given state or city, charging infrastructure needs to support long-distance travel (100 miles or more) along highway corridors in a given state or county, and to determine how EV charging will impact electricity demand.
+Charging Access
+Ensuring access to EV charging for all types of communities is an important consideration when planning infrastructure development. Low-income and under-resourced communities are typically exposed to a higher proportion of environmental hazards, and EV charging infrastructure can make it easier to encourage EV adoption as a strategy to reduce those impacts moving forward.
+It is important to design charging infrastructure projects alongside a diverse set of community members. This provides local context that ensures appropriate charging solutions for the area. For example, a high-density urban area with multifamily housing might benefit from Level 2 curbside charging, while a more rural community may not have on-street parking and would benefit instead from centralized fast charging.
+Additionally, the following resources provide guidance for incorporating organizational goals into the EV charging planning and deployment process:
+EV for All: Electrifying Transportation in Low-Income Communities
+Charging Forward: A Toolkit for Planning and Funding Rural Electric Mobility Infrastructure
+Promising Practices for Meaningful Public Involvement in Transportation Decision-Making
+Using Mapping Tools To Prioritize EV Charger Benefits to Underserved Communities
+Cost Considerations
+Another important consideration is to determine the cost associated with the required charging needs. This includes equipment, installation, and
+operation and maintenance
+(including electricity, demand charges, and any annual charging network fees).
+Equipment
+Equipment costs will vary based on factors such as application, location,
+charging level
+, and type. When choosing charging infrastructure, additional features to consider that can impact costs include: networking capabilities, output power rating (in kilowatts), number and type of connectors, number of vehicles that can simultaneously charge, and theft deterrence. The features chosen should align with anticipated needs and budget. Residential Level 1 charger costs can vary from $0 (if no additional equipment is needed) to $900. Meanwhile, a residential Level 2 charger can range from $380 to $690, according to a
+Rocky Mountain Institute Report
+. The National Laboratory of the Rockies (NLR) and Idaho National Laboratory (INL)
+Levelized Cost of Charging EVs in the United States
+report found that public charger costs are approximately $3,500 per connector for Level 2 and $38,000 to $90,000 per connector for DC fast, with higher costs depending on power output.
+Installation
+Installation costs can vary significantly based on factors including the number and type of charging infrastructure, geographic location, site location and required trenching, existing wiring and required electrical upgrades to accommodate existing and future charging needs, labor costs, and permitting. Data show that labor is the largest expense in a typical installation, and the per-charger cost goes down significantly for larger installations. According to the NLR and INL
+Levelized Cost of Charging EVs in the United States
+report, the charger installation costs for residential use vary from $400 to $600 per connector for Level 1 equipment and approximately $1,300 per connector for Level 2 equipment, not including labor and permitting costs. Public and workplace installation costs per charger average around $2,500 per connector for Level 2, with costs varying depending on location and number of chargers installed at each site. Similarly, DC fast installation costs can range anywhere from $20,000 per connector to $60,000 per connector depending on charger power and number of installed chargers per site.
+Federal, state, local, and utility
+incentives
+may be available to offset installation costs. For more information on charging infrastructure cost considerations, see reports on the
+Costs Associated with Non-Residential Electric Vehicle Supply Equipment
+,
+Reducing EV Charging Infrastructure Costs
+, and
+Breakdown of Electric Vehicle Supply Equipment Installation Costs.
+Networking
+Networked charging infrastructure is connected to the internet and can send data, such as information on frequency of use, to a network services provider (i.e., charging network) and the site host. Networked charging infrastructure allows site hosts to offer radio-frequency identification (RFID), smart phone, or credit card payment; monitor and analyze use; and provide customer support. By selecting charging infrastructure with hardware that uses the
+Open Charge Point Protocol (OCPP)
+version 1.6 or higher, which physically separates the appliance aspects of the charging infrastructure from the network backend component, the site host can easily switch charging networks without expensive equipment upgrades. This prevents stranded assets by allowing any network to operate the equipment in the event that a site host decides to switch charging networks, or the existing provider no longer offers charging. OCPP is the industry standard for open access. For more information on open access, see the
+Open Charge Alliance
+.
+Non-networked charging infrastructure is not connected to the internet and provides basic charging capabilities without advanced utilization monitoring or payment capabilities. To install a networked station, the site must have access to a wired or wireless internet connection or cellular service.
+To better understand terminology for networked stations and how data is collected and displayed in the
+Alternative Fueling Station Locator
+, see
+Electric Vehicle Charging Networks
+.
+Other Considerations
+The process of procuring charging infrastructure includes many other considerations, such as compliance,
+permitting
+, safety, ownership,
+signage
+, markings, and more.
+Compliance, Permitting, and Inspection
+When choosing charging infrastructure, ensure that the manufacturer has complied with certification requirements, including testing the product with a certified testing body. Charging infrastructure should also be compliant with
+SAE International
+standards, such as SAE J1772.
+Consider domestically manufactured EV charging infrastructure compliant with Buy America requirements. Some EV charging incentive programs may require Buy America compliant equipment. Visit the
+Made in America Office website
+for more information.
+Also, check for other optional certifications that may be of interest, such as the U.S. Environmental Protection Agency’s
+ENERGY STAR® program
+. To qualify for ENERGY STAR certification, chargers must be rigorously tested for operational safety by a nationally recognized testing laboratory. Certified Level 1 and Level 2 chargers use 40% less energy than other similar products when in standby mode (up to 85% of the time). In 2021, ENERGY STAR set energy efficiency criteria for DC fast chargers up to 350 kW. A certified 50 kW DC fast charger would save about 1.5 MWh/year, equivalent to about $1,650 over the product’s lifetime. Also, ENERGY STAR certified chargers that are listed as “Connected Capable” on the
+ENERGY STAR EVSE Product Finder
+or the
+DC EVSE Product Finder
+use open communication standards and have other networking capabilities, such as remote management of the charger and the ability to support demand response requests.
+Charging station installations must comply with local and state codes and regulations and be completed by a licensed electrical contractor. To find licensed electrical contractors trained in charging station installation, refer to the Electric Vehicle Infrastructure Training Program (EVITP)
+list of contractors
+trained and certified in equipment installation and consult with project partners, including charging station manufacturers, utilities, and
+Clean Cities and Communities coalitions
+.
+An electrical contractor should be aware of the relevant codes and standards and obtain a permit from the local building authorities before installing charging infrastructure. Additional time may be needed, as the permitting process could require a site installation plan, and approval from fire, environmental, or electrical inspection entities. For comprehensive guidance on all aspects of charger installation, including planning, permitting, construction, and accessibility considerations, see the
+2019 Electric Vehicle Charging Station Permitting Guidebook from the California Governor’s Office of Business and Economic Development(PDF)
+. Visit the
+EV Permitting
+page for more information on what state and local governments can do to streamline the permitting process for EV charging station installation.
+Ownership
+Charging station ownership typically falls into one of two categories: site-host-owned or third-party-owned (e.g., owned by a charging network), though there are other possible arrangements. Charging infrastructure owned by the site host is purchased, installed, and maintained by the site host, which allows for full control over the station and the ability to keep all revenue from the station (if applicable). In this scenario, site hosts are responsible for all associated costs, including any
+maintenance
+or payment transaction fees. Charging infrastructure owned by a third party is installed and maintained by the third party, which minimizes responsibility to the site host. In some cases, the site host may also earn revenue by leasing the space occupied by the charging infrastructure to the third party. Other ownership arrangements may exist between the electric utility and the site host or third-party operator. For more information on the primary ownership models, see the Decide on Ownership Model section of the U.S. Department of Transportation's
+EV Infrastructure Project Planning Checklist
+. Additionally, for details on public EV charger installation ownership structures, see Atlas Public Policy's
+Public EV Charging Business Models for Retail Site Hosts.
+Signage, Markings, and Accessibility Considerations
+When installing EV charging infrastructure, consider the
+signage
+and pavement markings that may be necessary to help inform drivers. State and local governments may have requirements concerning EV charging infrastructure signage and marking requirements (e.g., Maryland's EV parking space signage requirement). Other considerations for installing EV charging infrastructure include proximity to amenities, lighting, and safety, including vandalism prevention strategies (e.g., motion detectors, anti-vandalism hardware). While not federally required,
+Americans with Disabilities Act (ADA) requirements
+should also be taken under advisement. However, some EV charging incentive programs (e.g., the
+National Electric Vehicle Infrastructure Formula Program
+) state legislation (e.g., in
+California
+and
+Hawaii
+), or local governments may require that new EV charging installations are ADA-compliant (accessible, easy to use, and safe). Key considerations include ensuring adequate space for exiting and entering the vehicle, unobstructed access to the charger, free movement around the charger and connection point on the vehicle, and clear paths and proximity to building entrances. For more information on accessibility considerations, see Access Board’s
+Design Recommendations for Accessible Electric Vehicle Charging Stations report
+. Finally, infrastructure developers should consider engaging with their local
+Clean Cities and Communities coalition
+for assistance identifying any local requirements.
+Utilities and Other Partners
+According to sales data from
+Argonne National Laboratory
+, EV purchases continue to increase. Due to the increasing number of EVs on the road, utilities play an important role in supporting the projected future growth of charging infrastructure and managing energy efficiency optimization for charging stations and the electrical grid. It is important to engage with utilities early in the infrastructure planning process. Utilities can provide in-depth analysis of power availability and capacity for infrastructure planning and mitigate grid impacts by offering managed charging (also called smart charging). This allows a utility to remotely control EV charging by increasing, decreasing, or turning off charging to help meet the needs of the grid. In addition, utilities can offer incentives or unique ownership models for charging equipment and installation. Use the
+U-Finder tool
+to identify your utility partners, get their contact information, and learn about their EV charger installation efforts.
+During the planning and procurement process, site hosts may also choose to engage their local
+Clean Cities and Communities coalition
+and state and local governments for advice.
+For more information on charging infrastructure and electric utilities, see the
+Edison Electric Institute’s Electric Transportation website
+, the
+Smart Electric Power Alliance’s Transportation Electrification website
+, and
+Atlas Public Policy’s EV Hub
+.
+Formal Solicitations
+Depending on the site host organization’s procurement requirements, a formal solicitation process may be needed to purchase and install charging infrastructure. Each of the considerations above, as well as
+operation and maintenance
+issues, can be included in the solicitation. For information on charging infrastructure requests for proposal (RFPs), see Forth Mobility's
+EV Charging and Public/Private Partnerships RFP Template
+. Additionally, state agencies can register for the
+EV States Clearinghouse
+to view example RFPs.

@@ -1,0 +1,910 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="feasopt.py" href="feasopt.html" /><link rel="prev" title="dietmodel.py" href="dietmodel.html" />
+        <link rel="canonical" href="https://docs.gurobi.com/projects/examples/en/current/examples/python/facility.html" />
+
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/><!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
+        <title>facility.py - Gurobi Example Tour</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gurobi.css?v=0dc0b24e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/docs_gurobi_com.css?v=8642940d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/versionflyout.css?v=f7da53b9" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gurobi-tabs.css?v=028acece" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-brand-primary: #DD2113;
+  --color-brand-content: #1675A9;
+  --color-topic-title: #1675A9;
+  --color-topic-title-background: #1675A933;
+  --color-admonition-title--important: #1675A9;
+  --color-admonition-title-background--important: #1675A933;
+  --color-brand-visited: #1675A9;
+  --sidebar-tree-space-above: 1rem;
+  --sidebar-caption-space-above: 0.5rem;
+  --font-stack: Aptos, sans-serif;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #DC4747;
+  --color-brand-content: #5A9BD5;
+  --color-brand-visited: #5A9BD5;
+  --sidebar-tree-space-above: 1rem;
+  --sidebar-caption-space-above: 0.5rem;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #DC4747;
+  --color-brand-content: #5A9BD5;
+  --color-brand-visited: #5A9BD5;
+  --sidebar-tree-space-above: 1rem;
+  --sidebar-caption-space-above: 0.5rem;
+  
+      }
+    }
+  }
+</style>
+
+
+
+
+  
+  <script src="https://docs.gurobi.com/current/_static/version-slug-label.js"></script>
+  <script src="../../_static/versionflyout.js"></script>
+  <meta content="1" name="readthedocs-addons-api-version"/>
+  
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q9J8EF61TH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Q9J8EF61TH');
+    </script>
+  
+
+
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="gurobi-optimization-docs-exampletour" /><meta name="readthedocs-version-slug" content="current" /><meta name="readthedocs-resolver-filename" content="/examples/python/facility.html" /><meta name="readthedocs-http-status" content="200" /></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Gurobi Example Tour</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><!-- From furo sidebars/brand.html. Only the link is customised. -->
+<a class="sidebar-brand" href="https://docs.gurobi.com/current">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="../../_static/gurobi_light.svg" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../../_static/gurobi_dark.svg" alt="Dark Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><!-- Replaces sidebar/navigation.html from furo -->
+<div class="sidebar-tree">
+  <ul>
+    
+    <li class="toctree-l1">
+    
+      <a class="reference homelink" href="../../index.html">
+        <svg version="1.1" width="0.9em" height="0.9em" class="toctree-icon" viewBox="0 -1.5 16 16" aria-hidden="true">
+          <path d="M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z">
+          </path>
+        </svg>
+        Gurobi Examples
+      </a>
+    </li>
+  </ul>
+  <ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../overview.html">Example Tour</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Example Tour</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/examplelist.html">A list of the Gurobi examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/loading.html">Load and solve a model from a file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/building.html">Build a model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/additionalelements.html">Additional modeling elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/modification.html">Modify a model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/parameters.html">Change parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/infeasibility.html">Diagnose and cope with infeasibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/starts.html">MIP starts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/modeldataseparation.html">Model-data separation in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../overview/callbacks.html">Callbacks</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../../source.html">Example Source Code</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Example Source Code</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current has-children"><a class="reference internal" href="../../apiview.html">API oriented</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of API oriented</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3 has-children"><a class="reference internal" href="../c.html">C Examples</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of C Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../c/batchmode_c.html">batchmode_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/bilinear_c.html">bilinear_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/callback_c.html">callback_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/dense_c.html">dense_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/diet_c.html">diet_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/facility_c.html">facility_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/feasopt_c.html">feasopt_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/fixanddive_c.html">fixanddive_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/gc_pwl_c.html">gc_pwl_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/gc_pwl_func_c.html">gc_pwl_func_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/genconstr_c.html">genconstr_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/genconstrnl_c.html">genconstrnl_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/lp_c.html">lp_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/lpmethod_c.html">lpmethod_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/lpmod_c.html">lpmod_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/mip1_c.html">mip1_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/mip2_c.html">mip2_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/multiobj_c.html">multiobj_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/multiscenario_c.html">multiscenario_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/params_c.html">params_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/piecewise_c.html">piecewise_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/poolsearch_c.html">poolsearch_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/qcp_c.html">qcp_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/qp_c.html">qp_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/sensitivity_c.html">sensitivity_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/sos_c.html">sos_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/sudoku_c.html">sudoku_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/tsp_c.html">tsp_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/tune_c.html">tune_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/workforce1_c.html">workforce1_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/workforce2_c.html">workforce2_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/workforce3_c.html">workforce3_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/workforce4_c.html">workforce4_c.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../c/workforce5_c.html">workforce5_c.c</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../cpp.html">C++ Examples</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of C++ Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/batchmode_c%2B%2B.html">batchmode_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/bilinear_c%2B%2B.html">bilinear_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/callback_c%2B%2B.html">callback_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/dense_c%2B%2B.html">dense_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/diet_c%2B%2B.html">diet_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/facility_c%2B%2B.html">facility_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/feasopt_c%2B%2B.html">feasopt_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/fixanddive_c%2B%2B.html">fixanddive_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/gc_pwl_c%2B%2B.html">gc_pwl_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/gc_pwl_func_c%2B%2B.html">gc_pwl_func_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/genconstr_c%2B%2B.html">genconstr_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/genconstrnl_c%2B%2B.html">genconstrnl_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/lp_c%2B%2B.html">lp_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/lpmethod_c%2B%2B.html">lpmethod_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/lpmod_c%2B%2B.html">lpmod_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/mip1_c%2B%2B.html">mip1_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/mip2_c%2B%2B.html">mip2_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/multiobj_c%2B%2B.html">multiobj_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/multiscenario_c%2B%2B.html">multiscenario_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/params_c%2B%2B.html">params_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/piecewise_c%2B%2B.html">piecewise_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/poolsearch_c%2B%2B.html">poolsearch_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/qcp_c%2B%2B.html">qcp_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/qp_c%2B%2B.html">qp_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/sensitivity_c%2B%2B.html">sensitivity_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/sos_c%2B%2B.html">sos_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/sudoku_c%2B%2B.html">sudoku_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/tsp_c%2B%2B.html">tsp_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/tune_c%2B%2B.html">tune_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/workforce1_c%2B%2B.html">workforce1_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/workforce2_c%2B%2B.html">workforce2_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/workforce3_c%2B%2B.html">workforce3_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/workforce4_c%2B%2B.html">workforce4_c++.cpp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cpp/workforce5_c%2B%2B.html">workforce5_c++.cpp</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../cs.html">C# Examples</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of C# Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cs/batchmode_cs.html">batchmode_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/bilinear_cs.html">bilinear_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/callback_cs.html">callback_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/dense_cs.html">dense_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/diet_cs.html">diet_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/facility_cs.html">facility_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/feasopt_cs.html">feasopt_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/fixanddive_cs.html">fixanddive_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/gc_pwl_cs.html">gc_pwl_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/gc_pwl_func_cs.html">gc_pwl_func_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/genconstr_cs.html">genconstr_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/genconstrnl_cs.html">genconstrnl_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/lp_cs.html">lp_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/lpmethod_cs.html">lpmethod_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/lpmod_cs.html">lpmod_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/mip1_cs.html">mip1_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/mip2_cs.html">mip2_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/multiobj_cs.html">multiobj_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/multiscenario_cs.html">multiscenario_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/params_cs.html">params_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/piecewise_cs.html">piecewise_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/poolsearch_cs.html">poolsearch_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/qcp_cs.html">qcp_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/qp_cs.html">qp_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/sensitivity_cs.html">sensitivity_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/sos_cs.html">sos_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/sudoku_cs.html">sudoku_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/tsp_cs.html">tsp_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/tune_cs.html">tune_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/workforce1_cs.html">workforce1_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/workforce2_cs.html">workforce2_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/workforce3_cs.html">workforce3_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/workforce4_cs.html">workforce4_cs.cs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cs/workforce5_cs.html">workforce5_cs.cs</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../java.html">Java Examples</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Java Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../java/Batchmode.html">Batchmode.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Bilinear.html">Bilinear.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Callback.html">Callback.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Dense.html">Dense.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Diet.html">Diet.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Facility.html">Facility.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Feasopt.html">Feasopt.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Fixanddive.html">Fixanddive.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/GCPWL.html">GCPWL.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/GCPWLFunc.html">GCPWLFunc.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Genconstr.html">Genconstr.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/GenconstrNL.html">GenconstrNL.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Lp.html">Lp.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Lpmethod.html">Lpmethod.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Lpmod.html">Lpmod.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Mip1.html">Mip1.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Mip2.html">Mip2.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Multiobj.html">Multiobj.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Multiscenario.html">Multiscenario.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Params.html">Params.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Piecewise.html">Piecewise.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Poolsearch.html">Poolsearch.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Qcp.html">Qcp.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Qp.html">Qp.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Sensitivity.html">Sensitivity.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Sos.html">Sos.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Sudoku.html">Sudoku.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Tsp.html">Tsp.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Tune.html">Tune.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Workforce1.html">Workforce1.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Workforce2.html">Workforce2.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Workforce3.html">Workforce3.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Workforce4.html">Workforce4.java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../java/Workforce5.html">Workforce5.java</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current has-children"><a class="reference internal" href="../python.html">Python Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of Python Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="acopf_4buses.html">acopf_4buses.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="batchmode.html">batchmode.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bilinear.html">bilinear.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="callback.html">callback.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dense.html">dense.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diet.html">diet.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diet2.html">diet2.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diet3.html">diet3.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="diet4.html">diet4.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dietmodel.html">dietmodel.py</a></li>
+<li class="toctree-l4 current current-page"><a class="current reference internal" href="#">facility.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="feasopt.html">feasopt.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fixanddive.html">fixanddive.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gc_pwl.html">gc_pwl.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gc_pwl_func.html">gc_pwl_func.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="genconstr.html">genconstr.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="genconstrnl.html">genconstrnl.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="heurcb.html">heurcb.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lp.html">lp.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lpmethod.html">lpmethod.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lpmod.html">lpmod.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="matrix1.html">matrix1.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="matrix2.html">matrix2.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mip1.html">mip1.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mip1_remote.html">mip1_remote.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mip2.html">mip2.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="multiobj.html">multiobj.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="multiscenario.html">multiscenario.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="netflow.html">netflow.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="params.html">params.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="piecewise.html">piecewise.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="poolsearch.html">poolsearch.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="portfolio.html">portfolio.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qcp.html">qcp.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="qp.html">qp.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sensitivity.html">sensitivity.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sos.html">sos.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sudoku.html">sudoku.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tsp.html">tsp.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tune.html">tune.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="workforce1.html">workforce1.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="workforce2.html">workforce2.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="workforce3.html">workforce3.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="workforce4.html">workforce4.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="workforce5.html">workforce5.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="workforce_batchmode.html">workforce_batchmode.py</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../matlab.html">MATLAB Examples</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of MATLAB Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/bilinear.html">bilinear.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/diet.html">diet.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/facility.html">facility.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/feasopt.html">feasopt.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/fixanddive.html">fixanddive.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/gc_funcnonlinear.html">gc_funcnonlinear.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/gc_pwl.html">gc_pwl.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/gc_pwl_func.html">gc_pwl_func.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/genconstr.html">genconstr.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/intlinprog.html">intlinprog.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/linprog.html">linprog.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/lp.html">lp.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/lp2.html">lp2.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/lpmethod.html">lpmethod.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/lpmod.html">lpmod.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/mip1.html">mip1.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/mip2.html">mip2.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/multiobj.html">multiobj.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/opttoolbox_lp.html">opttoolbox_lp.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/opttoolbox_mip1.html">opttoolbox_mip1.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/params.html">params.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/piecewise.html">piecewise.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/poolsearch.html">poolsearch.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/qcp.html">qcp.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/qp.html">qp.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/sensitivity.html">sensitivity.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/sos.html">sos.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/sudoku.html">sudoku.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/workforce1.html">workforce1.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/workforce2.html">workforce2.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/workforce3.html">workforce3.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/workforce4.html">workforce4.m</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../matlab/workforce5.html">workforce5.m</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../R.html">R Examples</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of R Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../R/bilinear.html">bilinear.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/diet.html">diet.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/facility.html">facility.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/feasopt.html">feasopt.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/fixanddive.html">fixanddive.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/gc_funcnonlinear.html">gc_funcnonlinear.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/gc_pwl.html">gc_pwl.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/gc_pwl_func.html">gc_pwl_func.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/genconstr.html">genconstr.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/lp.html">lp.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/lp2.html">lp2.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/lpmethod.html">lpmethod.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/lpmod.html">lpmod.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/mip.html">mip.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/mip2.html">mip2.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/multiobj.html">multiobj.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/params.html">params.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/piecewise.html">piecewise.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/poolsearch.html">poolsearch.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/qcp.html">qcp.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/qp.html">qp.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/sensitivity.html">sensitivity.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/sos.html">sos.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/sudoku.html">sudoku.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/workforce1.html">workforce1.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/workforce2.html">workforce2.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/workforce3.html">workforce3.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/workforce4.html">workforce4.R</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../R/workforce5.html">workforce5.R</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../vb.html">Visual Basic Examples</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of Visual Basic Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../vb/batchmode_vb.html">batchmode_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/bilinear_vb.html">bilinear_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/callback_vb.html">callback_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/dense_vb.html">dense_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/diet_vb.html">diet_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/facility_vb.html">facility_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/feasopt_vb.html">feasopt_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/fixanddive_vb.html">fixanddive_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/gc_pwl_func_vb.html">gc_pwl_func_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/gc_pwl_vb.html">gc_pwl_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/genconstr_vb.html">genconstr_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/genconstrnl_vb.html">genconstrnl_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/lp_vb.html">lp_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/lpmethod_vb.html">lpmethod_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/lpmod_vb.html">lpmod_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/mip1_vb.html">mip1_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/mip2_vb.html">mip2_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/multiobj_vb.html">multiobj_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/multiscenario_vb.html">multiscenario_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/params_vb.html">params_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/piecewise_vb.html">piecewise_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/poolsearch_vb.html">poolsearch_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/qcp_vb.html">qcp_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/qp_vb.html">qp_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/sensitivity_vb.html">sensitivity_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/sos_vb.html">sos_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/sudoku_vb.html">sudoku_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/tsp_vb.html">tsp_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/tune_vb.html">tune_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/workforce1_vb.html">workforce1_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/workforce2_vb.html">workforce2_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/workforce3_vb.html">workforce3_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/workforce4_vb.html">workforce4_vb.vb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../vb/workforce5_vb.html">workforce5_vb.vb</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../exampleview.html">Example oriented</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of Example oriented</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../acopf.html">ACOPF Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batchmode.html">Batchmode Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bilinear.html">Bilinear Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../callback.html">Callback Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dense.html">Dense Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diet.html">Diet Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../facility.html">Facility Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../feasopt.html">Feasopt Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fixanddive.html">Fixanddive Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gc_funcnonlinear.html">Gc_funcnonlinear Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gc_pwl.html">Gc_pwl Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gc_pwl_func.html">Gc_pwl_func Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../genconstr.html">Genconstr Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../genconstrnl.html">Genconstrnl Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lp.html">Lp Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lpmethod.html">Lpmethod Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lpmod.html">Lpmod Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../matrix.html">Matrix Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mip1.html">Mip1 Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mip2.html">Mip2 Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../multiobj.html">Multiobj Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../multiscenario.html">Multi-scenario Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../params.html">Params Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../piecewise.html">Piecewise Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../poolsearch.html">Poolsearch Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../qcp.html">Qcp Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../qp.html">Qp Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sensitivity.html">Sensitivity Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sos.html">Sos Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sudoku.html">Sudoku Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tsp.html">TSP Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tune.html">Tune Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../workforce.html">Workforce Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div></div><div id="custom-rtd-flyout-container">
+  <div class="grb-rtd-versions" data-toggle="grb-rtd-versions" role="note">
+    <span class="grb-rtd-current-version" data-toggle="grb-rtd-current-version">
+      <span class="fa fa-book">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -100 1664 1664" width="13" height="13" style="transform: scaleY(-1) translateY(-1px);">
+          <path fill="var(--color-foreground-primary)" d="M1639 1058q40 -57 18 -129l-275 -906q-19 -64 -76.5 -107.5t-122.5 -43.5h-923q-77 0 -148.5 53.5t-99.5 131.5q-24 67 -2 127q0 4 3 27t4 37q1 8 -3 21.5t-3 19.5q2 11 8 21t16.5 23.5t16.5 23.5q23 38 45 91.5t30 91.5q3 10 0.5 30t-0.5 28q3 11 17 28t17 23q21 36 42 92t25 90q1 9 -2.5 32t0.5 28q4 13 22 30.5t22 22.5q19 26 42.5 84.5t27.5 96.5q1 8 -3 25.5t-2 26.5q2 8 9 18t18 23t17 21q8 12 16.5 30.5t15 35t16 36t19.5 32t26.5 23.5t36 11.5t47.5 -5.5l-1 -3q38 9 51 9h761q74 0 114 -56t18 -130l-274 -906q-36 -119 -71.5 -153.5t-128.5 -34.5h-869q-27 0 -38 -15q-11 -16 -1 -43q24 -70 144 -70h923q29 0 56 15.5t35 41.5l300 987q7 22 5 57q38 -15 59 -43zM575 1056q-4 -13 2 -22.5t20 -9.5h608q13 0 25.5 9.5t16.5 22.5l21 64q4 13 -2 22.5t-20 9.5h-608q-13 0 -25.5 -9.5t-16.5 -22.5zM492 800q-4 -13 2 -22.5t20 -9.5h608q13 0 25.5 9.5t16.5 22.5l21 64q4 13 -2 22.5t-20 9.5h-608q-13 0 -25.5 -9.5t-16.5 -22.5z" />
+        </svg>
+        Gurobi
+      </span>
+      <span id="grb-rtd-version-label">
+      </span>
+    </span>
+    <div class="grb-rtd-other-versions" id="grb-rtd-flyout-content">
+    </div>
+  </div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+          
+
+
+
+
+
+<article role="main">
+<section id="facility-py">
+<span id="subsubsectionfacility-py"></span><h1>facility.py<a class="headerlink" href="#facility-py" title="Link to this heading">#</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="c1"># Copyright 2026, Gurobi Optimization, LLC</span>
+
+<span class="c1"># Facility location: a company currently ships its product from 5 plants</span>
+<span class="c1"># to 4 warehouses. It is considering closing some plants to reduce</span>
+<span class="c1"># costs. What plant(s) should the company close, in order to minimize</span>
+<span class="c1"># transportation and fixed costs?</span>
+<span class="c1">#</span>
+<span class="c1"># Note that this example uses lists instead of dictionaries.  Since</span>
+<span class="c1"># it does not work with sparse data, lists are a reasonable option.</span>
+<span class="c1">#</span>
+<span class="c1"># Based on an example from Frontline Systems:</span>
+<span class="c1">#   http://www.solver.com/disfacility.htm</span>
+<span class="c1"># Used with permission.</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">gurobipy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gurobipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">GRB</span>
+
+<span class="c1"># Warehouse demand in thousands of units</span>
+<span class="n">demand</span> <span class="o">=</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+
+<span class="c1"># Plant capacity in thousands of units</span>
+<span class="n">capacity</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
+
+<span class="c1"># Fixed costs for each plant</span>
+<span class="n">fixedCosts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12000</span><span class="p">,</span> <span class="mi">15000</span><span class="p">,</span> <span class="mi">17000</span><span class="p">,</span> <span class="mi">13000</span><span class="p">,</span> <span class="mi">16000</span><span class="p">]</span>
+
+<span class="c1"># Transportation costs per thousand units</span>
+<span class="n">transCosts</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">4000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">2500</span><span class="p">,</span> <span class="mi">4500</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2500</span><span class="p">,</span> <span class="mi">2600</span><span class="p">,</span> <span class="mi">3400</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">4000</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">1800</span><span class="p">,</span> <span class="mi">2600</span><span class="p">,</span> <span class="mi">4100</span><span class="p">,</span> <span class="mi">3000</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2200</span><span class="p">,</span> <span class="mi">2600</span><span class="p">,</span> <span class="mi">3100</span><span class="p">,</span> <span class="mi">3700</span><span class="p">,</span> <span class="mi">3200</span><span class="p">],</span>
+<span class="p">]</span>
+
+<span class="c1"># Range of plants and warehouses</span>
+<span class="n">plants</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">capacity</span><span class="p">))</span>
+<span class="n">warehouses</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">demand</span><span class="p">))</span>
+
+<span class="c1"># Model</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s2">"facility"</span><span class="p">)</span>
+
+<span class="c1"># Plant open decision variables: open[p] == 1 if plant p is open.</span>
+<span class="nb">open</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">plants</span><span class="p">,</span> <span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">BINARY</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="n">fixedCosts</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"open"</span><span class="p">)</span>
+
+<span class="c1"># Transportation decision variables: transport[w,p] captures the</span>
+<span class="c1"># optimal quantity to transport to warehouse w from plant p</span>
+<span class="n">transport</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">warehouses</span><span class="p">,</span> <span class="n">plants</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="n">transCosts</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"trans"</span><span class="p">)</span>
+
+<span class="c1"># You could use Python looping constructs and m.addVar() to create</span>
+<span class="c1"># these decision variables instead.  The following would be equivalent</span>
+<span class="c1"># to the preceding two statements...</span>
+<span class="c1">#</span>
+<span class="c1"># open = []</span>
+<span class="c1"># for p in plants:</span>
+<span class="c1">#     open.append(m.addVar(vtype=GRB.BINARY,</span>
+<span class="c1">#                          obj=fixedCosts[p],</span>
+<span class="c1">#                          name="open[%d]" % p))</span>
+<span class="c1">#</span>
+<span class="c1"># transport = []</span>
+<span class="c1"># for w in warehouses:</span>
+<span class="c1">#     transport.append([])</span>
+<span class="c1">#     for p in plants:</span>
+<span class="c1">#         transport[w].append(m.addVar(obj=transCosts[w][p],</span>
+<span class="c1">#                                      name="trans[%d,%d]" % (w, p)))</span>
+
+<span class="c1"># The objective is to minimize the total fixed and variable costs</span>
+<span class="n">m</span><span class="o">.</span><span class="n">ModelSense</span> <span class="o">=</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MINIMIZE</span>
+
+<span class="c1"># Production constraints</span>
+<span class="c1"># Note that the right-hand limit sets the production to zero if the plant</span>
+<span class="c1"># is closed</span>
+<span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">transport</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"*"</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">capacity</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">*</span> <span class="nb">open</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">plants</span><span class="p">),</span> <span class="s2">"Capacity"</span>
+<span class="p">)</span>
+
+<span class="c1"># Using Python looping constructs, the preceding would be...</span>
+<span class="c1">#</span>
+<span class="c1"># for p in plants:</span>
+<span class="c1">#     m.addConstr(sum(transport[w][p] for w in warehouses)</span>
+<span class="c1">#                 &lt;= capacity[p] * open[p], "Capacity[%d]" % p)</span>
+
+<span class="c1"># Demand constraints</span>
+<span class="n">m</span><span class="o">.</span><span class="n">addConstrs</span><span class="p">((</span><span class="n">transport</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">)</span> <span class="o">==</span> <span class="n">demand</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">warehouses</span><span class="p">),</span> <span class="s2">"Demand"</span><span class="p">)</span>
+
+<span class="c1"># ... and the preceding would be ...</span>
+<span class="c1"># for w in warehouses:</span>
+<span class="c1">#     m.addConstr(sum(transport[w][p] for p in plants) == demand[w],</span>
+<span class="c1">#                 "Demand[%d]" % w)</span>
+
+<span class="c1"># Save model</span>
+<span class="n">m</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"facilityPY.lp"</span><span class="p">)</span>
+
+<span class="c1"># Guess at the starting point: close the plant with the highest fixed costs;</span>
+<span class="c1"># open all others</span>
+
+<span class="c1"># First open all plants</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">plants</span><span class="p">:</span>
+    <span class="nb">open</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">Start</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="c1"># Now close the plant with the highest fixed cost</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Initial guess:"</span><span class="p">)</span>
+<span class="n">maxFixed</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">fixedCosts</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">plants</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">fixedCosts</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">==</span> <span class="n">maxFixed</span><span class="p">:</span>
+        <span class="nb">open</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">Start</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Closing plant </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+
+<span class="c1"># Use barrier to solve root relaxation</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">Method</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># Solve</span>
+<span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+
+<span class="c1"># Print solution</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">TOTAL COSTS: </span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">ObjVal</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"SOLUTION:"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">plants</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">open</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">X</span> <span class="o">&gt;</span> <span class="mf">0.99</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Plant </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2"> open"</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">warehouses</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">transport</span><span class="p">[</span><span class="n">w</span><span class="p">,</span> <span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">X</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  Transport </span><span class="si">{</span><span class="n">transport</span><span class="p">[</span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">X</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2"> units to warehouse </span><span class="si">{</span><span class="n">w</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Plant </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2"> closed!"</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+
+</article>
+
+
+<aside class="topic">
+  <p class="topic-title">Help and Feedback</p>
+  <div class="table-wrapper docutils container">
+    <table class="epilog docutils align-default">
+      <tbody>
+        <tr>
+          <td>
+            <p>
+              <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-search"
+                   viewBox="0 0 16 16" aria-hidden="true">
+                <path fill-rule="evenodd"
+                      d="M11.5 7a4.499 4.499 0 11-8.998 0A4.499 4.499 0 0111.5 7zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z">
+                </path>
+              </svg>
+              Press <kbd>/</kbd> or click to
+              <a
+                class="reference external"
+                href="#"
+                onclick="document.getElementsByClassName('nav-overlay-icon')[0].click(); document.getElementsByClassName('sidebar-search')[0].focus(); return false;"
+              >search this documentation</a>
+            </p>
+          </td>
+          <td>
+            <p>
+              <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-home"
+                   viewBox="0 0 16 16" aria-hidden="true">
+                <path fill-rule="evenodd"
+                      d="M8.156 1.835a.25.25 0 00-.312 0l-5.25 4.2a.25.25 0 00-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v5.25h2.75a.25.25 0 00.25-.25V6.23a.25.25 0 00-.094-.195l-5.25-4.2zM6.906.664a1.75 1.75 0 012.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0113.25 15h-3.5a.75.75 0 01-.75-.75V9H7v5.25a.75.75 0 01-.75.75h-3.5A1.75 1.75 0 011 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2h-.001z">
+                </path>
+              </svg> <a class="reference external" href="https://www.gurobi.com/">Gurobi website</a>
+            </p>
+          </td>
+          <td>
+            <p>
+              <svg version="1.1" width="1.0em" height="1.0em"
+                    class="sd-octicon sd-octicon-comment-discussion" viewBox="0 0 16 16" aria-hidden="true">
+                <path fill-rule="evenodd"
+                      d="M1.5 2.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v5.5a.25.25 0 01-.25.25h-3.5a.75.75 0 00-.53.22L3.5 11.44V9.25a.75.75 0 00-.75-.75h-1a.25.25 0 01-.25-.25v-5.5zM1.75 1A1.75 1.75 0 000 2.75v5.5C0 9.216.784 10 1.75 10H2v1.543a1.457 1.457 0 002.487 1.03L7.061 10h3.189A1.75 1.75 0 0012 8.25v-5.5A1.75 1.75 0 0010.25 1h-8.5zM14.5 4.75a.25.25 0 00-.25-.25h-.5a.75.75 0 110-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0114.25 12H14v1.543a1.457 1.457 0 01-2.487 1.03L9.22 12.28a.75.75 0 111.06-1.06l2.22 2.22v-2.19a.75.75 0 01.75-.75h1a.25.25 0 00.25-.25v-5.5z">
+                </path>
+              </svg> <a class="reference external"
+                        href="https://support.gurobi.com/hc/en-us/community/topics">Gurobi community forum</a>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+              <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-book"
+                   viewBox="0 0 16 16" aria-hidden="true">
+                <path fill-rule="evenodd"
+                      d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75V1.75zm8.755 3a2.25 2.25 0 012.25-2.25H14.5v9h-3.757c-.71 0-1.4.201-1.992.572l.004-7.322zm-1.504 7.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574z">
+                </path>
+              </svg> Go to <a class="reference external" href="https://docs.gurobi.com">other Gurobi
+                documentation</a>
+            </p>
+          </td>
+          <td>
+            <p>
+              <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-download"
+                   viewBox="0 0 16 16" aria-hidden="true">
+                <path fill-rule="evenodd"
+                      d="M7.47 10.78a.75.75 0 001.06 0l3.75-3.75a.75.75 0 00-1.06-1.06L8.75 8.44V1.75a.75.75 0 00-1.5 0v6.69L4.78 5.97a.75.75 0 00-1.06 1.06l3.75 3.75zM3.75 13a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5z">
+                </path>
+              </svg> <a class="reference external" href="https://www.gurobi.com/downloads">Gurobi download</a>
+            </p>
+          </td>
+          <td>
+            <p>
+              <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-person"
+                   viewBox="0 0 16 16" aria-hidden="true">
+                <path fill-rule="evenodd"
+                      d="M10.5 5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm.061 3.073a4 4 0 10-5.123 0 6.004 6.004 0 00-3.431 5.142.75.75 0 001.498.07 4.5 4.5 0 018.99 0 .75.75 0 101.498-.07 6.005 6.005 0 00-3.432-5.142z">
+                </path>
+              </svg> <a class="reference external"
+                        href="https://support.gurobi.com/hc/requests/new?ticket_form_id=360000523752&tf_subject=Documentation+issue&tf_360009525951=doc_issue&tf_24952793658385=https://docs.gurobi.com/projects/examples/en/current/examples/python/facility.html">Contact
+                support</a>
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</aside>
+
+
+
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="feasopt.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">feasopt.py</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="dietmodel.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">dietmodel.py</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; Gurobi Optimization, LLC
+            </div><div class="last-updated">
+              Last updated on Nov 04, 2026</div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scrolltree.js?v=151386ef"></script>
+    <script src="../../_static/restore-anchor-scroll.js?v=5cb3b7c1"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    </body>
+</html>

@@ -1,0 +1,823 @@
+Source: https://docs.gurobi.com/projects/examples/en/current/examples/python/facility.html
+Retrieved: 2026-11-09T06:10:42.183567+00:00
+
+facility.py - Gurobi Example Tour
+Contents
+Menu
+Expand
+Light mode
+Dark mode
+Auto light/dark mode
+Hide navigation sidebar
+Hide table of contents sidebar
+Gurobi Examples
+Example Tour
+Toggle navigation of Example Tour
+A list of the Gurobi examples
+Load and solve a model from a file
+Build a model
+Additional modeling elements
+Modify a model
+Change parameters
+Diagnose and cope with infeasibility
+MIP starts
+Model-data separation in Python
+Callbacks
+Example Source Code
+Toggle navigation of Example Source Code
+API oriented
+Toggle navigation of API oriented
+C Examples
+Toggle navigation of C Examples
+batchmode_c.c
+bilinear_c.c
+callback_c.c
+dense_c.c
+diet_c.c
+facility_c.c
+feasopt_c.c
+fixanddive_c.c
+gc_pwl_c.c
+gc_pwl_func_c.c
+genconstr_c.c
+genconstrnl_c.c
+lp_c.c
+lpmethod_c.c
+lpmod_c.c
+mip1_c.c
+mip2_c.c
+multiobj_c.c
+multiscenario_c.c
+params_c.c
+piecewise_c.c
+poolsearch_c.c
+qcp_c.c
+qp_c.c
+sensitivity_c.c
+sos_c.c
+sudoku_c.c
+tsp_c.c
+tune_c.c
+workforce1_c.c
+workforce2_c.c
+workforce3_c.c
+workforce4_c.c
+workforce5_c.c
+C++ Examples
+Toggle navigation of C++ Examples
+batchmode_c++.cpp
+bilinear_c++.cpp
+callback_c++.cpp
+dense_c++.cpp
+diet_c++.cpp
+facility_c++.cpp
+feasopt_c++.cpp
+fixanddive_c++.cpp
+gc_pwl_c++.cpp
+gc_pwl_func_c++.cpp
+genconstr_c++.cpp
+genconstrnl_c++.cpp
+lp_c++.cpp
+lpmethod_c++.cpp
+lpmod_c++.cpp
+mip1_c++.cpp
+mip2_c++.cpp
+multiobj_c++.cpp
+multiscenario_c++.cpp
+params_c++.cpp
+piecewise_c++.cpp
+poolsearch_c++.cpp
+qcp_c++.cpp
+qp_c++.cpp
+sensitivity_c++.cpp
+sos_c++.cpp
+sudoku_c++.cpp
+tsp_c++.cpp
+tune_c++.cpp
+workforce1_c++.cpp
+workforce2_c++.cpp
+workforce3_c++.cpp
+workforce4_c++.cpp
+workforce5_c++.cpp
+C# Examples
+Toggle navigation of C# Examples
+batchmode_cs.cs
+bilinear_cs.cs
+callback_cs.cs
+dense_cs.cs
+diet_cs.cs
+facility_cs.cs
+feasopt_cs.cs
+fixanddive_cs.cs
+gc_pwl_cs.cs
+gc_pwl_func_cs.cs
+genconstr_cs.cs
+genconstrnl_cs.cs
+lp_cs.cs
+lpmethod_cs.cs
+lpmod_cs.cs
+mip1_cs.cs
+mip2_cs.cs
+multiobj_cs.cs
+multiscenario_cs.cs
+params_cs.cs
+piecewise_cs.cs
+poolsearch_cs.cs
+qcp_cs.cs
+qp_cs.cs
+sensitivity_cs.cs
+sos_cs.cs
+sudoku_cs.cs
+tsp_cs.cs
+tune_cs.cs
+workforce1_cs.cs
+workforce2_cs.cs
+workforce3_cs.cs
+workforce4_cs.cs
+workforce5_cs.cs
+Java Examples
+Toggle navigation of Java Examples
+Batchmode.java
+Bilinear.java
+Callback.java
+Dense.java
+Diet.java
+Facility.java
+Feasopt.java
+Fixanddive.java
+GCPWL.java
+GCPWLFunc.java
+Genconstr.java
+GenconstrNL.java
+Lp.java
+Lpmethod.java
+Lpmod.java
+Mip1.java
+Mip2.java
+Multiobj.java
+Multiscenario.java
+Params.java
+Piecewise.java
+Poolsearch.java
+Qcp.java
+Qp.java
+Sensitivity.java
+Sos.java
+Sudoku.java
+Tsp.java
+Tune.java
+Workforce1.java
+Workforce2.java
+Workforce3.java
+Workforce4.java
+Workforce5.java
+Python Examples
+Toggle navigation of Python Examples
+acopf_4buses.py
+batchmode.py
+bilinear.py
+callback.py
+dense.py
+diet.py
+diet2.py
+diet3.py
+diet4.py
+dietmodel.py
+facility.py
+feasopt.py
+fixanddive.py
+gc_pwl.py
+gc_pwl_func.py
+genconstr.py
+genconstrnl.py
+heurcb.py
+lp.py
+lpmethod.py
+lpmod.py
+matrix1.py
+matrix2.py
+mip1.py
+mip1_remote.py
+mip2.py
+multiobj.py
+multiscenario.py
+netflow.py
+params.py
+piecewise.py
+poolsearch.py
+portfolio.py
+qcp.py
+qp.py
+sensitivity.py
+sos.py
+sudoku.py
+tsp.py
+tune.py
+workforce1.py
+workforce2.py
+workforce3.py
+workforce4.py
+workforce5.py
+workforce_batchmode.py
+MATLAB Examples
+Toggle navigation of MATLAB Examples
+bilinear.m
+diet.m
+facility.m
+feasopt.m
+fixanddive.m
+gc_funcnonlinear.m
+gc_pwl.m
+gc_pwl_func.m
+genconstr.m
+intlinprog.m
+linprog.m
+lp.m
+lp2.m
+lpmethod.m
+lpmod.m
+mip1.m
+mip2.m
+multiobj.m
+opttoolbox_lp.m
+opttoolbox_mip1.m
+params.m
+piecewise.m
+poolsearch.m
+qcp.m
+qp.m
+sensitivity.m
+sos.m
+sudoku.m
+workforce1.m
+workforce2.m
+workforce3.m
+workforce4.m
+workforce5.m
+R Examples
+Toggle navigation of R Examples
+bilinear.R
+diet.R
+facility.R
+feasopt.R
+fixanddive.R
+gc_funcnonlinear.R
+gc_pwl.R
+gc_pwl_func.R
+genconstr.R
+lp.R
+lp2.R
+lpmethod.R
+lpmod.R
+mip.R
+mip2.R
+multiobj.R
+params.R
+piecewise.R
+poolsearch.R
+qcp.R
+qp.R
+sensitivity.R
+sos.R
+sudoku.R
+workforce1.R
+workforce2.R
+workforce3.R
+workforce4.R
+workforce5.R
+Visual Basic Examples
+Toggle navigation of Visual Basic Examples
+batchmode_vb.vb
+bilinear_vb.vb
+callback_vb.vb
+dense_vb.vb
+diet_vb.vb
+facility_vb.vb
+feasopt_vb.vb
+fixanddive_vb.vb
+gc_pwl_func_vb.vb
+gc_pwl_vb.vb
+genconstr_vb.vb
+genconstrnl_vb.vb
+lp_vb.vb
+lpmethod_vb.vb
+lpmod_vb.vb
+mip1_vb.vb
+mip2_vb.vb
+multiobj_vb.vb
+multiscenario_vb.vb
+params_vb.vb
+piecewise_vb.vb
+poolsearch_vb.vb
+qcp_vb.vb
+qp_vb.vb
+sensitivity_vb.vb
+sos_vb.vb
+sudoku_vb.vb
+tsp_vb.vb
+tune_vb.vb
+workforce1_vb.vb
+workforce2_vb.vb
+workforce3_vb.vb
+workforce4_vb.vb
+workforce5_vb.vb
+Example oriented
+Toggle navigation of Example oriented
+ACOPF Examples
+Batchmode Examples
+Bilinear Examples
+Callback Examples
+Dense Examples
+Diet Examples
+Facility Examples
+Feasopt Examples
+Fixanddive Examples
+Gc_funcnonlinear Examples
+Gc_pwl Examples
+Gc_pwl_func Examples
+Genconstr Examples
+Genconstrnl Examples
+Lp Examples
+Lpmethod Examples
+Lpmod Examples
+Matrix Examples
+Mip1 Examples
+Mip2 Examples
+Multiobj Examples
+Multi-scenario Examples
+Params Examples
+Piecewise Examples
+Poolsearch Examples
+Qcp Examples
+Qp Examples
+Sensitivity Examples
+Sos Examples
+Sudoku Examples
+TSP Examples
+Tune Examples
+Workforce Examples
+Gurobi
+Back to top
+Toggle Light / Dark / Auto color theme
+Toggle table of contents sidebar
+facility.py
+#
+#!/usr/bin/env python3
+# Copyright 2026, Gurobi Optimization, LLC
+# Facility location: a company currently ships its product from 5 plants
+# to 4 warehouses. It is considering closing some plants to reduce
+# costs. What plant(s) should the company close, in order to minimize
+# transportation and fixed costs?
+#
+# Note that this example uses lists instead of dictionaries.  Since
+# it does not work with sparse data, lists are a reasonable option.
+#
+# Based on an example from Frontline Systems:
+#   http://www.solver.com/disfacility.htm
+# Used with permission.
+import
+gurobipy
+as
+gp
+from
+gurobipy
+import
+GRB
+# Warehouse demand in thousands of units
+demand
+=
+[
+15
+,
+18
+,
+14
+,
+20
+]
+# Plant capacity in thousands of units
+capacity
+=
+[
+20
+,
+22
+,
+17
+,
+19
+,
+18
+]
+# Fixed costs for each plant
+fixedCosts
+=
+[
+12000
+,
+15000
+,
+17000
+,
+13000
+,
+16000
+]
+# Transportation costs per thousand units
+transCosts
+=
+[
+[
+4000
+,
+2000
+,
+3000
+,
+2500
+,
+4500
+],
+[
+2500
+,
+2600
+,
+3400
+,
+3000
+,
+4000
+],
+[
+1200
+,
+1800
+,
+2600
+,
+4100
+,
+3000
+],
+[
+2200
+,
+2600
+,
+3100
+,
+3700
+,
+3200
+],
+]
+# Range of plants and warehouses
+plants
+=
+range
+(
+len
+(
+capacity
+))
+warehouses
+=
+range
+(
+len
+(
+demand
+))
+# Model
+m
+=
+gp
+.
+Model
+(
+"facility"
+)
+# Plant open decision variables: open[p] == 1 if plant p is open.
+open
+=
+m
+.
+addVars
+(
+plants
+,
+vtype
+=
+GRB
+.
+BINARY
+,
+obj
+=
+fixedCosts
+,
+name
+=
+"open"
+)
+# Transportation decision variables: transport[w,p] captures the
+# optimal quantity to transport to warehouse w from plant p
+transport
+=
+m
+.
+addVars
+(
+warehouses
+,
+plants
+,
+obj
+=
+transCosts
+,
+name
+=
+"trans"
+)
+# You could use Python looping constructs and m.addVar() to create
+# these decision variables instead.  The following would be equivalent
+# to the preceding two statements...
+#
+# open = []
+# for p in plants:
+#     open.append(m.addVar(vtype=GRB.BINARY,
+#                          obj=fixedCosts[p],
+#                          name="open[%d]" % p))
+#
+# transport = []
+# for w in warehouses:
+#     transport.append([])
+#     for p in plants:
+#         transport[w].append(m.addVar(obj=transCosts[w][p],
+#                                      name="trans[%d,%d]" % (w, p)))
+# The objective is to minimize the total fixed and variable costs
+m
+.
+ModelSense
+=
+GRB
+.
+MINIMIZE
+# Production constraints
+# Note that the right-hand limit sets the production to zero if the plant
+# is closed
+m
+.
+addConstrs
+(
+(
+transport
+.
+sum
+(
+"*"
+,
+p
+)
+<=
+capacity
+[
+p
+]
+*
+open
+[
+p
+]
+for
+p
+in
+plants
+),
+"Capacity"
+)
+# Using Python looping constructs, the preceding would be...
+#
+# for p in plants:
+#     m.addConstr(sum(transport[w][p] for w in warehouses)
+#                 <= capacity[p] * open[p], "Capacity[%d]" % p)
+# Demand constraints
+m
+.
+addConstrs
+((
+transport
+.
+sum
+(
+w
+,
+"*"
+)
+==
+demand
+[
+w
+]
+for
+w
+in
+warehouses
+),
+"Demand"
+)
+# ... and the preceding would be ...
+# for w in warehouses:
+#     m.addConstr(sum(transport[w][p] for p in plants) == demand[w],
+#                 "Demand[%d]" % w)
+# Save model
+m
+.
+write
+(
+"facilityPY.lp"
+)
+# Guess at the starting point: close the plant with the highest fixed costs;
+# open all others
+# First open all plants
+for
+p
+in
+plants
+:
+open
+[
+p
+]
+.
+Start
+=
+1.0
+# Now close the plant with the highest fixed cost
+print
+(
+"Initial guess:"
+)
+maxFixed
+=
+max
+(
+fixedCosts
+)
+for
+p
+in
+plants
+:
+if
+fixedCosts
+[
+p
+]
+==
+maxFixed
+:
+open
+[
+p
+]
+.
+Start
+=
+0.0
+print
+(
+f
+"Closing plant
+{
+p
+}
+"
+)
+break
+print
+(
+""
+)
+# Use barrier to solve root relaxation
+m
+.
+Params
+.
+Method
+=
+2
+# Solve
+m
+.
+optimize
+()
+# Print solution
+print
+(
+f
+"
+\n
+TOTAL COSTS:
+{
+m
+.
+ObjVal
+:
+g
+}
+"
+)
+print
+(
+"SOLUTION:"
+)
+for
+p
+in
+plants
+:
+if
+open
+[
+p
+]
+.
+X
+>
+0.99
+:
+print
+(
+f
+"Plant
+{
+p
+}
+open"
+)
+for
+w
+in
+warehouses
+:
+if
+transport
+[
+w
+,
+p
+]
+.
+X
+>
+0
+:
+print
+(
+f
+"  Transport
+{
+transport
+[
+w
+,
+p
+]
+.
+X
+:
+g
+}
+units to warehouse
+{
+w
+}
+"
+)
+else
+:
+print
+(
+f
+"Plant
+{
+p
+}
+closed!"
+)
+Help and Feedback
+Press
+/
+or click to
+search this documentation
+Gurobi website
+Gurobi community forum
+Go to
+other Gurobi
+                documentation
+Gurobi download
+Contact
+                support

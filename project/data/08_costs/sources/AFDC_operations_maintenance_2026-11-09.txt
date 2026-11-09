@@ -1,0 +1,46 @@
+Source: https://afdc.energy.gov/fuels/electricity-infrastructure-maintenance-and-operation
+Retrieved: 2026-11-09T06:10:42.167578+00:00
+
+Alternative Fuels Data Center: Operation and Maintenance for Electric Vehicle Charging Infrastructure
+Operation and Maintenance for Electric Vehicle Charging Infrastructure
+Operations and maintenance are important elements of successful electric vehicle (EV) charging infrastructure
+procurement and installation
+. There are a number of operational considerations to be aware of, including electricity and maintenance costs, whether to charge fees and the associated pricing and access structure, and collecting utilization data.
+Costs
+The costs of operating a charging station include electricity and maintenance, as well as any applicable networking fees.
+Electricity Costs
+Electricity costs for the charging equipment owner will depend on the type of equipment installed, as well as the time of day and length of time the charging station is used. The rates utilities charge for electricity may vary based on time of day, and charging station hosts may choose to charge drivers a variable rate based on when they charge. The cost of electricity to charge vehicles includes per kilowatt-hour (kWh) charges, which are typically based on the highest 15-minute average use recorded over a billing period. Direct-current (DC) fast charging equipment is more likely to trigger demand charges than Level 1 and Level 2 charging. Note that some utilities offer time-of-use rates or other rate
+incentives
+for charging infrastructure owners.
+Maintenance and Warranty Costs
+General maintenance for charging infrastructure includes storing charging cables securely to prevent damage, checking parts periodically, and keeping the equipment clean. Chargers may need intermittent repairs and troubleshooting, as well. Warranty pricing varies by manufacturer; plans can be fixed-term, renewable, and included with equipment costs. While routine charging infrastructure maintenance can be minimal, repairing broken chargers can be costly if they are no longer under warranty. Therefore, it is important to establish responsibility for maintenance costs and determine if the site host, charging network, or installer is responsible. Maintenance contracts should include both a response time, time for a given repair, and an overall uptime requirement. While actual maintenance costs vary based on the charging level and whether the station is networked or non-networked, station owners should estimate average maintenance costs of up to $400 annually, per charger. Most networks also offer a maintenance plan for an additional annual fee. According to the California Energy Commission’s
+EV Charger Selection Guide
+, annual extended warranties for DC fast chargers can cost over $800 per charger per year. Level 1 and Level 2 chargers may have a fixed-length warranty for a lower cost, but the owner is then responsible for repair costs after the term ends.
+The National Charging Experience Consortium, or ChargeX Consortium, is a collaborative effort between Argonne National Laboratory, Idaho National Laboratory, National Laboratory of the Rockies, EV charging industry experts, consumer advocates, and other stakeholders to measure and significantly improve public charging reliability and usability by June 2025.
+Learn more about ChargeX
+, including an overview of the various working groups, a list of participating organizations, and outcomes of the Consortium.
+Fees
+Site hosts who want to recover costs or generate revenue may charge a fee for use of their charging infrastructure. Fees can be collected at the charging unit, via credit card, over the phone, or at a nearby establishment. For hosts who want to collect fees at the charging unit, many charging networks will facilitate the transaction. Site hosts can also charge for the use of
+non-networked charging infrastructure
+through radio-frequency identification (RFID) capabilities, mobile applications, or in-person payments (such as with a parking attendant). An example fee structure can be found in the Federal Energy Management Program
+Federal Workplace Charging Program Guide
+.
+Pricing Structures
+Common pricing structures include by kWh, by session, by length of time, or through a subscription. Session- and time-based structures are common in states where non-utilities are prohibited from selling electricity. While charging a fee for the use of charging infrastructure is becoming more common, more than 20% of public charging (including Level 1, Level 2, and DC fast chargers) is free to use. There are different pricing models across the charging network providers, including pricing for members versus non-members, user-specific pricing (i.e., free charging for certain vehicle owners), site host-specific pricing, and pricing based on rate of charge.
+The utilization rate of a charging station can affect the pricing structure and return on investment for installing a charging station. The Great Plains Institute report,
+Analytical White Paper: Overcoming Barriers to Expanding Fast Charging Infrastructure in the Midcontinent Region
+, contains helpful information on the financial viability of DC fast charging stations, including the number of charging events per day at different pricing scales required to break even on construction and installation costs.
+In addition, the New York State Energy Research and Development Authority’s report,
+Assessing the Business Case for Hosting EV Charging Stations in New York
+, analyzes the business case of hosting a Level 2 EV charging station and provides a business case assessment methodology for determining the break-even point for charging stations and the overall profitability of the infrastructure.
+Open Access
+Networked charging infrastructure
+can generally be categorized as member-only access or open access. The former requires a network membership to use and pay for charging and gain full access to all the features and services of a given network. On the other hand, open access charging infrastructure offers a way for non-members to access charging by calling a customer service center or paying onsite with a credit card. However, these solutions limit the functionality available to the driver (e.g., notifications about charging status.)
+Data Collection
+Capturing and analyzing charging infrastructure uptime and utilization data is a key component to successful charging station management. Most charging networks provide utilization data to site hosts through an online portal for analysis. Hosts may capture data for non-networked charging infrastructure by installing a separate electric meter, third-party data analytics software, or through other options offered by the charging infrastructure manufacturer. Utilization data can be used to track progress toward energy goals, determine if a certain pricing structure is successful, and evaluate the need for additional charging infrastructure in the area. Some incentive programs, such as the
+National Electric Vehicle Infrastructure Formula Program
+, require
+data collection
+. For data on EV charging station usage from sites across the United States, consider  the Electric Vehicle Widescale Analysis for Tomorrow’s Transportation Solutions
+Data Dashboard
+.

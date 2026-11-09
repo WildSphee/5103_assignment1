@@ -1,0 +1,1088 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<meta content="Gurobi Optimizer multi-objective optimization documentation. Explains how to specify multiple objectives with weights and priorities, and blend or hierarchically optimize them." lang="en" name="description" xml:lang="en" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Multiple Scenarios" href="multiscenario.html" /><link rel="prev" title="Infeasibility Analysis" href="infeasibility.html" />
+        <link rel="canonical" href="https://docs.gurobi.com/projects/optimizer/en/current/features/multiobjective.html" />
+
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
+        <title>Multiple Objectives - Gurobi Optimizer Reference Manual</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/gurobi.css?v=0dc0b24e" />
+    <link rel="stylesheet" type="text/css" href="../_static/docs_gurobi_com.css?v=8642940d" />
+    <link rel="stylesheet" type="text/css" href="../_static/versionflyout.css?v=f7da53b9" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/gurobi-tabs.css?v=028acece" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=67dc8033" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-brand-primary: #DD2113;
+  --color-brand-content: #1675A9;
+  --color-topic-title: #1675A9;
+  --color-topic-title-background: #1675A933;
+  --color-admonition-title--important: #1675A9;
+  --color-admonition-title-background--important: #1675A933;
+  --color-brand-visited: #1675A9;
+  --sidebar-tree-space-above: 1rem;
+  --sidebar-caption-space-above: 0.5rem;
+  --font-stack: Aptos, sans-serif;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #DC4747;
+  --color-brand-content: #5A9BD5;
+  --color-brand-visited: #5A9BD5;
+  --sidebar-tree-space-above: 1rem;
+  --sidebar-caption-space-above: 0.5rem;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #DC4747;
+  --color-brand-content: #5A9BD5;
+  --color-brand-visited: #5A9BD5;
+  --sidebar-tree-space-above: 1rem;
+  --sidebar-caption-space-above: 0.5rem;
+  
+      }
+    }
+  }
+</style>
+
+
+
+
+  
+  <script src="https://docs.gurobi.com/current/_static/version-slug-label.js"></script>
+  <script src="../_static/versionflyout.js"></script>
+  <meta content="1" name="readthedocs-addons-api-version"/>
+  
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q9J8EF61TH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Q9J8EF61TH');
+    </script>
+  
+
+
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="gurobi-optimization-docs-optimizer" /><meta name="readthedocs-version-slug" content="current" /><meta name="readthedocs-resolver-filename" content="/features/multiobjective.html" /><meta name="readthedocs-http-status" content="200" /></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Gurobi Optimizer Reference Manual</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><!-- From furo sidebars/brand.html. Only the link is customised. -->
+<a class="sidebar-brand" href="https://docs.gurobi.com/current">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="../_static/gurobi_light.svg" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../_static/gurobi_dark.svg" alt="Dark Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><!-- Replaces sidebar/navigation.html from furo -->
+<div class="sidebar-tree">
+  <ul>
+    
+    <li class="toctree-l1">
+    
+      <a class="reference homelink" href="../index.html">
+        <svg version="1.1" width="0.9em" height="0.9em" class="toctree-icon" viewBox="0 -1.5 16 16" aria-hidden="true">
+          <path d="M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z">
+          </path>
+        </svg>
+        Optimizer Reference Manual
+      </a>
+    </li>
+  </ul>
+  <p class="caption" role="heading"><span class="caption-text">Concepts</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../concepts/modeling.html">Modeling Components</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Modeling Components</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/modeling/variables.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/modeling/constraints.html">Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/modeling/objectives.html">Objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/modeling/tolerances.html">Tolerances and Ill Conditioning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts/apiusage.html">API Usage</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../concepts/environments.html">Environments</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Environments</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/environments/session.html">Session Boundaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/environments/configuration.html">Configuration parameters (Empty environment)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/environments/algorithmic.html">Algorithmic Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/environments/concurrent.html">Concurrent Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/environments/multiobjective.html">Multi-Objective Environments</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../concepts/attributes.html">Attributes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Attributes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/attributes/types.html">Attribute Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/attributes/examples.html">Attribute Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../concepts/parameters.html">Parameters</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of Parameters</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/parameters/groups.html">Parameter Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/parameters/guidelines.html">Parameter Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/parameters/examples.html">Parameter Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../concepts/logging.html">Logging</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Logging</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/logging/header.html">Header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/logging/simplex.html">Simplex Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/logging/barrier.html">Barrier Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/logging/sifting.html">Sifting Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/logging/mip.html">MIP Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/logging/multiplesolutions.html">Solution Pool and Multi-Scenario Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/logging/multiobjective.html">Multi-Objective Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/logging/distributed.html">Distributed MIP Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/logging/iis.html">IIS Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../concepts/numericguide.html">Numerical Issues</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of Numerical Issues</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/numericguide/rounding.html">Avoid Rounding of Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/numericguide/numbers.html">Real Numbers are not Real</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/numericguide/tolerances_scaling.html">Tolerances and User-Scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/numericguide/modelissues.html">Does my Model have Numerical Issues?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/numericguide/numeric_parameters.html">Solver Parameters to Manage Numerical Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/numericguide/geometry.html">Instability and the Geometry of Optimization Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../concepts/numericguide/sources.html">Source Code Examples:</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Features</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="batchoptimization.html">Batch Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="callbacks.html">Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concurrent.html">Concurrent Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributed.html">Distributed Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud.html">Gurobi Instant Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="infeasibility.html">Infeasibility Analysis</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Multiple Objectives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiscenario.html">Multiple Scenarios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nonlinear.html">Nonlinear Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tuning.html">Parameter Tuning Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="record.html">Recording API Calls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solutionpool.html">Solution Pool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="warmstart.html">Warm Start Options</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/releasenotes.html">Release Notes for Gurobi 13.0</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Release Notes for Gurobi 13.0</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/releasenotes/changes.html">Additions, Changes and Removals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/releasenotes/platforms.html">Supported Platforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/releasenotes/fixedbugs.html">Fixed Issues in this Release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/releasenotes/knownbugs.html">Known Issues in this Release</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/c.html">C API</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of C API</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/c/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/c/env.html">Environment Creation and Destruction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/c/model.html">Model Creation and Modification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/c/solving.html">Model Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/c/queries.html">Model Queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/c/inputoutput.html">Input-Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/c/attribute.html">Attribute Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/c/parameter.html">Parameter Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/c/logging.html">Monitoring Progress - Logging and Callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/c/callback.html">Modifying Solver Behavior - Callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/c/batch.html">Batch Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/c/error.html">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/c/tuning.html">Parameter Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/c/simplex.html">Advanced simplex routines</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/cpp.html">C++ API</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of C++ API</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cpp/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cpp/env.html">GRBEnv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cpp/model.html">GRBModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cpp/var.html">GRBVar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cpp/constr.html">GRBConstr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cpp/qconstr.html">GRBQConstr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cpp/sos.html">GRBSOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cpp/genconstr.html">GRBGenConstr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cpp/expr.html">GRBExpr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cpp/linexpr.html">GRBLinExpr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cpp/quadexpr.html">GRBQuadExpr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cpp/tempconstr.html">GRBTempConstr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cpp/column.html">GRBColumn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cpp/callback.html">GRBCallback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cpp/exception.html">GRBException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cpp/batch.html">GRBBatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cpp/grb.html">Overloaded Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cpp/enums.html">Enums</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/java.html">Java API</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of Java API</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/java/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/java/env.html">GRBEnv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/java/model.html">GRBModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/java/var.html">GRBVar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/java/constr.html">GRBConstr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/java/qconstr.html">GRBQConstr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/java/sos.html">GRBSOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/java/genconstr.html">GRBGenConstr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/java/expr.html">GRBExpr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/java/linexpr.html">GRBLinExpr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/java/quadexpr.html">GRBQuadExpr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/java/column.html">GRBColumn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/java/callback.html">GRBCallback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/java/exception.html">GRBException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/java/batch.html">GRBBatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/java/grb.html">GRB</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/dotnet.html">.NET API</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of .NET API</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/dotnet/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/dotnet/env.html">GRBEnv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/dotnet/model.html">GRBModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/dotnet/var.html">GRBVar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/dotnet/constr.html">GRBConstr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/dotnet/qconstr.html">GRBQConstr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/dotnet/sos.html">GRBSOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/dotnet/genconstr.html">GRBGenConstr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/dotnet/expr.html">GRBExpr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/dotnet/linexpr.html">GRBLinExpr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/dotnet/quadexpr.html">GRBQuadExpr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/dotnet/tempconstr.html">GRBTempConstr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/dotnet/column.html">GRBColumn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/dotnet/overload.html">Overloaded Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/dotnet/callback.html">GRBCallback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/dotnet/exception.html">GRBException</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/dotnet/batch.html">GRBBatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/dotnet/grb.html">GRB</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/python.html">Python API</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><div class="visually-hidden">Toggle navigation of Python API</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/func_global.html">Global Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/model.html">Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/var.html">Var</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/mvar.html">MVar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/constr.html">Constr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/mconstr.html">MConstr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/mqconstr.html">MQConstr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/qconstr.html">QConstr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/sos.html">SOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/genconstr.html">GenConstr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/mgenconstr.html">MGenConstr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/linexpr.html">LinExpr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/quadexpr.html">QuadExpr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/genexpr.html">GenExpr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/nlexpr.html">NLExpr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/mlinexpr.html">MLinExpr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/mquadexpr.html">MQuadExpr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/mnlexpr.html">MNLExpr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/tempconstr.html">TempConstr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/column.html">Column</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/callback.html">Callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/exception.html">GurobiError</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/env.html">Env</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/batch.html">Batch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/grb.html">GRB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/tuplelist.html">tuplelist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/tupledict.html">tupledict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/func_utility.html">General Constraint Helper Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/func_mfunctions.html">Matrix-Friendly API Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/nlfunc.html">Nonlinear Expression Helpers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/python/low-level.html">Low Level API</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/matlab.html">MATLAB API</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><div class="visually-hidden">Toggle navigation of MATLAB API</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/matlab/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/matlab/common.html">Common Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/matlab/solving.html">Solving a Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/matlab/inputoutput.html">Input-Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/matlab/using.html">Using Gurobi within MATLAB's Problem-Based Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/matlab/setup.html">Setting up the Gurobi MATLAB interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/r.html">R API</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of R API</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/r/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/r/common.html">Common Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/r/solving.html">Solving a Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/r/inputoutput.html">Input-Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/r/setup.html">Installing the R package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/misc/commandline.html">Gurobi Command-Line Tool</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/attributes.html">Attribute Reference</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of Attribute Reference</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/attributes/model.html">Model Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/attributes/variable.html">Variable Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/attributes/constraintlinear.html">Linear Constraint Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/attributes/sos.html">SOS Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/attributes/constraintquadratic.html">Quadratic Constraint Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/attributes/constraintgeneral.html">General Constraint Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/attributes/quality.html">Quality Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/attributes/multiobjective.html">Multi-objective Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/attributes/multiscenario.html">Multi-Scenario Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/attributes/batch.html">Batch Attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/parameters.html">Parameter Reference</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/numericcodes.html">Numeric Codes</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><div class="visually-hidden">Toggle navigation of Numeric Codes</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/numericcodes/statuscodes.html">Optimization Status Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/numericcodes/batchstatuscodes.html">Batch Status Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/numericcodes/callbacks.html">Callback Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/numericcodes/errors.html">Error Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/numericcodes/opcodes.html">Nonlinear Operation Codes</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/fileformats.html">File Formats</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" role="switch" type="checkbox"/><label for="toctree-checkbox-17"><div class="visually-hidden">Toggle navigation of File Formats</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/fileformats/modelformats.html">Model File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/fileformats/solutionformats.html">Solution File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/fileformats/otherformats.html">Other File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/fileformats/configfiles.html">Configuration Files</a></li>
+</ul>
+</li>
+</ul>
+
+</div></div><div id="custom-rtd-flyout-container">
+  <div class="grb-rtd-versions" data-toggle="grb-rtd-versions" role="note">
+    <span class="grb-rtd-current-version" data-toggle="grb-rtd-current-version">
+      <span class="fa fa-book">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -100 1664 1664" width="13" height="13" style="transform: scaleY(-1) translateY(-1px);">
+          <path fill="var(--color-foreground-primary)" d="M1639 1058q40 -57 18 -129l-275 -906q-19 -64 -76.5 -107.5t-122.5 -43.5h-923q-77 0 -148.5 53.5t-99.5 131.5q-24 67 -2 127q0 4 3 27t4 37q1 8 -3 21.5t-3 19.5q2 11 8 21t16.5 23.5t16.5 23.5q23 38 45 91.5t30 91.5q3 10 0.5 30t-0.5 28q3 11 17 28t17 23q21 36 42 92t25 90q1 9 -2.5 32t0.5 28q4 13 22 30.5t22 22.5q19 26 42.5 84.5t27.5 96.5q1 8 -3 25.5t-2 26.5q2 8 9 18t18 23t17 21q8 12 16.5 30.5t15 35t16 36t19.5 32t26.5 23.5t36 11.5t47.5 -5.5l-1 -3q38 9 51 9h761q74 0 114 -56t18 -130l-274 -906q-36 -119 -71.5 -153.5t-128.5 -34.5h-869q-27 0 -38 -15q-11 -16 -1 -43q24 -70 144 -70h923q29 0 56 15.5t35 41.5l300 987q7 22 5 57q38 -15 59 -43zM575 1056q-4 -13 2 -22.5t20 -9.5h608q13 0 25.5 9.5t16.5 22.5l21 64q4 13 -2 22.5t-20 9.5h-608q-13 0 -25.5 -9.5t-16.5 -22.5zM492 800q-4 -13 2 -22.5t20 -9.5h608q13 0 25.5 9.5t16.5 22.5l21 64q4 13 -2 22.5t-20 9.5h-608q-13 0 -25.5 -9.5t-16.5 -22.5z" />
+        </svg>
+        Gurobi
+      </span>
+      <span id="grb-rtd-version-label">
+      </span>
+    </span>
+    <div class="grb-rtd-other-versions" id="grb-rtd-flyout-content">
+    </div>
+  </div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+          
+
+
+
+
+
+<article role="main">
+<section id="multiple-objectives">
+<span id="secmultipleobjectives"></span><h1>Multiple Objectives<a class="headerlink" href="#multiple-objectives" title="Link to this heading">#</a></h1>
+<p>While typical optimization models have a single objective function,
+real-world optimization problems often have multiple, competing
+objectives. For example, in a production planning model, you may want to
+both maximize profits and minimize late orders, or in a workforce
+scheduling application, you may want to minimize the number of shifts
+that are short-staffed while also respecting workers’ shift preferences.</p>
+<p>The main challenge you face when working with multiple, competing
+objectives is deciding how to manage the trade-offs between them. Gurobi
+provides tools that simplify the task: Gurobi allows you to <em>blend</em>
+multiple objectives, to treat them <em>hierarchically</em>, or to combine the
+two approaches. In a blended approach, you optimize a weighted
+combination of the individual objectives. In a hierarchical or
+lexicographic approach, you set a priority for each objective, and
+optimize in priority order. When optimizing for one objective, you only
+consider solutions that would not degrade the objective values of
+higher-priority objectives. Gurobi allows you to enter and manage your
+objectives, to provide weights for a blended approach, and to set
+priorities for a hierarchical approach.</p>
+<p>This section gives detailed information on how to use the multi-objective
+feature. An example for each supported API can be found
+<a class="reference external" href="https://docs.gurobi.com/projects/examples/en/13.0/examples/multiobj.html" title="(in Gurobi Example Tour v13.0)"><span class="xref std std-doc">here</span></a>.</p>
+<section id="specifying-multiple-objectives">
+<h2>Specifying Multiple Objectives<a class="headerlink" href="#specifying-multiple-objectives" title="Link to this heading">#</a></h2>
+<p>Let us first discuss the interface for managing multiple objectives. An
+empty model starts with one objective function, which is initially just
+0.0. We’ll refer to this as the <em>primary</em> objective. You can modify the
+primary objective in two ways: you can set the <a class="reference internal" href="../reference/attributes/variable.html#attrobj"><span class="std std-ref">Obj</span></a> attribute,
+or you can use the <code class="docutils literal notranslate"><span class="pre">setObjective</span></code> method from your language API (e.g.,
+<a class="reference internal" href="../reference/python/model.html#Model.setObjective" title="Model.setObjective"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Model.setObjective</span></code></a> in Python). In contrast to models with a
+single objective, where the primary objective can be linear, quadratic,
+or piecewise-linear, all objectives must be linear for multi-objective
+models. In general, attributes and methods that aren’t specific to
+multi-objective optimization will work with the primary objective
+function.</p>
+<p>Every objective in a multi-objective model has the following settable
+attributes: <a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjncon"><span class="std std-ref">ObjNCon</span></a> with default value 0,
+<a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnpriority"><span class="std std-ref">ObjNPriority</span></a> with default value 0, <a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnweight"><span class="std std-ref">ObjNWeight</span></a> with
+default value 1, <a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnreltol"><span class="std std-ref">ObjNRelTol</span></a> with default value 0,
+<a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnabstol"><span class="std std-ref">ObjNAbsTol</span></a> with default value 1e-6, and <a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnname"><span class="std std-ref">ObjNName</span></a>.</p>
+<p>To provide additional objectives, use the <code class="docutils literal notranslate"><span class="pre">setObjectiveN</span></code> method from
+your language API (e.g. <a class="reference internal" href="../reference/python/model.html#Model.setObjectiveN" title="Model.setObjectiveN"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Model.setObjectiveN</span></code></a> in Python).
+Objectives are numbered <code class="docutils literal notranslate"><span class="pre">0</span></code> through <code class="docutils literal notranslate"><span class="pre">NumObj-1</span></code>. The order of the
+objectives is arbitrary, but you must provide a unique index for each
+one (specified using the <code class="docutils literal notranslate"><span class="pre">index</span></code> argument to <code class="docutils literal notranslate"><span class="pre">setObjectiveN</span></code>). You
+can query the number of objectives in your model using the
+<a class="reference internal" href="../reference/attributes/multiobjective.html#attrnumobj"><span class="std std-ref">NumObj</span></a> attribute. As noted above, all objectives, including
+the primary one, must be linear.</p>
+<p>You can query and modify information about multiple objectives using the
+<a class="reference internal" href="../reference/parameters.html#parameterobjnumber"><span class="std std-ref">ObjNumber</span></a> parameter, in conjunction with several model
+and variable attributes. For example, to retrieve the coefficient for
+variable <code class="docutils literal notranslate"><span class="pre">x</span></code> in objective <span class="math notranslate nohighlight">\(2\)</span>, you’d set the <a class="reference internal" href="../reference/parameters.html#parameterobjnumber"><span class="std std-ref">ObjNumber</span></a>
+parameter to <span class="math notranslate nohighlight">\(2\)</span>, then query the <a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjn"><span class="std std-ref">ObjN</span></a> attribute for
+<code class="docutils literal notranslate"><span class="pre">x</span></code>. Similarly, querying the <a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnname"><span class="std std-ref">ObjNName</span></a> attribute after
+setting <a class="reference internal" href="../reference/parameters.html#parameterobjnumber"><span class="std std-ref">ObjNumber</span></a> to <span class="math notranslate nohighlight">\(3\)</span> would give the name of objective
+<span class="math notranslate nohighlight">\(3\)</span>.</p>
+<p>We should note that there is one important exception to our statement above
+that the order of objectives is arbitrary: objective <span class="math notranslate nohighlight">\(0\)</span> is treated as
+the primary objective. One consequence is that the original objective
+automatically becomes objective <span class="math notranslate nohighlight">\(0\)</span> when you add a second objective.
+Another is that querying the <a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjn"><span class="std std-ref">ObjN</span></a> attribute is equivalent to
+querying the <a class="reference internal" href="../reference/attributes/variable.html#attrobj"><span class="std std-ref">Obj</span></a> attribute when <a class="reference internal" href="../reference/parameters.html#parameterobjnumber"><span class="std std-ref">ObjNumber</span></a> is
+<span class="math notranslate nohighlight">\(0\)</span>.</p>
+<p>Note that a model has a single objective sense (controlled by the
+<a class="reference internal" href="../reference/attributes/model.html#attrmodelsense"><span class="std std-ref">ModelSense</span></a> attribute). This means that you can’t maximize the
+first objective and minimize the second. However, you can achieve the
+same result with a simple trick. Each objective has a weight, and these
+weights are allowed to be negative. Minimizing an objective function is
+equivalent to maximizing the negation of that function.</p>
+<p>You can change the number of objectives in your model as many times as
+you like (by modifying the <a class="reference internal" href="../reference/attributes/multiobjective.html#attrnumobj"><span class="std std-ref">NumObj</span></a> attribute). When you
+increase the objective count, the newly added objectives and their
+associated attributes are set to 0. When you decrease the count,
+objectives beyond the new count are discarded. If you set the number of
+objectives to zero, the model becomes a pure feasibility problem.</p>
+<p>We have extended the LP and MPS file formats, so writing a model with
+multiple objectives to a file will capture those objectives. Similarly,
+if you read a model file that contains multiple objectives, then
+<a class="reference internal" href="../reference/attributes/multiobjective.html#attrnumobj"><span class="std std-ref">NumObj</span></a> and <a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjn"><span class="std std-ref">ObjN</span></a> will capture the objectives stored
+in the file. See the <a class="reference internal" href="../reference/fileformats.html#secfileformats"><span class="std std-ref">file format</span></a> section for
+details.</p>
+</section>
+<section id="working-with-multiple-objectives">
+<h2>Working With Multiple Objectives<a class="headerlink" href="#working-with-multiple-objectives" title="Link to this heading">#</a></h2>
+<p>Of course, specifying a set of objectives is only the first step in
+solving a multi-objective optimization problem. The next step is to
+indicate how the objectives should be combined. As noted earlier, we
+support two approaches: blended and hierarchical.</p>
+<section id="blended-objectives">
+<span id="headingblendedobjectives"></span><h3>Blended Objectives<a class="headerlink" href="#blended-objectives" title="Link to this heading">#</a></h3>
+<p>A blending approach creates a single objective by taking a linear
+combination of your objectives. You provide a weight for each objective
+as an argument to <code class="docutils literal notranslate"><span class="pre">setObjectiveN</span></code>. Alternatively, you can use the
+<a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnweight"><span class="std std-ref">ObjNWeight</span></a> attribute, together with
+<a class="reference internal" href="../reference/parameters.html#parameterobjnumber"><span class="std std-ref">ObjNumber</span></a>. The default weight for an objective is 1.0.</p>
+<p>To give an example, if your model has two objectives, <span class="math notranslate nohighlight">\(1 + x + 2y\)</span>
+and <span class="math notranslate nohighlight">\(y
++ 2z\)</span>, and if you give weights of <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(2\)</span> to them,
+respectively, then Gurobi would solve your model with a blended
+objective of
+<span class="math notranslate nohighlight">\(-1 \cdot (1 + x + 2y) + 2 \cdot (y + 2z) = -1 - x + 4z\)</span>.</p>
+<p>You should avoid weights that are very large or very small. A very large
+weight (i.e., larger than <span class="math notranslate nohighlight">\(10^6\)</span>) may lead to very large objective
+coefficients, which can cause numerical difficulties. A very small
+weight (i.e., smaller than <span class="math notranslate nohighlight">\(10^{-6}\)</span>) may cause the contribution from
+that objective to the overall blended objective to be smaller than
+tolerances, which may lead to that objective being effectively ignored.</p>
+</section>
+<section id="hierarchical-objectives">
+<span id="headinghierarchicalobjectives"></span><h3>Hierarchical Objectives<a class="headerlink" href="#hierarchical-objectives" title="Link to this heading">#</a></h3>
+<p>A hierarchical or lexicographic approach assigns a priority to each
+objective, and optimizes for the objectives in decreasing priority
+order. During each of these optimization passes, it finds the best
+solution for the current objective, but only from among those that would
+not degrade the solution quality for higher-priority objectives. You
+provide the priority for each objective as an argument to
+<code class="docutils literal notranslate"><span class="pre">setObjectiveN</span></code>. Alternatively, you can use the
+<a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnpriority"><span class="std std-ref">ObjNPriority</span></a> attribute. Priorities are integral, not
+continuous. Larger values indicate higher priorities. The default
+priority for an objective is 0.</p>
+<p>For example, suppose your model has two objectives, with priorities
+<span class="math notranslate nohighlight">\(10\)</span> and <span class="math notranslate nohighlight">\(5\)</span>, and objective weights 1.0 and -1.0. If
+the optimal solution for the first objective is <span class="math notranslate nohighlight">\(100\)</span>, then
+the solver will find the solution that optimizes <span class="math notranslate nohighlight">\(-1\)</span> times the
+second objective from among all solutions with objective <span class="math notranslate nohighlight">\(100\)</span> for
+the first objective.</p>
+</section>
+<section id="allowing-multiple-objective-degradation">
+<span id="headingmultiobjdegradations"></span><h3>Allowing Multiple-Objective Degradation<a class="headerlink" href="#allowing-multiple-objective-degradation" title="Link to this heading">#</a></h3>
+<p>Parameters or attributes can control the degradation of earlier objectives when
+solving later ones. This is handled differently for MIP models and LP models.</p>
+<section id="multi-objective-mip">
+<h4>Multi-Objective MIP<a class="headerlink" href="#multi-objective-mip" title="Link to this heading">#</a></h4>
+<p>The base value used to define what solutions are acceptable for lower-priority
+objectives – for a minimization problem – is computed as:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\mathrm{base\_value} = \max\{bestsol, bestbound + |bestsol|*rgap,
+bestbound + agap\},\]</div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">bestsol</span></code> is the value of the best incumbent solution,
+<code class="docutils literal notranslate"><span class="pre">bestbound</span></code> is the value of the best proven lower bound for the
+problem, <code class="docutils literal notranslate"><span class="pre">rgap</span></code> is the <a class="reference internal" href="../reference/parameters.html#parametermipgap"><span class="std std-ref">relative MIP gap</span></a>, and
+<code class="docutils literal notranslate"><span class="pre">agap</span></code> is the <a class="reference internal" href="../reference/parameters.html#parametermipgapabs"><span class="std std-ref">absolute MIP gap</span></a>, and the
+set of feasible solutions for the next objective will consider solutions
+whose objective value is at most that value.</p>
+<p>This base value can be relaxed for MIPs through a pair of tolerances: a
+relative and an absolute tolerance. These are provided as arguments to
+<code class="docutils literal notranslate"><span class="pre">setObjectiveN</span></code>, or they can be set using attributes
+<a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnreltol"><span class="std std-ref">ObjNRelTol</span></a> and <a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnabstol"><span class="std std-ref">ObjNAbsTol</span></a>. By setting one of these
+for a particular objective, you can indicate that later objectives are
+allowed to degrade this objective by the specified relative or absolute
+amount, respectively. In our earlier example, if the base value for
+the first objective is <span class="math notranslate nohighlight">\(100\)</span>, and if we set <a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnabstol"><span class="std std-ref">ObjNAbsTol</span></a> for
+this objective to <span class="math notranslate nohighlight">\(20\)</span>, then the second optimization pass would
+find the best solution for the second objective from among all solutions
+with objective <span class="math notranslate nohighlight">\(120\)</span> or better for the first objective. Note that
+if you modify both tolerances, later optimizations would use the looser
+of the two values (i.e., the one that allows the larger degradation).</p>
+</section>
+<section id="multi-objective-lp">
+<h4>Multi-Objective LP<a class="headerlink" href="#multi-objective-lp" title="Link to this heading">#</a></h4>
+<p>For LP models, solution quality for higher-priority objectives is maintained
+by fixing some variables to their values in previous optimal solutions. These
+fixings are decided using variable reduced costs. The value of the
+<a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnabstol"><span class="std std-ref">ObjNAbsTol</span></a> attribute indicates the amount by which a fixed
+variable’s reduced cost is allowed to violate dual feasibility, whereas the
+<a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnreltol"><span class="std std-ref">ObjNRelTol</span></a> attribute is ignored.</p>
+<p>For an interpretation of <a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnabstol"><span class="std std-ref">ObjNAbsTol</span></a> consider the following situation.
+If you fixed the values of all variables with a nonzero reduced cost, this would
+ensure that the value of the current objective does not degrade in subsequent
+solves. However, this strategy would likely fix the values of almost all variables
+in the model, leaving no freedom to improve subsequent objectives in the
+hierarchical optimization.</p>
+<p>In practice, a tolerance is applied: only variables with reduced cost larger than
+<a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnabstol"><span class="std std-ref">ObjNAbsTol</span></a> are fixed to their current values. This allows some freedom
+to optimize later objectives at the cost of a degradation in the current objective.
+This means that relaxing <a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnabstol"><span class="std std-ref">ObjNAbsTol</span></a> is almost equivalent to
+relaxing the optimality tolerance (<a class="reference internal" href="../reference/parameters.html#parameteroptimalitytol"><span class="std std-ref">OptimalityTol</span></a>). Large values
+should be avoided as this can result in an objective degrading by an arbitrary
+amount in subsequent solves.</p>
+<p>It is not possible to determine the amount of possible objective degradation
+from the choice of <a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnabstol"><span class="std std-ref">ObjNAbsTol</span></a>, and setting <a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnreltol"><span class="std std-ref">ObjNRelTol</span></a> has
+no effect. If you want the MIP behavior, where the degradation is controlled
+more directly using these two attributes, you can add a dummy binary variable to
+the model, thus transforming it into a MIP. Solving the resulting
+multi-objective MIP will be much more time consuming than solving the original
+multi-objective LP.</p>
+</section>
+</section>
+<section id="combining-blended-and-hierarchical-objectives">
+<span id="headingcombiningblendedandhierarchicalobjectives"></span><h3>Combining Blended and Hierarchical Objectives<a class="headerlink" href="#combining-blended-and-hierarchical-objectives" title="Link to this heading">#</a></h3>
+<p>Every objective in a multi-objective model has both a weight and a
+priority, which allows you to seamlessly combine blended and
+hierarchical approaches. To understand how this works, we should first
+provide more detail on how hierarchical objectives are handled.</p>
+<p>When you specify a different priority for each of <span class="math notranslate nohighlight">\(n\)</span> objectives,
+the solver performs <span class="math notranslate nohighlight">\(n\)</span> separate optimization passes. In each
+pass, in decreasing priority order, it optimizes for the current
+objective multiplied by its <a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnweight"><span class="std std-ref">ObjNWeight</span></a> attribute, while
+imposing constraints that ensure that the quality of higher-priority
+objectives isn’t degraded by more than the specified tolerances.</p>
+<p>If you give the same priority to multiple objectives, then they will be
+handled in the same optimization pass, resulting in fewer than <span class="math notranslate nohighlight">\(n\)</span>
+total passes for <span class="math notranslate nohighlight">\(n\)</span> objectives. More precisely, one optimization
+pass is performed per distinct priority value, in order of decreasing
+priority, and all objectives with the same priority are blended
+together, using the weights for those objectives. This gives you quite a
+bit of flexibility when combining the blended and hierarchical
+approaches.</p>
+<p>One subtle point when blending multiple objectives within a single level in a
+hierarchical approach relates to the handling of degradations from
+lower-priority levels. The objective degradation allowed after a blended
+optimization pass is the maximum absolute and relative degradations allowed by
+each of the participating objectives. For example, if we have three objectives
+with <a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnpriority"><span class="std std-ref">ObjNPriority</span></a> equal to <span class="math notranslate nohighlight">\(\{2, 2, 1\}\)</span>, and
+<a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnreltol"><span class="std std-ref">ObjNRelTol</span></a> equal to <span class="math notranslate nohighlight">\(\{0.10, 0.05, 0.00\}\)</span> and
+<a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjnabstol"><span class="std std-ref">ObjNAbsTol</span></a> equal to <span class="math notranslate nohighlight">\(\{0, 1, 2\}\)</span>, and if the best solution
+for the first priority objective is <span class="math notranslate nohighlight">\(10\)</span>, then the allowed degradation
+for the first priority objective is
+<span class="math notranslate nohighlight">\(\max\{10 \cdot 0.10, 10 \cdot 0.05, 0, 1\}~=~1\)</span>.</p>
+</section>
+<section id="querying-multi-objective-results">
+<h3>Querying multi-objective results<a class="headerlink" href="#querying-multi-objective-results" title="Link to this heading">#</a></h3>
+<p>Once you have found one or more solutions to your multi-objective model,
+you can query information about each pass on each solution. You must
+choose a solution using the <a class="reference internal" href="../reference/parameters.html#parametersolutionnumber"><span class="std std-ref">SolutionNumber</span></a> parameter.
+And you must either choose the optimization pass using the
+<a class="reference internal" href="../reference/parameters.html#parameterobjpassnumber"><span class="std std-ref">ObjPassNumber</span></a>, or select the pass in which a given
+objective was solved by leaving <a class="reference internal" href="../reference/parameters.html#parameterobjpassnumber"><span class="std std-ref">ObjPassNumber</span></a> to its
+default value of -1 and setting <a class="reference internal" href="../reference/parameters.html#parameterobjnumber"><span class="std std-ref">ObjNumber</span></a> to the index
+of the objective you are interested in. Then the
+<a class="reference internal" href="../reference/attributes/multiobjective.html#attrobjpassnobjval"><span class="std std-ref">ObjPassNObjVal</span></a> attribute, for example, will give the value of
+the objectives combined in the corresponding optimization pass. Section
+<a class="reference internal" href="#headingcombiningblendedandhierarchicalobjectives"><span class="std std-ref">Combining Blended and Hierarchical Objectives</span></a> explains how
+objectives get combined into multi-objective passes.</p>
+<p>This is illustrated in the following Python example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gurobipy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gurobipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">GRB</span>
+
+<span class="c1"># Read and solve a model with multiple objectives</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'input.mps'</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+
+<span class="c1"># Get the set of variables</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">()</span>
+
+<span class="c1"># Ensure status is optimal</span>
+<span class="k">assert</span> <span class="n">m</span><span class="o">.</span><span class="n">Status</span> <span class="o">==</span> <span class="n">GRB</span><span class="o">.</span><span class="n">Status</span><span class="o">.</span><span class="n">OPTIMAL</span>
+
+<span class="c1"># Query number of multiple objectives, and number of solutions</span>
+<span class="n">nSolutions</span>  <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">SolCount</span>
+<span class="n">nObjectives</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">NumObj</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Problem has'</span><span class="p">,</span> <span class="n">nObjectives</span><span class="p">,</span> <span class="s1">'objectives'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Gurobi found'</span><span class="p">,</span> <span class="n">nSolutions</span><span class="p">,</span> <span class="s1">'solutions'</span><span class="p">)</span>
+
+<span class="c1"># For each solution, print value of first three variables, and</span>
+<span class="c1"># value for each objective function</span>
+<span class="n">solutions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nSolutions</span><span class="p">):</span>
+  <span class="c1"># Set which solution we will query from now on</span>
+  <span class="n">m</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">SolutionNumber</span> <span class="o">=</span> <span class="n">s</span>
+
+  <span class="c1"># Print objective value of this solution in each optimization pass</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Solution'</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="s1">':'</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nObjectives</span><span class="p">):</span>
+    <span class="c1"># Set which objective we will query</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">ObjNumber</span> <span class="o">=</span> <span class="n">o</span>
+    <span class="c1"># Query the objective value for the corresponding optimization pass</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">' '</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">ObjPassNObjVal</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span>
+
+  <span class="c1"># Print first three variables in the solution</span>
+  <span class="n">n</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">3</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">VarName</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">PoolNX</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+
+  <span class="c1"># Query the full vector of the s-th solution</span>
+  <span class="n">solutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">getAttr</span><span class="p">(</span><span class="s1">'PoolNX'</span><span class="p">,</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="additional-details">
+<h2>Additional Details<a class="headerlink" href="#additional-details" title="Link to this heading">#</a></h2>
+<section id="multi-objective-environments">
+<h3>Multi-Objective Environments<a class="headerlink" href="#multi-objective-environments" title="Link to this heading">#</a></h3>
+<p>As we progress from higher-priority objectives to lower-priority
+objectives in a hierarchical multi-objective model, we won’t necessarily
+solve each pass to exact optimality. By default, termination criteria
+(e.g. <a class="reference internal" href="../reference/parameters.html#parametertimelimit"><span class="std std-ref">TimeLimit</span></a>, <a class="reference internal" href="../reference/parameters.html#parametersolutionlimit"><span class="std std-ref">SolutionLimit</span></a>, etc.)
+are controlled by the parameters defined in the model environment.
+However, we provide a feature called
+<a class="reference internal" href="../concepts/environments/multiobjective.html#subsectionmultiobjenvironment"><span class="std std-ref">multi-objective environments</span></a> that
+allows you to create a Gurobi environment for each optimization pass and
+set parameters on those environments. Those settings will only affect
+the corresponding pass of the multi-objective optimization. Thus, for
+example, if the <a class="reference internal" href="../reference/parameters.html#parametertimelimit"><span class="std std-ref">TimeLimit</span></a> parameter for the model is
+100, but you use a multi-objective environment to set the parameter to
+10 for a particular optimization pass, then the multi-objective
+optimization will spend at most 10 seconds on that particular pass (and
+at most 100 seconds in total).</p>
+<p>To create a multi-objective environment for a particular optimization
+pass, use the <code class="docutils literal notranslate"><span class="pre">getMultiobjEnv</span></code> method from your language API (e.g.
+<a class="reference internal" href="../reference/python/model.html#Model.getMultiobjEnv" title="Model.getMultiobjEnv"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Model.getMultiobjEnv</span></code></a> in Python). The <code class="docutils literal notranslate"><span class="pre">index</span></code> argument gives
+the index of the optimization pass that you want to control.</p>
+<p>Please note that optimization passes and objectives are not quite
+synonymous, due to the possibility of blending objectives at the same
+priority level. Multi-objective environment 0 is always tied to the
+highest priority (possibly blended) objective, while multi-objective
+environment 1 is always tied to the second highest priority objective
+(if any). For details on how multiple objectives with the same priority
+are treated, please refer to the
+<a class="reference internal" href="#headinghierarchicalobjectives"><span class="std std-ref">hierarchical objectives</span></a> section.</p>
+<p>Once you create multi-objective environments, they will be used for
+every subsequent multi-objective optimization on that model. Use the
+<code class="docutils literal notranslate"><span class="pre">discardMultiobjEnvs</span></code> method from your language API (e.g.
+<a class="reference internal" href="../reference/python/model.html#Model.discardMultiobjEnvs" title="Model.discardMultiobjEnvs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Model.discardMultiobjEnvs</span></code></a> in Python) to revert back to
+default multi-objective optimization behavior.</p>
+<p>Please note that parameter values are
+copied from the model when the multi-objective environment is created.
+Therefore, changes to parameter values on the model have no effect on
+multi-objective environments that have already been created unless
+parameter <a class="reference internal" href="../reference/parameters.html#parameterinheritparams"><span class="std std-ref">InheritParams</span></a> is set to 1. This is a
+frequent source of confusion.</p>
+</section>
+<section id="other-details">
+<h3>Other Details<a class="headerlink" href="#other-details" title="Link to this heading">#</a></h3>
+<p>We haven’t attempted to generalize the notions of dual solutions or
+simplex bases for continuous multi-objective models, so you can’t query
+attributes such as <a class="reference internal" href="../reference/attributes/constraintlinear.html#attrpi"><span class="std std-ref">Pi</span></a>, <a class="reference internal" href="../reference/attributes/variable.html#attrrc"><span class="std std-ref">RC</span></a>, <a class="reference internal" href="../reference/attributes/variable.html#attrvbasis"><span class="std std-ref">VBasis</span></a>, or
+<a class="reference internal" href="../reference/attributes/constraintlinear.html#attrcbasis"><span class="std std-ref">CBasis</span></a> for multi-objective solutions. Because of this, we’ve
+concluded that the most consistent result to return for attribute
+<a class="reference internal" href="../reference/attributes/model.html#attrismip"><span class="std std-ref">IsMIP</span></a> is 1. Note, however, that several MIP-specific
+attributes, such as <a class="reference internal" href="../reference/attributes/model.html#attrobjbound"><span class="std std-ref">ObjBound</span></a>, <a class="reference internal" href="../reference/attributes/model.html#attrobjboundc"><span class="std std-ref">ObjBoundC</span></a> and
+<a class="reference internal" href="../reference/attributes/model.html#attrmipgap"><span class="std std-ref">MIPGap</span></a>, are also not available. However, MIP gap and best bound
+can be queried for each objective using callbacks, see the respective
+<a class="reference internal" href="../reference/numericcodes/callbacks.html#seccallbackcodes"><span class="std std-ref">Callback Codes</span></a>.</p>
+<p>Gurobi will only solve multi-objective models with strictly linear
+objectives. If the primary objective is quadratic or piecewise linear,
+the solve call will return an error.</p>
+<p>When solving a continuous multi-objective model using a hierarchical
+approach, you have a choice of which optimization algorithm to use for
+the different passes (primal simplex, dual simplex, or barrier). The
+first pass will always use the algorithm specified in the
+<a class="reference internal" href="../reference/parameters.html#parametermethod"><span class="std std-ref">Method</span></a> parameter. The algorithm for subsequent passes is
+controlled by the <a class="reference internal" href="../reference/parameters.html#parametermultiobjmethod"><span class="std std-ref">MultiObjMethod</span></a> parameter. This
+parameter has no effect for multi-objective MIP models. Note you can get
+finer-grained control over the algorithm choice using our
+multi-objective environment feature, by setting the
+<a class="reference internal" href="../reference/parameters.html#parametermethod"><span class="std std-ref">Method</span></a> parameter for individual objectives.</p>
+<p>For the hierarchical approach, Gurobi will perform a conservative
+presolve step at the beginning of the multi-objective optimization, and
+a more aggressive presolve step at the beginning of each pass (assuming
+presolve hasn’t been turned off). You can optionally perform a more
+aggressive presolve step at the beginning of the multi-objective
+optimization by setting parameter <a class="reference internal" href="../reference/parameters.html#parametermultiobjpre"><span class="std std-ref">MultiObjPre</span></a> to value
+2. This can help performance, but it makes a few simplifying assumptions
+that could lead to small degradations in the values achieved for
+lower-priority objectives.</p>
+<p>The log file when using a hierarchical approach will show optimization
+progress for each pass in the process. You’ll see log lines that look
+like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Multi-objectives: optimize objective 1 (Obj1Name) ...
+...
+Multi-objectives: optimize objective 2 (weighted) ...
+...
+</pre></div>
+</div>
+<p>For further details, please see section
+<a class="reference internal" href="../concepts/logging/multiobjective.html#secmultiobjectivelogging"><span class="std std-ref">Multi-Objective Logging</span></a>.</p>
+<p>Callbacks are available for multi-objective optimization, but they are a
+bit more involved than those for single-objective optimization. When you
+are solving for a specific objective (either in one phase of a
+hierarchical optimization or when solving a blended objective), you will
+receive callbacks from the algorithm that solves that model: MIP
+callbacks if the model is a MIP, and simplex or barrier callbacks if the
+model is continuous. For a hierarchical objective, you will also get a
+<code class="docutils literal notranslate"><span class="pre">MULTIOBJ</span></code> callback at the end of each phase that allows you to query,
+for example, the MIP gap, the current solution, the number of solutions
+found, and the number of objectives that have been solved for at that point.
+Refer to the <a class="reference internal" href="../reference/numericcodes/callbacks.html#seccallbackcodes"><span class="std std-ref">Callback</span></a> discussion for further details.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When solving a <a class="reference internal" href="#secmultipleobjectives"><span class="std std-ref">multi-objective</span></a> model,
+only a single <a class="reference internal" href="warmstart.html#secmipstart"><span class="std std-ref">MIP start</span></a> is considered. If you
+provide multiple MIP starts, only the first one is used and the
+others are ignored.</p>
+</div>
+</section>
+</section>
+</section>
+
+</article>
+
+
+<aside class="topic">
+  <p class="topic-title">Help and Feedback</p>
+  <div class="table-wrapper docutils container">
+    <table class="epilog docutils align-default">
+      <tbody>
+        <tr>
+          <td>
+            <p>
+              <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-search"
+                   viewBox="0 0 16 16" aria-hidden="true">
+                <path fill-rule="evenodd"
+                      d="M11.5 7a4.499 4.499 0 11-8.998 0A4.499 4.499 0 0111.5 7zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z">
+                </path>
+              </svg>
+              Press <kbd>/</kbd> or click to
+              <a
+                class="reference external"
+                href="#"
+                onclick="document.getElementsByClassName('nav-overlay-icon')[0].click(); document.getElementsByClassName('sidebar-search')[0].focus(); return false;"
+              >search this documentation</a>
+            </p>
+          </td>
+          <td>
+            <p>
+              <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-home"
+                   viewBox="0 0 16 16" aria-hidden="true">
+                <path fill-rule="evenodd"
+                      d="M8.156 1.835a.25.25 0 00-.312 0l-5.25 4.2a.25.25 0 00-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v5.25h2.75a.25.25 0 00.25-.25V6.23a.25.25 0 00-.094-.195l-5.25-4.2zM6.906.664a1.75 1.75 0 012.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0113.25 15h-3.5a.75.75 0 01-.75-.75V9H7v5.25a.75.75 0 01-.75.75h-3.5A1.75 1.75 0 011 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2h-.001z">
+                </path>
+              </svg> <a class="reference external" href="https://www.gurobi.com/">Gurobi website</a>
+            </p>
+          </td>
+          <td>
+            <p>
+              <svg version="1.1" width="1.0em" height="1.0em"
+                    class="sd-octicon sd-octicon-comment-discussion" viewBox="0 0 16 16" aria-hidden="true">
+                <path fill-rule="evenodd"
+                      d="M1.5 2.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v5.5a.25.25 0 01-.25.25h-3.5a.75.75 0 00-.53.22L3.5 11.44V9.25a.75.75 0 00-.75-.75h-1a.25.25 0 01-.25-.25v-5.5zM1.75 1A1.75 1.75 0 000 2.75v5.5C0 9.216.784 10 1.75 10H2v1.543a1.457 1.457 0 002.487 1.03L7.061 10h3.189A1.75 1.75 0 0012 8.25v-5.5A1.75 1.75 0 0010.25 1h-8.5zM14.5 4.75a.25.25 0 00-.25-.25h-.5a.75.75 0 110-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0114.25 12H14v1.543a1.457 1.457 0 01-2.487 1.03L9.22 12.28a.75.75 0 111.06-1.06l2.22 2.22v-2.19a.75.75 0 01.75-.75h1a.25.25 0 00.25-.25v-5.5z">
+                </path>
+              </svg> <a class="reference external"
+                        href="https://support.gurobi.com/hc/en-us/community/topics">Gurobi community forum</a>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>
+              <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-book"
+                   viewBox="0 0 16 16" aria-hidden="true">
+                <path fill-rule="evenodd"
+                      d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75V1.75zm8.755 3a2.25 2.25 0 012.25-2.25H14.5v9h-3.757c-.71 0-1.4.201-1.992.572l.004-7.322zm-1.504 7.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574z">
+                </path>
+              </svg> Go to <a class="reference external" href="https://docs.gurobi.com">other Gurobi
+                documentation</a>
+            </p>
+          </td>
+          <td>
+            <p>
+              <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-download"
+                   viewBox="0 0 16 16" aria-hidden="true">
+                <path fill-rule="evenodd"
+                      d="M7.47 10.78a.75.75 0 001.06 0l3.75-3.75a.75.75 0 00-1.06-1.06L8.75 8.44V1.75a.75.75 0 00-1.5 0v6.69L4.78 5.97a.75.75 0 00-1.06 1.06l3.75 3.75zM3.75 13a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5z">
+                </path>
+              </svg> <a class="reference external" href="https://www.gurobi.com/downloads">Gurobi download</a>
+            </p>
+          </td>
+          <td>
+            <p>
+              <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-person"
+                   viewBox="0 0 16 16" aria-hidden="true">
+                <path fill-rule="evenodd"
+                      d="M10.5 5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm.061 3.073a4 4 0 10-5.123 0 6.004 6.004 0 00-3.431 5.142.75.75 0 001.498.07 4.5 4.5 0 018.99 0 .75.75 0 101.498-.07 6.005 6.005 0 00-3.432-5.142z">
+                </path>
+              </svg> <a class="reference external"
+                        href="https://support.gurobi.com/hc/requests/new?ticket_form_id=360000523752&tf_subject=Documentation+issue&tf_360009525951=doc_issue&tf_24952793658385=https://docs.gurobi.com/projects/optimizer/en/current/features/multiobjective.html">Contact
+                support</a>
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</aside>
+
+
+
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="multiscenario.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Multiple Scenarios</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="infeasibility.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Infeasibility Analysis</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; Gurobi Optimization, LLC
+            </div><div class="last-updated">
+              Last updated on Nov 06, 2026</div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Multiple Objectives</a><ul>
+<li><a class="reference internal" href="#specifying-multiple-objectives">Specifying Multiple Objectives</a></li>
+<li><a class="reference internal" href="#working-with-multiple-objectives">Working With Multiple Objectives</a><ul>
+<li><a class="reference internal" href="#blended-objectives">Blended Objectives</a></li>
+<li><a class="reference internal" href="#hierarchical-objectives">Hierarchical Objectives</a></li>
+<li><a class="reference internal" href="#allowing-multiple-objective-degradation">Allowing Multiple-Objective Degradation</a><ul>
+<li><a class="reference internal" href="#multi-objective-mip">Multi-Objective MIP</a></li>
+<li><a class="reference internal" href="#multi-objective-lp">Multi-Objective LP</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#combining-blended-and-hierarchical-objectives">Combining Blended and Hierarchical Objectives</a></li>
+<li><a class="reference internal" href="#querying-multi-objective-results">Querying multi-objective results</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#additional-details">Additional Details</a><ul>
+<li><a class="reference internal" href="#multi-objective-environments">Multi-Objective Environments</a></li>
+<li><a class="reference internal" href="#other-details">Other Details</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scrolltree.js?v=151386ef"></script>
+    <script src="../_static/restore-anchor-scroll.js?v=5cb3b7c1"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>

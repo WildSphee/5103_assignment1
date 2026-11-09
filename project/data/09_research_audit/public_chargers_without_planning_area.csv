@@ -1,0 +1,3 @@
+EV Charger Registration Code,operator,No. of Charging Outlets,evCpId,plugType,charging_speed_kw,PostalCode,Block/House No,Street Name,Building Name,Floor No,Lot No,is_public,longitude,latitude,Registration Date,Type of Parking Lot,PLN_AREA_N,REGION_N,SUBZONE_N,is_fast,location_key
+R113430C,G. TECH PTE. LTD.,1,R113430C-001,Type 2,22.0,18988,31,MARINA COASTAL DRIVE,MARINA SOUTH PIER,LL,1,Yes,103.8631491,1.2702908,21/10/2024,,,,,False,"1.27029,103.86315"
+R113431G,G. TECH PTE. LTD.,1,R113431G-001,Type 2,22.0,18988,31,MARINA COASTAL DRIVE,MARINA SOUTH PIER,LL,2,Yes,103.8631491,1.2702908,21/10/2024,,,,,False,"1.27029,103.86315"

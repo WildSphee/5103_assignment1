@@ -1,0 +1,979 @@
+Source: https://docs.gurobi.com/projects/optimizer/en/current/features/multiobjective.html
+Retrieved: 2026-11-09T06:10:42.167824+00:00
+
+Multiple Objectives - Gurobi Optimizer Reference Manual
+Contents
+Menu
+Expand
+Light mode
+Dark mode
+Auto light/dark mode
+Hide navigation sidebar
+Hide table of contents sidebar
+Optimizer Reference Manual
+Concepts
+Modeling Components
+Toggle navigation of Modeling Components
+Variables
+Constraints
+Objectives
+Tolerances and Ill Conditioning
+API Usage
+Environments
+Toggle navigation of Environments
+Session Boundaries
+Configuration parameters (Empty environment)
+Algorithmic Parameters
+Concurrent Environments
+Multi-Objective Environments
+Attributes
+Toggle navigation of Attributes
+Attribute Types
+Attribute Examples
+Parameters
+Toggle navigation of Parameters
+Parameter Groups
+Parameter Guidelines
+Parameter Examples
+Logging
+Toggle navigation of Logging
+Header
+Simplex Logging
+Barrier Logging
+Sifting Logging
+MIP Logging
+Solution Pool and Multi-Scenario Logging
+Multi-Objective Logging
+Distributed MIP Logging
+IIS Logging
+Numerical Issues
+Toggle navigation of Numerical Issues
+Avoid Rounding of Input
+Real Numbers are not Real
+Tolerances and User-Scaling
+Does my Model have Numerical Issues?
+Solver Parameters to Manage Numerical Issues
+Instability and the Geometry of Optimization Problems
+Source Code Examples:
+Features
+Batch Optimization
+Callbacks
+Concurrent Optimization
+Distributed Optimization
+Gurobi Instant Cloud
+Infeasibility Analysis
+Multiple Objectives
+Multiple Scenarios
+Nonlinear Constraints
+Parameter Tuning Tool
+Recording API Calls
+Solution Pool
+Warm Start Options
+Reference
+Release Notes for Gurobi 13.0
+Toggle navigation of Release Notes for Gurobi 13.0
+Additions, Changes and Removals
+Supported Platforms
+Fixed Issues in this Release
+Known Issues in this Release
+C API
+Toggle navigation of C API
+Overview
+Environment Creation and Destruction
+Model Creation and Modification
+Model Solution
+Model Queries
+Input-Output
+Attribute Management
+Parameter Management
+Monitoring Progress - Logging and Callbacks
+Modifying Solver Behavior - Callbacks
+Batch Requests
+Error Handling
+Parameter Tuning
+Advanced simplex routines
+C++ API
+Toggle navigation of C++ API
+Overview
+GRBEnv
+GRBModel
+GRBVar
+GRBConstr
+GRBQConstr
+GRBSOS
+GRBGenConstr
+GRBExpr
+GRBLinExpr
+GRBQuadExpr
+GRBTempConstr
+GRBColumn
+GRBCallback
+GRBException
+GRBBatch
+Overloaded Operators
+Enums
+Java API
+Toggle navigation of Java API
+Overview
+GRBEnv
+GRBModel
+GRBVar
+GRBConstr
+GRBQConstr
+GRBSOS
+GRBGenConstr
+GRBExpr
+GRBLinExpr
+GRBQuadExpr
+GRBColumn
+GRBCallback
+GRBException
+GRBBatch
+GRB
+.NET API
+Toggle navigation of .NET API
+Overview
+GRBEnv
+GRBModel
+GRBVar
+GRBConstr
+GRBQConstr
+GRBSOS
+GRBGenConstr
+GRBExpr
+GRBLinExpr
+GRBQuadExpr
+GRBTempConstr
+GRBColumn
+Overloaded Operators
+GRBCallback
+GRBException
+GRBBatch
+GRB
+Python API
+Toggle navigation of Python API
+Overview
+Global Functions
+Model
+Var
+MVar
+Constr
+MConstr
+MQConstr
+QConstr
+SOS
+GenConstr
+MGenConstr
+LinExpr
+QuadExpr
+GenExpr
+NLExpr
+MLinExpr
+MQuadExpr
+MNLExpr
+TempConstr
+Column
+Callbacks
+GurobiError
+Env
+Batch
+GRB
+tuplelist
+tupledict
+General Constraint Helper Functions
+Matrix-Friendly API Functions
+Nonlinear Expression Helpers
+Low Level API
+MATLAB API
+Toggle navigation of MATLAB API
+Overview
+Common Arguments
+Solving a Model
+Input-Output
+Using Gurobi within MATLAB's Problem-Based Optimization
+Setting up the Gurobi MATLAB interface
+R API
+Toggle navigation of R API
+Overview
+Common Arguments
+Solving a Model
+Input-Output
+Installing the R package
+Gurobi Command-Line Tool
+Attribute Reference
+Toggle navigation of Attribute Reference
+Model Attributes
+Variable Attributes
+Linear Constraint Attributes
+SOS Attributes
+Quadratic Constraint Attributes
+General Constraint Attributes
+Quality Attributes
+Multi-objective Attributes
+Multi-Scenario Attributes
+Batch Attributes
+Parameter Reference
+Numeric Codes
+Toggle navigation of Numeric Codes
+Optimization Status Codes
+Batch Status Codes
+Callback Codes
+Error Codes
+Nonlinear Operation Codes
+File Formats
+Toggle navigation of File Formats
+Model File Formats
+Solution File Formats
+Other File Formats
+Configuration Files
+Gurobi
+Back to top
+Toggle Light / Dark / Auto color theme
+Toggle table of contents sidebar
+Multiple Objectives
+#
+While typical optimization models have a single objective function,
+real-world optimization problems often have multiple, competing
+objectives. For example, in a production planning model, you may want to
+both maximize profits and minimize late orders, or in a workforce
+scheduling application, you may want to minimize the number of shifts
+that are short-staffed while also respecting workers’ shift preferences.
+The main challenge you face when working with multiple, competing
+objectives is deciding how to manage the trade-offs between them. Gurobi
+provides tools that simplify the task: Gurobi allows you to
+blend
+multiple objectives, to treat them
+hierarchically
+, or to combine the
+two approaches. In a blended approach, you optimize a weighted
+combination of the individual objectives. In a hierarchical or
+lexicographic approach, you set a priority for each objective, and
+optimize in priority order. When optimizing for one objective, you only
+consider solutions that would not degrade the objective values of
+higher-priority objectives. Gurobi allows you to enter and manage your
+objectives, to provide weights for a blended approach, and to set
+priorities for a hierarchical approach.
+This section gives detailed information on how to use the multi-objective
+feature. An example for each supported API can be found
+here
+.
+Specifying Multiple Objectives
+#
+Let us first discuss the interface for managing multiple objectives. An
+empty model starts with one objective function, which is initially just
+0.0. We’ll refer to this as the
+primary
+objective. You can modify the
+primary objective in two ways: you can set the
+Obj
+attribute,
+or you can use the
+setObjective
+method from your language API (e.g.,
+Model.setObjective
+in Python). In contrast to models with a
+single objective, where the primary objective can be linear, quadratic,
+or piecewise-linear, all objectives must be linear for multi-objective
+models. In general, attributes and methods that aren’t specific to
+multi-objective optimization will work with the primary objective
+function.
+Every objective in a multi-objective model has the following settable
+attributes:
+ObjNCon
+with default value 0,
+ObjNPriority
+with default value 0,
+ObjNWeight
+with
+default value 1,
+ObjNRelTol
+with default value 0,
+ObjNAbsTol
+with default value 1e-6, and
+ObjNName
+.
+To provide additional objectives, use the
+setObjectiveN
+method from
+your language API (e.g.
+Model.setObjectiveN
+in Python).
+Objectives are numbered
+0
+through
+NumObj-1
+. The order of the
+objectives is arbitrary, but you must provide a unique index for each
+one (specified using the
+index
+argument to
+setObjectiveN
+). You
+can query the number of objectives in your model using the
+NumObj
+attribute. As noted above, all objectives, including
+the primary one, must be linear.
+You can query and modify information about multiple objectives using the
+ObjNumber
+parameter, in conjunction with several model
+and variable attributes. For example, to retrieve the coefficient for
+variable
+x
+in objective
+\(2\)
+, you’d set the
+ObjNumber
+parameter to
+\(2\)
+, then query the
+ObjN
+attribute for
+x
+. Similarly, querying the
+ObjNName
+attribute after
+setting
+ObjNumber
+to
+\(3\)
+would give the name of objective
+\(3\)
+.
+We should note that there is one important exception to our statement above
+that the order of objectives is arbitrary: objective
+\(0\)
+is treated as
+the primary objective. One consequence is that the original objective
+automatically becomes objective
+\(0\)
+when you add a second objective.
+Another is that querying the
+ObjN
+attribute is equivalent to
+querying the
+Obj
+attribute when
+ObjNumber
+is
+\(0\)
+.
+Note that a model has a single objective sense (controlled by the
+ModelSense
+attribute). This means that you can’t maximize the
+first objective and minimize the second. However, you can achieve the
+same result with a simple trick. Each objective has a weight, and these
+weights are allowed to be negative. Minimizing an objective function is
+equivalent to maximizing the negation of that function.
+You can change the number of objectives in your model as many times as
+you like (by modifying the
+NumObj
+attribute). When you
+increase the objective count, the newly added objectives and their
+associated attributes are set to 0. When you decrease the count,
+objectives beyond the new count are discarded. If you set the number of
+objectives to zero, the model becomes a pure feasibility problem.
+We have extended the LP and MPS file formats, so writing a model with
+multiple objectives to a file will capture those objectives. Similarly,
+if you read a model file that contains multiple objectives, then
+NumObj
+and
+ObjN
+will capture the objectives stored
+in the file. See the
+file format
+section for
+details.
+Working With Multiple Objectives
+#
+Of course, specifying a set of objectives is only the first step in
+solving a multi-objective optimization problem. The next step is to
+indicate how the objectives should be combined. As noted earlier, we
+support two approaches: blended and hierarchical.
+Blended Objectives
+#
+A blending approach creates a single objective by taking a linear
+combination of your objectives. You provide a weight for each objective
+as an argument to
+setObjectiveN
+. Alternatively, you can use the
+ObjNWeight
+attribute, together with
+ObjNumber
+. The default weight for an objective is 1.0.
+To give an example, if your model has two objectives,
+\(1 + x + 2y\)
+and
+\(y
++ 2z\)
+, and if you give weights of
+\(-1\)
+and
+\(2\)
+to them,
+respectively, then Gurobi would solve your model with a blended
+objective of
+\(-1 \cdot (1 + x + 2y) + 2 \cdot (y + 2z) = -1 - x + 4z\)
+.
+You should avoid weights that are very large or very small. A very large
+weight (i.e., larger than
+\(10^6\)
+) may lead to very large objective
+coefficients, which can cause numerical difficulties. A very small
+weight (i.e., smaller than
+\(10^{-6}\)
+) may cause the contribution from
+that objective to the overall blended objective to be smaller than
+tolerances, which may lead to that objective being effectively ignored.
+Hierarchical Objectives
+#
+A hierarchical or lexicographic approach assigns a priority to each
+objective, and optimizes for the objectives in decreasing priority
+order. During each of these optimization passes, it finds the best
+solution for the current objective, but only from among those that would
+not degrade the solution quality for higher-priority objectives. You
+provide the priority for each objective as an argument to
+setObjectiveN
+. Alternatively, you can use the
+ObjNPriority
+attribute. Priorities are integral, not
+continuous. Larger values indicate higher priorities. The default
+priority for an objective is 0.
+For example, suppose your model has two objectives, with priorities
+\(10\)
+and
+\(5\)
+, and objective weights 1.0 and -1.0. If
+the optimal solution for the first objective is
+\(100\)
+, then
+the solver will find the solution that optimizes
+\(-1\)
+times the
+second objective from among all solutions with objective
+\(100\)
+for
+the first objective.
+Allowing Multiple-Objective Degradation
+#
+Parameters or attributes can control the degradation of earlier objectives when
+solving later ones. This is handled differently for MIP models and LP models.
+Multi-Objective MIP
+#
+The base value used to define what solutions are acceptable for lower-priority
+objectives – for a minimization problem – is computed as:
+\[\mathrm{base\_value} = \max\{bestsol, bestbound + |bestsol|*rgap,
+bestbound + agap\},\]
+where
+bestsol
+is the value of the best incumbent solution,
+bestbound
+is the value of the best proven lower bound for the
+problem,
+rgap
+is the
+relative MIP gap
+, and
+agap
+is the
+absolute MIP gap
+, and the
+set of feasible solutions for the next objective will consider solutions
+whose objective value is at most that value.
+This base value can be relaxed for MIPs through a pair of tolerances: a
+relative and an absolute tolerance. These are provided as arguments to
+setObjectiveN
+, or they can be set using attributes
+ObjNRelTol
+and
+ObjNAbsTol
+. By setting one of these
+for a particular objective, you can indicate that later objectives are
+allowed to degrade this objective by the specified relative or absolute
+amount, respectively. In our earlier example, if the base value for
+the first objective is
+\(100\)
+, and if we set
+ObjNAbsTol
+for
+this objective to
+\(20\)
+, then the second optimization pass would
+find the best solution for the second objective from among all solutions
+with objective
+\(120\)
+or better for the first objective. Note that
+if you modify both tolerances, later optimizations would use the looser
+of the two values (i.e., the one that allows the larger degradation).
+Multi-Objective LP
+#
+For LP models, solution quality for higher-priority objectives is maintained
+by fixing some variables to their values in previous optimal solutions. These
+fixings are decided using variable reduced costs. The value of the
+ObjNAbsTol
+attribute indicates the amount by which a fixed
+variable’s reduced cost is allowed to violate dual feasibility, whereas the
+ObjNRelTol
+attribute is ignored.
+For an interpretation of
+ObjNAbsTol
+consider the following situation.
+If you fixed the values of all variables with a nonzero reduced cost, this would
+ensure that the value of the current objective does not degrade in subsequent
+solves. However, this strategy would likely fix the values of almost all variables
+in the model, leaving no freedom to improve subsequent objectives in the
+hierarchical optimization.
+In practice, a tolerance is applied: only variables with reduced cost larger than
+ObjNAbsTol
+are fixed to their current values. This allows some freedom
+to optimize later objectives at the cost of a degradation in the current objective.
+This means that relaxing
+ObjNAbsTol
+is almost equivalent to
+relaxing the optimality tolerance (
+OptimalityTol
+). Large values
+should be avoided as this can result in an objective degrading by an arbitrary
+amount in subsequent solves.
+It is not possible to determine the amount of possible objective degradation
+from the choice of
+ObjNAbsTol
+, and setting
+ObjNRelTol
+has
+no effect. If you want the MIP behavior, where the degradation is controlled
+more directly using these two attributes, you can add a dummy binary variable to
+the model, thus transforming it into a MIP. Solving the resulting
+multi-objective MIP will be much more time consuming than solving the original
+multi-objective LP.
+Combining Blended and Hierarchical Objectives
+#
+Every objective in a multi-objective model has both a weight and a
+priority, which allows you to seamlessly combine blended and
+hierarchical approaches. To understand how this works, we should first
+provide more detail on how hierarchical objectives are handled.
+When you specify a different priority for each of
+\(n\)
+objectives,
+the solver performs
+\(n\)
+separate optimization passes. In each
+pass, in decreasing priority order, it optimizes for the current
+objective multiplied by its
+ObjNWeight
+attribute, while
+imposing constraints that ensure that the quality of higher-priority
+objectives isn’t degraded by more than the specified tolerances.
+If you give the same priority to multiple objectives, then they will be
+handled in the same optimization pass, resulting in fewer than
+\(n\)
+total passes for
+\(n\)
+objectives. More precisely, one optimization
+pass is performed per distinct priority value, in order of decreasing
+priority, and all objectives with the same priority are blended
+together, using the weights for those objectives. This gives you quite a
+bit of flexibility when combining the blended and hierarchical
+approaches.
+One subtle point when blending multiple objectives within a single level in a
+hierarchical approach relates to the handling of degradations from
+lower-priority levels. The objective degradation allowed after a blended
+optimization pass is the maximum absolute and relative degradations allowed by
+each of the participating objectives. For example, if we have three objectives
+with
+ObjNPriority
+equal to
+\(\{2, 2, 1\}\)
+, and
+ObjNRelTol
+equal to
+\(\{0.10, 0.05, 0.00\}\)
+and
+ObjNAbsTol
+equal to
+\(\{0, 1, 2\}\)
+, and if the best solution
+for the first priority objective is
+\(10\)
+, then the allowed degradation
+for the first priority objective is
+\(\max\{10 \cdot 0.10, 10 \cdot 0.05, 0, 1\}~=~1\)
+.
+Querying multi-objective results
+#
+Once you have found one or more solutions to your multi-objective model,
+you can query information about each pass on each solution. You must
+choose a solution using the
+SolutionNumber
+parameter.
+And you must either choose the optimization pass using the
+ObjPassNumber
+, or select the pass in which a given
+objective was solved by leaving
+ObjPassNumber
+to its
+default value of -1 and setting
+ObjNumber
+to the index
+of the objective you are interested in. Then the
+ObjPassNObjVal
+attribute, for example, will give the value of
+the objectives combined in the corresponding optimization pass. Section
+Combining Blended and Hierarchical Objectives
+explains how
+objectives get combined into multi-objective passes.
+This is illustrated in the following Python example:
+import
+gurobipy
+as
+gp
+from
+gurobipy
+import
+GRB
+# Read and solve a model with multiple objectives
+m
+=
+gp
+.
+read
+(
+'input.mps'
+)
+m
+.
+optimize
+()
+# Get the set of variables
+x
+=
+m
+.
+getVars
+()
+# Ensure status is optimal
+assert
+m
+.
+Status
+==
+GRB
+.
+Status
+.
+OPTIMAL
+# Query number of multiple objectives, and number of solutions
+nSolutions
+=
+m
+.
+SolCount
+nObjectives
+=
+m
+.
+NumObj
+print
+(
+'Problem has'
+,
+nObjectives
+,
+'objectives'
+)
+print
+(
+'Gurobi found'
+,
+nSolutions
+,
+'solutions'
+)
+# For each solution, print value of first three variables, and
+# value for each objective function
+solutions
+=
+[]
+for
+s
+in
+range
+(
+nSolutions
+):
+# Set which solution we will query from now on
+m
+.
+params
+.
+SolutionNumber
+=
+s
+# Print objective value of this solution in each optimization pass
+print
+(
+'Solution'
+,
+s
+,
+':'
+,
+end
+=
+''
+)
+for
+o
+in
+range
+(
+nObjectives
+):
+# Set which objective we will query
+m
+.
+params
+.
+ObjNumber
+=
+o
+# Query the objective value for the corresponding optimization pass
+print
+(
+' '
+,
+m
+.
+ObjPassNObjVal
+,
+end
+=
+''
+)
+# Print first three variables in the solution
+n
+=
+min
+(
+len
+(
+x
+),
+3
+)
+for
+j
+in
+range
+(
+n
+):
+print
+(
+x
+[
+j
+]
+.
+VarName
+,
+x
+[
+j
+]
+.
+PoolNX
+,
+end
+=
+''
+)
+print
+(
+''
+)
+# Query the full vector of the s-th solution
+solutions
+.
+append
+(
+m
+.
+getAttr
+(
+'PoolNX'
+,
+x
+))
+Additional Details
+#
+Multi-Objective Environments
+#
+As we progress from higher-priority objectives to lower-priority
+objectives in a hierarchical multi-objective model, we won’t necessarily
+solve each pass to exact optimality. By default, termination criteria
+(e.g.
+TimeLimit
+,
+SolutionLimit
+, etc.)
+are controlled by the parameters defined in the model environment.
+However, we provide a feature called
+multi-objective environments
+that
+allows you to create a Gurobi environment for each optimization pass and
+set parameters on those environments. Those settings will only affect
+the corresponding pass of the multi-objective optimization. Thus, for
+example, if the
+TimeLimit
+parameter for the model is
+100, but you use a multi-objective environment to set the parameter to
+10 for a particular optimization pass, then the multi-objective
+optimization will spend at most 10 seconds on that particular pass (and
+at most 100 seconds in total).
+To create a multi-objective environment for a particular optimization
+pass, use the
+getMultiobjEnv
+method from your language API (e.g.
+Model.getMultiobjEnv
+in Python). The
+index
+argument gives
+the index of the optimization pass that you want to control.
+Please note that optimization passes and objectives are not quite
+synonymous, due to the possibility of blending objectives at the same
+priority level. Multi-objective environment 0 is always tied to the
+highest priority (possibly blended) objective, while multi-objective
+environment 1 is always tied to the second highest priority objective
+(if any). For details on how multiple objectives with the same priority
+are treated, please refer to the
+hierarchical objectives
+section.
+Once you create multi-objective environments, they will be used for
+every subsequent multi-objective optimization on that model. Use the
+discardMultiobjEnvs
+method from your language API (e.g.
+Model.discardMultiobjEnvs
+in Python) to revert back to
+default multi-objective optimization behavior.
+Please note that parameter values are
+copied from the model when the multi-objective environment is created.
+Therefore, changes to parameter values on the model have no effect on
+multi-objective environments that have already been created unless
+parameter
+InheritParams
+is set to 1. This is a
+frequent source of confusion.
+Other Details
+#
+We haven’t attempted to generalize the notions of dual solutions or
+simplex bases for continuous multi-objective models, so you can’t query
+attributes such as
+Pi
+,
+RC
+,
+VBasis
+, or
+CBasis
+for multi-objective solutions. Because of this, we’ve
+concluded that the most consistent result to return for attribute
+IsMIP
+is 1. Note, however, that several MIP-specific
+attributes, such as
+ObjBound
+,
+ObjBoundC
+and
+MIPGap
+, are also not available. However, MIP gap and best bound
+can be queried for each objective using callbacks, see the respective
+Callback Codes
+.
+Gurobi will only solve multi-objective models with strictly linear
+objectives. If the primary objective is quadratic or piecewise linear,
+the solve call will return an error.
+When solving a continuous multi-objective model using a hierarchical
+approach, you have a choice of which optimization algorithm to use for
+the different passes (primal simplex, dual simplex, or barrier). The
+first pass will always use the algorithm specified in the
+Method
+parameter. The algorithm for subsequent passes is
+controlled by the
+MultiObjMethod
+parameter. This
+parameter has no effect for multi-objective MIP models. Note you can get
+finer-grained control over the algorithm choice using our
+multi-objective environment feature, by setting the
+Method
+parameter for individual objectives.
+For the hierarchical approach, Gurobi will perform a conservative
+presolve step at the beginning of the multi-objective optimization, and
+a more aggressive presolve step at the beginning of each pass (assuming
+presolve hasn’t been turned off). You can optionally perform a more
+aggressive presolve step at the beginning of the multi-objective
+optimization by setting parameter
+MultiObjPre
+to value
+2. This can help performance, but it makes a few simplifying assumptions
+that could lead to small degradations in the values achieved for
+lower-priority objectives.
+The log file when using a hierarchical approach will show optimization
+progress for each pass in the process. You’ll see log lines that look
+like this:
+Multi-objectives: optimize objective 1 (Obj1Name) ...
+...
+Multi-objectives: optimize objective 2 (weighted) ...
+...
+For further details, please see section
+Multi-Objective Logging
+.
+Callbacks are available for multi-objective optimization, but they are a
+bit more involved than those for single-objective optimization. When you
+are solving for a specific objective (either in one phase of a
+hierarchical optimization or when solving a blended objective), you will
+receive callbacks from the algorithm that solves that model: MIP
+callbacks if the model is a MIP, and simplex or barrier callbacks if the
+model is continuous. For a hierarchical objective, you will also get a
+MULTIOBJ
+callback at the end of each phase that allows you to query,
+for example, the MIP gap, the current solution, the number of solutions
+found, and the number of objectives that have been solved for at that point.
+Refer to the
+Callback
+discussion for further details.
+Note
+When solving a
+multi-objective
+model,
+only a single
+MIP start
+is considered. If you
+provide multiple MIP starts, only the first one is used and the
+others are ignored.
+Help and Feedback
+Press
+/
+or click to
+search this documentation
+Gurobi website
+Gurobi community forum
+Go to
+other Gurobi
+                documentation
+Gurobi download
+Contact
+                support
+On this page
+Multiple Objectives
+Specifying Multiple Objectives
+Working With Multiple Objectives
+Blended Objectives
+Hierarchical Objectives
+Allowing Multiple-Objective Degradation
+Multi-Objective MIP
+Multi-Objective LP
+Combining Blended and Hierarchical Objectives
+Querying multi-objective results
+Additional Details
+Multi-Objective Environments
+Other Details

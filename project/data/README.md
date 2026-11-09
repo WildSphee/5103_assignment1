@@ -1,106 +1,106 @@
-# Data index — EV Charging Station Optimisation (Singapore)
+# Data index — HDB EV charger placement and cost-effectiveness
 
-All files downloaded 2026-10-31. Sources are official Singapore government open data unless marked otherwise.
-Open Data Licence (data.gov.sg / LTA DataMall) — cite the agency in the report.
+Updated **9 November 2026**. Original collection was downloaded 31 October; new source snapshots have their own timestamps and hashes in [source_manifest_2026-11-09.csv](09_research_audit/source_manifest_2026-11-09.csv). Scope: HDB placement, slow base model, fast extension; no carbon analysis. These files support planning; **no optimisation results exist yet**.
 
-Coordinate systems: LTA charger file and URA boundaries use **WGS84 lat/lon**. HDB/JTC carpark files use **SVY21 (EPSG:3414) x/y in metres** — convert before joining.
+Start with [gap_review.md](09_research_audit/gap_review.md), [file_inventory.csv](09_research_audit/file_inventory.csv) and [the working plan](../plan.md). Inventory includes schema, rows, null counts, duplicate rows, ranges where available, sizes and hashes. Raw files are retained with derived tables separate. Official open data should be cited to its agency; vendor material is labelled commercial evidence.
 
----
+## 01_ev_charging_supply
 
-## 01_ev_charging_supply — where the chargers are today
+`LTA_EV_charging_points_Sep2026.csv` — [LTA DataMall static data](https://datamall.lta.gov.sg/content/datamall/en/static-data.html), September 2026 register; 11,489 unique `evCpId` rows and 9,279 registration codes. Fields include operator, connector, power, address, floor/lot, public accessibility, WGS84 coordinates and registration date. The public-access column has a source typo (`Yesblicly`). Type of parking lot is entirely empty.
 
-| File | Source | Coverage | What it is |
-|---|---|---|---|
-| `LTA_EV_charging_points_Sep2026.csv` | [LTA DataMall static data](https://datamall.lta.gov.sg/content/datamall/en/static-data.html) → "EV Charging Points" (`EVChargingPoints.zip`) | Registrations Feb 2024 – 30 Sep 2026 | **The main dataset from the meeting.** 11,489 rows = one per charging point (`evCpId`). 9,279 charger registration codes, 17,011 outlets, ~2,880 unique locations. Columns: operator, outlets, plug type (Type 2 / CCS2 / CHAdeMO), charging speed kW (3.7–480), postal code, block, street, building, floor, lot, public-access flag, lat/lon, registration date. **Public chargers only** (all rows `Yes`) — the ~23,000 private chargers (condos, landed homes, offices) in LTA's 34,700 total are not in here. Column "Is the charger Yesblicly accessible?" is a typo in the source. "Type of Parking Lot" is empty. |
+**Counting correction:** `No. of Charging Outlets` repeats the registration's outlet count on every point row. Sum once per registration: **11,489**, not 17,011. Do not multiply point ratings by this field. Multiple connectors may share cabinet power; simultaneous supply is unverified. Public access does not identify HDB ownership. The file cannot by itself identify site utilisation, all private chargers, actual commissioning dates or site electrical capacity.
 
-Not downloaded: LTA DataMall **EV Charging Points API** (`EVCBatch`, live availability) — needs a free DataMall account key ([request here](https://datamall.lta.gov.sg/content/datamall/en/request-for-api.html)). OpenStreetMap charging stations — Overpass servers were overloaded; can retry later.
+DataMall live availability requires an account key and repeated observation; no account/key requested. Availability is not delivered kWh or EV ownership.
 
-## 02_ev_population_and_registrations — how many EVs, how fast it's growing
+## 02_ev_population_and_registrations
 
-| File | Source | Coverage | What it is |
-|---|---|---|---|
-| `LTA_M09_monthly_vehicle_population_by_fuel.csv` | LTA DataMall | Jan 2016 – Sep 2026, monthly | **Key file.** Vehicle population by category (Cars, Taxis, Buses, Goods, Motorcycles) × fuel (Petrol, Diesel, Electric, Petrol-Electric, plug-in hybrids…). |
-| `LTA_M03_monthly_new_car_registrations_by_make_fuel.csv` | LTA DataMall | Jan 2016 – Sep 2026, monthly | New car registrations by make × fuel type × body type. EV split starts 2022 (before that EVs are inside "Others"). |
-| `LTA_MVP01-4_annual_vehicle_population_by_fuel.csv` | LTA DataMall | 2006 – 2025, annual | Annual version of M09. |
-| `LTA_MVP01-6_annual_car_population_by_make_fuel.csv` | LTA DataMall | 2005 – 2025, annual | Car population by make × fuel. |
-| `LTA_MVP02-2_annual_new_car_registrations_by_make[_fuel_type].csv` | LTA DataMall | 2005/2015 – 2025 | Annual new registrations by make (and by fuel/body type). |
-| `LTA_M06_monthly_vehicle_population_by_type.csv` | LTA DataMall | 2012 – 2026, monthly | Total vehicle population by vehicle type (cars, rental, taxis, PHV…). |
-| `LTA_annual_private_vehicle_mileage.csv` | LTA DataMall | 2005 – 2025 | Average annual km per vehicle type → converts EV count into kWh demand. |
-| `LTA_monthly_taxi_fleet.csv` | LTA DataMall | 2005 – Dec 2025 | Taxi fleet by company (high-mileage segment that needs fast charging). |
-| `LTA_M11_COE_bidding_results.csv`, `LTA_M11_COE_prevailing_quota_premium.csv` | LTA DataMall | 2010 – 2026 | COE prices (affects car ownership / EV adoption scenarios). |
-| `SingStat_monthly_motor_vehicle_population_by_type.csv` | [data.gov.sg](https://data.gov.sg/datasets/d_206838bdc92c07ab495af49475563da5/view) | to Aug 2026 | SingStat cross-check of vehicle totals (wide format). |
-| `NEA_green_vehicles.csv` | data.gov.sg | 2003 – 2014 | Historical green vehicle count (background only). |
-| `xlsx_originals/` | LTA DataMall | — | Formatted Excel versions of the LTA tables above (same data). |
+| Files | Role |
+|---|---|
+| `LTA_M09_monthly_vehicle_population_by_fuel.csv` | Core national stock series through Sep 2026; filter Cars/Electric, separately define total-car denominator. |
+| `LTA_M03_monthly_new_car_registrations_by_make_fuel.csv` | National registration flow and adoption scenarios; sales share is not fleet share. |
+| `LTA_annual_private_vehicle_mileage.csv` | Cars average 16,200 km/year in 2025; not EV-only or HDB-only mileage. |
+| `LTA_MVP01-4_…`, `LTA_MVP01-6_…`, both `LTA_MVP02-2_…`, `xlsx_originals/` | Annual/source-format checks; not additional independent demand. |
+| `LTA_M06_…`, `SingStat_monthly_motor_vehicle_population_by_type.csv` | National vehicle denominator checks. |
+| Both `LTA_M11_COE_…`, `LTA_monthly_taxi_fleet.csv`, `NEA_green_vehicles.csv` | Retained background, not core model inputs. “Green” is not synonymous with battery electric. |
 
-**Headline numbers (from M09/M03):** electric cars 9,998 (Sep 2023) → 21,796 (Sep 2024) → 41,732 (Sep 2025) → **74,887 (Sep 2026) ≈ 11.5% of 651k cars**. All-vehicle EVs ≈ 85,000 (Sep 2026). EV share of new car registrations: 6.9% (2022), 18.1% (2023), 33.6% (2024), 45.0% (2025), **63.1% (Jan–Sep 2026)**. Top EV makes 2025–26: BYD, Tesla, GAC, MG, BMW.
+Primary sources: [LTA vehicle statistics](https://www.lta.gov.sg/content/ltagov/en/who_we_are/statistics_and_publications/statistics.html), DataMall and SingStat. Local Sep 2026 electric-car stock is 74,887; Sep 2024 is 21,796. These are dated inputs, not a claim of live totals. No carpark-level EV ownership was obtained.
 
-**No dataset gives EV ownership by location** (town / planning area / postal code). Only national totals exist publicly → see demand proxies in 04.
+## 03_carparks_candidate_sites
 
-## 03_carparks_candidate_sites — where new chargers could go
+| File | Inspection and use |
+|---|---|
+| `HDB_carpark_information.csv` | [HDB open dataset](https://data.gov.sg/datasets/d_23f946fa557947f93a8043bbef41dd09/view); 2,273 unique carpark IDs, address/type/decks/parking fields, SVY21 coordinates. Core candidates. |
+| `HDB_carpark_lots_snapshot_2026-10-31.csv` | 2,428 records across lot types; select C. 2,007 carpark car-lot records, 1,997 match master, 276 missing in master join, 2 matched zeros. Matched capacity 706,663; all snapshot capacity 708,242 includes 10 unmatched IDs. `lots_available` is not average occupancy. |
+| `HDB_carpark_outlines.geojson` | 30,748 features, no `car_park_no`; supplementary geometry, not one polygon per site. |
+| `URA_parking_places_capacity.geojson`, `JTC_carpark_information.csv`, `NParks_carpark_lots.geojson`, `LTA_ParkingStandardsZone_Sep2026_shp/` | Retained original collection; outside HDB placement scope. |
 
-| File | Source | What it is |
-|---|---|---|
-| `HDB_carpark_information.csv` | [data.gov.sg](https://data.gov.sg/datasets/d_23f946fa557947f93a8043bbef41dd09/view) | 2,273 HDB carparks: ID, address, **SVY21 x/y**, type (multi-storey/surface/basement), decks, night parking, gantry height. Natural **candidate-site list**. |
-| `HDB_carpark_lots_snapshot_2026-10-31.csv` | data.gov.sg carpark-availability API | Snapshot (31 Oct 2026, 21:42) of total & available lots per HDB carpark by lot type (C = car, Y = motorcycle, H = heavy). ~2,000 carparks, 708k car lots. Use `total_lots` as **capacity**; join on `car_park_no`. |
-| `HDB_carpark_outlines.geojson` (44 MB) | data.gov.sg | Polygon outlines of HDB carparks. |
-| `URA_parking_places_capacity.geojson` | data.gov.sg | URA public carparks with lot capacity. |
-| `NParks_carpark_lots.geojson` | data.gov.sg | Carparks in parks (destination charging candidates). |
-| `JTC_carpark_information.csv` | data.gov.sg | 28 JTC industrial carparks (SVY21). |
-| `LTA_ParkingStandardsZone_Sep2026_shp/` | LTA DataMall | Shapefile of LTA parking standards zones (central/transit-rich areas have lower parking provision). |
+Convert **EPSG:3414 x/y → EPSG:4326 lon/lat** before joining to WGS84 register/boundaries. Review both missing lots and eligibility; do not silently drop sites. An absent charger does not prove power constraints.
 
-## 04_demographics_demand_proxies — who might need charging, where
+## 04_demographics_demand_proxies
 
-| File | Source | What it is |
-|---|---|---|
-| `Census2020_households_by_planning_area_dwelling_type.csv` | data.gov.sg (SingStat) | Households per planning area by HDB flat size / condo / landed. HDB residents rely on public chargers; landed homes can charge at home. |
-| `Census2020_employed_residents_by_planning_area_mode_of_transport_to_work.csv` | data.gov.sg (SingStat) | **Car-only commuters per planning area** — best available proxy for car ownership by area. |
-| `Census2020_households_by_planning_area_household_income.csv` | data.gov.sg (SingStat) | Household income bands per planning area (EV adoption correlates with income). |
-| `Census2020_population_by_planning_area_subzone_dwelling_type.csv` | data.gov.sg (SingStat) | Population at subzone level by dwelling type (finer demand nodes). |
-| `Census2020_employed_residents_by_planning_area_of_workplace.csv` | data.gov.sg (SingStat) | Workers by planning area of **workplace** (daytime / destination charging demand). |
-| `HDB_property_information_blocks.csv` | data.gov.sg | Every HDB block: town code, year completed, dwelling units by flat type, whether it has a multi-storey carpark. Use to compute dwelling units per town / build newer-town demand. |
+Original five `Census2020_*` tables cover households by dwelling, car-only commuting, income, workplace and subzone population by dwelling. Geographic rows include totals/grouped areas and different levels; strip or handle them before aggregation. Use residential data as alternative demand weights, income descriptively, workplace outside base. `HDB_property_information_blocks.csv` has 13,392 rows, dwelling units/town codes/completion year, but no coordinates; it cannot directly geocode demand nodes.
 
-Census 2020 is the latest small-area census. It **under-counts new towns** (Tengah, parts of Punggol/Sengkang/Bidadari). SingStat publishes June 2025 *population by planning area/subzone* on its website ([Population Trends / geographic distribution](https://www.singstat.gov.sg/find-data/search-by-theme/population/geographic-distribution)) — download manually if needed (automated download failed).
+**New `updates_2026-11-09/`:** downloaded from [SingStat geographic-distribution catalog](https://www.singstat.gov.sg/find-data/explore-data-themes/population/geographic-distribution/latest-news-data).
+
+| File family | Contents / use |
+|---|---|
+| `population_dwelling_2024/2025/2026.zip` plus extracted `__respopagesextod*.csv` and `__Notes_*.csv` | 100,928 rows/year; 55 areas, 332 area/subzone pairs. Columns PA, SZ, AG, Sex, TOD, Pop, Time. Filter four HDB flat categories; sum mutually exclusive cells. |
+| `population_floor_area_2020_2024.csv` | 315,400 rows, annual population by area/subzone/age/sex/floor area. All-dwelling trend, not HDB-specific. 2024 overlaps the other population file; do not add both. |
+| `dwellings_type_2025/2026.zip` plus extracted `__hsetod*.csv` and notes | 2,656 rows/year; HDB stock check and alternative weights. Dwellings are not people or occupied households. |
+| `dwellings_floor_area_2020_2024.csv` | 8,300 rows; all-dwelling housing-stock trend. Floor area does not establish HDB tenure. |
+| `GHS2025_car_only_commuting_by_HDB_dwelling.csv` | Eight manually extracted values: 2020/2025 car-only commuting percentages for four HDB flat groups, official report table 9.1, printed p. 74. Not a vehicle ownership rate or complete GHS workbook. |
+| `SingStat_geographic_distribution.html/.txt` | Local catalog snapshot and download context. |
+| `GHS2025_transport_download.html/.txt` | **Only a JavaScript app shell. Detailed workbook not obtained.** Link retained for follow-up, excluded from model data. |
+
+Source notes: **2025 MP2019; 2026 MP2025**. Cells rounded to nearest 10; sums are approximate. Keep source/vintage in every summary. The 2026 layer cannot be naively joined to old subzone growth just because names match.
 
 ## 05_geospatial_boundaries
 
-| File | Source | What it is |
-|---|---|---|
-| `URA_MP2019_planning_area_boundary.geojson` | data.gov.sg (URA) | 55 planning areas (matches Census 2020 names). |
-| `URA_MP2019_subzone_boundary.geojson` | data.gov.sg (URA) | 332 subzones. |
-| `URA_MP2025_planning_area_boundary.geojson` | data.gov.sg (URA) | Latest Master Plan 2025 planning areas. |
+`URA_MP2019_planning_area_boundary.geojson` (55 areas), `URA_MP2019_subzone_boundary.geojson` (332 subzones), `URA_MP2025_planning_area_boundary.geojson` (55 areas). MP2019 supports 2025 base demographic weights; MP2025 supports the separate 2026 check. No MP2025 subzone crosswalk has been collected. HDB town and planning area are not interchangeable.
 
-## 06_reports_and_policy — context, targets, utilisation figures
+## 06_reports_and_policy
 
-| File | What it is |
+Original MOT parliamentary compilation, LTA roadmap, 2022 HDB tender release, 2024 deployment release and driver guide provide dated policy/context. News/Wikipedia remain background, not primary model evidence. Key interpretation: the national 40,000-public-point goal is not an HDB quota; tender quantities are not space maxima; reported peak utilisation is not a full-day energy factor.
+
+New `updates_2026-11-09/` contains:
+
+- `SingStat_GHS2025.pdf` — [full official survey report](https://www.singstat.gov.sg/files/1559c94a-efc1-4262-84fd-042c9bd96e68.pdf), geography and transport chapters; catalog snapshot also saved.
+- `SingStat_Population_Trends_2026.pdf` — [full official annual report](https://www.singstat.gov.sg/files/5645f043-4bb7-4181-a3a8-c36da5cd1b12.pdf), definitions/latest population context.
+- `MOT_2026-09-10_utilisation.html/.txt` — [public-carpark usage evidence](https://www.mot.gov.sg/news-resources/newsroom/utilisation-rates-of-ev-charging-points-at-petrol-kiosks-relative-to-public-car-parks/); about five hours/day in Jan–Aug 2026, not HDB-specific or kWh delivery.
+- `MOT_2024-11-11_EV_season_parking.html/.txt` — [historical HDB calibration](https://www.mot.gov.sg/news-resources/newsroom/written-reply-to-parliamentary-question-on-statistics-of-evs-registered-for-season-parking-in-hdb-carparks-and-increasing-charging-lots-for-carparks-with-more-ev-season-parkings-registered/), about 8,800 EVs at Sep 2024. Category and timing limitations apply.
+
+## 07_derived
+
+| File | Status |
 |---|---|
-| `MOT_parliamentary_replies_EV_charging_2024-2026.md` | 9 parliamentary replies: utilisation rates (HDB avg ~20%, peak-3h 36%, Tengah 61%, Bidadari 40%), 139 HDB carparks without chargers, 60k target split, siting criteria, fast hub per town by 2027, 8,800 EVs with HDB season parking (Sep 2024). |
-| `news_2026-09_LTA_34700_chargers_82100_EVs_AsiaOne.txt` | World EV Day 2026: 34,700 charging points, 82,100 EVs (Aug 2026), 63% of new cars, EEAI ends 1 Jan 2027. |
-| `news_2026-05_30500_chargers_BTO_deployment_Yahoo.txt` | Straits Times via Yahoo: 30,500 points (Mar 2026), BTO charger timing, Tengah, 139 carparks without chargers. |
-| `news_2026-01_EVs_45pct_of_2025_registrations.txt` | 2025 full-year EV share 45%. |
-| `LTA_our_EV_roadmap.txt` | LTA EV Roadmap page (incentives, HDB EV-ready by 2025, fast-charging plans). |
-| `LTA_2024-08_expanding_EV_charging_infra.txt` | LTA Aug 2024: 13,800 points, ~1,000 HDB carparks equipped. |
-| `LTA_2022-11_HDB_carpark_tender_12000_points.txt` | LTA Nov 2022: large-scale tender, ~2,000 HDB carparks, 12,000 points by 2025. |
-| `LTA_Electric_Vehicle_Guide_for_Drivers.pdf` | LTA driver guide (charger types, speeds). |
-| `Wikipedia_plugin_EVs_in_Singapore.txt` | Overview / timeline (secondary source — verify before citing). |
+| `charging_points_with_planning_area.csv`, `planning_area_summary.csv` | Legacy **all-public**, MP2019/Census2020 aggregates; outlet overcount fixed. Area totals contain 11,487 points; two unmapped points are listed in the audit exceptions. `total_kw` is summed point ratings, not verified shared capacity. Do not use as HDB siting results. |
+| `hdb_sites_capacity_review.csv` | All HDB sites with observed capacity status, converted coordinates and both planning-area vintages; no imputation performed. |
+| `population_dwelling_subzone_review.csv` | 6,640 aggregate rows, with metric, scope, source and geography vintage. |
+| `population_dwelling_planning_area_review.csv` | 1,100 area aggregate rows; overlapping source series remain separate. |
 
-## 08_costs — capex, prices, grants (for the objective / budget)
+The review tables are inputs for human checking, not fitted demand or recommendations.
 
-| File | What it is |
-|---|---|
-| `cost_parameters.csv` | **Model-ready table** of low/base/high values with unit, source, and `source_type` for each parameter: capex per point (7 kW AC, 22 kW AC, 50 kW DC, 100–150 kW DC), site grid-upgrade cost, charging prices, electricity cost, margin, utilisation, energy per point per day, grants, FX, lifetime, discount rate. |
-| `sources/official_SG_cost_and_price_sources.md` | Verbatim official figures: MOT median price S$0.66/kWh (HDB) and S$0.74 (private), SP tariff Q4 2026, Tengah fast hub (8 × 100 kW DC + 6 × 7.4 kW AC), EVe hub contracts, grant rules. |
-| `sources/ICCT_2019_EV_charging_infrastructure_costs_US_metros.pdf` | ICCT working paper: per-charger hardware (Table 2) and installation by chargers per site (Tables 3–4). **Main basis for capex.** |
-| `sources/LTA_ECCG_Guidelines_and_FAQs.pdf`, `sources/LTA_charger_grants_page.txt` | LTA grant rules (ECCG condo chargers; EHVCG heavy-vehicle chargers capped at S$30k). |
-| `sources/Motorist_2026_SG_charging_price_index.txt`, `sources/Kakilist_2026_SG_charger_cost_guide.txt` | SG secondary sources: operator AC/DC prices (Sep 2026) and home install costs. |
-| `sources/LTA_2022_EV_ecosystem_feedback_annex.pdf` | LTA 2022 consultation annex (context only; no cost figures). |
+## 08_costs
 
-**Read `source_type` before using a number.** Singapore has **not published** the capital cost of a public charging point or of carpark electrical upgrades. Capex is therefore based on ICCT (2019 USD × 1.28) and checked against SG secondary figures. Grid upgrade, charger lifetime and discount rate are **team assumptions** and must go into the sensitivity analysis. NREL's 2030 network report couldn't be downloaded (site unreachable from here).
+Active `cost_parameters.csv` has labelled scenario bounds, units, sources and cautions; original table is archived under `project/archive/planning/2026-10-31/`. `vendor_cost_evidence_2026-11-09.csv` separates actual posted components from installed-cost assumptions.
 
-## 07_derived — built by `../scripts/build_planning_area_summary.py`
+New snapshots: [Electric Pte Ltd hardware/maintenance](https://www.electric.com.sg/ev-charger/), [Go Electric standard installation](https://goelectric.com.sg/Product/Accessories/Standard-Installation-of-EV-Charger), and US DOE AFDC [maintenance](https://afdc.energy.gov/fuels/electricity-infrastructure-maintenance-and-operation) / [installation](https://afdc.energy.gov/fuels/electricity-infrastructure-development). Local posted prices are not HDB site quotes; international benchmarks are not Singapore observations. S$6,500 installed AC base, site upgrades, lifetime and discount rate remain assumptions.
 
-| File | What it is |
-|---|---|
-| `charging_points_with_planning_area.csv` | LTA charger file + planning area, region, subzone (point-in-polygon on MP2019), `is_fast` (≥43 kW). |
-| `planning_area_summary.csv` | Per planning area: charging points, chargers, outlets, fast points, locations, total kW, Census 2020 households (HDB/condo/landed), car-only commuters, high-income households, points per 1,000 households / car commuters. |
+Retained ICCT 2019, LTA grant PDFs, official price/tariff notes and secondary guides are background/cross-checks. No condo or heavy-vehicle grants deducted from HDB base cost. No carbon/fuel inputs are required. Keep price year, GST, unit (cabinet vs connector), ordinary installation and grid upgrade distinct; avoid double charging installation costs.
 
-Re-run: `python scripts/build_planning_area_summary.py` from `project/` (needs pandas + shapely).
+## 09_research_audit and 10_methodology
+
+Audit folder: meeting decisions with timestamps, gap review, source manifest, full file inventory, computed metrics, missing/zero capacity queue, charger registration unit audit, and nearest-HDB location review candidates. The 543 locations with multiple HDB sites within 100 m need disambiguation; proximity is not HDB confirmation.
+
+Methodology folder: official Gurobi facility and multiobjective documentation plus related author-hosted EV location manuscript. [Reference notes](10_methodology/README.md) explain applicability and the blocked Church–ReVelle original full-text download. No fabricated bibliography/full-text claim.
+
+## Reproduce this research pass
+
+From the repository root, install `project/requirements-research.txt` in a virtual environment, then run:
+
+```bash
+python3 project/scripts/audit_research_data.py
+python3 project/scripts/build_planning_area_summary.py
+```
+
+Optional re-download: `python3 project/scripts/fetch_research_sources.py` reuses existing files; `--refresh` replaces them and updates provenance. Refresh deliberately, not during a frozen model run. Audit after any changed inputs. The download tool logs failed/landing-page-only sources rather than pretending they are datasets. Source PDFs, raw ZIPs and their notes are preserved.
