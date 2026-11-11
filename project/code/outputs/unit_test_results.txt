@@ -1,0 +1,14 @@
+test_address_parser (__main__.ModelTests.test_address_parser) ... ok
+test_disconnected_node_remains_unmet (__main__.ModelTests.test_disconnected_node_remains_unmet) ... ok
+test_fixed_site_cost_and_dc_choice (__main__.ModelTests.test_fixed_site_cost_and_dc_choice) ... ok
+test_greedy_step_upgrade (__main__.ModelTests.test_greedy_step_upgrade) ... ok
+test_hand_solved_upgrade_integrality (__main__.ModelTests.test_hand_solved_upgrade_integrality) ... ok
+test_infeasible_target (__main__.ModelTests.test_infeasible_target) ... ok
+test_monotonic_cost_capacity_and_lp_bound (__main__.ModelTests.test_monotonic_cost_capacity_and_lp_bound) ... ok
+test_source_reconciliation (__main__.ModelTests.test_source_reconciliation) ... ok
+test_zero_demand_buys_nothing (__main__.ModelTests.test_zero_demand_buys_nothing) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.207s
+
+OK

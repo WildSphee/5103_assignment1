@@ -1,6 +1,6 @@
 # Data index — HDB EV charger placement and cost-effectiveness
 
-Updated **9 November 2026**. Original collection was downloaded 31 October; new source snapshots have their own timestamps and hashes in [source_manifest_2026-11-09.csv](09_research_audit/source_manifest_2026-11-09.csv). Scope: HDB placement, slow base model, fast extension; no carbon analysis. These files support planning; **no optimisation results exist yet**.
+Updated **9 November 2026**, with execution note added **10 November**. Original collection was downloaded 31 October; new source snapshots have their own timestamps and hashes in [source_manifest_2026-11-09.csv](09_research_audit/source_manifest_2026-11-09.csv). Scope: HDB placement, slow base model, fast extension; no carbon analysis. The frozen research files are preserved. Completed optimisation outputs are separate in [../code/outputs/](../code/outputs/); see the [execution summary](../EXECUTION_SUMMARY.md).
 
 Start with [gap_review.md](09_research_audit/gap_review.md), [file_inventory.csv](09_research_audit/file_inventory.csv) and [the working plan](../plan.md). Inventory includes schema, rows, null counts, duplicate rows, ranges where available, sizes and hashes. Raw files are retained with derived tables separate. Official open data should be cited to its agency; vendor material is labelled commercial evidence.
 

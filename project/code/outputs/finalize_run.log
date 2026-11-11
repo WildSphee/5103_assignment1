@@ -1,0 +1,20 @@
+CACHED target_80_capacity_bound
+CACHED target_90_capacity_bound
+CACHED target_95_capacity_bound
+CACHED base
+SOLVE remove_JM18 budget 15158000.0 target None
+RESULT remove_JM18 89.996 % 15158000 [('Optimal', 13.86, 5.057622320460299e-05), ('Optimal', 4.7, 8.229255787039449e-16)]
+SOLVE remove_U15 budget 15158000.0 target None
+RESULT remove_U15 89.99 % 15158000 [('Time limit reached', 45.12, 0.00012184547649249377), ('Optimal', 5.37, 0.0)]
+SOLVE remove_J98M budget 15158000.0 target None
+RESULT remove_J98M 90.001 % 15158000 [('Optimal', 30.66, 0.0), ('Optimal', 4.75, 5.486170524692966e-16)]
+SOLVE remove_JM13 budget 15158000.0 target None
+RESULT remove_JM13 90.0 % 15158000 [('Optimal', 13.84, 9.151584927665026e-06), ('Optimal', 4.84, 9.60079841821269e-16)]
+CACHED remove_U13
+SOLVE alternate_seed budget 15158000.0 target None
+RESULT alternate_seed 89.995 % 15158000 [('Optimal', 15.6, 6.22872473814791e-05), ('Optimal', 4.62, 0.0)]
+SOLVE repeat_base budget 15158000.0 target None
+RESULT repeat_base 90.001 % 15158000 [('Optimal', 10.36, 0.0), ('Optimal', 4.48, 0.0)]
+SOLVE repeat_current_2 budget 15158000.0 target None
+RESULT repeat_current_2 90.001 % 15158000 [('Optimal', 10.03, 0.0), ('Optimal', 4.43, 0.0)]
+COMPLETE finalize

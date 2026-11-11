@@ -1,0 +1,40 @@
+# Release validation
+
+- **PASS** Source hash: data/01_ev_charging_supply/LTA_EV_charging_points_Sep2026.csv: b1032837f236543c54c3e046f06f61843180a0f496cb651f1d86c4fe9eb9b6c0
+- **PASS** Source hash: data/02_ev_population_and_registrations/LTA_M03_monthly_new_car_registrations_by_make_fuel.csv: 0b880384b4bd27677587fa19b0d9526f96fd2161d512a1ec30c82c59bcc312f8
+- **PASS** Source hash: data/02_ev_population_and_registrations/LTA_M09_monthly_vehicle_population_by_fuel.csv: fcf52b8be12587f23a0c19f80a6b79799b19412f8988169408a9f2c913d9e4ea
+- **PASS** Source hash: data/03_carparks_candidate_sites/HDB_carpark_information.csv: 43b6b4563b81afb75474a7ad50824f6ea27bbbf73b963ee3449f244ea8e2e2ac
+- **PASS** Source hash: data/03_carparks_candidate_sites/HDB_carpark_lots_snapshot_2026-10-31.csv: fbbe6bcc5bad40402e378c43a16bff46bd0b1619f22175b46c9cc49006449354
+- **PASS** Source hash: data/04_demographics_demand_proxies/updates_2026-11-09/dwellings_type_2025__hsetod2025.csv: 6f953a42f27b858b092e4fb5113a4d6c54f3c24855b8ea2e1b95c0c354d21e2b
+- **PASS** Source hash: data/04_demographics_demand_proxies/updates_2026-11-09/dwellings_type_2026__hsetod2026.csv: 258de823e3fa6d331e48ed6e6b05cf2326215828a80723e6872d311882fd2e1d
+- **PASS** Source hash: data/04_demographics_demand_proxies/updates_2026-11-09/population_dwelling_2025__respopagesextod2025.csv: e6fad37e3804078318527d8ea75d7148fdbe66f30b04447ac9d6f2cf0f8928ce
+- **PASS** Source hash: data/04_demographics_demand_proxies/updates_2026-11-09/population_dwelling_2026__respopagesextod2026.csv: 3359bef6c53535b6a582c71bf0101e07839ed5f317e258bdf6d5e368d816ec1e
+- **PASS** Source hash: data/05_geospatial_boundaries/URA_MP2019_planning_area_boundary.geojson: f23856251b467089f788d0fff72ef5a38e753f21aa69b4352401d7ed50d380cc
+- **PASS** Source hash: data/05_geospatial_boundaries/URA_MP2025_planning_area_boundary.geojson: e6ecc1743de5c39ec154a30b3b8037896fbc6c5f863e10c7dbfd77de12706c9c
+- **PASS** Source hash: data/08_costs/cost_parameters.csv: ede30fb4ab6f2f73ad2707105873d9a983ce7c7a309c03067afbedf1581a5d3a
+- **PASS** Unique source IDs: 11489 points; 2273 sites
+- **PASS** Outlet counting: 9279 registrations; 11489 deduplicated outlets
+- **PASS** Missing-capacity retention: 278 imputed; 706663.0 observed lots
+- **PASS** Base assignment evidence: 5342 points; max 138.727 m
+- **PASS** Registration consistency: Each assigned registration belongs to at most one site
+- **PASS** Power bounds: Maximum-port bound never exceeds sum-port bound
+- **PASS** Normalised demand weights: 1.0
+- **PASS** Independent saved-flow/cost/feasibility audit: 78 integer results checked; violations []
+- **PASS** Solver status transparency: 21 runs include a time-limited pass; names retained in solver_status_audit.json
+- **PASS** Budget-service monotonicity: [180773.30892845753, 202115.65632845822, 223451.54835112783, 244800.35112845883, 266142.698528459, 287460.8840806496]
+- **PASS** No-build = zero-budget frontier: 180773.30892845753
+- **PASS** Minimum-capex certificate target_80: Feasible cost 9912500.0; lower bound 9912500
+- **PASS** Minimum-capex certificate target_90: Feasible cost 15158000.0; lower bound 15158000
+- **PASS** Minimum-capex certificate target_95: Feasible cost 17784000.0; lower bound 17784000
+- **PASS** LP bound dominates integer service: {'lp_service_upper_bound': 266142.7014855763, 'integer_service': 266142.698528459, 'absolute_bound_gap_kwh_day': 0.0029571172781288624}
+- **PASS** Identical-input reproduction: {'repeat_service_difference': 0.0, 'repeat_identical_additions': True, 'alternate_seed_service_difference': -16.576263796945568, 'alternate_seed_site_jaccard': 0.22905027932960895, 'repeat_site_jaccard': 1.0, 'frozen_base_vs_current_implementation_jaccard': 1.0}
+- **PASS** Regret interval consistency: Only physically and budget-feasible fixed plans have regret bounds
+- **PASS** Expected-answer model tests: OK
+- **PASS** Workbook formula caches: {'B5': 295711.98246575345, 'B6': 266142.698528459, 'B7': 0.9000064735600666, 'B8': 2332.0, 'B10': 15158000.0, 'B11': 3315590.3473263914, 'B12': 180773.30892845753, 'B13': 85369.38960000148}
+- **PASS** Workbook error cells: []
+- **PASS** Demand calculator reconciles to frozen model: 0.0
+- **PASS** Report body typography: 12-point Times New Roman
+- **PASS** Report margins: 1 inch on all sides
+- **PASS** Formula images embedded: 11
+- **PASS** Narrative length: {'narrative_pages': 11, 'non_appendix_pages_including_cover_references': 13, 'total_pages': 32}
+- **PASS** Rendered content within page bounds: []

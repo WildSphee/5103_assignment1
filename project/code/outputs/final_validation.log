@@ -1,0 +1,39 @@
+                                                                                                                check status
+                                           Source hash: data/01_ev_charging_supply/LTA_EV_charging_points_Sep2026.csv   PASS
+          Source hash: data/02_ev_population_and_registrations/LTA_M03_monthly_new_car_registrations_by_make_fuel.csv   PASS
+                  Source hash: data/02_ev_population_and_registrations/LTA_M09_monthly_vehicle_population_by_fuel.csv   PASS
+                                            Source hash: data/03_carparks_candidate_sites/HDB_carpark_information.csv   PASS
+                               Source hash: data/03_carparks_candidate_sites/HDB_carpark_lots_snapshot_2026-10-31.csv   PASS
+              Source hash: data/04_demographics_demand_proxies/updates_2026-11-09/dwellings_type_2025__hsetod2025.csv   PASS
+              Source hash: data/04_demographics_demand_proxies/updates_2026-11-09/dwellings_type_2026__hsetod2026.csv   PASS
+Source hash: data/04_demographics_demand_proxies/updates_2026-11-09/population_dwelling_2025__respopagesextod2025.csv   PASS
+Source hash: data/04_demographics_demand_proxies/updates_2026-11-09/population_dwelling_2026__respopagesextod2026.csv   PASS
+                                 Source hash: data/05_geospatial_boundaries/URA_MP2019_planning_area_boundary.geojson   PASS
+                                 Source hash: data/05_geospatial_boundaries/URA_MP2025_planning_area_boundary.geojson   PASS
+                                                                       Source hash: data/08_costs/cost_parameters.csv   PASS
+                                                                                                    Unique source IDs   PASS
+                                                                                                      Outlet counting   PASS
+                                                                                           Missing-capacity retention   PASS
+                                                                                             Base assignment evidence   PASS
+                                                                                             Registration consistency   PASS
+                                                                                                         Power bounds   PASS
+                                                                                            Normalised demand weights   PASS
+                                                                        Independent saved-flow/cost/feasibility audit   PASS
+                                                                                           Solver status transparency   PASS
+                                                                                          Budget-service monotonicity   PASS
+                                                                                      No-build = zero-budget frontier   PASS
+                                                                                  Minimum-capex certificate target_80   PASS
+                                                                                  Minimum-capex certificate target_90   PASS
+                                                                                  Minimum-capex certificate target_95   PASS
+                                                                                   LP bound dominates integer service   PASS
+                                                                                         Identical-input reproduction   PASS
+                                                                                          Regret interval consistency   PASS
+                                                                                          Expected-answer model tests   PASS
+                                                                                              Workbook formula caches   PASS
+                                                                                                 Workbook error cells   PASS
+                                                                         Demand calculator reconciles to frozen model   PASS
+                                                                                               Report body typography   PASS
+                                                                                                       Report margins   PASS
+                                                                                              Formula images embedded   PASS
+                                                                                                     Narrative length   PASS
+                                                                                  Rendered content within page bounds   PASS

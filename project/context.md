@@ -2,6 +2,8 @@
 
 _Last updated: 9 November 2026, after rereading the corrected full meeting transcript._
 
+**Execution note — 10 November 2026:** The analysis, report and workbook have now been produced. See [EXECUTION_SUMMARY.md](EXECUTION_SUMMARY.md) and [code/README.md](code/README.md). The research-only statements below preserve the earlier planning context; they no longer describe implementation status.
+
 ## Agreed direction
 
 1. **Where and how many charging points to add in HDB carparks throughout Singapore.** Private estates and other-agency placement are outside scope.

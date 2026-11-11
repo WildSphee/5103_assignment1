@@ -1,0 +1,243 @@
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+LP has 13 rows; 12 cols; 39 nonzeros
+Coefficient ranges:
+  Matrix  [1e+00, 6e+04]
+  Cost    [1e+00, 1e+00]
+  Bound   [1e+00, 3e+00]
+  RHS     [1e+00, 6e+00]
+WARNING: No semi-integer/integer variables in model with non-empty integrality
+Presolving model
+6 rows, 5 cols, 13 nonzeros 0s
+6 rows, 4 cols, 12 nonzeros 0s
+Presolve reductions: rows 6(-7); columns 4(-8); nonzeros 12(-27) 
+Solving the presolved LP
+Using dual simplex solver
+  Iteration        Objective     Infeasibilities num(sum)
+          0     0.0000000000e+00 Ph1: 0(0) 0.0s
+          3    -1.0000000000e+01 Pr: 0(0) 0.0s
+
+Performed postsolve
+Solving the original LP from the solution after postsolve
+
+Model status        : Optimal
+Simplex   iterations: 3
+Objective value     : -1.0000000000e+01
+P-D objective error :  0.0000000000e+00
+HiGHS run time      :          0.00
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+LP has 13 rows; 12 cols; 39 nonzeros
+Coefficient ranges:
+  Matrix  [1e+00, 6e+04]
+  Cost    [1e+00, 1e+00]
+  Bound   [1e+00, 3e+00]
+  RHS     [1e+00, 6e+00]
+WARNING: No semi-integer/integer variables in model with non-empty integrality
+Presolving model
+6 rows, 5 cols, 13 nonzeros 0s
+6 rows, 4 cols, 12 nonzeros 0s
+Presolve reductions: rows 6(-7); columns 4(-8); nonzeros 12(-27) 
+Solving the presolved LP
+Using dual simplex solver
+  Iteration        Objective     Infeasibilities num(sum)
+          0     0.0000000000e+00 Ph1: 0(0) 0.0s
+          3    -1.0000000000e+01 Pr: 0(0) 0.0s
+
+Performed postsolve
+Solving the original LP from the solution after postsolve
+
+Model status        : Optimal
+Simplex   iterations: 3
+Objective value     : -1.0000000000e+01
+P-D objective error :  0.0000000000e+00
+HiGHS run time      :          0.00
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+LP has 13 rows; 12 cols; 39 nonzeros
+Coefficient ranges:
+  Matrix  [1e+00, 6e+04]
+  Cost    [1e+00, 1e+00]
+  Bound   [1e+00, 3e+00]
+  RHS     [1e+00, 6e+00]
+WARNING: No semi-integer/integer variables in model with non-empty integrality
+Presolving model
+6 rows, 5 cols, 13 nonzeros 0s
+6 rows, 4 cols, 12 nonzeros 0s
+Presolve reductions: rows 6(-7); columns 4(-8); nonzeros 12(-27) 
+Solving the presolved LP
+Using dual simplex solver
+  Iteration        Objective     Infeasibilities num(sum)
+          0     0.0000000000e+00 Ph1: 0(0) 0.0s
+          3    -1.0000000000e+01 Pr: 0(0) 0.0s
+
+Performed postsolve
+Solving the original LP from the solution after postsolve
+
+Model status        : Optimal
+Simplex   iterations: 3
+Objective value     : -1.0000000000e+01
+P-D objective error :  0.0000000000e+00
+HiGHS run time      :          0.00
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+LP has 13 rows; 12 cols; 39 nonzeros
+Coefficient ranges:
+  Matrix  [1e+00, 6e+04]
+  Cost    [1e+00, 1e+00]
+  Bound   [1e+00, 3e+00]
+  RHS     [1e+00, 6e+00]
+WARNING: No semi-integer/integer variables in model with non-empty integrality
+Presolving model
+6 rows, 5 cols, 13 nonzeros 0s
+6 rows, 4 cols, 12 nonzeros 0s
+Presolve reductions: rows 6(-7); columns 4(-8); nonzeros 12(-27) 
+Solving the presolved LP
+Using dual simplex solver
+  Iteration        Objective     Infeasibilities num(sum)
+          0     0.0000000000e+00 Ph1: 0(0) 0.0s
+          3    -1.0000000000e+01 Pr: 0(0) 0.0s
+
+Performed postsolve
+Solving the original LP from the solution after postsolve
+
+Model status        : Optimal
+Simplex   iterations: 3
+Objective value     : -1.0000000000e+01
+P-D objective error :  0.0000000000e+00
+HiGHS run time      :          0.00
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+LP has 13 rows; 12 cols; 39 nonzeros
+Coefficient ranges:
+  Matrix  [1e+00, 6e+04]
+  Cost    [1e+00, 1e+00]
+  Bound   [1e+00, 3e+00]
+  RHS     [1e+00, 6e+00]
+WARNING: No semi-integer/integer variables in model with non-empty integrality
+Presolving model
+6 rows, 5 cols, 13 nonzeros 0s
+6 rows, 4 cols, 12 nonzeros 0s
+Presolve reductions: rows 6(-7); columns 4(-8); nonzeros 12(-27) 
+Solving the presolved LP
+Using dual simplex solver
+  Iteration        Objective     Infeasibilities num(sum)
+          0     0.0000000000e+00 Ph1: 0(0) 0.0s
+          3    -1.0000000000e+01 Pr: 0(0) 0.0s
+
+Performed postsolve
+Solving the original LP from the solution after postsolve
+
+Model status        : Optimal
+Simplex   iterations: 3
+Objective value     : -1.0000000000e+01
+P-D objective error :  0.0000000000e+00
+HiGHS run time      :          0.00
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+LP has 13 rows; 12 cols; 39 nonzeros
+Coefficient ranges:
+  Matrix  [1e+00, 6e+04]
+  Cost    [1e+00, 1e+00]
+  Bound   [1e+00, 3e+00]
+  RHS     [1e+00, 6e+00]
+WARNING: No semi-integer/integer variables in model with non-empty integrality
+Presolving model
+6 rows, 5 cols, 13 nonzeros 0s
+6 rows, 4 cols, 12 nonzeros 0s
+Presolve reductions: rows 6(-7); columns 4(-8); nonzeros 12(-27) 
+Solving the presolved LP
+Using dual simplex solver
+  Iteration        Objective     Infeasibilities num(sum)
+          0     0.0000000000e+00 Ph1: 0(0) 0.0s
+          3    -1.0000000000e+01 Pr: 0(0) 0.0s
+
+Performed postsolve
+Solving the original LP from the solution after postsolve
+
+Model status        : Optimal
+Simplex   iterations: 3
+Objective value     : -1.0000000000e+01
+P-D objective error :  0.0000000000e+00
+HiGHS run time      :          0.00
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+LP has 13 rows; 12 cols; 39 nonzeros
+Coefficient ranges:
+  Matrix  [1e+00, 6e+04]
+  Cost    [1e+00, 1e+00]
+  Bound   [1e+00, 3e+00]
+  RHS     [1e+00, 6e+00]
+WARNING: No semi-integer/integer variables in model with non-empty integrality
+Presolving model
+6 rows, 5 cols, 13 nonzeros 0s
+6 rows, 4 cols, 12 nonzeros 0s
+Presolve reductions: rows 6(-7); columns 4(-8); nonzeros 12(-27) 
+Solving the presolved LP
+Using dual simplex solver
+  Iteration        Objective     Infeasibilities num(sum)
+          0     0.0000000000e+00 Ph1: 0(0) 0.0s
+          3    -1.0000000000e+01 Pr: 0(0) 0.0s
+
+Performed postsolve
+Solving the original LP from the solution after postsolve
+
+Model status        : Optimal
+Simplex   iterations: 3
+Objective value     : -1.0000000000e+01
+P-D objective error :  0.0000000000e+00
+HiGHS run time      :          0.00
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+LP has 13 rows; 12 cols; 39 nonzeros
+Coefficient ranges:
+  Matrix  [1e+00, 6e+04]
+  Cost    [1e+00, 1e+00]
+  Bound   [1e+00, 3e+00]
+  RHS     [1e+00, 6e+00]
+WARNING: No semi-integer/integer variables in model with non-empty integrality
+Presolving model
+6 rows, 5 cols, 13 nonzeros 0s
+6 rows, 4 cols, 12 nonzeros 0s
+Presolve reductions: rows 6(-7); columns 4(-8); nonzeros 12(-27) 
+Solving the presolved LP
+Using dual simplex solver
+  Iteration        Objective     Infeasibilities num(sum)
+          0     0.0000000000e+00 Ph1: 0(0) 0.0s
+          3    -1.0000000000e+01 Pr: 0(0) 0.0s
+
+Performed postsolve
+Solving the original LP from the solution after postsolve
+
+Model status        : Optimal
+Simplex   iterations: 3
+Objective value     : -1.0000000000e+01
+P-D objective error :  0.0000000000e+00
+HiGHS run time      :          0.00
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+LP has 13 rows; 12 cols; 39 nonzeros
+Coefficient ranges:
+  Matrix  [1e+00, 6e+04]
+  Cost    [1e+00, 1e+00]
+  Bound   [1e+00, 3e+00]
+  RHS     [1e+00, 6e+00]
+WARNING: No semi-integer/integer variables in model with non-empty integrality
+Presolving model
+6 rows, 5 cols, 13 nonzeros 0s
+6 rows, 4 cols, 12 nonzeros 0s
+Presolve reductions: rows 6(-7); columns 4(-8); nonzeros 12(-27) 
+Solving the presolved LP
+Using dual simplex solver
+  Iteration        Objective     Infeasibilities num(sum)
+          0     0.0000000000e+00 Ph1: 0(0) 0.0s
+          3    -1.0000000000e+01 Pr: 0(0) 0.0s
+
+Performed postsolve
+Solving the original LP from the solution after postsolve
+
+Model status        : Optimal
+Simplex   iterations: 3
+Objective value     : -1.0000000000e+01
+P-D objective error :  0.0000000000e+00
+HiGHS run time      :          0.00

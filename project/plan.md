@@ -1,6 +1,8 @@
 # Working analysis plan — HDB charger placement and cost-effectiveness
 
-Updated 9 November 2026 from the full meeting transcript. Detailed internal working document; concise report outline is in `report_skeleton.md`. This supersedes the 31 October plan, preserved in `archive/planning/2026-10-31/`. Decisions versus proposed modelling defaults are distinguished below. Research and profiling are complete for this pass; the optimisation pipeline described here is **planned, not implemented or solved**.
+**Execution update — 10 November 2026:** The scenario analysis is implemented and solved. See [execution summary](EXECUTION_SUMMARY.md), [report](HDB_EV_Charging_Report.docx), [workbook](HDB_EV_Charging_Analysis.xlsx), and [Python implementation](code/README.md). Site-specific engineering and unresolved supply identification remain explicit review gates.
+
+The detailed plan below was updated 9 November 2026 from the full meeting transcript and is retained as the pre-implementation specification. The concise outline is in `report_skeleton.md`. It superseded the 31 October plan, preserved in `archive/planning/2026-10-31/`. Decisions versus proposed modelling defaults are distinguished below.
 
 ## 1. Decision and storyline
 

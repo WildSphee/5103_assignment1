@@ -1,0 +1,6 @@
+{
+  "compatible_implementation_fingerprints": [
+    "0f9f583c99036c742a985f5ca21c4b9f7ce223f44d68d08bcda40422452d4ec9c80f5353d0afcc034f43085195a976f7691efa8f5c6c9a25bdc089c54850b9b084aaef940a39e373eb1bbe0c5ff6bce1a214b0981e88072f08fde2228a3bf857"
+  ],
+  "reason": "Same mathematical model. New implementation resets per-solve time limits for reused LPs, adds valid integer count cuts, seeds a feasible incumbent and corrects fractional-output accounting. Prior feasible results and their original solver statuses remain valid."
+}

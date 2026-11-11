@@ -1,6 +1,6 @@
 # Where should HDB add EV chargers, and what does each investment level deliver?
 
-**Working report skeleton — 9 November 2026.** Seven main sections, approximately 11 narrative pages, plus references and appendices; adjust to the guideline's flexible 8–14-page suggestion. 12-point Times, double spacing, 1-inch margins. For review **15 November 2026, 11 a.m. Singapore time**. This is a structure, not a results report; no optimisation has been run.
+**Implemented — 10 November 2026.** The seven-section [results report](HDB_EV_Charging_Report.docx), [checked PDF](HDB_EV_Charging_Report.pdf), and [Excel workbook](HDB_EV_Charging_Analysis.xlsx) are complete. See [execution and validation details](EXECUTION_SUMMARY.md). The original outline below is retained as the pre-analysis structure; its “awaiting” labels describe the 9 November planning state, not current execution status. Main text uses 12-point Times, double spacing and one-inch margins.
 
 ## 1. Problem and decision (0.75 page)
 Explain HDB residential charging and the two connected questions: where/how many additional points, and incremental service per investment dollar. Define all-HDB scope, one slow type in base, current supply and proposed 2027/2030 scenarios. Briefly motivate local adequacy without using all-public points as HDB supply. No carbon or petrol-savings angle.

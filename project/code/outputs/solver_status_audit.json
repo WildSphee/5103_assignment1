@@ -1,0 +1,27 @@
+{
+  "checked_runs": 78,
+  "non_optimal_pass_runs": [
+    "broad_supply",
+    "capex_4500",
+    "dependence_60",
+    "frontier_0.5",
+    "frontier_1.25",
+    "hdb_share_30",
+    "hours_8",
+    "housing_2025",
+    "intensity_014",
+    "joint_low",
+    "matched_proportional",
+    "mean_power_100",
+    "mileage_12000",
+    "path_inflation_140",
+    "radius_250",
+    "remove_U15",
+    "stock_2027_low",
+    "stock_current_2026",
+    "sum_port_power",
+    "target_80",
+    "target_80_capacity_bound"
+  ],
+  "violations": []
+}

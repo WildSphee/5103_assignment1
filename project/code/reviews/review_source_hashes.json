@@ -1,0 +1,10 @@
+[
+  {
+    "path": "project/data/03_carparks_candidate_sites/HDB_carpark_information.csv",
+    "sha256": "43b6b4563b81afb75474a7ad50824f6ea27bbbf73b963ee3449f244ea8e2e2ac"
+  },
+  {
+    "path": "project/data/01_ev_charging_supply/LTA_EV_charging_points_Sep2026.csv",
+    "sha256": "b1032837f236543c54c3e046f06f61843180a0f496cb651f1d86c4fe9eb9b6c0"
+  }
+]

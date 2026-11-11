@@ -1,0 +1,99 @@
+CACHED target_80_capacity_bound
+CACHED target_90_capacity_bound
+CACHED target_95_capacity_bound
+CACHED base
+CACHED stock_current_2026
+CACHED stock_2027_low
+CACHED stock_2027_high
+CACHED outlook_2030_low
+CACHED outlook_2030_base
+CACHED outlook_2030_high
+CACHED hdb_share_30
+CACHED hdb_share_55
+CACHED dependence_60
+CACHED dependence_100
+CACHED mileage_12000
+CACHED mileage_20000
+SOLVE intensity_014 budget 15158000.0 target None
+SOLVE intensity_020 budget 15158000.0 target None
+SOLVE efficiency_085 budget 15158000.0 target None
+RESULT efficiency_085 85.273 % 15138500 [('Optimal', 1.75, 0.0005235457143237861), ('Optimal', 5.14, 5.493237296515242e-16)]
+SOLVE efficiency_095 budget 15158000.0 target None
+RESULT intensity_020 72.874 % 15138500 [('Optimal', 1.72, 0.00043192426481133874), ('Optimal', 8.11, 1.3733093241288105e-16)]
+SOLVE unknown_no_build budget 15158000.0 target None
+RESULT efficiency_095 94.654 % 15158000 [('Optimal', 4.64, 0.00019150186779576115), ('Optimal', 5.04, 0.00042881646655267675)]
+RESULT unknown_no_build 89.98 % 15158000 [('Optimal', 3.94, 0.00022819023219794178), ('Optimal', 4.53, 0.0004288164665533625)]
+SOLVE imputed_half budget 15158000.0 target None
+SOLVE imputed_150 budget 15158000.0 target None
+RESULT imputed_half 90.013 % 15158000 [('Optimal', 1.57, 0.00022781433127170593), ('Optimal', 4.96, 0.00042881646655199094)]
+SOLVE housing_2025 budget 15158000.0 target None
+RESULT imputed_150 89.931 % 15158000 [('Optimal', 22.51, 7.103978882761477e-05), ('Optimal', 4.97, 0.0)]
+SOLVE population_2025 budget 15158000.0 target None
+RESULT housing_2025 90.049 % 15158000 [('Time limit reached', 25.04, 0.00024706944168700586), ('Optimal', 4.76, 0.00042881646655267675)]
+SOLVE housing_2026 budget 15158000.0 target None
+RESULT population_2025 89.877 % 15158000 [('Optimal', 4.46, 0.000324476005867576), ('Optimal', 5.03, 0.0008576329331048048)]
+SOLVE population_2026 budget 15158000.0 target None
+RESULT population_2026 90.101 % 15158000 [('Optimal', 4.99, 3.420367290518425e-05), ('Optimal', 3.58, 0.0)]
+SOLVE broad_supply budget 15158000.0 target None
+RESULT intensity_014 99.961 % 15103500 [('Time limit reached', 25.04, 0.00038739871545430063), ('Time limit reached', 61.17, 0.04083084805809627)]
+SOLVE sum_port_power budget 15158000.0 target None
+RESULT housing_2026 90.197 % 15158000 [('Optimal', 14.21, 0.0002478771798625761), ('Optimal', 5.04, 0.00042881646655171663)]
+SOLVE hours_4 budget 15158000.0 target None
+RESULT hours_4 61.163 % 15125500 [('Optimal', 1.81, 0.0006746746590489689), ('Optimal', 5.17, 0.0)]
+SOLVE hours_8 budget 15158000.0 target None
+RESULT broad_supply 99.966 % 15137000 [('Optimal', 15.29, 0.00033870812887246815), ('Time limit reached', 61.26, 0.1251345611226962)]
+SOLVE availability_90 budget 15158000.0 target None
+RESULT hours_8 99.978 % 15102500 [('Optimal', 16.19, 0.00021695255049472009), ('Time limit reached', 45.74, 0.340669599361122)]
+SOLVE availability_99 budget 15158000.0 target None
+RESULT sum_port_power 98.783 % 15125500 [('Time limit reached', 25.21, 0.0018880208444148254), ('Time limit reached', 56.09, 0.004297378599055447)]
+SOLVE mean_power_70 budget 15158000.0 target None
+RESULT mean_power_70 74.92 % 15138500 [('Optimal', 4.16, 0.00045259893565484507), ('Optimal', 6.97, 1.3733093241288105e-16)]
+SOLVE mean_power_100 budget 15158000.0 target None
+RESULT availability_90 83.891 % 15145000 [('Optimal', 19.87, 0.0003136453184988855), ('Optimal', 5.3, 5.49087968394163e-16)]
+SOLVE radius_250 budget 15158000.0 target None
+RESULT availability_99 91.714 % 15158000 [('Optimal', 18.7, 0.00022730677042971016), ('Optimal', 4.31, 0.00042881646655267675)]
+SOLVE radius_800 budget 15158000.0 target None
+RESULT radius_800 91.942 % 15158000 [('Optimal', 3.04, 0.0), ('Optimal', 20.74, 1.3715426311732415e-16)]
+SOLVE self_site_only budget 15158000.0 target None
+RESULT self_site_only 72.883 % 15158000 [('Optimal', 1.62, 2.7007415305853675e-16), ('Optimal', 1.26, 0.0)]
+SOLVE path_inflation_140 budget 15158000.0 target None
+RESULT mean_power_100 99.93 % 15153500 [('Optimal', 19.89, 0.0006976053096299997), ('Time limit reached', 58.99, 0.10424883612886589)]
+SOLVE capex_4500 budget 15158000.0 target None
+RESULT radius_250 85.557 % 15158000 [('Time limit reached', 25.04, 0.0009371857731301221), ('Time limit reached', 57.09, 0.0025728987993135916)]
+SOLVE capex_10000 budget 15158000.0 target None
+RESULT capex_10000 79.884 % 15150000 [('Optimal', 13.12, 3.8116251918152895e-05), ('Optimal', 3.36, 9.604990213187777e-16)]
+SOLVE headroom_148 budget 15158000.0 target None
+RESULT headroom_148 89.964 % 15151500 [('Optimal', 1.69, 0.00040796009008997077), ('Optimal', 4.24, 0.00042900042900065305)]
+SOLVE headroom_888 budget 15158000.0 target None
+RESULT path_inflation_140 87.129 % 15158000 [('Optimal', 22.24, 0.00045415641290147494), ('Time limit reached', 59.99, 0.0012864493996559729)]
+SOLVE upgrade_free budget 15158000.0 target None
+RESULT headroom_888 89.937 % 15132000 [('Optimal', 4.57, 0.0007041372110842157), ('Optimal', 4.39, 0.000429553264604211)]
+SOLVE upgrade_250k budget 15158000.0 target None
+RESULT upgrade_free 89.969 % 15158000 [('Optimal', 1.5, 0.0003520861262623314), ('Optimal', 3.61, 0.0008576329331046676)]
+SOLVE lifetime_8 budget 15158000.0 target None
+RESULT upgrade_250k 89.963 % 15151500 [('Optimal', 1.55, 0.0004167602708462538), ('Optimal', 4.29, 0.0008580008580007572)]
+SOLVE lifetime_12 budget 15158000.0 target None
+RESULT lifetime_8 89.963 % 15151500 [('Optimal', 1.64, 0.0004167602708462538), ('Optimal', 4.38, 0.0008580008580007094)]
+SOLVE discount_03 budget 15158000.0 target None
+RESULT lifetime_12 89.963 % 15151500 [('Optimal', 1.5, 0.0004167602708462538), ('Optimal', 4.83, 0.0008580008580007341)]
+SOLVE discount_08 budget 15158000.0 target None
+RESULT discount_03 89.963 % 15151500 [('Optimal', 1.56, 0.0004167602708462538), ('Optimal', 4.5, 0.0008580008580007322)]
+SOLVE lot_share_05 budget 15158000.0 target None
+RESULT discount_08 89.963 % 15151500 [('Optimal', 1.54, 0.0004167602708462538), ('Optimal', 4.28, 0.0008580008580009935)]
+SOLVE lot_share_15 budget 15158000.0 target None
+RESULT lot_share_15 89.956 % 15151500 [('Optimal', 1.55, 0.0004941895156747705), ('Optimal', 4.84, 0.0008580008580008944)]
+SOLVE deduplicated_bays budget 15158000.0 target None
+RESULT capex_4500 99.906 % 15156000 [('Optimal', 17.35, 0.0009391873047186351), ('Time limit reached', 71.66, 0.04137956393273396)]
+SOLVE ac_dc_extension budget 15158000.0 target None
+RESULT lot_share_05 89.996 % 15158000 [('Optimal', 16.18, 4.694416240615533e-05), ('Optimal', 4.03, 1.3715426311732415e-16)]
+RESULT deduplicated_bays 89.963 % 15151500 [('Optimal', 1.54, 0.0004167602708462538), ('Optimal', 4.69, 0.00085800085800062)]
+SOLVE joint_low budget 15158000.0 target None
+SOLVE joint_high budget 15158000.0 target None
+RESULT ac_dc_extension 89.997 % 15158000 [('Optimal', 5.31, 4.265874958574096e-05), ('Optimal', 3.99, 0.0001502767975725645)]
+SOLVE joint_access budget 15158000.0 target None
+RESULT joint_high 54.016 % 15100000 [('Optimal', 1.54, 0.0007620873229669559), ('Optimal', 4.17, 0.0)]
+RESULT joint_access 72.883 % 15158000 [('Optimal', 1.34, 0.0), ('Optimal', 0.95, 6.857713155866208e-16)]
+RESULT joint_low 99.953 % 11548000 [('Optimal', 1.04, 0.0004664700683223963), ('Time limit reached', 40.2, 0.5559544390953226)]
+SOLVE remove_U13 budget 15158000.0 target None
+RESULT remove_U13 90.001 % 15158000 [('Optimal', 39.43, 0.0), ('Optimal', 4.93, 0.0)]
+SOLVE remove_JS3L budget 15158000.0 target None

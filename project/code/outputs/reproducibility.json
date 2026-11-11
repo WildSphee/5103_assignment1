@@ -1,0 +1,8 @@
+{
+  "repeat_service_difference": 0.0,
+  "repeat_identical_additions": true,
+  "alternate_seed_service_difference": -16.576263796945568,
+  "alternate_seed_site_jaccard": 0.22905027932960895,
+  "repeat_site_jaccard": 1.0,
+  "frozen_base_vs_current_implementation_jaccard": 1.0
+}

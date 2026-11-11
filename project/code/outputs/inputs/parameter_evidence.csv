@@ -1,0 +1,25 @@
+parameter,low,base,high,unit,source_type,source,notes
+capex_slow_ac_7_4kw_installed,4500.0,6500.0,10000.0,SGD/point upfront,ASSUMPTION informed by evidence,https://www.electric.com.sg/ev-charger/; archived ICCT 2019 report,Includes ordinary installation; not a verified HDB quote. Hardware 7kW is S$1500-2800 ex GST; rating difference and public-network costs need review. Excludes separately modelled grid upgrade. No automatic extra mobilisation.
+capex_dc_50kw_installed,45000.0,60000.0,95000.0,SGD/point upfront,ASSUMPTION informed by international research,ICCT 2019 Tables 2 and 4; https://www.electric.com.sg/ev-charger/,"50kW extension only; local 40/60kW hardware prices are comparisons, not a 50kW installed quote. Shared-cabinet costs must be allocated once."
+fixed_site_mobilisation,0.0,0.0,10000.0,SGD/site upfront,ASSUMPTION,team scenario,Base zero because ordinary installation is included per point; any nonzero case must reconcile components to prevent double counting.
+site_grid_upgrade_cost,0.0,50000.0,250000.0,SGD/upgraded site upfront,ASSUMPTION,team scenario; no local quote obtained,Not an observed distribution. Do not infer upgrade requirement from no-charger status.
+ac_annual_maintenance,200.0,380.0,800.0,SGD/point/year,vendor comparator + assumed sensitivity,https://www.electric.com.sg/ev-charger/,380 is advertised non-restricted AC maintenance excluding GST. Scope is not all-in HDB operations; low/high are scenarios.
+dc_annual_maintenance,800.0,1180.0,2500.0,SGD/charger/year,vendor comparator + assumed sensitivity,https://www.electric.com.sg/ev-charger/,1180 is advertised non-restricted private-use DC maintenance excluding GST. Not an HDB contract; allocate shared cabinet costs once.
+network_payment_admin,0.0,200.0,500.0,SGD/point/year,ASSUMPTION,team scenario,Separate backend/network/admin reserve; not quoted. Avoid overlap with maintenance contract.
+charger_lifetime,8.0,10.0,12.0,years,ASSUMPTION,team scenario,Common lifetime for simplified annualisation; upgrades may have a different economic life.
+discount_rate,0.03,0.05,0.08,fraction/year,ASSUMPTION,team scenario,Not a prescribed government discount rate.
+new_ac_power,7.4,7.4,7.4,kW/point,design choice,meeting one-slow-type base; register power modes,New additions only; existing heterogeneous supply retained with explicit capacity assumptions.
+effective_charging_hours,4.0,6.0,8.0,hours/day,ASSUMPTION,team design scenario,Not 24 times observed peak utilisation; must account for overnight occupation and session patterns.
+availability,0.9,0.97,0.99,fraction,ASSUMPTION,team scenario,"Operational availability, not charging utilisation."
+mean_power_fraction,0.7,0.85,1.0,fraction of rated kW while charging,ASSUMPTION,team scenario,Taper/accepted power factor; not charging-energy efficiency.
+hdb_ev_share,0.3,0.4,0.55,fraction of national electric passenger cars,ASSUMPTION with historical weak anchor,MOT 11 Nov 2024 and LTA M09 Sep 2024,8800/21796 approximately 0.404; denominator/category and current-date mismatch prevent treating it as observed current share.
+hdb_energy_dependence,0.6,0.8,1.0,fraction of HDB EV energy sought in HDB network,ASSUMPTION,team scenario,Includes charging elsewhere via reduced fraction. Do not count that energy again as HDB demand.
+annual_distance,12000.0,16200.0,20000.0,km/car/year,official historical benchmark + assumed sensitivity,LTA_annual_private_vehicle_mileage.csv; Cars 2025,"16200 is average cars, not an EV-only HDB observation."
+battery_energy_per_km,0.14,0.16,0.2,battery kWh/km,ASSUMPTION,team scenario,Not manufacturer fleet-weighted estimate; exclude carbon accounting.
+charging_efficiency,0.85,0.9,0.95,battery kWh/grid kWh,ASSUMPTION,team scenario,Divide battery demand by this factor to get grid-side energy; do not apply same loss twice.
+service_radius,250.0,400.0,800.0,metres straight line,ASSUMPTION,team scenario,Not actual walk distance or policy entitlement.
+maximum_ev_lot_share,0.05,0.1,0.15,fraction of car lots,ASSUMPTION,team scenario,Existing installed lots grandfathered; not the tender 3-12-point quantity.
+spare_power_per_site,14.8,44.4,88.8,kW beyond existing installed load,ASSUMPTION,team scenario,Illustrative uniform headroom. Do not infer actual headroom per site; test constrained-site heterogeneity separately.
+upgrade_power_increment,44.4,88.8,177.6,kW/upgraded site,ASSUMPTION,team scenario,Scenario gain in power; not a licensed electrical design.
+service_target,0.8,0.9,0.95,fraction of estimated demand,policy scenario,team proposal,Used for minimum-cost service targets and budget anchoring; not government target.
+car_fleet_ev_share_2030,0.25,0.35,0.45,fraction of passenger-car stock,ASSUMPTION,scenario stress case; LTA stock and flows for plausibility,Not an official projection; 2027 scenarios to be constructed using stock-flow identity.

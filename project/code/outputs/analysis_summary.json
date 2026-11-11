@@ -1,0 +1,12 @@
+{
+  "anchor_reason": "Minimum-capex 90% service target (solver status/gap retained)",
+  "budget": 15158000.0,
+  "maximum_physical_service": 295711.979508633,
+  "maximum_physical_fraction": 0.999999989999998,
+  "no_build_served": 180773.30892845753,
+  "no_build_fraction": 0.611315467912745,
+  "base_served": 266142.698528459,
+  "incremental_served": 85369.38960000148,
+  "q_new_ac": 36.607800000000005,
+  "arcs": 21003
+}

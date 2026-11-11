@@ -1,0 +1,20 @@
+{
+  "sites": 2273,
+  "missing_capacity": 276,
+  "zero_capacity": 2,
+  "imputed_lots": 71123.5,
+  "observed_lots": 706663.0,
+  "total_lots_after_imputation": 777786.5,
+  "charger_points": 11489,
+  "match_counts": {
+    "address_supported": 5342,
+    "outside_candidate_radius": 2447,
+    "unresolved": 1483,
+    "provisional_range": 1230,
+    "excluded_non_hdb_evidence": 782,
+    "provisional_street": 205
+  },
+  "strict_sites": 1309,
+  "strict_dc_registrations": 35,
+  "unmapped_hdb_sites": 0
+}

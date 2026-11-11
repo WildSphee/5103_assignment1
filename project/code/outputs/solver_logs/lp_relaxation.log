@@ -1,0 +1,29 @@
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+LP has 13639 rows; 30095 cols; 78282 nonzeros
+Coefficient ranges:
+  Matrix  [1e+00, 6e+04]
+  Cost    [1e+00, 1e+00]
+  Bound   [1e+00, 3e+02]
+  RHS     [8e-01, 2e+07]
+WARNING: Problem has some excessively large row bounds
+WARNING:    Consider scaling the    bounds by 1e-2, or setting the user_bound_scale option to -4
+WARNING: No semi-integer/integer variables in model with non-empty integrality
+Presolving model
+12680 rows, 26681 cols, 63459 nonzeros 0s
+12511 rows, 26406 cols, 62822 nonzeros 0s
+Presolve reductions: rows 12511(-1128); columns 26406(-3689); nonzeros 62822(-15460) 
+Solving the presolved LP
+Using dual simplex solver
+  Iteration        Objective     Infeasibilities num(sum)
+          0    -3.4229918276e+04 Ph1: 4397(39076); Du: 20170(34229.9) 0.2s
+       9791    -2.6614270149e+05 Pr: 0(0) 1.7s
+
+Performed postsolve
+Solving the original LP from the solution after postsolve
+
+Model status        : Optimal
+Simplex   iterations: 9791
+Objective value     : -2.6614270149e+05
+P-D objective error :  1.9683724600e-15
+HiGHS run time      :          1.70

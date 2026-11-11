@@ -1,0 +1,8 @@
+scenario,year,stock,basis,monthly_registrations,exit_fraction
+current_2026,2026,74887.0,Observed September 2026 Cars/Electric,,
+2027_low,2027,105589.8125,15 months of assumed registrations less exits; not fitted forecast,2154.5833333333335,0.05
+2027_base,2027,117116.83333333333,15 months of assumed registrations less exits; not fitted forecast,2872.777777777778,0.02
+2027_high,2027,128751.58333333333,15 months of assumed registrations less exits; not fitted forecast,3590.972222222222,0.0
+2030_low,2030,162750.75,25% of frozen Sep-2026 all-car stock; illustrative stress case,,
+2030_base,2030,227851.05,35% of frozen Sep-2026 all-car stock; illustrative stress case,,
+2030_high,2030,292951.35000000003,45% of frozen Sep-2026 all-car stock; illustrative stress case,,

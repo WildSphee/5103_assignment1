@@ -1,0 +1,62 @@
+[
+  {
+    "path": "data/01_ev_charging_supply/LTA_EV_charging_points_Sep2026.csv",
+    "sha256": "b1032837f236543c54c3e046f06f61843180a0f496cb651f1d86c4fe9eb9b6c0",
+    "bytes": 1685926
+  },
+  {
+    "path": "data/02_ev_population_and_registrations/LTA_M03_monthly_new_car_registrations_by_make_fuel.csv",
+    "sha256": "0b880384b4bd27677587fa19b0d9526f96fd2161d512a1ec30c82c59bcc312f8",
+    "bytes": 3633024
+  },
+  {
+    "path": "data/02_ev_population_and_registrations/LTA_M09_monthly_vehicle_population_by_fuel.csv",
+    "sha256": "fcf52b8be12587f23a0c19f80a6b79799b19412f8988169408a9f2c913d9e4ea",
+    "bytes": 153326
+  },
+  {
+    "path": "data/03_carparks_candidate_sites/HDB_carpark_information.csv",
+    "sha256": "43b6b4563b81afb75474a7ad50824f6ea27bbbf73b963ee3449f244ea8e2e2ac",
+    "bytes": 303242
+  },
+  {
+    "path": "data/03_carparks_candidate_sites/HDB_carpark_lots_snapshot_2026-10-31.csv",
+    "sha256": "fbbe6bcc5bad40402e378c43a16bff46bd0b1619f22175b46c9cc49006449354",
+    "bytes": 147047
+  },
+  {
+    "path": "data/04_demographics_demand_proxies/updates_2026-11-09/dwellings_type_2025__hsetod2025.csv",
+    "sha256": "6f953a42f27b858b092e4fb5113a4d6c54f3c24855b8ea2e1b95c0c354d21e2b",
+    "bytes": 146843
+  },
+  {
+    "path": "data/04_demographics_demand_proxies/updates_2026-11-09/dwellings_type_2026__hsetod2026.csv",
+    "sha256": "258de823e3fa6d331e48ed6e6b05cf2326215828a80723e6872d311882fd2e1d",
+    "bytes": 146867
+  },
+  {
+    "path": "data/04_demographics_demand_proxies/updates_2026-11-09/population_dwelling_2025__respopagesextod2025.csv",
+    "sha256": "e6fad37e3804078318527d8ea75d7148fdbe66f30b04447ac9d6f2cf0f8928ce",
+    "bytes": 7142528
+  },
+  {
+    "path": "data/04_demographics_demand_proxies/updates_2026-11-09/population_dwelling_2026__respopagesextod2026.csv",
+    "sha256": "3359bef6c53535b6a582c71bf0101e07839ed5f317e258bdf6d5e368d816ec1e",
+    "bytes": 7142927
+  },
+  {
+    "path": "data/05_geospatial_boundaries/URA_MP2019_planning_area_boundary.geojson",
+    "sha256": "f23856251b467089f788d0fff72ef5a38e753f21aa69b4352401d7ed50d380cc",
+    "bytes": 2092229
+  },
+  {
+    "path": "data/05_geospatial_boundaries/URA_MP2025_planning_area_boundary.geojson",
+    "sha256": "e6ecc1743de5c39ec154a30b3b8037896fbc6c5f863e10c7dbfd77de12706c9c",
+    "bytes": 2191270
+  },
+  {
+    "path": "data/08_costs/cost_parameters.csv",
+    "sha256": "ede30fb4ab6f2f73ad2707105873d9a983ce7c7a309c03067afbedf1581a5d3a",
+    "bytes": 4772
+  }
+]

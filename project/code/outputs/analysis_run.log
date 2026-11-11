@@ -1,0 +1,43 @@
+CACHED target_80_capacity_bound
+CACHED target_90_capacity_bound
+CACHED target_95_capacity_bound
+CACHED base
+CACHED frontier_0.25
+CACHED frontier_0.5
+CACHED frontier_0.75
+CACHED frontier_1.25
+COMPARISON equal 15158000.0 0.8524595947068246
+CACHED matched_equal
+COMPARISON proportional 15156000.0 0.8581415877854699
+CACHED matched_proportional
+GREEDY exact reassignment starting
+COMPARISON greedy 15158000.0 0.9000064735600652
+SOLVE matched_greedy budget 15158000.0 target None
+RESULT matched_greedy 90.001 % 15158000 [('Optimal', 10.81, 0.0), ('Optimal', 4.5, 0.0)]
+SOLVE lp_relaxation budget 15158000.0 target None
+RESULT lp_relaxation 90.001 % 15158000 [('Optimal', 1.7, inf)]
+SOLVE stock_current_2026 budget 15158000.0 target None
+RESULT stock_current_2026 99.967 % 12987000 [('Optimal', 1.12, 0.0003281594289997251), ('Time limit reached', 35.84, 0.5418521973536217)]
+SOLVE stock_2027_low budget 15158000.0 target None
+RESULT stock_2027_low 99.018 % 15158000 [('Time limit reached', 25.05, 0.0009498832808774897), ('Time limit reached', 56.64, 0.002572898799314277)]
+SOLVE stock_2027_high budget 15158000.0 target None
+RESULT stock_2027_high 82.37 % 15158000 [('Optimal', 1.64, 6.81895695113144e-05), ('Optimal', 2.95, 6.857713155866208e-16)]
+SOLVE outlook_2030_low budget 15158000.0 target None
+RESULT outlook_2030_low 65.825 % 15112500 [('Optimal', 4.36, 0.0009473491355291799), ('Optimal', 6.24, 0.0)]
+SOLVE outlook_2030_base budget 15158000.0 target None
+RESULT outlook_2030_base 47.369 % 15145000 [('Optimal', 1.59, 0.0002686656938340053), ('Optimal', 4.73, 0.0)]
+SOLVE outlook_2030_high budget 15158000.0 target None
+RESULT outlook_2030_high 36.884 % 15151500 [('Optimal', 1.55, 0.00013418130321189167), ('Optimal', 4.84, 0.0)]
+SOLVE hdb_share_30 budget 15158000.0 target None
+RESULT hdb_share_30 99.974 % 15153500 [('Optimal', 16.3, 0.0002569474892917496), ('Time limit reached', 43.8, 0.3478470885601074)]
+SOLVE hdb_share_55 budget 15158000.0 target None
+RESULT hdb_share_55 66.557 % 15158000 [('Optimal', 8.92, 0.0), ('Optimal', 6.68, 4.114627893519725e-16)]
+SOLVE dependence_60 budget 15158000.0 target None
+RESULT dependence_60 99.998 % 15149000 [('Optimal', 15.2, 2.049763293311621e-05), ('Time limit reached', 47.08, 0.3476607543616203)]
+SOLVE dependence_100 budget 15158000.0 target None
+RESULT dependence_100 72.874 % 15138500 [('Optimal', 1.67, 0.0004319242648115549), ('Optimal', 7.69, 4.1199279723864314e-16)]
+SOLVE mileage_12000 budget 15158000.0 target None
+RESULT mileage_12000 99.954 % 15157000 [('Optimal', 16.26, 0.00046167240878415366), ('Time limit reached', 46.42, 0.362744125910167)]
+SOLVE mileage_20000 budget 15158000.0 target None
+RESULT mileage_20000 73.765 % 15151500 [('Optimal', 5.43, 0.0001672125056466749), ('Optimal', 6.4, 8.232786141302444e-16)]
+SOLVE intensity_014 budget 15158000.0 target None

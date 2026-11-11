@@ -1,0 +1,142 @@
+Running HiGHS 1.15.1 (git hash: 04024d7): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+MIP has 13640 rows; 30095 cols; 80555 nonzeros; 9092 integer variables (4597 binary)
+Coefficient ranges:
+  Matrix  [1e+00, 6e+04]
+  Cost    [1e+00, 1e+00]
+  Bound   [1e+00, 3e+02]
+  RHS     [8e-01, 2e+07]
+WARNING: Problem has some excessively large row bounds
+WARNING:    Consider scaling the    bounds by 1e-2, or setting the user_bound_scale option to -4
+Assessing feasibility of MIP using primal feasibility and integrality tolerance of       1e-07
+Solution has               num          max          sum
+Col     infeasibilities      0            0            0
+Integer infeasibilities      0            0            0
+Row     infeasibilities      0            0            0
+Row     residuals            0            0            0
+Presolving model
+12582 rows, 26620 cols, 65371 nonzeros 0s
+12289 rows, 26256 cols, 64399 nonzeros 0s
+Presolve reductions: rows 12289(-1351); columns 26256(-3839); nonzeros 64399(-16156) 
+
+MIP start solution is feasible, objective value is -180773.311886
+
+Solving MIP model with:
+   12289 rows
+   26256 cols (3998 binary, 2098 integer, 0 implied int., 20160 continuous, 0 domain fixed)
+   64399 nonzeros
+   Thread count 1 (of 4 threads). Using 1 max workers. Parallel search off
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; H => Heuristic;
+     I => Shifting; J => Feasibility jump; L => Sub-MIP; P => Empty MIP; R => Randomized rounding;
+     S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution; Y => HiGHS solution;
+     Z => ZI Round; l => Trivial lower; p => Trivial point; u => Trivial upper; z => Trivial zero
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   -2470139.63846  -180773.311886  1266.43%        0      0      0         0     0.6s
+ R       0       0         0   0.00%   -266142.701486  -265662.42409      0.18%        0      0      0      9095     1.5s
+ C       0       0         0   0.00%   -266142.701486  -265934.431665     0.08%     8187   1851      0     15713     4.5s
+ L       0       0         0   0.00%   -266142.701486  -266094.684935     0.02%    11425   2658      0     19022    12.2s
+
+30.3% inactive integer columns, restarting
+Model after restart has 8442 rows, 24333 cols (2151 bin., 2022 int., 0 impl., 20160 cont., 0 dom.fix.), and 52709 nonzeros
+
+         0       0         0   0.00%   -266142.701486  -266094.684935     0.02%     1236      0      0     28959    12.8s
+         0       0         0   0.00%   -266142.701486  -266094.684935     0.02%     1236    311      0     30973    13.4s
+         0       0         0   0.00%   -266142.701486  -266094.684935     0.02%     9926   1316      0     37778    18.5s
+         0       0         0   0.00%   -266142.701486  -266094.684935     0.02%     5381   1490      0     41056    23.7s
+         0       0         0   0.00%   -266142.701486  -266094.684935     0.02%     5090   1506      0     44693    28.9s
+         0       0         0   0.00%   -266142.701486  -266094.684935     0.02%     4732   1582      0     47983    33.9s
+ L       0       0         0   0.00%   -266142.701486  -266142.701486     0.00%     4562   1603      0     48182    39.4s
+         1       0         1 100.00%   -266142.701486  -266142.701486     0.00%     4258   1603      0     62386    39.4s
+
+Solving report
+  Status            Optimal
+  Primal bound      -266142.701486
+  Dual bound        -266142.701486
+  Gap               0% (tolerance: 0.01%)
+  P-D integral      7.73059983684
+  Solution status   feasible
+                    -266142.701486 (objective)
+                    0 (bound viol.)
+                    3.5527136788e-15 (int. viol.)
+                    0 (row viol.)
+  Timing            39.41
+                    1.26 (Presolve)
+                        MIP    time [calls] = 0.52 [1]
+                        subMIP time [calls] = 0.74 [3]
+                    38.14 (Solve)
+                        MIP    time [calls] = 28.62 [1]
+                        subMIP time [calls] = 9.52 [3]
+                    0.00 (Postsolve)
+                        MIP    time [calls] = 0.00 [1]
+                        subMIP time [calls] = 0.00 [3]
+  Max sub-MIP depth 4
+  Nodes             1
+  Repair LPs        0
+  LP iterations     62386
+                    0 (strong br.)
+                    28061 (separation)
+                    23216 (heuristics)
+MIP has 13642 rows; 30095 cols; 103831 nonzeros; 9092 integer variables (4597 binary)
+Coefficient ranges:
+  Matrix  [1e+00, 6e+04]
+  Cost    [1e+00, 9e+00]
+  Bound   [1e+00, 3e+02]
+  RHS     [8e-01, 2e+07]
+WARNING: Problem has some excessively large row bounds
+WARNING:    Consider scaling the    bounds by 1e-2, or setting the user_bound_scale option to -4
+Assessing feasibility of MIP using primal feasibility and integrality tolerance of       1e-07
+Solution has               num          max          sum
+Col     infeasibilities      0            0            0
+Integer infeasibilities      0    3.553e-15    5.107e-15
+Row     infeasibilities      0            0            0
+Row     residuals            0            0            0
+Presolving model
+12696 rows, 26832 cols, 88659 nonzeros 0s
+12509 rows, 26399 cols, 85145 nonzeros 0s
+Presolve reductions: rows 12509(-1133); columns 26399(-3696); nonzeros 85145(-18686) 
+
+MIP start solution is feasible, objective value is 3315.59034733
+
+Solving MIP model with:
+   12509 rows
+   26399 cols (4105 binary, 2129 integer, 0 implied int., 20165 continuous, 0 domain fixed)
+   85145 nonzeros
+   Thread count 1 (of 4 threads). Using 1 max workers. Parallel search off
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; H => Heuristic;
+     I => Shifting; J => Feasibility jump; L => Sub-MIP; P => Empty MIP; R => Randomized rounding;
+     S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution; Y => HiGHS solution;
+     Z => ZI Round; l => Trivial lower; p => Trivial point; u => Trivial upper; z => Trivial zero
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   0               3315.590347      100.00%        0      0      0         0     0.9s
+         1       0         1 100.00%   3315.590347     3315.590347        0.00%        0      0      0     11304     4.9s
+
+Solving report
+  Status            Optimal
+  Primal bound      3315.59034733
+  Dual bound        3315.59034733
+  Gap               0% (tolerance: 0.01%)
+  P-D integral      4.00453877449
+  Solution status   feasible
+                    3315.59034733 (objective)
+                    0 (bound viol.)
+                    3.5527136788e-15 (int. viol.)
+                    0 (row viol.)
+  Timing            4.92
+                    0.62 (Presolve)
+                    4.29 (Solve)
+                    0.00 (Postsolve)
+  Max sub-MIP depth 0
+  Nodes             1
+  Repair LPs        0
+  LP iterations     11304
+                    0 (strong br.)
+                    0 (separation)
+                    0 (heuristics)
