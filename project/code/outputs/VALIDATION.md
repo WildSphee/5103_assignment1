@@ -29,12 +29,24 @@
 - **PASS** LP bound dominates integer service: {'lp_service_upper_bound': 266142.7014855763, 'integer_service': 266142.698528459, 'absolute_bound_gap_kwh_day': 0.0029571172781288624}
 - **PASS** Identical-input reproduction: {'repeat_service_difference': 0.0, 'repeat_identical_additions': True, 'alternate_seed_service_difference': -16.576263796945568, 'alternate_seed_site_jaccard': 0.22905027932960895, 'repeat_site_jaccard': 1.0, 'frozen_base_vs_current_implementation_jaccard': 1.0}
 - **PASS** Regret interval consistency: Only physically and budget-feasible fixed plans have regret bounds
+- **PASS** Top 100 deterministic review ranking: 100 unique sites from 415 eligible base-selected sites; certified frequency, additions, ID ordering
+- **PASS** Top 100 coordinates and additions: 528 proposed AC points across 21 planning areas; coordinates match frozen model
+- **PASS** Map data reconciles to top 100: GeoJSON contains every ranked site in longitude/latitude order
+- **PASS** Planning-area deployment reconciles: 28 areas; 549 carparks; 2332 additional AC points for end-2027
+- **PASS** Dated energy-shortfall balances: Existing-only and fixed-2027-plan service plus unmet energy reconcile to each scenario demand
+- **PASS** No future supply presented as installed in 2026: 2026 future-plan cells are blank; benchmark uses Sep-2026 national EV stock and modelled HDB demand
 - **PASS** Expected-answer model tests: OK
 - **PASS** Workbook formula caches: {'B5': 295711.98246575345, 'B6': 266142.698528459, 'B7': 0.9000064735600666, 'B8': 2332.0, 'B10': 15158000.0, 'B11': 3315590.3473263914, 'B12': 180773.30892845753, 'B13': 85369.38960000148}
 - **PASS** Workbook error cells: []
+- **PASS** Workbook top 100 map register: All 100 map candidates, in rank order, with coordinates and scenario evidence
+- **PASS** Workbook planning-area showcase: All 28 areas and all additions are visible in Area_Deployment_2027; dated shortfalls are in Year_Outlook
 - **PASS** Demand calculator reconciles to frozen model: 0.0
 - **PASS** Report body typography: 12-point Times New Roman
+- **PASS** Report consistent typography: 12-point Times New Roman for headings, body, captions and notes; monospace code appendix exception
+- **PASS** Report double spacing: Double-spaced report text, as specified on page 1 of Project_Guideline.pdf
+- **PASS** Report table typography: 12-point Times and double spacing in tables and callouts
 - **PASS** Report margins: 1 inch on all sides
-- **PASS** Formula images embedded: 11
-- **PASS** Narrative length: {'narrative_pages': 11, 'non_appendix_pages_including_cover_references': 13, 'total_pages': 32}
+- **PASS** Formula images embedded: 14
+- **PASS** No sparse narrative spillover pages: Every narrative page has at least 60 words alongside its figures/tables
+- **PASS** Report section pagination: {'narrative_pages': 14, 'reference_pages': 2, 'total_pages': 38, 'guideline': '8–14 narrative pages suggested; explicitly no strict page limit'}
 - **PASS** Rendered content within page bounds: []

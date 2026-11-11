@@ -1,6 +1,6 @@
 # Where should HDB add EV chargers, and what does each investment level deliver?
 
-**Implemented — 10 November 2026.** The seven-section [results report](HDB_EV_Charging_Report.docx), [checked PDF](HDB_EV_Charging_Report.pdf), and [Excel workbook](HDB_EV_Charging_Analysis.xlsx) are complete. See [execution and validation details](EXECUTION_SUMMARY.md). The original outline below is retained as the pre-analysis structure; its “awaiting” labels describe the 9 November planning state, not current execution status. Main text uses 12-point Times, double spacing and one-inch margins.
+**Implemented — 10 November 2026.** The seven-section [results report](HDB_EV_Charging_Report.docx), [checked PDF](HDB_EV_Charging_Report.pdf), and [Excel workbook](HDB_EV_Charging_Analysis.xlsx) are complete. See [execution and validation details](EXECUTION_SUMMARY.md). The original outline below is retained as the pre-analysis structure; its “awaiting” labels describe the 9 November planning state, not current execution status. Report text uses 12-point Times New Roman, double spacing and one-inch margins, following the course guideline. Headings, tables, captions and notes use the same typography; code listings retain monospace formatting.
 
 ## 1. Problem and decision (0.75 page)
 Explain HDB residential charging and the two connected questions: where/how many additional points, and incremental service per investment dollar. Define all-HDB scope, one slow type in base, current supply and proposed 2027/2030 scenarios. Briefly motivate local adequacy without using all-public points as HDB supply. No carbon or petrol-savings angle.
@@ -12,6 +12,8 @@ Compact source/assumptions table. Describe audited charger-to-HDB matching, uniq
 Cite facility-location/coverage literature. Define sets, variables and budget, power, space, access and demand constraints. Explain service-first then cost-minimising solves without an unmet-demand price. Explain why this is deterministic sequential optimisation. State what makes it different from a simple proportional deployment rule. Reviewers: Erica and Udhaya; build lead: Regan/Reagan.
 
 ## 4. Placement results and baseline comparison (2 pages)
+
+**Presentation update, 11 November:** Lead with planning-area allocations for end-2027 demand; retain the five verification examples in the appendix; the main report now also maps the top 100 site-review candidates. Separate the 2026 benchmark shortage, the 2027 investment target, and the 2030 fixed-plan stress in the main narrative and workbook.
 **Awaiting validated model outputs.** Map confirmed existing and proposed HDB points. Table of site/area additions, spend and service. Compare no-build, equal allocation, proportional allocation, greedy and MILP under the same constraints. Report excluded/imputed data shares and solve status. If optimisation offers little improvement, state that.
 
 ## 5. Cost-effectiveness and budget choices (1.5 pages)

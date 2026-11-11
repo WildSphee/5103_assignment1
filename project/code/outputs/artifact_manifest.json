@@ -1,39 +1,40 @@
 {
-  "finalised_at_utc": "2026-11-11T01:30:24.781722+00:00",
+  "finalised_at_utc": "2026-11-11T06:34:29.228543+00:00",
   "note": "Numerical run_manifest.json preserves the solve-time snapshot. These hashes describe final document-generation code and released artifacts.",
   "artifacts": [
     {
       "path": "HDB_EV_Charging_Report.docx",
-      "bytes": 1531504,
-      "sha256": "e36f891561a0ab503b7628bfbe63919224b351cc8b6a6fda6597ca6e03e82e60"
+      "bytes": 2060586,
+      "sha256": "1f7083cf654fbf37ebc4202754520cbb20a882d4522b8d9b0a8a8c41958941cf"
     },
     {
       "path": "HDB_EV_Charging_Report.pdf",
-      "bytes": 1371179,
-      "sha256": "b7acf28ad7cfc7a904a09d9e045a4e9aeb6c7547c822ff2365c289ebc855d11b"
+      "bytes": 1553911,
+      "sha256": "0cff8e13480188316def3696ed12e0a1c72e42683db5d4b55d013212abc80fe6"
     },
     {
       "path": "HDB_EV_Charging_Analysis.xlsx",
-      "bytes": 1558648,
-      "sha256": "ccb5a8d3108a7960e98a2713d7ea2b3030b35a27308751bec9a84a91b9638450"
+      "bytes": 1578143,
+      "sha256": "62b3d1693b696e8953017fc6feadb7d38f516e5d3abf61506a600c4465b09089"
     },
     {
       "path": "EXECUTION_SUMMARY.md",
-      "bytes": 5628,
-      "sha256": "800137685227c63efb5075dcded70fee35919452f2bf337646ccf128a1806d12"
+      "bytes": 7705,
+      "sha256": "a42d5f13e28a60802e990ef92cf435a3beb8229ee499b24c5a31e0773ad7dc39"
     }
   ],
   "final_code_hashes": {
-    "audit_outputs.py": "d55808069cc8b8d5d9ec393638edb42036afd2448080ad3db06ee41060852a33",
+    "audit_outputs.py": "ec7f5589556891f2f9ce1bbac78047451381ad2bc4a7c5576239ca75209e73a1",
     "model.py": "38ce5bfc9e0e2aa1f4a9b911ae259870ddbbd669b337834832cd2389cffcb747",
-    "build_workbook.py": "dad9b8d7f4106521675647030e4a7867c319075ffdc47e64c8b3cee8e20d95a7",
+    "build_workbook.py": "f9a1cf853fb5219e657c3ed8fa80d28b171428b1ba0631b42fa54843c2e8ebe3",
     "run_analysis.py": "cde0862cf1ce2446671304e9998e2aa3312b730ec553922d599b60d0ce1c595d",
     "baselines.py": "84aaef940a39e373eb1bbe0c5ff6bce1a214b0981e88072f08fde2228a3bf857",
     "review_shortlist.py": "ff0f7896deca46b63951b5d78eaa394aaa311a72a26722f79f5a2206afcc1617",
-    "build_figures.py": "872cffdc45f5abe5ba38e727530dce157bc4cac3c28fe01eb03f6fb8fddfad25",
+    "build_figures.py": "b3ae644b1e5e284a54ed49be842514b2b70c62f0367c2918a7b632f46c9145cd",
     "prepare_data.py": "c80f5353d0afcc034f43085195a976f7691efa8f5c6c9a25bdc089c54850b9b0",
-    "build_report.py": "8695f36bb82d9803e652d70f88c8f1404ddc4fdb575940764cb320e251fed235",
-    "finalise_release.py": "a801a14e0f0dd1481b5f2f639a00bad059fd67e21aaa20021ecc6c0e754ee31e",
+    "build_showcase.py": "7e2a7ae7b6a6eb77f09afc1015b5c56cd1089cd417a1b89d97fbd64c1efddb9e",
+    "build_report.py": "8faedf0af609b7dad500eba6d5120d26eb1083fcba3c7a425212a7ac0e629f44",
+    "finalise_release.py": "8dba60760e3194dafbcbe8b179a5c8c9a581948c10c5d5af5bd783423c7258a6",
     "reproduce.py": "c0f3ae3cd845c039f07c8dca8d8b8154816b52b9eb8024a75f77ffb5045478de",
     "test_models.py": "6ff43b2ab9abd4160a287c4034e2d3a576ddf21a7704ee0b95328613e6193c2f"
   },

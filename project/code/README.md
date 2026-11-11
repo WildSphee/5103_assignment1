@@ -7,6 +7,14 @@ The readable deliverables are one level above this folder:
 - `HDB_EV_Charging_Report.docx` and the visually checked PDF.
 - `HDB_EV_Charging_Analysis.xlsx` (formulas, results and audit ledgers).
 
+The main showcase is `Area_Deployment_2027`: 28 planning areas receiving additional
+AC points for the **end-2027 base demand case**, with a 90% national service target.
+`Year_Outlook` separates the September 2026 EV-stock benchmark, end-2027 scenarios
+and 2030 demand stresses. Shortfall means modelled unmet grid energy, not observed
+missing charger counts. Future supply is either the frozen existing register or
+that register plus the same 2027 additions, with no further expansion. The five
+site-review examples are appendix evidence, not the island-wide deployment list.
+
 ## Run
 
 The supplied environment is `project/code/venv/`. Python 3.14 is the tested runtime.
@@ -125,3 +133,9 @@ Operator-confirmed charger/site membership and sharing limits; actual residentia
 counts, sessions and energy; walking and parking access; spare electrical headroom;
 site-specific installation and upgrade quotes. These are explicit limits of the
 decision-support result, not fabricated observations.
+
+### Compact report and top-100 map
+
+The report follows page 1 of `sources/references/Project_Guideline.pdf`: 12-point Times New Roman, double spacing and one-inch margins. Headings, body text, tables, captions and notes share that typography. Code listings retain 7.2-point, single-spaced Courier New for indentation; figure labels use Times-style serif lettering and scale with their images. On render hosts without Times New Roman, LibreOffice uses the metrically compatible Liberation Serif substitute. The suggested 8–14 narrative pages are not a strict limit. All analytical figures remain; equations are images.
+
+`build_showcase.build_top100()` filters the saved end-2027 selection to observed parking capacity and night parking, then ranks by certified-scenario selection frequency (descending), base additions (descending), and carpark ID (ascending). The top 100 contain 528 proposed AC points across 21 planning areas. This is a site-review order, not a new 100-site optimisation or a probability ranking. `outputs/top_100_recommended_sites.csv` and `.geojson` preserve every address and WGS84 coordinate; `Top_100_Sites` in Excel mirrors the map. The 90% service claim applies only to the full 549-site plan.

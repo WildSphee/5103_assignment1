@@ -28,8 +28,12 @@ def formula(name,lines):
 
 
 def main(core_only=False):
+    from build_showcase import build_tables, build_top100
+    area,years=build_tables()
+    top100=build_top100()
     FIG.mkdir(parents=True,exist_ok=True)
-    plt.rcParams.update({'font.family':'DejaVu Sans','font.size':10,'axes.spines.top':False,
+    plt.rcParams.update({'font.family':'serif','font.serif':['Times New Roman','Liberation Serif'],
+                         'mathtext.fontset':'stix','font.size':10,'axes.spines.top':False,
                          'axes.spines.right':False,'axes.labelcolor':NAVY,'text.color':NAVY,
                          'axes.titleweight':'bold','axes.titlesize':11,'grid.alpha':.2})
     s=pd.read_csv(OUT/'runs/base/site_decisions.csv')
@@ -54,6 +58,32 @@ def main(core_only=False):
     axs[1].set_title('Additional AC points at base budget')
     axs[0].set_ylabel('SVY21 northing (km)')
     save(fig,'placement_map')
+    fig,ax=plt.subplots(figsize=(8,5.0),layout='constrained')
+    for f in boundary:
+        g=f['geometry'];polys=g['coordinates'] if g['type']=='MultiPolygon' else [g['coordinates']]
+        for poly in polys:
+            xy=np.array(poly[0]);x,y=tr.transform(xy[:,0],xy[:,1])
+            ax.fill(np.array(x)/1000,np.array(y)/1000,facecolor='#F1F3F4',edgecolor='#C4D0D6',lw=.45,zorder=0)
+    other=s[(s.ac_additions>0)&~s.car_park_no.isin(top100.car_park_no)]
+    ax.scatter(other.x_coord/1000,other.y_coord/1000,s=7,c='#AAB8BF',alpha=.65,lw=0,label='Other 449 base-selected carparks',zorder=2)
+    ax.scatter(top100.x_coord/1000,top100.y_coord/1000,s=29,c=ORANGE,edgecolors='white',linewidths=.5,label='Top 100 review candidates',zorder=4)
+    for name,xy in {'Jurong West':(14.5,38.5),'Bukit Batok':(22,40),'Woodlands':(22,49),
+                    'Yishun':(30,46),'Ang Mo Kio':(32,40),'Sengkang':(38,43.7),
+                    'Tampines':(43,39),'Bedok':(42,33),'Central':(30,30)}.items():
+        ax.text(*xy,name,fontsize=8,color=NAVY,ha='center',bbox={'facecolor':'white','alpha':.8,'edgecolor':'none','pad':1},zorder=5)
+    ax.plot([9,14],[26,26],color=NAVY,lw=2);ax.text(11.5,26.6,'5 km',ha='center',fontsize=8)
+    ax.annotate('N',xy=(47,46),xytext=(47,43.8),ha='center',fontsize=10,arrowprops={'arrowstyle':'->','color':NAVY})
+    ax.set(xlim=(7,49),ylim=(24.5,51),aspect='equal',title='End-2027 review shortlist: 100 carparks across 21 planning areas')
+    ax.axis('off');ax.legend(loc='lower center',bbox_to_anchor=(.5,-.03),ncol=2,frameon=False,fontsize=9)
+    save(fig,'top100_map')
+    show=area.head(12)
+    names=show.planning_area.str.title().tolist()+[f'Other {len(area)-12} planning areas']
+    values=show.additional_ac_points.tolist()+[area.iloc[12:].additional_ac_points.sum()]
+    fig,ax=plt.subplots(figsize=(8,4.2),layout='constrained')
+    bars=ax.barh(names,values,color=[BLUE]*12+[LIGHT])
+    for b,vv in zip(bars,values):ax.text(vv+7,b.get_y()+b.get_height()/2,f'{int(vv):,}',va='center',fontsize=9)
+    ax.invert_yaxis();ax.set_xlim(0,max(values)*1.14);ax.set_xlabel('Additional AC points for the end-2027 base scenario')
+    ax.grid(axis='x');save(fig,'planning_area_allocation')
     f=pd.read_csv(OUT/'budget_frontier.csv')
     c=pd.read_csv(OUT/'baseline_comparison.csv')
     fig,ax=plt.subplots(figsize=(7.7,3.8),layout='constrained')
@@ -88,13 +118,13 @@ def main(core_only=False):
     ax.set_yticks(yy,labels);ax.invert_yaxis();ax.set_xlim(0,105);ax.set_xlabel('Scenario demand served (%)')
     ax.legend(frameon=False,fontsize=9,loc='lower center',bbox_to_anchor=(.5,1.01),ncol=2);ax.grid(axis='x')
     save(fig,'sensitivity')
-    names=['stock_current_2026','stock_2027_low','stock_2027_high','outlook_2030_low','outlook_2030_base','outlook_2030_high']
-    d=v.loc[names]
-    fig,ax=plt.subplots(figsize=(8,3.5),layout='constrained');x=np.arange(len(d))
-    ax.bar(x-.18,100*d.fixed_fraction,width=.35,color=LIGHT,label='Fixed base plan')
-    ax.bar(x+.18,100*d.service_fraction,width=.35,color=NAVY,label='Reoptimised, same budget')
-    ax.set_xticks(x,['2026\nobserved stock','2027\nlow stock','2027\nhigh stock','2030\n25% fleet','2030\n35% fleet','2030\n45% fleet'])
-    ax.set_ylabel('Demand served (%)');ax.set_ylim(0,110);ax.legend(frameon=False,fontsize=9);ax.grid(axis='y')
+    d=years.set_index('scenario').loc[['current_2026','2027_base','2030_low','2030_base','2030_high']]
+    fig,ax=plt.subplots(figsize=(8,3.4),layout='constrained');x=np.arange(len(d))
+    ax.bar(x-.18,100*d.existing_shortfall_fraction,width=.35,color=ORANGE,label='Frozen existing supply only')
+    ax.bar(x+.18,100*d.fixed_2027_plan_shortfall_fraction,width=.35,color=NAVY,label='Existing + fixed 2027 additions')
+    ax.set_xticks(x,['Sep 2026\nbenchmark','End 2027\nbase','2030\nlow','2030\ncentral','2030\nhigh'])
+    ax.set_ylabel('Modelled energy unmet (%)');ax.set_ylim(0,85)
+    ax.legend(frameon=False,fontsize=9,loc='lower center',bbox_to_anchor=(.5,1.01),ncol=2);ax.grid(axis='y')
     save(fig,'outlook')
     formula('formula_demand',[r'$E^{HDB}_t=h_t E_t,\quad EV_{it}=w_{it}E^{HDB}_t,\quad \sum_iw_{it}=1$',
                               r'$D_{it}=EV_{it}\,\beta\,\frac{m}{365}\,\frac{e}{\eta}$'])
@@ -111,7 +141,7 @@ def main(core_only=False):
     formula('formula_cost',[r'$C_{cap}=\sum_j(c_jx_j+F_jz_j+K_jy_j)$',
                             r'$C_{ann}=\frac{r}{1-(1+r)^{-n}}C_{cap}+\sum_j(m_j+v_j)x_j$',
                             r'$\mathrm{Cost/extra\ annual\ kWh}=\frac{C_{ann}}{365(S-S_0)}$'])
-    formula('formula_stock',[r'$E_{2027}=74{,}887+15\,(2{,}872.78)(1-0.02)=117{,}116.83$',
+    formula('formula_stock',[r'$E_{2027}=74{,}887+15\,(2{,}872.78)(1-0.02)\approx117{,}116.83$',
                              r'$E_{2030}\in\{0.25,0.35,0.45\}\times651{,}003$'])
     print('Figures saved to',FIG)
 

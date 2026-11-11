@@ -1,0 +1,1805 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.69952925533683,
+          1.3429966284896697
+        ]
+      },
+      "properties": {
+        "rank": 1,
+        "car_park_no": "JM18",
+        "address": "BLK 629A JURONG WEST STREET 65",
+        "planning_area": "JURONG WEST",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.8108108108108109
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.75543627209288,
+          1.3488837002095344
+        ]
+      },
+      "properties": {
+        "rank": 2,
+        "car_park_no": "U15",
+        "address": "BLK 231/237 BUKIT BATOK EAST AVENUE 5",
+        "planning_area": "BUKIT BATOK",
+        "additional_ac_points": 1,
+        "certified_scenario_selection_fraction": 0.8108108108108109
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.69685697580175,
+          1.3397788016970993
+        ]
+      },
+      "properties": {
+        "rank": 3,
+        "car_park_no": "J98M",
+        "address": "BLK 647A JURONG WEST STREET 61",
+        "planning_area": "JURONG WEST",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.7837837837837838
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.69974492611483,
+          1.3394709470052732
+        ]
+      },
+      "properties": {
+        "rank": 4,
+        "car_park_no": "JM13",
+        "address": "BLK 601A JURONG WEST STREET 62",
+        "planning_area": "JURONG WEST",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.7837837837837838
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.75322229615675,
+          1.347803447002071
+        ]
+      },
+      "properties": {
+        "rank": 5,
+        "car_park_no": "U13",
+        "address": "BLK 212/230 BUKIT BATOK STREET 21",
+        "planning_area": "BUKIT BATOK",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.7837837837837838
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.72526852277466,
+          1.3479248544356488
+        ]
+      },
+      "properties": {
+        "rank": 6,
+        "car_park_no": "J43",
+        "address": "BLK 474-477 JURONG WEST STREET 41",
+        "planning_area": "JURONG WEST",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.7567567567567568
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.91041427397191,
+          1.3325052469829435
+        ]
+      },
+      "properties": {
+        "rank": 7,
+        "car_park_no": "KE2",
+        "address": "BLK 122/126 BEDOK RESERVOIR ROAD",
+        "planning_area": "BEDOK",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.7567567567567568
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.9132461064393,
+          1.3336670998148838
+        ]
+      },
+      "properties": {
+        "rank": 8,
+        "car_park_no": "KE4",
+        "address": "BLK 136/140 BEDOK RESERVOIR ROAD",
+        "planning_area": "BEDOK",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.7567567567567568
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8202882923335,
+          1.4511675571821525
+        ]
+      },
+      "properties": {
+        "rank": 9,
+        "car_park_no": "SB22",
+        "address": "BLK 351 CANBERRA ROAD",
+        "planning_area": "SEMBAWANG",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.7567567567567568
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.91520373671189,
+          1.3333637440670496
+        ]
+      },
+      "properties": {
+        "rank": 10,
+        "car_park_no": "B54",
+        "address": "BLK 630/632 BEDOK RESERVOIR ROAD",
+        "planning_area": "BEDOK",
+        "additional_ac_points": 5,
+        "certified_scenario_selection_fraction": 0.7567567567567568
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.7467136802488,
+          1.3765572316417813
+        ]
+      },
+      "properties": {
+        "rank": 11,
+        "car_park_no": "CK77",
+        "address": "BLK 815 CHOA CHU KANG AVENUE 7",
+        "planning_area": "CHOA CHU KANG",
+        "additional_ac_points": 3,
+        "certified_scenario_selection_fraction": 0.7567567567567568
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.93277014516458,
+          1.3325499476387692
+        ]
+      },
+      "properties": {
+        "rank": 12,
+        "car_park_no": "B40",
+        "address": "BLK 504/508 BEDOK NORTH STREET 3",
+        "planning_area": "BEDOK",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.7297297297297297
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.74254462225541,
+          1.3801473409462484
+        ]
+      },
+      "properties": {
+        "rank": 13,
+        "car_park_no": "CK14",
+        "address": "BLK 278/287 CHOA CHU KANG AVENUE 2/3",
+        "planning_area": "CHOA CHU KANG",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.7297297297297297
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.72450994802102,
+          1.3499265714395032
+        ]
+      },
+      "properties": {
+        "rank": 14,
+        "car_park_no": "J54",
+        "address": "BLK 492-496 JURONG WEST STREET 41",
+        "planning_area": "JURONG WEST",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.7297297297297297
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.69843639350842,
+          1.3411209710444394
+        ]
+      },
+      "properties": {
+        "rank": 15,
+        "car_park_no": "JM12",
+        "address": "BLK 624A JURONG WEST STREET 61",
+        "planning_area": "JURONG WEST",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.7297297297297297
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8452675574329,
+          1.337544127996722
+        ]
+      },
+      "properties": {
+        "rank": 16,
+        "car_park_no": "TP27",
+        "address": "BLK 125/126/131 LORONG 2 TOA PAYOH",
+        "planning_area": "TOA PAYOH",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.7297297297297297
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.83324223976517,
+          1.4191464276288497
+        ]
+      },
+      "properties": {
+        "rank": 17,
+        "car_park_no": "Y24",
+        "address": "BLK 795-799 YISHUN RING ROAD",
+        "planning_area": "YISHUN",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.7297297297297297
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.76937734296405,
+          1.3773101941380146
+        ]
+      },
+      "properties": {
+        "rank": 18,
+        "car_park_no": "BJ3",
+        "address": "BLK 101/129 GANGSA ROAD/PENDING ROAD",
+        "planning_area": "BUKIT PANJANG",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.7027027027027027
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.88858974438185,
+          1.3760428223925314
+        ]
+      },
+      "properties": {
+        "rank": 19,
+        "car_park_no": "HG88",
+        "address": "BLK 699D HOUGANG STREET 52",
+        "planning_area": "HOUGANG",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.7027027027027027
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.73803314961131,
+          1.3415438729036973
+        ]
+      },
+      "properties": {
+        "rank": 20,
+        "car_park_no": "J7",
+        "address": "BLK 215A/231 JURONG EAST STREET 21",
+        "planning_area": "JURONG EAST",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.7027027027027027
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.69758237259063,
+          1.3420131073387225
+        ]
+      },
+      "properties": {
+        "rank": 21,
+        "car_park_no": "JM31",
+        "address": "BLK 638A JURONG WEST STREET 61",
+        "planning_area": "JURONG WEST",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.7027027027027027
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.74120383317222,
+          1.3458719785511368
+        ]
+      },
+      "properties": {
+        "rank": 22,
+        "car_park_no": "U9",
+        "address": "BLK 169/177 BUKIT BATOK WEST AVENUE 8",
+        "planning_area": "BUKIT BATOK",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.7027027027027027
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8410989313101,
+          1.4288994741105259
+        ]
+      },
+      "properties": {
+        "rank": 23,
+        "car_park_no": "Y43",
+        "address": "BLK 320-332 YISHUN CENTRAL/RING ROAD",
+        "planning_area": "YISHUN",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.7027027027027027
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.83419412821716,
+          1.4325230423520172
+        ]
+      },
+      "properties": {
+        "rank": 24,
+        "car_park_no": "Y6",
+        "address": "BLK 150/161 YISHUN STREET 11",
+        "planning_area": "YISHUN",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.7027027027027027
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.74396269033326,
+          1.3773947750358457
+        ]
+      },
+      "properties": {
+        "rank": 25,
+        "car_park_no": "CK32",
+        "address": "BLK 253A CHOA CHU KANG AVENUE 1",
+        "planning_area": "CHOA CHU KANG",
+        "additional_ac_points": 5,
+        "certified_scenario_selection_fraction": 0.7027027027027027
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.73707093730017,
+          1.3759735599231637
+        ]
+      },
+      "properties": {
+        "rank": 26,
+        "car_park_no": "CKM7",
+        "address": "BLK 483A CHOA CHU KANG AVENUE 5",
+        "planning_area": "CHOA CHU KANG",
+        "additional_ac_points": 5,
+        "certified_scenario_selection_fraction": 0.7027027027027027
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.88022012092722,
+          1.3780174959451366
+        ]
+      },
+      "properties": {
+        "rank": 27,
+        "car_park_no": "HG91",
+        "address": "BLK 971A HOUGANG STREET 91",
+        "planning_area": "HOUGANG",
+        "additional_ac_points": 3,
+        "certified_scenario_selection_fraction": 0.7027027027027027
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.74764534848646,
+          1.3639079799053717
+        ]
+      },
+      "properties": {
+        "rank": 28,
+        "car_park_no": "U24",
+        "address": "BLK 324/336 BUKIT BATOK STREET 32/33",
+        "planning_area": "BUKIT BATOK",
+        "additional_ac_points": 2,
+        "certified_scenario_selection_fraction": 0.7027027027027027
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8445240151766,
+          1.3686329816140794
+        ]
+      },
+      "properties": {
+        "rank": 29,
+        "car_park_no": "A10",
+        "address": "BLK 201/202 ANG MO KIO STREET 22",
+        "planning_area": "ANG MO KIO",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6756756756756757
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.84644532993362,
+          1.3574639721486685
+        ]
+      },
+      "properties": {
+        "rank": 30,
+        "car_park_no": "BE30",
+        "address": "BLK 231A BISHAN STREET 23",
+        "planning_area": "BISHAN",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6756756756756757
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.76811152657707,
+          1.3809699699980773
+        ]
+      },
+      "properties": {
+        "rank": 31,
+        "car_park_no": "BJ18",
+        "address": "BLK 401-408 FAJAR ROAD",
+        "planning_area": "BUKIT PANJANG",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6756756756756757
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.76666134027609,
+          1.3761350307538107
+        ]
+      },
+      "properties": {
+        "rank": 32,
+        "car_park_no": "BJ2",
+        "address": "BLK 141-151 GANGSA ROAD/PETIR ROAD",
+        "planning_area": "BUKIT PANJANG",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6756756756756757
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.77201112714418,
+          1.3791195021651272
+        ]
+      },
+      "properties": {
+        "rank": 33,
+        "car_park_no": "BJ33",
+        "address": "BLK 234A BUKIT PANJANG RING ROAD",
+        "planning_area": "BUKIT PANJANG",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6756756756756757
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.77351523338442,
+          1.3777664235348246
+        ]
+      },
+      "properties": {
+        "rank": 34,
+        "car_park_no": "BJMP",
+        "address": "BLK 259B BANGKIT ROAD",
+        "planning_area": "BUKIT PANJANG",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6756756756756757
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.75006247869928,
+          1.3786059243998008
+        ]
+      },
+      "properties": {
+        "rank": 35,
+        "car_park_no": "CK3",
+        "address": "BLK 118/124 TECK WHYE LANE",
+        "planning_area": "CHOA CHU KANG",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6756756756756757
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.82946139003269,
+          1.2825290974366874
+        ]
+      },
+      "properties": {
+        "rank": 36,
+        "car_park_no": "KTM5",
+        "address": "BLK 126 KIM TIAN ROAD",
+        "planning_area": "BUKIT MERAH",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6756756756756757
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.95544278951135,
+          1.3672748025475827
+        ]
+      },
+      "properties": {
+        "rank": 37,
+        "car_park_no": "PR2",
+        "address": "BLK 109/129 PASIR RIS STREET 11",
+        "planning_area": "PASIR RIS",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6756756756756757
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.88760266728181,
+          1.3200368136063063
+        ]
+      },
+      "properties": {
+        "rank": 38,
+        "car_park_no": "GEM",
+        "address": "BLK 118 ALJUNIED AVENUE 2",
+        "planning_area": "GEYLANG",
+        "additional_ac_points": 5,
+        "certified_scenario_selection_fraction": 0.6756756756756757
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.95096706281251,
+          1.3540288868380261
+        ]
+      },
+      "properties": {
+        "rank": 39,
+        "car_park_no": "T29",
+        "address": "BLK 255/264 TAMPINES STREET 21",
+        "planning_area": "TAMPINES",
+        "additional_ac_points": 5,
+        "certified_scenario_selection_fraction": 0.6756756756756757
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.84752949552275,
+          1.4283671256018378
+        ]
+      },
+      "properties": {
+        "rank": 40,
+        "car_park_no": "Y48M",
+        "address": "BLK 385 YISHUN RING ROAD/AVENUE 6",
+        "planning_area": "YISHUN",
+        "additional_ac_points": 5,
+        "certified_scenario_selection_fraction": 0.6756756756756757
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.847524771568,
+          1.4242511551575956
+        ]
+      },
+      "properties": {
+        "rank": 41,
+        "car_park_no": "Y49M",
+        "address": "BLK 419A YISHUN AVENUE 11",
+        "planning_area": "YISHUN",
+        "additional_ac_points": 5,
+        "certified_scenario_selection_fraction": 0.6756756756756757
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.83150986637429,
+          1.4347516057895653
+        ]
+      },
+      "properties": {
+        "rank": 42,
+        "car_park_no": "Y4",
+        "address": "BLK 121/143 YISHUN STREET 11/RING ROAD",
+        "planning_area": "YISHUN",
+        "additional_ac_points": 3,
+        "certified_scenario_selection_fraction": 0.6756756756756757
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.77127261757693,
+          1.387524429768434
+        ]
+      },
+      "properties": {
+        "rank": 43,
+        "car_park_no": "BJ58",
+        "address": "BLK 455A SEGAR ROAD",
+        "planning_area": "BUKIT PANJANG",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6486486486486487
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.77359583708764,
+          1.374699730825973
+        ]
+      },
+      "properties": {
+        "rank": 44,
+        "car_park_no": "BJ8",
+        "address": "BLK 201/218 PETIR ROAD",
+        "planning_area": "BUKIT PANJANG",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6486486486486487
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.7513716518421,
+          1.3792527806804948
+        ]
+      },
+      "properties": {
+        "rank": 45,
+        "car_park_no": "CK2",
+        "address": "BLK 109/117 TECK WHYE LANE",
+        "planning_area": "CHOA CHU KANG",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6486486486486487
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.83890822772874,
+          1.2761844360827463
+        ]
+      },
+      "properties": {
+        "rank": 46,
+        "car_park_no": "EPM",
+        "address": "BLK 6A EVERTON ROAD",
+        "planning_area": "BUKIT MERAH",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6486486486486487
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.69364065669544,
+          1.3396873972151606
+        ]
+      },
+      "properties": {
+        "rank": 47,
+        "car_park_no": "J69",
+        "address": "BLK 974/980 JURONG WEST STREET 93",
+        "planning_area": "JURONG WEST",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6486486486486487
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.70008243365479,
+          1.3408888288394576
+        ]
+      },
+      "properties": {
+        "rank": 48,
+        "car_park_no": "JM15",
+        "address": "BLK 617A JURONG WEST STREET 65",
+        "planning_area": "JURONG WEST",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6486486486486487
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.69717792676786,
+          1.3370745667061221
+        ]
+      },
+      "properties": {
+        "rank": 49,
+        "car_park_no": "JM21",
+        "address": "BLK 651 JURONG WEST STREET 61",
+        "planning_area": "JURONG WEST",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6486486486486487
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.6968178714569,
+          1.3386592120903442
+        ]
+      },
+      "properties": {
+        "rank": 50,
+        "car_park_no": "JM9",
+        "address": "BLK 650 JURONG WEST STREET 61",
+        "planning_area": "JURONG WEST",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6486486486486487
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.95268297102702,
+          1.3687136904214412
+        ]
+      },
+      "properties": {
+        "rank": 51,
+        "car_park_no": "PR12",
+        "address": "BLK 544/556 PASIR RIS STREET 51",
+        "planning_area": "PASIR RIS",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6486486486486487
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.906757692769,
+          1.3937143837711456
+        ]
+      },
+      "properties": {
+        "rank": 52,
+        "car_park_no": "SK24",
+        "address": "BLK 185 RIVERVALE CRESCENT",
+        "planning_area": "SENGKANG",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6486486486486487
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.84548050687795,
+          1.3342662016697915
+        ]
+      },
+      "properties": {
+        "rank": 53,
+        "car_park_no": "TPMJ",
+        "address": "BLK 146A LORONG 2 TOA PAYOH",
+        "planning_area": "TOA PAYOH",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6486486486486487
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.77480790698245,
+          1.4435372787951029
+        ]
+      },
+      "properties": {
+        "rank": 54,
+        "car_park_no": "W13",
+        "address": "BLK 201/206 MARSILING DRIVE",
+        "planning_area": "WOODLANDS",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6486486486486487
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.84052674015588,
+          1.4200499817181682
+        ]
+      },
+      "properties": {
+        "rank": 55,
+        "car_park_no": "Y39",
+        "address": "BLK 662/666,666A TO 666B YISHUN AVENUE 4",
+        "planning_area": "YISHUN",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6486486486486487
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.93537332934645,
+          1.3507122252686137
+        ]
+      },
+      "properties": {
+        "rank": 56,
+        "car_park_no": "T44",
+        "address": "BLK 830/840 TAMPINES STREET 82",
+        "planning_area": "TAMPINES",
+        "additional_ac_points": 5,
+        "certified_scenario_selection_fraction": 0.6486486486486487
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8468485748635,
+          1.4309061808384205
+        ]
+      },
+      "properties": {
+        "rank": 57,
+        "car_park_no": "Y83M",
+        "address": "BLK 382 YISHUN STREET 31",
+        "planning_area": "YISHUN",
+        "additional_ac_points": 5,
+        "certified_scenario_selection_fraction": 0.6486486486486487
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.84857845222837,
+          1.3348930156411019
+        ]
+      },
+      "properties": {
+        "rank": 58,
+        "car_park_no": "TPMN",
+        "address": "BLK 78B TOA PAYOH CENTRAL",
+        "planning_area": "TOA PAYOH",
+        "additional_ac_points": 2,
+        "certified_scenario_selection_fraction": 0.6486486486486487
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.84939765277373,
+          1.3647534118811009
+        ]
+      },
+      "properties": {
+        "rank": 59,
+        "car_park_no": "A24",
+        "address": "BLK 338/340 ANG MO KIO STREET 32",
+        "planning_area": "ANG MO KIO",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6216216216216216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.85779708766381,
+          1.37132960595493
+        ]
+      },
+      "properties": {
+        "rank": 60,
+        "car_park_no": "A49",
+        "address": "BLK 555/559 ANG MO KIO STREET 54",
+        "planning_area": "ANG MO KIO",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6216216216216216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.74329658894578,
+          1.377365191602345
+        ]
+      },
+      "properties": {
+        "rank": 61,
+        "car_park_no": "CKM9",
+        "address": "BLK 297B CHOA CHU KANG AVENUE 2",
+        "planning_area": "CHOA CHU KANG",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6216216216216216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.69822208525447,
+          1.3439953859260443
+        ]
+      },
+      "properties": {
+        "rank": 62,
+        "car_park_no": "J73",
+        "address": "BLK 719/731 JURONG WEST STREET 72",
+        "planning_area": "JURONG WEST",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6216216216216216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.70259174815767,
+          1.344748541967573
+        ]
+      },
+      "properties": {
+        "rank": 63,
+        "car_park_no": "JM22",
+        "address": "BLK 674 JURONG WEST STREET 65",
+        "planning_area": "JURONG WEST",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6216216216216216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.948213461328,
+          1.3594142202064825
+        ]
+      },
+      "properties": {
+        "rank": 64,
+        "car_park_no": "T74",
+        "address": "BLK 425/428 TAMPINES STREET 41",
+        "planning_area": "TAMPINES",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6216216216216216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.75680557319679,
+          1.3500959655979141
+        ]
+      },
+      "properties": {
+        "rank": 65,
+        "car_park_no": "U17",
+        "address": "BLK 242/253 BUKIT BATOK EAST AVENUE 2/5",
+        "planning_area": "BUKIT BATOK",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6216216216216216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.75832244183836,
+          1.3485028571990136
+        ]
+      },
+      "properties": {
+        "rank": 66,
+        "car_park_no": "U19",
+        "address": "BLK 266/284 BUKIT BATOK EAST AVENUE 3/4",
+        "planning_area": "BUKIT BATOK",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6216216216216216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.75000996550098,
+          1.3631052483305381
+        ]
+      },
+      "properties": {
+        "rank": 67,
+        "car_park_no": "U25",
+        "address": "BLK 337-353/355-356 BUKIT BATOK STREET 34",
+        "planning_area": "BUKIT BATOK",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6216216216216216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.74435163478522,
+          1.351391956544542
+        ]
+      },
+      "properties": {
+        "rank": 68,
+        "car_park_no": "U3",
+        "address": "BLK 133/139 BUKIT BATOK WEST AVENUE 6",
+        "planning_area": "BUKIT BATOK",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6216216216216216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.83647660968803,
+          1.4199061843091825
+        ]
+      },
+      "properties": {
+        "rank": 69,
+        "car_park_no": "Y34",
+        "address": "BLK 606-631 YISHUN STREET 61/RING ROAD",
+        "planning_area": "YISHUN",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6216216216216216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.83765528696827,
+          1.4215279338478644
+        ]
+      },
+      "properties": {
+        "rank": 70,
+        "car_park_no": "Y36",
+        "address": "BLK 642/643 YISHUN STREET 61",
+        "planning_area": "YISHUN",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6216216216216216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.82745054301348,
+          1.4273018179324568
+        ]
+      },
+      "properties": {
+        "rank": 71,
+        "car_park_no": "Y7",
+        "address": "BLK 701/716 & 701B YISHUN AVENUE 5",
+        "planning_area": "YISHUN",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.6216216216216216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.85527878732958,
+          1.3664071280973518
+        ]
+      },
+      "properties": {
+        "rank": 72,
+        "car_park_no": "A36",
+        "address": "BLK 436/443/445 ANG MO KIO STREET 43",
+        "planning_area": "ANG MO KIO",
+        "additional_ac_points": 5,
+        "certified_scenario_selection_fraction": 0.6216216216216216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8834179399384,
+          1.3741610365120855
+        ]
+      },
+      "properties": {
+        "rank": 73,
+        "car_park_no": "HG42",
+        "address": "BLK 643-646/649-662/665-667 HOUGANG AVENUE 8",
+        "planning_area": "HOUGANG",
+        "additional_ac_points": 5,
+        "certified_scenario_selection_fraction": 0.6216216216216216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.84329939417108,
+          1.2819551401341371
+        ]
+      },
+      "properties": {
+        "rank": 74,
+        "car_park_no": "KAM",
+        "address": "BLK 335 SMITH STREET KRETA AYER MSCP",
+        "planning_area": "OUTRAM",
+        "additional_ac_points": 5,
+        "certified_scenario_selection_fraction": 0.6216216216216216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.83681432353167,
+          1.4346481536830256
+        ]
+      },
+      "properties": {
+        "rank": 75,
+        "car_park_no": "Y15",
+        "address": "BLK 227/235 YISHUN STREET 21",
+        "planning_area": "YISHUN",
+        "additional_ac_points": 5,
+        "certified_scenario_selection_fraction": 0.6216216216216216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.89475741107408,
+          1.371222137875154
+        ]
+      },
+      "properties": {
+        "rank": 76,
+        "car_park_no": "HG97",
+        "address": "BLK 804 HOUGANG AVENUE 10",
+        "planning_area": "HOUGANG",
+        "additional_ac_points": 4,
+        "certified_scenario_selection_fraction": 0.6216216216216216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.87209879674288,
+          1.3515775676309512
+        ]
+      },
+      "properties": {
+        "rank": 77,
+        "car_park_no": "SE20",
+        "address": "BLK 264 SERANGOON CENTRAL",
+        "planning_area": "SERANGOON",
+        "additional_ac_points": 3,
+        "certified_scenario_selection_fraction": 0.6216216216216216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86605451410936,
+          1.3326801447688825
+        ]
+      },
+      "properties": {
+        "rank": 78,
+        "car_park_no": "PP2",
+        "address": "BLK 143 TO 145 POTONG PASIR AVENUE 2/3",
+        "planning_area": "TOA PAYOH",
+        "additional_ac_points": 1,
+        "certified_scenario_selection_fraction": 0.6216216216216216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.9557136213266,
+          1.3638640262558084
+        ]
+      },
+      "properties": {
+        "rank": 79,
+        "car_park_no": "TM52",
+        "address": "BLK 492 TAMPINES ST45",
+        "planning_area": "TAMPINES",
+        "additional_ac_points": 1,
+        "certified_scenario_selection_fraction": 0.6216216216216216
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.85693260004962,
+          1.364936935305799
+        ]
+      },
+      "properties": {
+        "rank": 80,
+        "car_park_no": "A41",
+        "address": "BLK 466/470 ANG MO KIO STREET 44",
+        "planning_area": "ANG MO KIO",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.5945945945945946
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.75793361152391,
+          1.3432428850770304
+        ]
+      },
+      "properties": {
+        "rank": 81,
+        "car_park_no": "BBM5",
+        "address": "BLK 290H BUKIT BATOK STREET 24",
+        "planning_area": "BUKIT BATOK",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.5945945945945946
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.76148675340289,
+          1.3848974600068844
+        ]
+      },
+      "properties": {
+        "rank": 82,
+        "car_park_no": "BJ49",
+        "address": "BLK 611A/613A/615A/616A BUKIT PANJANG RING ROAD/SENJA ROAD",
+        "planning_area": "BUKIT PANJANG",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.5945945945945946
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.74203813468661,
+          1.376811917400497
+        ]
+      },
+      "properties": {
+        "rank": 83,
+        "car_park_no": "CK59",
+        "address": "BLK 297A CHOA CHU KANG AVENUE 2",
+        "planning_area": "CHOA CHU KANG",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.5945945945945946
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.89498042855223,
+          1.3659590849526215
+        ]
+      },
+      "properties": {
+        "rank": 84,
+        "car_park_no": "HG11",
+        "address": "BLK 301-319 HOUGANG AVENUE 5",
+        "planning_area": "HOUGANG",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.5945945945945946
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.70606683648678,
+          1.3445890471540443
+        ]
+      },
+      "properties": {
+        "rank": 85,
+        "car_park_no": "JM3",
+        "address": "BLK 679 JURONG WEST CENTRAL 1",
+        "planning_area": "JURONG WEST",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.5945945945945946
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.90760011419309,
+          1.3892739738021467
+        ]
+      },
+      "properties": {
+        "rank": 86,
+        "car_park_no": "S102",
+        "address": "BLK 164 RIVERVALE CRESCENT",
+        "planning_area": "SENGKANG",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.5945945945945946
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.95712210094193,
+          1.3472093067939983
+        ]
+      },
+      "properties": {
+        "rank": 87,
+        "car_park_no": "SI8",
+        "address": "BLK 138 SIMEI STREET 1",
+        "planning_area": "TAMPINES",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.5945945945945946
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.80871041296733,
+          1.2746646911948152
+        ]
+      },
+      "properties": {
+        "rank": 88,
+        "car_park_no": "TB19",
+        "address": "BLK 75/76 TELOK BLANGAH DRIVE",
+        "planning_area": "BUKIT MERAH",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.5945945945945946
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.95962522398658,
+          1.359826679786971
+        ]
+      },
+      "properties": {
+        "rank": 89,
+        "car_park_no": "TM26",
+        "address": "BLK 497K TAMPINES STREET 45",
+        "planning_area": "TAMPINES",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.5945945945945946
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.84556918695263,
+          1.4227431505685837
+        ]
+      },
+      "properties": {
+        "rank": 90,
+        "car_park_no": "Y51M",
+        "address": "BLK 441 YISHUN AVENUE 11",
+        "planning_area": "YISHUN",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.5945945945945946
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.84202257132385,
+          1.432668821136755
+        ]
+      },
+      "properties": {
+        "rank": 91,
+        "car_park_no": "Y65M",
+        "address": "BLK 315 YISHUN AVENUE 9",
+        "planning_area": "YISHUN",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.5945945945945946
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8381810968511,
+          1.3670355338571134
+        ]
+      },
+      "properties": {
+        "rank": 92,
+        "car_park_no": "A11",
+        "address": "BLK 223/226/226A-226D ANG MO KIO STREET 22",
+        "planning_area": "ANG MO KIO",
+        "additional_ac_points": 5,
+        "certified_scenario_selection_fraction": 0.5945945945945946
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.91195957483161,
+          1.3339093228742855
+        ]
+      },
+      "properties": {
+        "rank": 93,
+        "car_park_no": "KE3",
+        "address": "BLK 127/135, 141/151 BEDOK RESERVOIR ROAD",
+        "planning_area": "BEDOK",
+        "additional_ac_points": 2,
+        "certified_scenario_selection_fraction": 0.5945945945945946
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.90885093288675,
+          1.301686373156584
+        ]
+      },
+      "properties": {
+        "rank": 94,
+        "car_park_no": "MP13",
+        "address": "BLK 78 & 79 MARINE DRIVE",
+        "planning_area": "MARINE PARADE",
+        "additional_ac_points": 2,
+        "certified_scenario_selection_fraction": 0.5945945945945946
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.95071563026282,
+          1.3710634228755592
+        ]
+      },
+      "properties": {
+        "rank": 95,
+        "car_park_no": "PR3",
+        "address": "BLK 531/536 PASIR RIS DRIVE 1/PASIR RIS CENTRAL",
+        "planning_area": "PASIR RIS",
+        "additional_ac_points": 2,
+        "certified_scenario_selection_fraction": 0.5945945945945946
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.84710309894355,
+          1.4336394922207985
+        ]
+      },
+      "properties": {
+        "rank": 96,
+        "car_park_no": "Y85M",
+        "address": "BLK 339 YISHUN AVENUE 6",
+        "planning_area": "YISHUN",
+        "additional_ac_points": 2,
+        "certified_scenario_selection_fraction": 0.5945945945945946
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.9386890231192,
+          1.3548531044473473
+        ]
+      },
+      "properties": {
+        "rank": 97,
+        "car_park_no": "TM53",
+        "address": "BLK 859B TAMPINES AVENUE 5",
+        "planning_area": "TAMPINES",
+        "additional_ac_points": 1,
+        "certified_scenario_selection_fraction": 0.5945945945945946
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.84669851649676,
+          1.369915001718853
+        ]
+      },
+      "properties": {
+        "rank": 98,
+        "car_park_no": "AM51",
+        "address": "BLK 700 ANG MO KIO AVENUE 6",
+        "planning_area": "ANG MO KIO",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.5675675675675675
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.90696724615144,
+          1.332492267852266
+        ]
+      },
+      "properties": {
+        "rank": 99,
+        "car_park_no": "B73",
+        "address": "BLK 651A JALAN TENAGA",
+        "planning_area": "BEDOK",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.5675675675675675
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.76838389812862,
+          1.3840337588241158
+        ]
+      },
+      "properties": {
+        "rank": 100,
+        "car_park_no": "BJ19",
+        "address": "BLK 409-419 FAJAR ROAD",
+        "planning_area": "BUKIT PANJANG",
+        "additional_ac_points": 6,
+        "certified_scenario_selection_fraction": 0.5675675675675675
+      }
+    }
+  ]
+}

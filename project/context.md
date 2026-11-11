@@ -4,6 +4,8 @@ _Last updated: 9 November 2026, after rereading the corrected full meeting trans
 
 **Execution note — 10 November 2026:** The analysis, report and workbook have now been produced. See [EXECUTION_SUMMARY.md](EXECUTION_SUMMARY.md) and [code/README.md](code/README.md). The research-only statements below preserve the earlier planning context; they no longer describe implementation status.
 
+**Presentation preference — 11 November 2026:** The user prefers planning-area allocations as the main showcase. The 28-area table describes **additional chargers for the end-2027 base demand scenario**, at a 90% service target. Current (September 2026 stock benchmark) and future (2027/2030) modelled energy shortfalls are now explicit. The five western site-review examples are appendix evidence, not the national deployment list. Future shortfalls hold the 2027 plan fixed with no further expansion; a separate 2030 target-cost plan has not been solved.
+
 ## Agreed direction
 
 1. **Where and how many charging points to add in HDB carparks throughout Singapore.** Private estates and other-agency placement are outside scope.
@@ -50,3 +52,5 @@ Provisional spellings from the notes: Regan/Reagan builds and coordinates; Sara/
 Both meeting files are preserved unchanged under [archive/meetings/2026-11-09/](archive/meetings/2026-11-09/), with SHA-256 hashes. The updated transcript is the full 32,742-byte version, not the duplicate summary originally seen. Previous plan/context/cost table/data index are in `archive/planning/2026-10-31/` and are historical only.
 
 **Version control:** The user subsequently authorised committing and pushing this research update on 9 November 2026; this supersedes the earlier hold.
+
+**Compact presentation update, 11 November:** Retain all analytical figures at smaller sizes; keep planning areas as the main showcase and add a top-100 review-candidate map. Following the typography review, report text, headings, tables, captions and notes use 12-point Times New Roman, double spacing and one-inch margins, as specified by the guideline; code listings retain monospace formatting. The map is a deterministic ranking within the end-2027 base selection, not a separately optimised build plan.

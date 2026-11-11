@@ -28,12 +28,24 @@ Source hash: data/04_demographics_demand_proxies/updates_2026-11-09/population_d
                                                                                    LP bound dominates integer service   PASS
                                                                                          Identical-input reproduction   PASS
                                                                                           Regret interval consistency   PASS
+                                                                                 Top 100 deterministic review ranking   PASS
+                                                                                    Top 100 coordinates and additions   PASS
+                                                                                       Map data reconciles to top 100   PASS
+                                                                                  Planning-area deployment reconciles   PASS
+                                                                                      Dated energy-shortfall balances   PASS
+                                                                      No future supply presented as installed in 2026   PASS
                                                                                           Expected-answer model tests   PASS
                                                                                               Workbook formula caches   PASS
                                                                                                  Workbook error cells   PASS
+                                                                                        Workbook top 100 map register   PASS
+                                                                                      Workbook planning-area showcase   PASS
                                                                          Demand calculator reconciles to frozen model   PASS
                                                                                                Report body typography   PASS
+                                                                                         Report consistent typography   PASS
+                                                                                                Report double spacing   PASS
+                                                                                              Report table typography   PASS
                                                                                                        Report margins   PASS
                                                                                               Formula images embedded   PASS
-                                                                                                     Narrative length   PASS
+                                                                                  No sparse narrative spillover pages   PASS
+                                                                                            Report section pagination   PASS
                                                                                   Rendered content within page bounds   PASS

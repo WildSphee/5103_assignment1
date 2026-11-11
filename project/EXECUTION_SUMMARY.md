@@ -2,7 +2,7 @@
 
 Completed 11 November 2026. The 9 November plan has been implemented using frozen
 source data and its proposed scenario assumptions. No live data refresh, field
-verification, external communication, commit or push was performed for this work.
+verification or external communication was performed for this analysis.
 
 ## Deliverables
 
@@ -15,12 +15,23 @@ verification, external communication, commit or push was performed for this work
   [unit-test output](code/outputs/unit_test_results.txt), and
   [specific shortlist review](code/outputs/shortlist_desk_review.csv).
 
-The report has **11 narrative pages**, one references page,
-one cover page and appendices: 32 pages overall. It follows
+The report has **14 narrative pages**, 2 references pages,
+one cover page and appendices: 38 pages overall. It follows
 the seven-section skeleton, uses the supplied assignment's navy/blue visual style,
-and includes formula pictures, five analytical figures and the complete computational
-code appendix. Main body style is 12-point Times, double spacing and one-inch margins;
-tables, captions and compact technical notes use smaller consistent styles.
+and includes formula pictures, six main analytical figures and the complete computational
+code appendix. Headings, body text, tables, captions and notes use 12-point Times New
+Roman and double spacing, with one-inch margins, following the course guideline.
+Code listings retain 7.2-point, single-spaced Courier New to preserve indentation.
+Charts use Times-style serif labels and equations use Times-style mathematical glyphs;
+image text scales with the figure. LibreOffice uses Liberation Serif, a metrically
+compatible Times substitute, when Times New Roman is unavailable on the render host.
+The guideline suggests 8–14 narrative pages but explicitly has no strict page limit.
+All analytical charts are retained, with smaller figures and a paired formula panel.
+The top-100 review map highlights 528 proposed AC points across 21 planning areas;
+`Top_100_Sites` lists every address, WGS84 coordinate and ranking score. Eligible
+sites have observed lot capacity and night parking within the base solution. Rank
+uses certified-scenario frequency, then base additions, then carpark ID. This is
+a review order, not a separately optimised 100-site construction plan.
 
 ## Main numerical findings
 
@@ -49,6 +60,28 @@ greedy serves 90.00%.
 provides a certificate and an extensible formulation rather than an extra base-case
 service gain over this greedy rule. Matched-spend comparison solves are retained.
 
+## Planning-area presentation and demand years
+
+The main showcase is **additional AC allocation across 28 planning areas for the
+end-2027 base demand scenario**, at the 90% national service target. The workbook
+opens with `Dashboard`, `Area_Deployment_2027` and `Year_Outlook`. Exact sites and
+the five western review examples remain detailed implementation evidence in the
+appendix; they do not define the geographic extent of the plan.
+
+| Demand case | Modelled unmet energy: existing supply | Modelled unmet energy: existing + fixed 2027 additions |
+|---|---:|---:|
+| September 2026 EV-stock benchmark | 17.0% | Not an installed 2026 plan |
+| End-2027 base | 38.9% | 10.0% |
+| 2030 low | 54.9% | 34.1% |
+| 2030 central | 67.5% | 52.6% |
+| 2030 high | 74.7% | 63.1% |
+
+These are grid-energy shortfalls under scenario assumptions, not observed charger
+deficits or statistical forecasts. Supply remains at the frozen register, with
+the same 2,332 AC points added in the second case and no further expansion.
+The current-year benchmark uses September 2026 national EV stock, not a live
+November count. A separate minimum-cost 2030 target-supply plan has not been solved.
+
 ## What was executed
 
 1. An all-site register, labelled capacity imputation, address/distance supply
@@ -63,7 +96,7 @@ service gain over this greedy rule. Matched-spend comparison solves are retained
    AC/DC and 2030 outlook. Each includes a fixed-base-plan evaluation.
 5. Scenario selection frequency, equal-budget shortlist replacement, repeated-input
    reproducibility, alternate seeds and a source-record review of the shortlist.
-6. **9 expected-answer tests and 38 release checks**, including independent
+6. **9 expected-answer tests and 50 release checks**, including independent
    saved-flow/cost/feasibility reconciliation, source hashes, Excel formula caches,
    absence of spreadsheet error cells and PDF layout/page-count checks. All pass.
 

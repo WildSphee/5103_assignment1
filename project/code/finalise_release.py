@@ -15,13 +15,15 @@ def main():
     validation=pd.read_csv(OUT/'validation_checks.csv')
     assert validation.status.eq('PASS').all()
     comparisons=pd.read_csv(OUT/'baseline_comparison.csv').set_index('name')
+    from build_showcase import build_tables
+    area_showcase,years=build_tables()
     certified=int((sensitivity.certified_service & sensitivity.certified_cost).sum())
     unit=base['annual_cost']/(365*summary['incremental_served'])
     text=f'''# Execution summary — HDB EV charging project
 
 Completed 11 November 2026. The 9 November plan has been implemented using frozen
 source data and its proposed scenario assumptions. No live data refresh, field
-verification, external communication, commit or push was performed for this work.
+verification or external communication was performed for this analysis.
 
 ## Deliverables
 
@@ -34,12 +36,23 @@ verification, external communication, commit or push was performed for this work
   [unit-test output](code/outputs/unit_test_results.txt), and
   [specific shortlist review](code/outputs/shortlist_desk_review.csv).
 
-The report has **{layout['narrative_pages']} narrative pages**, one references page,
+The report has **{layout['narrative_pages']} narrative pages**, {layout['reference_pages']} references pages,
 one cover page and appendices: {layout['total_pdf_pages']} pages overall. It follows
 the seven-section skeleton, uses the supplied assignment's navy/blue visual style,
-and includes formula pictures, five analytical figures and the complete computational
-code appendix. Main body style is 12-point Times, double spacing and one-inch margins;
-tables, captions and compact technical notes use smaller consistent styles.
+and includes formula pictures, six main analytical figures and the complete computational
+code appendix. Headings, body text, tables, captions and notes use 12-point Times New
+Roman and double spacing, with one-inch margins, following the course guideline.
+Code listings retain 7.2-point, single-spaced Courier New to preserve indentation.
+Charts use Times-style serif labels and equations use Times-style mathematical glyphs;
+image text scales with the figure. LibreOffice uses Liberation Serif, a metrically
+compatible Times substitute, when Times New Roman is unavailable on the render host.
+The guideline suggests 8–14 narrative pages but explicitly has no strict page limit.
+All analytical charts are retained, with smaller figures and a paired formula panel.
+The top-100 review map highlights 528 proposed AC points across 21 planning areas;
+`Top_100_Sites` lists every address, WGS84 coordinate and ranking score. Eligible
+sites have observed lot capacity and night parking within the base solution. Rank
+uses certified-scenario frequency, then base additions, then carpark ID. This is
+a review order, not a separately optimised 100-site construction plan.
 
 ## Main numerical findings
 
@@ -67,6 +80,28 @@ greedy serves {100*comparisons.loc['greedy','service_fraction']:.2f}%.
 **Greedy matches the MILP's base service at the same spend.** The MILP therefore
 provides a certificate and an extensible formulation rather than an extra base-case
 service gain over this greedy rule. Matched-spend comparison solves are retained.
+
+## Planning-area presentation and demand years
+
+The main showcase is **additional AC allocation across 28 planning areas for the
+end-2027 base demand scenario**, at the 90% national service target. The workbook
+opens with `Dashboard`, `Area_Deployment_2027` and `Year_Outlook`. Exact sites and
+the five western review examples remain detailed implementation evidence in the
+appendix; they do not define the geographic extent of the plan.
+
+| Demand case | Modelled unmet energy: existing supply | Modelled unmet energy: existing + fixed 2027 additions |
+|---|---:|---:|
+| September 2026 EV-stock benchmark | 17.0% | Not an installed 2026 plan |
+| End-2027 base | 38.9% | 10.0% |
+| 2030 low | 54.9% | 34.1% |
+| 2030 central | 67.5% | 52.6% |
+| 2030 high | 74.7% | 63.1% |
+
+These are grid-energy shortfalls under scenario assumptions, not observed charger
+deficits or statistical forecasts. Supply remains at the frozen register, with
+the same 2,332 AC points added in the second case and no further expansion.
+The current-year benchmark uses September 2026 national EV stock, not a live
+November count. A separate minimum-cost 2030 target-supply plan has not been solved.
 
 ## What was executed
 

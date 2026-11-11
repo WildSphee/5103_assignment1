@@ -12,6 +12,9 @@ from prepare_data import ROOT, INPUTS, OUT
 
 
 def main():
+    from build_showcase import build_tables, build_top100
+    area_showcase,years=build_tables()
+    top100=build_top100()
     path=ROOT/'HDB_EV_Charging_Analysis.xlsx'
     wb=xlsxwriter.Workbook(path,{'nan_inf_to_errors':False,'strings_to_urls':False})
     wb.set_properties({'title':'HDB EV Charging: Placement and Cost-Effectiveness','subject':'Frozen 2027 scenario; reproducible Python optimisation','author':'DBA5103 Project','comments':'Generated from validated local model outputs. Input edits do not re-solve the MILP.'})
@@ -25,10 +28,13 @@ def main():
     wrap=wb.add_format({'text_wrap':True,'valign':'top'})
     head=wb.add_format({'bold':True,'bg_color':navy,'font_color':'white','text_wrap':True,'valign':'vcenter'})
     sheets={}
+    reserved={name:wb.add_worksheet(name) for name in ['Read_Me','Dashboard','Area_Deployment_2027','Year_Outlook','Top_100_Sites']}
 
     def table(name,df,subtitle='',widths=None):
         df=df.copy().replace([np.inf,-np.inf],np.nan)
-        ws=wb.add_worksheet(name);sheets[name]=(ws,df)
+        ws=reserved.pop(name,None)
+        if ws is None:ws=wb.add_worksheet(name)
+        sheets[name]=(ws,df)
         ws.hide_gridlines(2);ws.set_tab_color(blue)
         ws.merge_range(0,0,0,max(3,min(len(df.columns)-1,7)),name.replace('_',' '),title)
         ws.merge_range(1,0,1,max(3,min(len(df.columns)-1,7)),subtitle,note);ws.set_row(1,32)
@@ -56,8 +62,9 @@ def main():
     readme=pd.DataFrame([
         ('Purpose','Where and how many additional AC points; service delivered per infrastructure dollar.'),
         ('Scope','All 2,273 HDB candidate sites. Existing supply is address-supported, not field-verified.'),
-        ('Base period','2027 planning scenario, based on Sep-2026 vehicle/charger stock and Oct-2026 parking lots.'),
-        ('How to read','Dashboard → Frontier / Comparison → Sensitivity → Base_Sites and Shortlist. Full scenario flows are in code/outputs/runs/.'),
+        ('Base period','End-2027 demand scenario: 2,332 additional AC points at 549 carparks in 28 areas; a 90% service target, not total installed supply.'),
+        ('How to read','Dashboard → Area_Deployment_2027 → Year_Outlook → Frontier / Comparison / Sensitivity. Exact locations remain in Base_Sites; five site-review examples are appendix detail.'),
+        ('Top 100 map','Top_100_Sites lists the report map: 100 carparks, 528 proposed AC points, 21 planning areas. Review ranking within the 2027 solution; frequency is not a probability.'),
         ('Editable formulas','Parameters and Demand_Calculator expose demand arithmetic. Dashboard and frontier ratios have cached Excel formula values.'),
         ('Re-solving','Changing spreadsheet inputs does not update frozen optimisation results. Edit Python Parameters/scenario definitions and rerun code/run_analysis.py.'),
         ('Money','Constant 2026 scenario SGD excluding GST. Infrastructure annual cost excludes electricity and sunk existing investment.'),
@@ -70,6 +77,21 @@ def main():
     ],columns=['Topic','Explanation'])
     ws=table('Read_Me',readme,'Workbook guide and interpretation',{'Topic':25,'Explanation':105});ws.set_column(1,1,105,wrap)
     for row in range(4,len(readme)+4):ws.set_row(row,34)
+    aws=table('Area_Deployment_2027',area_showcase,'Main showcase: all 28 planning areas receiving additions for end-2027 demand. National target: 90% service; budget S$15.158m.')
+    aws.set_column(5,5,24,percent)
+    yws=table('Year_Outlook',years,'Modelled energy gaps, not observed charger deficits. Future supply: frozen existing register + the same 2027 plan, without later expansion. 2026 future-plan cells are blank.')
+    for col in ['existing_shortfall_fraction','fixed_2027_plan_shortfall_fraction']:
+        j=years.columns.get_loc(col);yws.set_column(j,j,26,percent)
+    tws=table('Top_100_Sites',top100,'End-2027 review ranking: observed capacity + night parking; certified-scenario frequency descending, base additions descending, ID ascending. Not a separate 100-site optimum.')
+    tws.set_row(1,44)
+    tws.set_column(top100.columns.get_loc('selection_fraction'),top100.columns.get_loc('selection_fraction'),22,percent)
+    coordinate=wb.add_format({'num_format':'0.000000'})
+    for col in ['longitude','latitude']:
+        j=top100.columns.get_loc(col);tws.set_column(j,j,16,coordinate)
+    for col in ['rank','base_additions','scenario_count','all_feasible_scenario_count']:
+        j=top100.columns.get_loc(col);tws.set_column(j,j,18,integer)
+    j=top100.columns.get_loc('address');tws.set_column(j,j,55,wrap)
+    for row in range(4,104):tws.set_row(row,30)
     base=json.loads((OUT/'runs/base/metrics.json').read_text())
     p=base['parameters']
     pars=pd.DataFrame([{'parameter':k,'base':v,'classification':'Design/scenario assumption' if k not in ['seed','time_limit','mip_gap'] else 'Solver control'} for k,v in p.items()])
@@ -97,7 +119,7 @@ def main():
              ('Cost per additional annual kWh','=IF(B13>0,B11/(365*B13),"")',base['annual_cost']/(365*summary['incremental_served']),'SGD/kWh'),
              ('New-point daily capacity',f'={pref["ac_power"]}*{pref["hours"]}*{pref["availability"]}*{pref["power_factor"]}',summary['q_new_ac'],'kWh/day'),
              ('Service arcs',None,summary['arcs'],'arcs')]
-    ws=table('Dashboard',pd.DataFrame([(a,c,d) for a,b,c,d in metrics],columns=['Measure','Value','Unit']),summary['anchor_reason'],{'Measure':36,'Value':24,'Unit':22})
+    ws=table('Dashboard',pd.DataFrame([(a,c,d) for a,b,c,d in metrics],columns=['Measure','Value','Unit']),'End-2027 base demand; additional investment for 90% national service. See Area_Deployment_2027 and Year_Outlook.',{'Measure':36,'Value':24,'Unit':22})
     for row,(_,formula,value,unit) in enumerate(metrics,4):
         if formula:ws.write_formula(row,1,formula,percent if unit=='fraction' else formula_fmt,value)
     calc=pd.DataFrame({'site_id':s.car_park_no,'area':s.area_2019,'observed_lots':s.total_lots,'model_lots':s.lots,'imputed':s.imputed,
@@ -139,9 +161,9 @@ def main():
     table('Sensitivity',sens.reindex(columns=fields),'Same nominal capital budget. Fixed-plan regret is blank when that plan breaches scenario budget or construction limits.')
     table('Scenario_Parameters',pd.read_csv(OUT/'scenario_parameters.csv'),'Exact inputs for each sensitivity run; 2026 geography is mapped separately.')
     table('Site_Robustness',pd.read_csv(OUT/'site_robustness.csv'),'Main frequency uses cases with both objectives certified; all-feasible frequency is separate. Neither is a probability.')
-    table('Shortlist',pd.read_csv(OUT/'shortlist_replacement.csv'),'Exclude each candidate and reoptimise at equal budget; negative/tiny losses may reflect tolerances.')
+    table('Site_Review_Examples',pd.read_csv(OUT/'shortlist_replacement.csv'),'Appendix examples selected by scenario frequency, without geographic balancing. This is not the national deployment list.')
     if (OUT/'shortlist_desk_review.csv').exists():
-        table('Shortlist_Review',pd.read_csv(OUT/'shortlist_desk_review.csv'),'Specific source-record gates: two survey candidates; three supply-reconciliation holds. No field confirmation.')
+        table('Site_Review_Notes',pd.read_csv(OUT/'shortlist_desk_review.csv'),'Appendix source-record gates for five examples. Main allocation is in Area_Deployment_2027. No field confirmation.')
     table('Existing_Supply',pd.read_csv(INPUTS/'existing_supply.csv'),'Registration maximum-port and sum-port bounds; bay counts are separate from supply power.')
     cross=pd.read_csv(INPUTS/'hdb_charger_crosswalk.csv',dtype={'PostalCode':str})
     table('Charger_Crosswalk',cross[['evCpId','EV Charger Registration Code','PostalCode','Block/House No','Street Name','Building Name','charging Speed','plugType','site_id','match_status','match_distance_m','match_reason']],

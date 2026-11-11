@@ -9,6 +9,6 @@ test_source_reconciliation (__main__.ModelTests.test_source_reconciliation) ... 
 test_zero_demand_buys_nothing (__main__.ModelTests.test_zero_demand_buys_nothing) ... ok
 
 ----------------------------------------------------------------------
-Ran 9 tests in 0.207s
+Ran 9 tests in 0.204s
 
 OK
